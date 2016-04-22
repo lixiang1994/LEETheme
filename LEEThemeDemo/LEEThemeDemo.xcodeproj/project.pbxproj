@@ -1,0 +1,559 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9B0049351CC9CE25001AC212 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0049341CC9CE25001AC212 /* main.m */; };
+		9B0049381CC9CE25001AC212 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0049371CC9CE25001AC212 /* AppDelegate.m */; };
+		9B00493B1CC9CE25001AC212 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B00493A1CC9CE25001AC212 /* ViewController.m */; };
+		9B00493E1CC9CE25001AC212 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B00493C1CC9CE25001AC212 /* Main.storyboard */; };
+		9B0049401CC9CE25001AC212 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B00493F1CC9CE25001AC212 /* Assets.xcassets */; };
+		9B0049431CC9CE25001AC212 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B0049411CC9CE25001AC212 /* LaunchScreen.storyboard */; };
+		9B00494E1CC9CE25001AC212 /* LEEThemeDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B00494D1CC9CE25001AC212 /* LEEThemeDemoTests.m */; };
+		9B0049591CC9CE25001AC212 /* LEEThemeDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0049581CC9CE25001AC212 /* LEEThemeDemoUITests.m */; };
+		9B0049691CC9CE57001AC212 /* LEETheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0049681CC9CE57001AC212 /* LEETheme.m */; };
+		9B00496C1CC9E916001AC212 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B00496B1CC9E916001AC212 /* TableViewController.m */; };
+		9B00496F1CC9EC9C001AC212 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B00496E1CC9EC9C001AC212 /* CustomTableViewCell.m */; };
+		9B0049711CC9F43C001AC212 /* picImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B0049701CC9F43C001AC212 /* picImage.jpg */; };
+		9B0049741CC9F96D001AC212 /* TableDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0049731CC9F96D001AC212 /* TableDetailViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9B00494A1CC9CE25001AC212 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9B0049281CC9CE25001AC212 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9B00492F1CC9CE25001AC212;
+			remoteInfo = LEEThemeDemo;
+		};
+		9B0049551CC9CE25001AC212 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9B0049281CC9CE25001AC212 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9B00492F1CC9CE25001AC212;
+			remoteInfo = LEEThemeDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9B0049301CC9CE25001AC212 /* LEEThemeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LEEThemeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B0049341CC9CE25001AC212 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9B0049361CC9CE25001AC212 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9B0049371CC9CE25001AC212 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9B0049391CC9CE25001AC212 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		9B00493A1CC9CE25001AC212 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9B00493D1CC9CE25001AC212 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9B00493F1CC9CE25001AC212 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9B0049421CC9CE25001AC212 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9B0049441CC9CE25001AC212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B0049491CC9CE25001AC212 /* LEEThemeDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LEEThemeDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B00494D1CC9CE25001AC212 /* LEEThemeDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEEThemeDemoTests.m; sourceTree = "<group>"; };
+		9B00494F1CC9CE25001AC212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B0049541CC9CE25001AC212 /* LEEThemeDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LEEThemeDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B0049581CC9CE25001AC212 /* LEEThemeDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEEThemeDemoUITests.m; sourceTree = "<group>"; };
+		9B00495A1CC9CE25001AC212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B0049671CC9CE57001AC212 /* LEETheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEETheme.h; sourceTree = "<group>"; };
+		9B0049681CC9CE57001AC212 /* LEETheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEETheme.m; sourceTree = "<group>"; };
+		9B00496A1CC9E916001AC212 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		9B00496B1CC9E916001AC212 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		9B00496D1CC9EC9C001AC212 /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
+		9B00496E1CC9EC9C001AC212 /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
+		9B0049701CC9F43C001AC212 /* picImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picImage.jpg; sourceTree = "<group>"; };
+		9B0049721CC9F96D001AC212 /* TableDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableDetailViewController.h; sourceTree = "<group>"; };
+		9B0049731CC9F96D001AC212 /* TableDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableDetailViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9B00492D1CC9CE25001AC212 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B0049461CC9CE25001AC212 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B0049511CC9CE25001AC212 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9B0049271CC9CE25001AC212 = {
+			isa = PBXGroup;
+			children = (
+				9B0049321CC9CE25001AC212 /* LEEThemeDemo */,
+				9B00494C1CC9CE25001AC212 /* LEEThemeDemoTests */,
+				9B0049571CC9CE25001AC212 /* LEEThemeDemoUITests */,
+				9B0049311CC9CE25001AC212 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9B0049311CC9CE25001AC212 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9B0049301CC9CE25001AC212 /* LEEThemeDemo.app */,
+				9B0049491CC9CE25001AC212 /* LEEThemeDemoTests.xctest */,
+				9B0049541CC9CE25001AC212 /* LEEThemeDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9B0049321CC9CE25001AC212 /* LEEThemeDemo */ = {
+			isa = PBXGroup;
+			children = (
+				9B0049661CC9CE44001AC212 /* LEETheme */,
+				9B0049361CC9CE25001AC212 /* AppDelegate.h */,
+				9B0049371CC9CE25001AC212 /* AppDelegate.m */,
+				9B0049391CC9CE25001AC212 /* ViewController.h */,
+				9B00493A1CC9CE25001AC212 /* ViewController.m */,
+				9B00496A1CC9E916001AC212 /* TableViewController.h */,
+				9B00496B1CC9E916001AC212 /* TableViewController.m */,
+				9B0049721CC9F96D001AC212 /* TableDetailViewController.h */,
+				9B0049731CC9F96D001AC212 /* TableDetailViewController.m */,
+				9B00493C1CC9CE25001AC212 /* Main.storyboard */,
+				9B00493F1CC9CE25001AC212 /* Assets.xcassets */,
+				9B0049411CC9CE25001AC212 /* LaunchScreen.storyboard */,
+				9B0049441CC9CE25001AC212 /* Info.plist */,
+				9B0049331CC9CE25001AC212 /* Supporting Files */,
+				9B00496D1CC9EC9C001AC212 /* CustomTableViewCell.h */,
+				9B00496E1CC9EC9C001AC212 /* CustomTableViewCell.m */,
+				9B0049701CC9F43C001AC212 /* picImage.jpg */,
+			);
+			path = LEEThemeDemo;
+			sourceTree = "<group>";
+		};
+		9B0049331CC9CE25001AC212 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9B0049341CC9CE25001AC212 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9B00494C1CC9CE25001AC212 /* LEEThemeDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				9B00494D1CC9CE25001AC212 /* LEEThemeDemoTests.m */,
+				9B00494F1CC9CE25001AC212 /* Info.plist */,
+			);
+			path = LEEThemeDemoTests;
+			sourceTree = "<group>";
+		};
+		9B0049571CC9CE25001AC212 /* LEEThemeDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9B0049581CC9CE25001AC212 /* LEEThemeDemoUITests.m */,
+				9B00495A1CC9CE25001AC212 /* Info.plist */,
+			);
+			path = LEEThemeDemoUITests;
+			sourceTree = "<group>";
+		};
+		9B0049661CC9CE44001AC212 /* LEETheme */ = {
+			isa = PBXGroup;
+			children = (
+				9B0049671CC9CE57001AC212 /* LEETheme.h */,
+				9B0049681CC9CE57001AC212 /* LEETheme.m */,
+			);
+			path = LEETheme;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9B00492F1CC9CE25001AC212 /* LEEThemeDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B00495D1CC9CE25001AC212 /* Build configuration list for PBXNativeTarget "LEEThemeDemo" */;
+			buildPhases = (
+				9B00492C1CC9CE25001AC212 /* Sources */,
+				9B00492D1CC9CE25001AC212 /* Frameworks */,
+				9B00492E1CC9CE25001AC212 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LEEThemeDemo;
+			productName = LEEThemeDemo;
+			productReference = 9B0049301CC9CE25001AC212 /* LEEThemeDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9B0049481CC9CE25001AC212 /* LEEThemeDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B0049601CC9CE25001AC212 /* Build configuration list for PBXNativeTarget "LEEThemeDemoTests" */;
+			buildPhases = (
+				9B0049451CC9CE25001AC212 /* Sources */,
+				9B0049461CC9CE25001AC212 /* Frameworks */,
+				9B0049471CC9CE25001AC212 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9B00494B1CC9CE25001AC212 /* PBXTargetDependency */,
+			);
+			name = LEEThemeDemoTests;
+			productName = LEEThemeDemoTests;
+			productReference = 9B0049491CC9CE25001AC212 /* LEEThemeDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9B0049531CC9CE25001AC212 /* LEEThemeDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B0049631CC9CE25001AC212 /* Build configuration list for PBXNativeTarget "LEEThemeDemoUITests" */;
+			buildPhases = (
+				9B0049501CC9CE25001AC212 /* Sources */,
+				9B0049511CC9CE25001AC212 /* Frameworks */,
+				9B0049521CC9CE25001AC212 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9B0049561CC9CE25001AC212 /* PBXTargetDependency */,
+			);
+			name = LEEThemeDemoUITests;
+			productName = LEEThemeDemoUITests;
+			productReference = 9B0049541CC9CE25001AC212 /* LEEThemeDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9B0049281CC9CE25001AC212 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = lee;
+				TargetAttributes = {
+					9B00492F1CC9CE25001AC212 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					9B0049481CC9CE25001AC212 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 9B00492F1CC9CE25001AC212;
+					};
+					9B0049531CC9CE25001AC212 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 9B00492F1CC9CE25001AC212;
+					};
+				};
+			};
+			buildConfigurationList = 9B00492B1CC9CE25001AC212 /* Build configuration list for PBXProject "LEEThemeDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9B0049271CC9CE25001AC212;
+			productRefGroup = 9B0049311CC9CE25001AC212 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9B00492F1CC9CE25001AC212 /* LEEThemeDemo */,
+				9B0049481CC9CE25001AC212 /* LEEThemeDemoTests */,
+				9B0049531CC9CE25001AC212 /* LEEThemeDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9B00492E1CC9CE25001AC212 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B0049431CC9CE25001AC212 /* LaunchScreen.storyboard in Resources */,
+				9B0049401CC9CE25001AC212 /* Assets.xcassets in Resources */,
+				9B0049711CC9F43C001AC212 /* picImage.jpg in Resources */,
+				9B00493E1CC9CE25001AC212 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B0049471CC9CE25001AC212 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B0049521CC9CE25001AC212 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9B00492C1CC9CE25001AC212 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B0049741CC9F96D001AC212 /* TableDetailViewController.m in Sources */,
+				9B00493B1CC9CE25001AC212 /* ViewController.m in Sources */,
+				9B0049381CC9CE25001AC212 /* AppDelegate.m in Sources */,
+				9B00496F1CC9EC9C001AC212 /* CustomTableViewCell.m in Sources */,
+				9B0049691CC9CE57001AC212 /* LEETheme.m in Sources */,
+				9B00496C1CC9E916001AC212 /* TableViewController.m in Sources */,
+				9B0049351CC9CE25001AC212 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B0049451CC9CE25001AC212 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B00494E1CC9CE25001AC212 /* LEEThemeDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B0049501CC9CE25001AC212 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B0049591CC9CE25001AC212 /* LEEThemeDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9B00494B1CC9CE25001AC212 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9B00492F1CC9CE25001AC212 /* LEEThemeDemo */;
+			targetProxy = 9B00494A1CC9CE25001AC212 /* PBXContainerItemProxy */;
+		};
+		9B0049561CC9CE25001AC212 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9B00492F1CC9CE25001AC212 /* LEEThemeDemo */;
+			targetProxy = 9B0049551CC9CE25001AC212 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9B00493C1CC9CE25001AC212 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B00493D1CC9CE25001AC212 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9B0049411CC9CE25001AC212 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B0049421CC9CE25001AC212 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9B00495B1CC9CE25001AC212 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9B00495C1CC9CE25001AC212 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9B00495E1CC9CE25001AC212 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				INFOPLIST_FILE = LEEThemeDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lee.LEEThemeDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9B00495F1CC9CE25001AC212 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				INFOPLIST_FILE = LEEThemeDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lee.LEEThemeDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		9B0049611CC9CE25001AC212 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LEEThemeDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lee.LEEThemeDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LEEThemeDemo.app/LEEThemeDemo";
+			};
+			name = Debug;
+		};
+		9B0049621CC9CE25001AC212 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LEEThemeDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lee.LEEThemeDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LEEThemeDemo.app/LEEThemeDemo";
+			};
+			name = Release;
+		};
+		9B0049641CC9CE25001AC212 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LEEThemeDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lee.LEEThemeDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LEEThemeDemo;
+			};
+			name = Debug;
+		};
+		9B0049651CC9CE25001AC212 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LEEThemeDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lee.LEEThemeDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LEEThemeDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9B00492B1CC9CE25001AC212 /* Build configuration list for PBXProject "LEEThemeDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B00495B1CC9CE25001AC212 /* Debug */,
+				9B00495C1CC9CE25001AC212 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B00495D1CC9CE25001AC212 /* Build configuration list for PBXNativeTarget "LEEThemeDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B00495E1CC9CE25001AC212 /* Debug */,
+				9B00495F1CC9CE25001AC212 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9B0049601CC9CE25001AC212 /* Build configuration list for PBXNativeTarget "LEEThemeDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B0049611CC9CE25001AC212 /* Debug */,
+				9B0049621CC9CE25001AC212 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9B0049631CC9CE25001AC212 /* Build configuration list for PBXNativeTarget "LEEThemeDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B0049641CC9CE25001AC212 /* Debug */,
+				9B0049651CC9CE25001AC212 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9B0049281CC9CE25001AC212 /* Project object */;
+}

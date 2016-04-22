@@ -1,0 +1,101 @@
+
+/*!
+ *  @header CustomTableViewCell.m
+ *          LEEThemeDemo
+ *
+ *  @brief  自定义CELL
+ *
+ *  @author 李响
+ *  @copyright    Copyright © 2016年 lee. All rights reserved.
+ *  @version    16/4/22.
+ */
+
+#import "CustomTableViewCell.h"
+
+#import "LEETheme.h"
+
+@interface CustomTableViewCell ()
+
+@property (nonatomic , strong ) UIImageView *picImageView;
+
+@property (nonatomic , strong ) UILabel *titleLabel;
+
+@end
+
+@implementation CustomTableViewCell
+
+- (void)awakeFromNib {
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+//    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    
+    if (self) {
+    
+        //初始化子视图
+        
+        [self initSubviews];
+        
+        //设置主题样式
+        
+        [self configThemeStyle];
+        
+    }
+    
+    return self;
+}
+
+#pragma mark - 初始化子视图
+
+- (void)initSubviews{
+    
+    _picImageView = [[UIImageView alloc] init];
+    
+    _picImageView.frame = CGRectMake(15, 10, 80, 80);
+    
+    _picImageView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"picImage" ofType:@"jpg"]];
+    
+    [self.contentView addSubview:_picImageView];
+    
+    _titleLabel = [[UILabel alloc]init];
+ 
+    _titleLabel.frame = CGRectMake(100, 10, CGRectGetWidth(self.contentView.frame) - 120, 80);
+    
+    _titleLabel.text = @"大家好,我是帅比LEE,这是用来演示主题变更的CELL";
+    
+    _titleLabel.numberOfLines = 0;
+    
+    [self.contentView addSubview:_titleLabel];
+    
+}
+
+#pragma mark - 设置主题样式
+
+- (void)configThemeStyle{
+    
+    [_titleLabel configThemeWithTag:@"red" ConfigBlock:^(UILabel *item) {
+        
+        item.textColor = [UIColor redColor];
+    }];
+    
+    [_titleLabel configThemeWithTag:@"blue" ConfigBlock:^(UILabel *item) {
+        
+        item.textColor = [UIColor blueColor];
+    }];
+    
+    [_titleLabel configThemeWithTag:@"gray" ConfigBlock:^(UILabel *item) {
+        
+        item.textColor = [UIColor grayColor];
+    }];
+    
+}
+
+@end
