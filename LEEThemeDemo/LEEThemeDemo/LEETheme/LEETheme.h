@@ -22,7 +22,7 @@ typedef void(^LEEThemeConfigBlock)(id item);
  *
  * 在使用LEETheme的过程中如果出现bug请及时以以下任意一种方式联系我，我会及时修复bug
  *
- * QQ    : 可以添加SDAutoLayout群 497140713 在这里找我到(LEE)
+ * QQ    : 可以添加SDAutoLayout群 497140713 在这里找到我(LEE)
  * Email : applelixiang@126.com
  * GitHub: https://github.com/lixiang1994/LEETheme
  * 简书:    http://www.jianshu.com/users/a6da0db100c8
