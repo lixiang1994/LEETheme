@@ -30,6 +30,12 @@
     
 }
 
+- (void)viewDidLayoutSubviews{
+    
+    [super viewDidLayoutSubviews];
+    
+}
+
 #pragma mark - 初始化子视图
 
 - (void)initSubviews{
@@ -46,12 +52,6 @@
     
     [self.view addSubview:button1];
     
-    [button1 configThemeWithTag:@"red" ConfigBlock:^(UIButton *item) {
-        
-        [item setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        
-    } CompatibleTags:@"blue",@"gray",nil];
-    
     UIButton *button2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
     button2.frame = CGRectMake(20, 120, CGRectGetWidth(self.view.frame) - 40, 40);
@@ -63,12 +63,6 @@
     [button2 addTarget:self action:@selector(button2Action:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:button2];
-    
-    [button2 configThemeWithTag:@"blue" ConfigBlock:^(UIButton *item) {
-        
-        [item setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        
-    }CompatibleTags:@"red",@"gray",nil];
     
     UIButton *button3 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     
@@ -82,32 +76,25 @@
     
     [self.view addSubview:button3];
     
-    [button3 configThemeWithTag:@"gray" ConfigBlock:^(UIButton *item) {
-        
-        [item setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        
-    }CompatibleTags:@"blue",@"red",nil];
-    
 }
 
 #pragma mark - 设置主题样式
 
 - (void)configThemeStyle{
- 
-    [self.view configThemeWithTag:@"red" ConfigBlock:^(UIView *item) {
+    
+    self.view.lee_theme
+    .LeeAddTheme(@"red" , ^(UIView *item){
         
         item.backgroundColor = [UIColor redColor];
-    }];
-    
-    [self.view configThemeWithTag:@"blue" ConfigBlock:^(UIView *item) {
+    })
+    .LeeAddTheme(@"blue" , ^(UIView *item){
         
         item.backgroundColor = [UIColor blueColor];
-    }];
-    
-    [self.view configThemeWithTag:@"gray" ConfigBlock:^(UIView *item) {
+    })
+    .LeeAddTheme(@"gray" , ^(UIView *item){
         
         item.backgroundColor = [UIColor grayColor];
-    }];
+    });
     
 }
 

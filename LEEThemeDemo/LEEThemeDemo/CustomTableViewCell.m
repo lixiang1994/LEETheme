@@ -24,6 +24,14 @@
 
 @implementation CustomTableViewCell
 
+- (void)dealloc{
+    
+    _picImageView = nil;
+    
+    _titleLabel = nil;
+    
+}
+
 - (void)awakeFromNib {
     // Initialization code
 }
@@ -51,6 +59,12 @@
     }
     
     return self;
+}
+
+- (void)layoutSubviews{
+    
+    [super layoutSubviews];
+    
 }
 
 #pragma mark - 初始化子视图
@@ -81,20 +95,19 @@
 
 - (void)configThemeStyle{
     
-    [_titleLabel configThemeWithTag:@"red" ConfigBlock:^(UILabel *item) {
+    _titleLabel.lee_theme
+    .LeeAddTheme(@"red" , ^(UILabel *item){
         
         item.textColor = [UIColor redColor];
-    }];
-    
-    [_titleLabel configThemeWithTag:@"blue" ConfigBlock:^(UILabel *item) {
+    })
+    .LeeAddTheme(@"blue" , ^(UILabel *item){
         
         item.textColor = [UIColor blueColor];
-    }];
-    
-    [_titleLabel configThemeWithTag:@"gray" ConfigBlock:^(UILabel *item) {
+    })
+    .LeeAddTheme(@"gray" , ^(UILabel *item){
         
         item.textColor = [UIColor grayColor];
-    }];
+    });
     
 }
 

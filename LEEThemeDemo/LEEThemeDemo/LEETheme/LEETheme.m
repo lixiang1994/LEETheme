@@ -15,6 +15,8 @@
 #import <objc/runtime.h>
 
 NSString * const LEEThemeChangingNotificaiton = @"LEEThemeChangingNotificaiton";
+NSString * const LEEThemeCurrentTag = @"LEEThemeCurrentTag";
+
 
 @interface LEETheme ()
 
@@ -42,19 +44,19 @@ NSString * const LEEThemeChangingNotificaiton = @"LEEThemeChangingNotificaiton";
     
     [LEETheme shareTheme].currentTag = tag;
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:LEEThemeChangingNotificaiton object:nil userInfo:@{@"tag" : tag}];
+    [[NSNotificationCenter defaultCenter] postNotificationName:LEEThemeChangingNotificaiton object:nil userInfo:nil];
 }
 
 + (NSString *)currentThemeTag{
     
-    return [LEETheme shareTheme].currentTag ? [LEETheme shareTheme].currentTag : [[NSUserDefaults standardUserDefaults] objectForKey:@"LEEThemeCurrentTag"];
+    return [LEETheme shareTheme].currentTag ? [LEETheme shareTheme].currentTag : [[NSUserDefaults standardUserDefaults] objectForKey:LEEThemeCurrentTag];
 }
 
 - (void)setCurrentTag:(NSString *)currentTag{
     
     _currentTag = currentTag;
     
-    [[NSUserDefaults standardUserDefaults] setObject:currentTag forKey:@"LEEThemeCurrentTag"];
+    [[NSUserDefaults standardUserDefaults] setObject:currentTag forKey:LEEThemeCurrentTag];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
@@ -70,109 +72,223 @@ NSString * const LEEThemeChangingNotificaiton = @"LEEThemeChangingNotificaiton";
 
 @end
 
-@implementation UIView (LEEThemeConfig)
+@interface LEEThemeConfigModel ()
+
+@property (nonatomic , copy ) NSString *modelCurrentThemeTag;
+
+@property (nonatomic , assign ) CGFloat modelChangeThemeAnimationDuration;
+
+@property (nonatomic , copy ) NSMutableDictionary *modelThemeConfigInfo;
+
+@end
+
+@implementation LEEThemeConfigModel
 
 - (void)dealloc{
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:LEEThemeChangingNotificaiton object:nil];
+    _modelCurrentThemeTag = nil;
+    _modelThemeConfigInfo = nil;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+        //默认属性值
+        
+        _modelChangeThemeAnimationDuration = 0.2f; //默认更改主题动画时长为0.2秒
+    }
+    return self;
+}
+
+- (LEEConfigThemeToTagAndBlock)LeeAddTheme{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *tag , LEEThemeConfigBlock configBlock){
+        
+        [weakSelf.modelThemeConfigInfo setObject:configBlock forKey:tag];
+        
+        return weakSelf;
+    };
+    
+}
+
+- (LEEConfigThemeToTagsAndBlock)LeeAddThemes{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSArray *tags , LEEThemeConfigBlock configBlock){
+        
+        [tags enumerateObjectsUsingBlock:^(NSString *tag, NSUInteger idx, BOOL * _Nonnull stop) {
+           
+            [weakSelf.modelThemeConfigInfo setObject:configBlock forKey:tag];
+        }];
+        
+        return weakSelf;
+    };
+    
+}
+
+- (LEEConfigThemeToFloat)LeeChangeThemeAnimationDuration{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(CGFloat number){
+        
+        _modelChangeThemeAnimationDuration = number;
+        
+        return weakSelf;
+    };
+    
+}
+
+#pragma mark - LazyLoading
+
+- (NSMutableDictionary *)modelThemeConfigInfo{
+    
+    if (!_modelThemeConfigInfo) _modelThemeConfigInfo = [NSMutableDictionary dictionary];
+
+    return _modelThemeConfigInfo;
+}
+
+@end
+
+@implementation UIView (LEEThemeConfigView)
+
++(void)load{
+    
+    NSLog(@"load - %@" , [self class]);
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        NSArray *selStringsArray = @[@"layoutSubviews" , @"dealloc"];
+        
+        [selStringsArray enumerateObjectsUsingBlock:^(NSString *selString, NSUInteger idx, BOOL *stop) {
+            
+            NSString *leeSelString = [@"lee_" stringByAppendingString:selString];
+            
+            Method originalMethod = class_getInstanceMethod(self, NSSelectorFromString(selString));
+            
+            Method leeMethod = class_getInstanceMethod(self, NSSelectorFromString(leeSelString));
+            
+            method_exchangeImplementations(originalMethod, leeMethod);
+        }];
+
+    });
+    
+}
+
+- (void)lee_layoutSubviews{
+    
+    [self lee_layoutSubviews];
+    
+    if ([self isLeeTheme]) [self changeThemeConfig];
+}
+
+- (void)lee_dealloc{
+    
+   if ([self isLeeTheme]) NSLog(@"lee_dealloc - %@" , [self class]);
+    
+    if ([self isLeeTheme]) [[NSNotificationCenter defaultCenter] removeObserver:self name:LEEThemeChangingNotificaiton object:nil];
+    
+    if ([self isLeeTheme]) objc_removeAssociatedObjects(self);
+    
+    [self lee_dealloc];
 }
 
 - (void)addNotification{
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeThemeConfig:) name:LEEThemeChangingNotificaiton object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeThemeConfigNotify:) name:LEEThemeChangingNotificaiton object:nil];
 }
 
-- (void)changeThemeConfig:(NSNotification *)notify{
+- (void)changeThemeConfigNotify:(NSNotification *)notify{
     
-    NSDictionary *notifyInfo = notify.userInfo;
-    
-    NSDictionary *info = [self lee_themeConfigInfo];
-    
-    LEEThemeConfigBlock configBlock = info[notifyInfo[@"tag"]];
-    
-    [UIView beginAnimations:@"LEEThemeChangeAnimations" context:nil];
-    
-    [UIView setAnimationDuration:0.2f];
-    
-    if (configBlock) configBlock(self);
-    
-    [UIView commitAnimations];   
+    [self changeThemeConfig];
 }
 
-- (void)configThemeWithTag:(NSString *)tag ConfigBlock:(LEEThemeConfigBlock)configBlock{
+- (void)changeThemeConfig{
     
-    if (!tag) return;
+    if (!self.lee_theme.modelCurrentThemeTag || ![self.lee_theme.modelCurrentThemeTag isEqualToString:[LEETheme currentThemeTag]]) {
     
-    if (!configBlock) return;
-    
-    [self addNotification];
-    
-    [[LEETheme shareTheme].allTags addObject:tag];
-    
-    NSMutableDictionary *info = [NSMutableDictionary dictionaryWithDictionary:[self lee_themeConfigInfo]];
-    
-    [info setObject:configBlock forKey:tag];
-    
-    [self lee_setThemeConfigInfo:info];
-    
-    if ([[LEETheme currentThemeTag] isEqualToString:tag]) if (configBlock) configBlock(self);
-}
-
-- (void)configThemeWithTag:(NSString *)tag ConfigBlock:(LEEThemeConfigBlock)configBlock CompatibleTags:(NSString *)tags,...{
-    
-    [self configThemeWithTag:tag ConfigBlock:configBlock];
-    
-    if (tags) {
-    
-        NSMutableArray *tagsArray = [NSMutableArray array];
-    
-        [tagsArray addObject:tags];
+        self.lee_theme.modelCurrentThemeTag = [LEETheme currentThemeTag];
         
-        va_list tagsVaList;
+        NSDictionary *info = self.lee_theme.modelThemeConfigInfo;
         
-        NSString *eachTag;
+        LEEThemeConfigBlock configBlock = info[[LEETheme currentThemeTag]];
         
-        va_start(tagsVaList, tags);
+        [UIView beginAnimations:@"LEEThemeChangeAnimations" context:nil];
         
-        while ((eachTag = va_arg(tagsVaList, NSString *))) {
-            
-            [tagsArray addObject:eachTag];
-        }
+        [UIView setAnimationDuration:self.lee_theme.modelChangeThemeAnimationDuration];
         
-        va_end(tagsVaList);
+        if (configBlock) configBlock(self);
         
-        if (tagsArray.count > 0) {
-            
-            NSMutableDictionary *info = [NSMutableDictionary dictionaryWithDictionary:[self lee_themeConfigInfo]];
-            
-            for (NSString *tagItem in tagsArray) {
-                
-                if (![info objectForKey:tagItem]) {
-                
-                    [info setObject:configBlock forKey:tagItem];
-                    
-                    if ([[LEETheme currentThemeTag] isEqualToString:tagItem]) if (configBlock) configBlock(self);
-                }
-                
-            }
-            
-            [self lee_setThemeConfigInfo:info];
-        }
-        
+        [UIView commitAnimations];
     }
     
 }
 
-- (NSDictionary *)lee_themeConfigInfo{
+- (LEEThemeConfigModel *)lee_theme{
     
-    return objc_getAssociatedObject(self, @selector(lee_themeConfigInfo));
+    LEEThemeConfigModel *model = objc_getAssociatedObject(self, _cmd);
+    
+    if (!model) {
+        
+        model = [LEEThemeConfigModel new];
+        
+        objc_setAssociatedObject(self, _cmd, model , OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
+        [self addNotification];
+        
+        [self setIsLeeTheme:YES];
+    }
+    
+    return model;
 }
 
-- (void)lee_setThemeConfigInfo:(NSDictionary *)info{
+- (void)setLee_theme:(LEEThemeConfigModel *)lee_theme{
     
-    objc_setAssociatedObject(self, @selector(lee_themeConfigInfo), info , OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(lee_theme), lee_theme , OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+- (BOOL)isLeeTheme{
+    
+    return [objc_getAssociatedObject(self, _cmd) boolValue];
+}
+
+- (void)setIsLeeTheme:(BOOL)isLeeTheme{
+    
+    objc_setAssociatedObject(self, @selector(isLeeTheme), @(isLeeTheme) , OBJC_ASSOCIATION_ASSIGN);
+}
+
+@end
+
+@implementation UIButton (LEEThemeConfigButton)
+
++(void)load{
+    
+    NSLog(@"load - %@" , [self class]);
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+        Method originalMethod = class_getInstanceMethod(self, NSSelectorFromString(@"layoutSubviews"));
+        
+        Method leeMethod = class_getInstanceMethod(self, NSSelectorFromString(@"lee_layoutSubviews"));
+        
+        method_exchangeImplementations(originalMethod, leeMethod);
+        
+    });
+    
+}
+
+- (void)lee_layoutSubviews{
+    
+    [self lee_layoutSubviews];
+    
+    if ([self isLeeTheme]) [self changeThemeConfig];
+}
 
 @end

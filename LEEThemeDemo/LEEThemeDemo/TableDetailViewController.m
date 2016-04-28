@@ -12,6 +12,8 @@
 
 #import "TableDetailViewController.h"
 
+#import "LEETheme.h"
+
 @interface TableDetailViewController ()
 
 @end
@@ -21,7 +23,151 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //初始化子视图
+    
+    [self initSubviews];
+    
+    //设置主题样式
+    
+    [self configThemeStyle];
+    
 }
+
+#pragma mark - 初始化子视图
+
+- (void)initSubviews{
+    
+    UIButton *button1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    
+    button1.frame = CGRectMake(20, 60, CGRectGetWidth(self.view.frame) - 40, 40);
+    
+    [button1 setTitle:@"改变红色主题" forState:UIControlStateNormal];
+    
+    [button1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [button1 addTarget:self action:@selector(button1Action:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:button1];
+    
+    button1.lee_theme
+    .LeeAddThemes(@[@"red",@"blue",@"gray"] , ^(UIButton *item){
+        
+        [item setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    });
+    
+    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    
+    button2.frame = CGRectMake(20, 120, CGRectGetWidth(self.view.frame) - 40, 40);
+    
+    [button2 setTitle:@"改变蓝色主题" forState:UIControlStateNormal];
+    
+    [button2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [button2 addTarget:self action:@selector(button2Action:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:button2];
+    
+    button2.lee_theme
+    .LeeAddThemes(@[@"red",@"blue",@"gray"] , ^(UIButton *item){
+        
+        [item setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    });
+    
+    UIButton *button3 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    
+    button3.frame = CGRectMake(20, 180, CGRectGetWidth(self.view.frame) - 40, 40);
+    
+    [button3 setTitle:@"改变灰色主题" forState:UIControlStateNormal];
+    
+    [button3 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [button3 addTarget:self action:@selector(button3Action:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:button3];
+    
+    button3.lee_theme
+    .LeeAddThemes(@[@"red",@"blue",@"gray"] , ^(UIButton *item){
+        
+        [item setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    });
+    
+    
+    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(20, 250, CGRectGetWidth(self.view.frame) - 40, 50)];
+    
+    [self.view addSubview:customView];
+    
+    UITextField *customTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, CGRectGetWidth(customView.frame) - 40, 30)];
+    
+    customTextField.placeholder = @"一个输入框";
+    
+    customTextField.text = @"帅比LEE";
+    
+    [customView addSubview:customTextField];
+    
+    customTextField.lee_theme
+    .LeeAddThemes(@[@"red",@"blue"] , ^(UITextField *item){
+        
+        item.textColor = [UIColor orangeColor];
+    })
+    .LeeAddTheme(@"gray" , ^(UITextField *item){
+        
+        item.textColor = [UIColor grayColor];
+    });
+    
+    customView.lee_theme
+    .LeeAddThemes(@[@"red",@"blue",@"gray"] , ^(UIButton *item){
+        
+        [item setBackgroundColor:[UIColor whiteColor]];
+    });
+
+}
+
+#pragma mark - 设置主题样式
+
+- (void)configThemeStyle{
+    
+    self.view.lee_theme
+    .LeeAddTheme(@"red" , ^(UIView *item){
+        
+        item.backgroundColor = [UIColor redColor];
+    })
+    .LeeAddTheme(@"blue" , ^(UIView *item){
+        
+        item.backgroundColor = [UIColor blueColor];
+    })
+    .LeeAddTheme(@"gray" , ^(UIView *item){
+        
+        item.backgroundColor = [UIColor grayColor];
+    })
+    .LeeChangeThemeAnimationDuration(2.0f);
+    
+}
+
+- (void)button1Action:(UIButton *)sender{
+    
+    //启用主题
+    
+    [LEETheme startTheme:@"red"];
+    
+}
+
+- (void)button2Action:(UIButton *)sender{
+    
+    //启用主题
+    
+    [LEETheme startTheme:@"blue"];
+    
+}
+
+- (void)button3Action:(UIButton *)sender{
+    
+    //启用主题
+    
+    [LEETheme startTheme:@"gray"];
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

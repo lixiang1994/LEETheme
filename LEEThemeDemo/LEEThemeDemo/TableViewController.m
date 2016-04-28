@@ -16,6 +16,8 @@
 
 #import "CustomTableViewCell.h"
 
+#import "TableDetailViewController.h"
+
 @interface TableViewController ()
 
 @end
@@ -39,23 +41,20 @@
     
     __block typeof(self) Self = self;
     
-    [self.tableView configThemeWithTag:@"red" ConfigBlock:^(id item) {
-       
-        Self.title = @"红色主题列表";
+    self.view.lee_theme
+    .LeeAddTheme(@"red" , ^(UIView *item){
         
-    }];
+        Self.navigationItem.title = @"红色主题列表";
+    })
+    .LeeAddTheme(@"blue" , ^(UIView *item){
+        
+        Self.navigationItem.title = @"蓝色主题列表";
+    })
+    .LeeAddTheme(@"gray" , ^(UIView *item){
+        
+        Self.navigationItem.title = @"灰色主题列表";
+    });
     
-    [self.tableView configThemeWithTag:@"blue" ConfigBlock:^(id item) {
-        
-        Self.title = @"蓝色主题列表";
-        
-    }];
-    
-    [self.tableView configThemeWithTag:@"gray" ConfigBlock:^(id item) {
-        
-        Self.title = @"灰色主题列表";
-        
-    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,6 +81,13 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    TableDetailViewController *tdVC = [[TableDetailViewController alloc] init];
+    
+    [self.navigationController pushViewController:tdVC animated:YES];
+    
+}
 
 /*
 // Override to support conditional editing of the table view.

@@ -14,7 +14,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class LEEThemeConfigModel;
+
 typedef void(^LEEThemeConfigBlock)(id item);
+typedef LEEThemeConfigModel *(^LEEConfigThemeToFloat)(CGFloat number);
+typedef LEEThemeConfigModel *(^LEEConfigThemeToTagAndBlock)(NSString *tag , LEEThemeConfigBlock);
+typedef LEEThemeConfigModel *(^LEEConfigThemeToTagsAndBlock)(NSArray *tags , LEEThemeConfigBlock);
 
 /*
  
@@ -49,27 +54,26 @@ typedef void(^LEEThemeConfigBlock)(id item);
 
 @end
 
-@interface UIView (LEEThemeConfig)
+@interface LEEThemeConfigModel : NSObject
 
-/**
- *  设置主题
- *
- *  @param tag         主题标签
- *  @param configBlock 设置Block
- */
-- (void)configThemeWithTag:(NSString *)tag ConfigBlock:(LEEThemeConfigBlock)configBlock;
-
-/**
- *  设置主题
- *
- *  @param tag         主题标签
- *  @param configBlock 设置Block
- *  @param tags        兼容的其他主题标签
- */
-- (void)configThemeWithTag:(NSString *)tag ConfigBlock:(LEEThemeConfigBlock)configBlock CompatibleTags:(NSString *)tags,...;
+/** 添加主题设置 -> 格式: .LeeAddTheme(@@"tag" , ^(id item){ code... }) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToTagAndBlock LeeAddTheme;
+/** 添加多标签主题设置 -> 格式: .LeeAddThemes(@@[tag1 , tag2] , ^(id item){ code... }) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToTagsAndBlock LeeAddThemes;
+/** 设置主题更改动画时长 -> 格式: .LeeAddTheme(@@"" , ^(id item){ code... }) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToFloat LeeChangeThemeAnimationDuration;
 
 @end
 
+@interface UIView (LEEThemeConfigView)
+
+@property (nonatomic , strong ) LEEThemeConfigModel *lee_theme;
+
+@end
+
+@interface UIButton (LEEThemeConfigButton)
+
+@end
 
 
 
