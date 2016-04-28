@@ -60,7 +60,7 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToTagsAndBlock)(NSArray *tags , LEE
 @property (nonatomic , copy , readonly ) LEEConfigThemeToTagAndBlock LeeAddTheme;
 /** 添加多标签主题设置 -> 格式: .LeeAddThemes(@@[tag1 , tag2] , ^(id item){ code... }) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToTagsAndBlock LeeAddThemes;
-/** 设置主题更改动画时长 -> 格式: .LeeAddTheme(@@"" , ^(id item){ code... }) */
+/** 设置主题更改动画时长 -> 格式: .LeeChangeThemeAnimationDuration(0.2f) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToFloat LeeChangeThemeAnimationDuration;
 
 @end
@@ -71,9 +71,6 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToTagsAndBlock)(NSArray *tags , LEE
 
 @end
 
-@interface UIButton (LEEThemeConfigButton)
-
-@end
 
 
 
