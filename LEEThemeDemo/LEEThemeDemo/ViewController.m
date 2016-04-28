@@ -83,15 +83,15 @@
 - (void)configThemeStyle{
     
     self.view.lee_theme
-    .LeeAddTheme(@"red" , ^(UIView *item){
+    .LeeAddTheme(RED , ^(UIView *item){
         
         item.backgroundColor = [UIColor redColor];
     })
-    .LeeAddTheme(@"blue" , ^(UIView *item){
+    .LeeAddTheme(BLUE , ^(UIView *item){
         
         item.backgroundColor = [UIColor blueColor];
     })
-    .LeeAddTheme(@"gray" , ^(UIView *item){
+    .LeeAddTheme(GRAY , ^(UIView *item){
         
         item.backgroundColor = [UIColor grayColor];
     });
@@ -102,7 +102,7 @@
     
     //启用主题
     
-    [LEETheme startTheme:@"red"];
+    [LEETheme startTheme:RED];
     
 }
 
@@ -110,7 +110,7 @@
     
     //启用主题
     
-    [LEETheme startTheme:@"blue"];
+    [LEETheme startTheme:BLUE];
     
 }
 
@@ -118,7 +118,7 @@
     
     //启用主题
     
-    [LEETheme startTheme:@"gray"];
+    [LEETheme startTheme:GRAY];
     
 }
 

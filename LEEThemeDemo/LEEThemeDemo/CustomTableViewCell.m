@@ -96,15 +96,15 @@
 - (void)configThemeStyle{
     
     _titleLabel.lee_theme
-    .LeeAddTheme(@"red" , ^(UILabel *item){
+    .LeeAddTheme(RED , ^(UILabel *item){
         
         item.textColor = [UIColor redColor];
     })
-    .LeeAddTheme(@"blue" , ^(UILabel *item){
+    .LeeAddTheme(BLUE , ^(UILabel *item){
         
         item.textColor = [UIColor blueColor];
     })
-    .LeeAddTheme(@"gray" , ^(UILabel *item){
+    .LeeAddTheme(GRAY , ^(UILabel *item){
         
         item.textColor = [UIColor grayColor];
     });

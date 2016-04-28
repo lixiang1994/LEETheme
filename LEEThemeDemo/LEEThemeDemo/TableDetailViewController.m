@@ -51,7 +51,7 @@
     [self.view addSubview:button1];
     
     button1.lee_theme
-    .LeeAddThemes(@[@"red",@"blue",@"gray"] , ^(UIButton *item){
+    .LeeAddThemes(@[RED,BLUE,GRAY] , ^(UIButton *item){
         
         [item setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     });
@@ -69,7 +69,7 @@
     [self.view addSubview:button2];
     
     button2.lee_theme
-    .LeeAddThemes(@[@"red",@"blue",@"gray"] , ^(UIButton *item){
+    .LeeAddThemes(@[RED,BLUE,GRAY] , ^(UIButton *item){
         
         [item setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     });
@@ -87,7 +87,7 @@
     [self.view addSubview:button3];
     
     button3.lee_theme
-    .LeeAddThemes(@[@"red",@"blue",@"gray"] , ^(UIButton *item){
+    .LeeAddThemes(@[RED,BLUE,GRAY] , ^(UIButton *item){
         
         [item setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     });
@@ -106,17 +106,17 @@
     [customView addSubview:customTextField];
     
     customTextField.lee_theme
-    .LeeAddThemes(@[@"red",@"blue"] , ^(UITextField *item){
+    .LeeAddThemes(@[RED,BLUE] , ^(UITextField *item){
         
         item.textColor = [UIColor orangeColor];
     })
-    .LeeAddTheme(@"gray" , ^(UITextField *item){
+    .LeeAddTheme(GRAY , ^(UITextField *item){
         
         item.textColor = [UIColor grayColor];
     });
     
     customView.lee_theme
-    .LeeAddThemes(@[@"red",@"blue",@"gray"] , ^(UIButton *item){
+    .LeeAddThemes(@[RED,BLUE,GRAY] , ^(UIButton *item){
         
         [item setBackgroundColor:[UIColor whiteColor]];
     });
@@ -128,15 +128,15 @@
 - (void)configThemeStyle{
     
     self.view.lee_theme
-    .LeeAddTheme(@"red" , ^(UIView *item){
+    .LeeAddTheme(RED , ^(UIView *item){
         
         item.backgroundColor = [UIColor redColor];
     })
-    .LeeAddTheme(@"blue" , ^(UIView *item){
+    .LeeAddTheme(BLUE , ^(UIView *item){
         
         item.backgroundColor = [UIColor blueColor];
     })
-    .LeeAddTheme(@"gray" , ^(UIView *item){
+    .LeeAddTheme(GRAY , ^(UIView *item){
         
         item.backgroundColor = [UIColor grayColor];
     })
@@ -148,7 +148,7 @@
     
     //启用主题
     
-    [LEETheme startTheme:@"red"];
+    [LEETheme startTheme:RED];
     
 }
 
@@ -156,7 +156,7 @@
     
     //启用主题
     
-    [LEETheme startTheme:@"blue"];
+    [LEETheme startTheme:BLUE];
     
 }
 
@@ -164,7 +164,7 @@
     
     //启用主题
     
-    [LEETheme startTheme:@"gray"];
+    [LEETheme startTheme:GRAY];
     
 }
 

@@ -65,6 +65,7 @@
 		9B0049701CC9F43C001AC212 /* picImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picImage.jpg; sourceTree = "<group>"; };
 		9B0049721CC9F96D001AC212 /* TableDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableDetailViewController.h; sourceTree = "<group>"; };
 		9B0049731CC9F96D001AC212 /* TableDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableDetailViewController.m; sourceTree = "<group>"; };
+		9B0077221CD1B50800EDD034 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +133,7 @@
 				9B00496D1CC9EC9C001AC212 /* CustomTableViewCell.h */,
 				9B00496E1CC9EC9C001AC212 /* CustomTableViewCell.m */,
 				9B0049701CC9F43C001AC212 /* picImage.jpg */,
+				9B0077221CD1B50800EDD034 /* PrefixHeader.pch */,
 			);
 			path = LEEThemeDemo;
 			sourceTree = "<group>";
@@ -450,6 +452,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/LEEThemeDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = LEEThemeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -463,6 +466,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/LEEThemeDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = LEEThemeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
