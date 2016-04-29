@@ -12,6 +12,8 @@
 
 #import "TableDetailViewController.h"
 
+#import "UIView+SDAutoLayout.h"
+
 #import "LEETheme.h"
 
 @interface TableDetailViewController ()
@@ -93,17 +95,29 @@
     });
     
     
-    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(20, 250, CGRectGetWidth(self.view.frame) - 40, 50)];
+    UIView *customView = [[UIView alloc] init];
     
     [self.view addSubview:customView];
     
-    UITextField *customTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, CGRectGetWidth(customView.frame) - 40, 30)];
+    UITextField *customTextField = [[UITextField alloc] init];
     
     customTextField.placeholder = @"一个输入框";
     
     customTextField.text = @"帅比LEE";
     
     [customView addSubview:customTextField];
+    
+    customView.sd_layout
+    .leftSpaceToView(self.view , 20)
+    .rightSpaceToView(self.view , 20)
+    .topSpaceToView(button3 , 20)
+    .heightIs(100);
+    
+    customTextField.sd_layout
+    .leftSpaceToView(customView , 20)
+    .rightSpaceToView(customView , 20)
+    .topSpaceToView(customView,10)
+    .heightIs(30);
     
     customTextField.lee_theme
     .LeeAddThemes(@[RED,BLUE] , ^(UITextField *item){

@@ -159,8 +159,6 @@ NSString * const LEEThemeCurrentTag = @"LEEThemeCurrentTag";
 
 +(void)load{
     
-    NSLog(@"load - %@" , [self class]);
-    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
@@ -189,8 +187,6 @@ NSString * const LEEThemeCurrentTag = @"LEEThemeCurrentTag";
 }
 
 - (void)lee_dealloc{
-    
-   if ([self isLeeTheme]) NSLog(@"lee_dealloc - %@" , [self class]);
     
     if ([self isLeeTheme]) [[NSNotificationCenter defaultCenter] removeObserver:self name:LEEThemeChangingNotificaiton object:nil];
     
@@ -268,8 +264,6 @@ NSString * const LEEThemeCurrentTag = @"LEEThemeCurrentTag";
 @implementation UIButton (LEEThemeConfigButton)
 
 +(void)load{
-    
-    NSLog(@"load - %@" , [self class]);
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
