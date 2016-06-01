@@ -82,19 +82,24 @@
 
 - (void)configThemeStyle{
     
+//    self.view.lee_theme
+//    .LeeAddCustomConfig(RED , ^(UIView *item){
+//        
+//        item.backgroundColor = [UIColor redColor];
+//    })
+//    .LeeAddCustomConfig(BLUE , ^(UIView *item){
+//        
+//        item.backgroundColor = [UIColor blueColor];
+//    })
+//    .LeeAddCustomConfig(GRAY , ^(UIView *item){
+//        
+//        item.backgroundColor = [UIColor grayColor];
+//    });
+    
     self.view.lee_theme
-    .LeeAddTheme(RED , ^(UIView *item){
-        
-        item.backgroundColor = [UIColor redColor];
-    })
-    .LeeAddTheme(BLUE , ^(UIView *item){
-        
-        item.backgroundColor = [UIColor blueColor];
-    })
-    .LeeAddTheme(GRAY , ^(UIView *item){
-        
-        item.backgroundColor = [UIColor grayColor];
-    });
+    .LeeAddBackgroundColor(RED , [UIColor redColor])
+    .LeeAddBackgroundColor(BLUE , [UIColor blueColor])
+    .LeeAddBackgroundColor(GRAY , [UIColor grayColor]);
     
 }
 

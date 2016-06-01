@@ -42,15 +42,15 @@
     __block typeof(self) Self = self;
     
     self.view.lee_theme
-    .LeeAddTheme(RED , ^(UIView *item){
+    .LeeAddCustomConfig(RED , ^(UIView *item){
         
         Self.navigationItem.title = @"红色主题列表";
     })
-    .LeeAddTheme(BLUE , ^(UIView *item){
+    .LeeAddCustomConfig(BLUE , ^(UIView *item){
         
         Self.navigationItem.title = @"蓝色主题列表";
     })
-    .LeeAddTheme(GRAY , ^(UIView *item){
+    .LeeAddCustomConfig(GRAY , ^(UIView *item){
         
         Self.navigationItem.title = @"灰色主题列表";
     });

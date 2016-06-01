@@ -12,6 +12,8 @@
 
 #import "TableViewController.h"
 
+#import "LEETheme.h"
+
 @interface AppDelegate ()
 
 @end
@@ -40,9 +42,21 @@
     
     UINavigationController *tableNC = [[UINavigationController alloc] initWithRootViewController:[[TableViewController alloc] init]];
     
+//    tableNC.navigationBar.lee_theme
+//    .LeeAddBarTintColor(RED , [UIColor redColor])
+//    .LeeAddBarTintColor(BLUE , [UIColor blueColor])
+//    .LeeAddBarTintColor(GRAY , [UIColor grayColor]);
+    
     tableNC.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"列表" image:[UIImage imageNamed:@""] tag:1];
     
     [tabBarController addChildViewController:tableNC];
+    
+//    tabBarController.tabBar.translucent = NO;
+    
+//    tabBarController.tabBar.lee_theme
+//    .LeeAddBarTintColor(RED , [UIColor redColor])
+//    .LeeAddBarTintColor(BLUE , [UIColor blueColor])
+//    .LeeAddBarTintColor(GRAY , [UIColor grayColor]);
     
     self.window.rootViewController = tabBarController;
     

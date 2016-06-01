@@ -75,7 +75,7 @@
     
     _picImageView.frame = CGRectMake(15, 10, 80, 80);
     
-    _picImageView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"picImage" ofType:@"jpg"]];
+//    _picImageView.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"picImage" ofType:@"jpg"]];
     
     [self.contentView addSubview:_picImageView];
     
@@ -95,16 +95,22 @@
 
 - (void)configThemeStyle{
     
+    _picImageView.lee_theme
+    .LeeAddImage(RED , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"picImage" ofType:@"jpg"]])
+    .LeeAddImage(BLUE , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huaji" ofType:@"jpg"]])
+//    .LeeAddImage(GRAY , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huajis" ofType:@"jpg"]]);
+    .LeeAddImagePath(GRAY , [[NSBundle mainBundle] pathForResource:@"huajis" ofType:@"jpg"]);
+    
     _titleLabel.lee_theme
-    .LeeAddTheme(RED , ^(UILabel *item){
+    .LeeAddCustomConfig(RED , ^(UILabel *item){
         
         item.textColor = [UIColor redColor];
     })
-    .LeeAddTheme(BLUE , ^(UILabel *item){
+    .LeeAddCustomConfig(BLUE , ^(UILabel *item){
         
         item.textColor = [UIColor blueColor];
     })
-    .LeeAddTheme(GRAY , ^(UILabel *item){
+    .LeeAddCustomConfig(GRAY , ^(UILabel *item){
         
         item.textColor = [UIColor grayColor];
     });

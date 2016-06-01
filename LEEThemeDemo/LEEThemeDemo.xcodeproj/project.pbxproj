@@ -22,6 +22,8 @@
 		9B0049741CC9F96D001AC212 /* TableDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0049731CC9F96D001AC212 /* TableDetailViewController.m */; };
 		9B0077301CD1DDA400EDD034 /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B00772D1CD1DDA300EDD034 /* UITableView+SDAutoTableViewCellHeight.m */; };
 		9B0077311CD1DDA400EDD034 /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B00772F1CD1DDA400EDD034 /* UIView+SDAutoLayout.m */; };
+		9BD847FB1CEB0FB000198FA5 /* huaji.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BD847FA1CEB0FB000198FA5 /* huaji.jpg */; };
+		9BD847FD1CEB0FF800198FA5 /* huajis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BD847FC1CEB0FF800198FA5 /* huajis.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		9B00772D1CD1DDA300EDD034 /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
 		9B00772E1CD1DDA400EDD034 /* UIView+SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDAutoLayout.h"; sourceTree = "<group>"; };
 		9B00772F1CD1DDA400EDD034 /* UIView+SDAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDAutoLayout.m"; sourceTree = "<group>"; };
+		9BD847FA1CEB0FB000198FA5 /* huaji.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = huaji.jpg; sourceTree = "<group>"; };
+		9BD847FC1CEB0FF800198FA5 /* huajis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = huajis.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,15 +135,17 @@
 				9B00496B1CC9E916001AC212 /* TableViewController.m */,
 				9B0049721CC9F96D001AC212 /* TableDetailViewController.h */,
 				9B0049731CC9F96D001AC212 /* TableDetailViewController.m */,
+				9B00496D1CC9EC9C001AC212 /* CustomTableViewCell.h */,
+				9B00496E1CC9EC9C001AC212 /* CustomTableViewCell.m */,
 				9B00493C1CC9CE25001AC212 /* Main.storyboard */,
 				9B00493F1CC9CE25001AC212 /* Assets.xcassets */,
 				9B0049411CC9CE25001AC212 /* LaunchScreen.storyboard */,
 				9B0049441CC9CE25001AC212 /* Info.plist */,
 				9B00772B1CD1DDA300EDD034 /* SDAutoLayout */,
 				9B0049331CC9CE25001AC212 /* Supporting Files */,
-				9B00496D1CC9EC9C001AC212 /* CustomTableViewCell.h */,
-				9B00496E1CC9EC9C001AC212 /* CustomTableViewCell.m */,
 				9B0049701CC9F43C001AC212 /* picImage.jpg */,
+				9BD847FA1CEB0FB000198FA5 /* huaji.jpg */,
+				9BD847FC1CEB0FF800198FA5 /* huajis.jpg */,
 				9B0077221CD1B50800EDD034 /* PrefixHeader.pch */,
 			);
 			path = LEEThemeDemo;
@@ -258,6 +264,7 @@
 				TargetAttributes = {
 					9B00492F1CC9CE25001AC212 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = QCC328325S;
 					};
 					9B0049481CC9CE25001AC212 = {
 						CreatedOnToolsVersion = 7.3;
@@ -295,6 +302,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B0049431CC9CE25001AC212 /* LaunchScreen.storyboard in Resources */,
+				9BD847FD1CEB0FF800198FA5 /* huajis.jpg in Resources */,
+				9BD847FB1CEB0FB000198FA5 /* huaji.jpg in Resources */,
 				9B0049401CC9CE25001AC212 /* Assets.xcassets in Resources */,
 				9B0049711CC9F43C001AC212 /* picImage.jpg in Resources */,
 				9B00493E1CC9CE25001AC212 /* Main.storyboard in Resources */,
@@ -471,7 +480,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LEEThemeDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = LEEThemeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -485,7 +495,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LEEThemeDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = LEEThemeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
