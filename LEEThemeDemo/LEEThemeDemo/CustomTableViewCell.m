@@ -96,10 +96,11 @@
 - (void)configThemeStyle{
     
     _picImageView.lee_theme
-    .LeeAddImage(RED , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"picImage" ofType:@"jpg"]])
-    .LeeAddImage(BLUE , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huaji" ofType:@"jpg"]])
-//    .LeeAddImage(GRAY , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huajis" ofType:@"jpg"]]);
-    .LeeAddImagePath(GRAY , [[NSBundle mainBundle] pathForResource:@"huajis" ofType:@"jpg"]);
+    .LeeConfigImage(@"ident1");
+//    .LeeAddImage(RED , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"picImage" ofType:@"jpg"]])
+//    .LeeAddImage(BLUE , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huaji" ofType:@"jpg"]])
+////    .LeeAddImage(GRAY , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huajis" ofType:@"jpg"]]);
+//    .LeeAddImagePath(GRAY , [[NSBundle mainBundle] pathForResource:@"huajis" ofType:@"jpg"]);
     
     _titleLabel.lee_theme
     .LeeAddCustomConfig(RED , ^(UILabel *item){

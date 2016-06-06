@@ -96,10 +96,12 @@
 //        item.backgroundColor = [UIColor grayColor];
 //    });
     
-    self.view.lee_theme
-    .LeeAddBackgroundColor(RED , [UIColor redColor])
-    .LeeAddBackgroundColor(BLUE , [UIColor blueColor])
-    .LeeAddBackgroundColor(GRAY , [UIColor grayColor]);
+//    self.view.lee_theme
+//    .LeeAddBackgroundColor(RED , [UIColor redColor])
+//    .LeeAddBackgroundColor(BLUE , [UIColor blueColor])
+//    .LeeAddBackgroundColor(GRAY , [UIColor grayColor]);
+    
+    self.view.lee_theme.LeeConfigBackgroundColor(@"ident1");
     
 }
 

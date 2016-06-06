@@ -24,6 +24,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    NSString *json = [NSString stringWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"tag_red_json.json"] encoding:NSUTF8StringEncoding error:nil];
+    
+    [LEETheme addThemeConfigJson:json WithTag:RED WithResourcesPath:nil];
+    
+    NSString *json2 = [NSString stringWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"tag_blue_json.json"] encoding:NSUTF8StringEncoding error:nil];
+    
+    [LEETheme addThemeConfigJson:json2 WithTag:BLUE WithResourcesPath:nil];
+    
+    NSString *json3 = [NSString stringWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"tag_gray_json.json"] encoding:NSUTF8StringEncoding error:nil];
+    
+    [LEETheme addThemeConfigJson:json3 WithTag:GRAY WithResourcesPath:nil];
+    
     //初始化window
     
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -42,6 +54,8 @@
     
     UINavigationController *tableNC = [[UINavigationController alloc] initWithRootViewController:[[TableViewController alloc] init]];
     
+    tableNC.navigationBar.lee_theme.LeeConfigTintColor(@"ident1");
+    
 //    tableNC.navigationBar.lee_theme
 //    .LeeAddBarTintColor(RED , [UIColor redColor])
 //    .LeeAddBarTintColor(BLUE , [UIColor blueColor])
@@ -57,6 +71,11 @@
 //    .LeeAddBarTintColor(RED , [UIColor redColor])
 //    .LeeAddBarTintColor(BLUE , [UIColor blueColor])
 //    .LeeAddBarTintColor(GRAY , [UIColor grayColor]);
+    
+//    tabBarController.tabBar.lee_theme
+//    .LeeAddBackgroundImage(RED , [UIImage imageNamed:@"huajis.jpg"])
+//    .LeeAddBackgroundImage(BLUE , [UIImage imageNamed:@"huaji.jpg"])
+//    .LeeAddBackgroundImage(GRAY , [UIImage imageNamed:@"picImage.jpg"]);
     
     self.window.rootViewController = tabBarController;
     

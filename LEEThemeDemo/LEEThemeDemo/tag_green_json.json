@@ -1,0 +1,9 @@
+{
+    "color": {
+        "ident1": "#00FF99",
+        "ident2": "#FF0000"
+    },
+    "image": {
+        "ident1": "picImage.jpg"
+    }
+}

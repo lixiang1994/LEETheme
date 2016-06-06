@@ -14,4 +14,6 @@
 
 @interface TableDetailViewController : UIViewController
 
+- (void)getaaaa:(NSMutableArray *)array;
+
 @end

@@ -119,11 +119,12 @@
     .topSpaceToView(customView,10)
     .heightIs(30);
     
+    customTextField.lee_theme.LeeConfigTextColor(@"identifierB");
+    
     customTextField.lee_theme
     .LeeAddTextColor(RED , [UIColor redColor])
     .LeeAddTextColor(BLUE , [UIColor blueColor])
-    .LeeAddTextColor(GRAY , [UIColor grayColor])
-    .LeeChangeThemeAnimationDuration(10.0f);
+    .LeeAddTextColor(GRAY , [UIColor grayColor]);
     
     customView.lee_theme
     .LeeAddCustomConfigs(@[RED,BLUE,GRAY] , ^(UIButton *item){
@@ -160,6 +161,11 @@
     
     [LEETheme startTheme:RED];
     
+    self.lee_theme.LeeAddCustomConfig(RED , ^(TableDetailViewController *item){
+        
+        item.title = @"xxx";
+    });
+    
 }
 
 - (void)button2Action:(UIButton *)sender{
@@ -177,7 +183,6 @@
     [LEETheme startTheme:GRAY];
     
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
