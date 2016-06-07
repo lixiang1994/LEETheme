@@ -76,6 +76,49 @@
     
     [self.view addSubview:button3];
     
+    UIButton *button4 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    
+    button4.frame = CGRectMake(20, 240, CGRectGetWidth(self.view.frame) - 40, 40);
+    
+    [button4 setTitle:@"改变绿色主题" forState:UIControlStateNormal];
+    
+    [button4 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [button4 addTarget:self action:@selector(button4Action:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:button4];
+    
+//    [button1 setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"picImage" ofType:@"jpg"]] forState:UIControlStateNormal];
+    
+//    button1.lee_theme
+//    .LeeAddButtonImage(RED , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"picImage" ofType:@"jpg"]] , UIControlStateNormal)
+//    .LeeAddButtonImage(BLUE , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huaji" ofType:@"jpg"]] , UIControlStateNormal)
+//    .LeeAddButtonImage(GRAY , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huajis" ofType:@"jpg"]] , UIControlStateNormal);
+    
+//    button1.lee_theme
+//    .LeeAddButtonBackgroundImage(RED , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"picImage" ofType:@"jpg"]] , UIControlStateNormal)
+//    .LeeAddButtonBackgroundImage(BLUE , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huaji" ofType:@"jpg"]] , UIControlStateNormal)
+//    .LeeAddButtonBackgroundImage(GRAY , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huajis" ofType:@"jpg"]] , UIControlStateNormal)   .LeeAddButtonBackgroundImage(RED , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huaji" ofType:@"jpg"]] , UIControlStateHighlighted)
+//    .LeeAddButtonBackgroundImage(BLUE , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huajis" ofType:@"jpg"]] , UIControlStateHighlighted)
+//    .LeeAddButtonBackgroundImage(GRAY , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"picImage" ofType:@"jpg"]] , UIControlStateHighlighted);
+    
+//    button1.lee_theme
+//    .LeeAddButtonTitleColor(RED , [UIColor whiteColor] , UIControlStateNormal)
+//    .LeeAddButtonTitleColor(BLUE , [UIColor blackColor] , UIControlStateNormal)
+//    .LeeAddButtonTitleColor(GRAY , [UIColor grayColor] , UIControlStateNormal)
+//    .LeeAddButtonTitleColor(RED , [UIColor redColor] , UIControlStateHighlighted)
+//    .LeeAddButtonTitleColor(BLUE , [UIColor greenColor] , UIControlStateHighlighted)
+//    .LeeAddButtonTitleColor(GRAY , [UIColor orangeColor] , UIControlStateHighlighted);
+    
+//    button1.lee_theme
+//    .LeeConfigButtonTitleColor(@"ident2" , UIControlStateNormal)
+//    .LeeConfigButtonTitleColor(@"ident1" , UIControlStateHighlighted);
+    
+    button1.lee_theme
+    .LeeConfigButtonBackgroundImage(@"ident2" , UIControlStateNormal)
+    .LeeConfigButtonBackgroundImage(@"ident1" , UIControlStateHighlighted)
+    .LeeConfigButtonBackgroundImage(@"ident1" , UIControlStateSelected);
+    
 }
 
 #pragma mark - 设置主题样式
@@ -126,6 +169,14 @@
     //启用主题
     
     [LEETheme startTheme:GRAY];
+    
+}
+
+- (void)button4Action:(UIButton *)sender{
+    
+    //启用主题
+    
+    [LEETheme startTheme:GREEN];
     
 }
 

@@ -20,4 +20,6 @@
 
 #define GRAY @"gray"
 
+#define GREEN @"green"
+
 #endif /* PrefixHeader_pch */

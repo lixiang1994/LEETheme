@@ -1,7 +1,13 @@
 
 /*!
  *  @header LEETheme.h
- *          LEEThemeDemo
+ *
+ *  ┌─┐      ┌───────┐ ┌───────┐ 帅™
+ *  │ │      │ ┌─────┘ │ ┌─────┘
+ *  │ │      │ └─────┐ │ └─────┐
+ *  │ │      │ ┌─────┘ │ ┌─────┘
+ *  │ └─────┐│ └─────┐ │ └─────┐
+ *  └───────┘└───────┘ └───────┘
  *
  *  @brief  LEE主题管理
  *
@@ -9,7 +15,6 @@
  *  @copyright    Copyright © 2016年 lee. All rights reserved.
  *  @version    V1.0
  */
-
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
@@ -24,8 +29,9 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToImage)(NSString *tag , UIImage *i
 typedef LEEThemeConfigModel *(^LEEConfigThemeToString)(NSString *tag , NSString *string);
 typedef LEEThemeConfigModel *(^LEEConfigThemeToTagAndBlock)(NSString *tag , LEEThemeConfigBlock);
 typedef LEEThemeConfigModel *(^LEEConfigThemeToTagsAndBlock)(NSArray *tags , LEEThemeConfigBlock);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToColorAndState)(NSString *tag , UIColor *color , UIControlState *state);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToImageAndState)(NSString *tag , UIImage *image , UIControlState *state);
+typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndState)(NSString *identifier , UIControlState state);
+typedef LEEThemeConfigModel *(^LEEConfigThemeToColorAndState)(NSString *tag , UIColor *color , UIControlState state);
+typedef LEEThemeConfigModel *(^LEEConfigThemeToImageAndState)(NSString *tag , UIImage *image , UIControlState state);
 
 /*
  
@@ -101,10 +107,13 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToImageAndState)(NSString *tag , UI
 @property (nonatomic , copy , readonly ) LEEConfigThemeToColor LeeAddBarTintColor;
 /** 添加背景颜色设置 -> 格式: .LeeAddBackgroundColor(@@"tag" , UIColor) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToColor LeeAddBackgroundColor;
-/** 添加占位符颜色颜色设置 -> 格式: .LeeAddPlaceholderColor(@@"tag" , UIColor) */
+/** 添加占位符颜色设置 -> 格式: .LeeAddPlaceholderColor(@@"tag" , UIColor) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToColor LeeAddPlaceholderColor;
-/** 添加按钮标题颜色颜色设置 -> 格式: .LeeAddButtonTitleColor(@@"tag" , UIColor , UIControlStateNormal) */
-//@property (nonatomic , copy , readonly ) LEEConfigThemeToColorAndState LeeAddButtonTitleColor;
+/** 添加按钮标题颜色设置 -> 格式: .LeeAddButtonTitleColor(@@"tag" , UIColor , UIControlStateNormal) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToColorAndState LeeAddButtonTitleColor;
+/** 添加按钮标题阴影颜色设置 -> 格式: .LeeAddButtonTitleShadowColor(@@"tag" , UIColor , UIControlStateNormal) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToColorAndState LeeAddButtonTitleShadowColor;
+
 
 /** Image */
 
@@ -144,7 +153,10 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToImageAndState)(NSString *tag , UI
 @property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddScopeBarBackgroundImageName;
 /** 添加分栏背景图片设置 -> 格式: .LeeAddScopeBarBackgroundImagePath(@@"tag" , @"var/XXX/XXXX/lee.png") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddScopeBarBackgroundImagePath;
-
+/** 添加按钮图片设置 -> 格式: .LeeAddButtonImage(@@"tag" , UIImage , UIControlStateNormal) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToImageAndState LeeAddButtonImage;
+/** 添加按钮背景图片设置 -> 格式: .LeeAddButtonBackgroundImage(@@"tag" , UIImage , UIControlStateNormal) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToImageAndState LeeAddButtonBackgroundImage;
 
 /** ----JSON设置方式---- */
 
@@ -170,6 +182,10 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToImageAndState)(NSString *tag , UI
 @property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeConfigBackgroundColor;
 /** 设置占位符颜色标识符 -> 格式: .LeeConfigPlaceholderColor(@@"identifier") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeConfigPlaceholderColor;
+/** 设置按钮标题颜色标识符 -> 格式: .LeeConfigButtonTitleColor(@@"identifier" , UIControlStateNormal) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifierAndState LeeConfigButtonTitleColor;
+/** 设置按钮标题阴影颜色标识符 -> 格式: .LeeConfigButtonTitleColor(@@"identifier" , UIControlStateNormal) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifierAndState LeeConfigButtonTitleShadowColor;
 
 /** 设置图片标识符 -> 格式: .LeeConfigImage(@@"identifier") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeConfigImage;
@@ -183,6 +199,10 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToImageAndState)(NSString *tag , UI
 @property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeConfigSelectionIndicatorImage;
 /** 设置分栏背景图片标识符 -> 格式: .LeeConfigScopeBarBackgroundImage(@@"identifier") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeConfigScopeBarBackgroundImage;
+/** 设置按钮图片标识符 -> 格式: .LeeConfigButtonImage(@@"identifier" , UIControlStateNormal) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifierAndState LeeConfigButtonImage;
+/** 设置按钮背景图片标识符 -> 格式: .LeeConfigButtonBackgroundImage(@@"identifier" , UIControlStateNormal) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifierAndState LeeConfigButtonBackgroundImage;
 
 /** 设置主题更改过渡动画时长 -> 格式: .LeeChangeThemeAnimationDuration(0.2f) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToFloat LeeChangeThemeAnimationDuration;

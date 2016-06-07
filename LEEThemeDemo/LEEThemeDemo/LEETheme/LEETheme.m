@@ -1,6 +1,12 @@
 /*!
  *  @header LEETheme.m
- *          LEEThemeDemo
+ *
+ *  ┌─┐      ┌───────┐ ┌───────┐ 帅™
+ *  │ │      │ ┌─────┘ │ ┌─────┘
+ *  │ │      │ └─────┐ │ └─────┐
+ *  │ │      │ ┌─────┘ │ ┌─────┘
+ *  │ └─────┐│ └─────┐ │ └─────┐
+ *  └───────┘└───────┘ └───────┘
  *
  *  @brief  LEE主题管理
  *
@@ -117,6 +123,8 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     LEEThemeIdentifierConfigTypeBarTintColor,
     LEEThemeIdentifierConfigTypeBackgroundColor,
     LEEThemeIdentifierConfigTypePlaceholderColor,
+    LEEThemeIdentifierConfigTypeButtonTitleColor,
+    LEEThemeIdentifierConfigTypeButtonTitleShadowColor,
     
     /** 标识符设置类型 - Image */
     
@@ -126,6 +134,8 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     LEEThemeIdentifierConfigTypeBackgroundImage,
     LEEThemeIdentifierConfigTypeSelectionIndicatorImage,
     LEEThemeIdentifierConfigTypeScopeBarBackgroundImage,
+    LEEThemeIdentifierConfigTypeButtonImage,
+    LEEThemeIdentifierConfigTypeButtonBackgroundImage
     
 };
 
@@ -150,6 +160,8 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
 @property (nonatomic , copy ) NSMutableDictionary *modelThemeBarTintColorConfigInfo;
 @property (nonatomic , copy ) NSMutableDictionary *modelThemeBackgroundColorConfigInfo;
 @property (nonatomic , copy ) NSMutableDictionary *modelThemePlaceholderColorConfigInfo;
+@property (nonatomic , copy ) NSMutableDictionary *modelThemeButtonTitleColorConfigInfo;
+@property (nonatomic , copy ) NSMutableDictionary *modelThemeButtonShadowTitleColorConfigInfo;
 
 @property (nonatomic , copy ) NSMutableDictionary *modelThemeImageConfigInfo;
 @property (nonatomic , copy ) NSMutableDictionary *modelThemeImageNameConfigInfo;
@@ -169,6 +181,8 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
 @property (nonatomic , copy ) NSMutableDictionary *modelThemeScopeBarBackgroundImageConfigInfo;
 @property (nonatomic , copy ) NSMutableDictionary *modelThemeScopeBarBackgroundImageNameConfigInfo;
 @property (nonatomic , copy ) NSMutableDictionary *modelThemeScopeBarBackgroundImagePathConfigInfo;
+@property (nonatomic , copy ) NSMutableDictionary *modelThemeButtonImageConfigInfo;
+@property (nonatomic , copy ) NSMutableDictionary *modelThemeButtonBackgroundImageConfigInfo;
 
 @property (nonatomic , assign ) CGFloat modelChangeThemeAnimationDuration;
 
@@ -193,6 +207,8 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     _modelThemeBarTintColorConfigInfo = nil;
     _modelThemeBackgroundColorConfigInfo = nil;
     _modelThemePlaceholderColorConfigInfo = nil;
+    _modelThemeButtonTitleColorConfigInfo = nil;
+    _modelThemeButtonShadowTitleColorConfigInfo = nil;
     
     _modelThemeImageConfigInfo = nil;
     _modelThemeImageNameConfigInfo = nil;
@@ -212,6 +228,8 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     _modelThemeScopeBarBackgroundImageConfigInfo = nil;
     _modelThemeScopeBarBackgroundImageNameConfigInfo = nil;
     _modelThemeScopeBarBackgroundImagePathConfigInfo = nil;
+    _modelThemeButtonImageConfigInfo = nil;
+    _modelThemeButtonBackgroundImageConfigInfo = nil;
 }
 
 - (instancetype)init
@@ -468,6 +486,56 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         [[LEETheme shareTheme].allTags addObject:tag];
         
         [weakSelf.modelThemePlaceholderColorConfigInfo setObject:color forKey:tag];
+        
+        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
+        
+        return weakSelf;
+    };
+    
+}
+
+- (LEEConfigThemeToColorAndState)LeeAddButtonTitleColor{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *tag , UIColor *color , UIControlState state){
+        
+        [[LEETheme shareTheme].allTags addObject:tag];
+        
+        NSMutableDictionary *info = weakSelf.modelThemeButtonTitleColorConfigInfo[tag];
+        
+        if (!info) info = [NSMutableDictionary dictionary];
+        
+        if (info.count > 0) weakSelf.modelCurrentThemeTag = nil;
+        
+        [info setObject:color forKey:@(state)];
+        
+        [weakSelf.modelThemeButtonTitleColorConfigInfo setObject:info forKey:tag];
+        
+        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
+        
+        return weakSelf;
+    };
+    
+}
+
+- (LEEConfigThemeToColorAndState)LeeAddButtonTitleShadowColor{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *tag , UIColor *color , UIControlState state){
+        
+        [[LEETheme shareTheme].allTags addObject:tag];
+        
+        NSMutableDictionary *info = weakSelf.modelThemeButtonShadowTitleColorConfigInfo[tag];
+        
+        if (!info) info = [NSMutableDictionary dictionary];
+        
+        if (info.count > 0) weakSelf.modelCurrentThemeTag = nil;
+        
+        [info setObject:color forKey:@(state)];
+        
+        [weakSelf.modelThemeButtonShadowTitleColorConfigInfo setObject:info forKey:tag];
         
         [weakSelf initCurrentThemeConfigHandleWithTag:tag];
         
@@ -782,6 +850,56 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
 }
 
+- (LEEConfigThemeToImageAndState)LeeAddButtonImage{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *tag , UIImage *image , UIControlState state){
+        
+        [[LEETheme shareTheme].allTags addObject:tag];
+        
+        NSMutableDictionary *info = weakSelf.modelThemeButtonImageConfigInfo[tag];
+        
+        if (!info) info = [NSMutableDictionary dictionary];
+        
+        if (info.count > 0) weakSelf.modelCurrentThemeTag = nil;
+        
+        [info setObject:image forKey:@(state)];
+        
+        [weakSelf.modelThemeButtonImageConfigInfo setObject:info forKey:tag];
+        
+        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
+        
+        return weakSelf;
+    };
+    
+}
+
+- (LEEConfigThemeToImageAndState)LeeAddButtonBackgroundImage{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *tag , UIImage *image , UIControlState state){
+        
+        [[LEETheme shareTheme].allTags addObject:tag];
+        
+        NSMutableDictionary *info = weakSelf.modelThemeButtonBackgroundImageConfigInfo[tag];
+        
+        if (!info) info = [NSMutableDictionary dictionary];
+        
+        if (info.count > 0) weakSelf.modelCurrentThemeTag = nil;
+        
+        [info setObject:image forKey:@(state)];
+        
+        [weakSelf.modelThemeButtonBackgroundImageConfigInfo setObject:info forKey:tag];
+        
+        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
+        
+        return weakSelf;
+    };
+    
+}
+
 #pragma mark ***JSON设置方式***
 
 - (LEEConfigThemeToIdentifier)LeeConfigTintColor{
@@ -949,6 +1067,52 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
 }
 
+- (LEEConfigThemeToIdentifierAndState)LeeConfigButtonTitleColor{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *identifier , UIControlState state){
+        
+        NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeButtonTitleColor)];
+        
+        if (!info) info = [NSMutableDictionary dictionary];
+        
+        if (info.count > 0) weakSelf.modelCurrentThemeTag = nil;
+        
+        [info setObject:identifier forKey:@(state)];
+        
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:@(LEEThemeIdentifierConfigTypeButtonTitleColor)];
+        
+        [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
+        
+        return weakSelf;
+    };
+    
+}
+
+- (LEEConfigThemeToIdentifierAndState)LeeConfigButtonTitleShadowColor{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *identifier , UIControlState state){
+        
+        NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeButtonTitleShadowColor)];
+        
+        if (!info) info = [NSMutableDictionary dictionary];
+        
+        if (info.count > 0) weakSelf.modelCurrentThemeTag = nil;
+        
+        [info setObject:identifier forKey:@(state)];
+        
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:@(LEEThemeIdentifierConfigTypeButtonTitleShadowColor)];
+        
+        [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
+        
+        return weakSelf;
+    };
+    
+}
+
 - (LEEConfigThemeToIdentifier)LeeConfigImage{
     
     __weak typeof(self) weakSelf = self;
@@ -1031,6 +1195,52 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     return ^(NSString *identifier){
         
         [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeScopeBarBackgroundImage)];
+        
+        [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
+        
+        return weakSelf;
+    };
+    
+}
+
+- (LEEConfigThemeToIdentifierAndState)LeeConfigButtonImage{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *identifier , UIControlState state){
+        
+        NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeButtonImage)];
+        
+        if (!info) info = [NSMutableDictionary dictionary];
+        
+        if (info.count > 0) weakSelf.modelCurrentThemeTag = nil;
+        
+        [info setObject:identifier forKey:@(state)];
+        
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:@(LEEThemeIdentifierConfigTypeButtonImage)];
+        
+        [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
+        
+        return weakSelf;
+    };
+    
+}
+
+- (LEEConfigThemeToIdentifierAndState)LeeConfigButtonBackgroundImage{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *identifier , UIControlState state){
+        
+        NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeButtonBackgroundImage)];
+        
+        if (!info) info = [NSMutableDictionary dictionary];
+        
+        if (info.count > 0) weakSelf.modelCurrentThemeTag = nil;
+        
+        [info setObject:identifier forKey:@(state)];
+        
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:@(LEEThemeIdentifierConfigTypeButtonBackgroundImage)];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1143,6 +1353,20 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     if (!_modelThemePlaceholderColorConfigInfo) _modelThemePlaceholderColorConfigInfo = [NSMutableDictionary dictionary];
     
     return _modelThemePlaceholderColorConfigInfo;
+}
+
+- (NSMutableDictionary *)modelThemeButtonTitleColorConfigInfo{
+    
+    if(!_modelThemeButtonTitleColorConfigInfo) _modelThemeButtonTitleColorConfigInfo = [NSMutableDictionary dictionary];
+    
+    return _modelThemeButtonTitleColorConfigInfo;
+}
+
+- (NSMutableDictionary *)modelThemeButtonShadowTitleColorConfigInfo{
+    
+    if (!_modelThemeButtonShadowTitleColorConfigInfo) _modelThemeButtonShadowTitleColorConfigInfo = [NSMutableDictionary dictionary];
+        
+    return _modelThemeButtonShadowTitleColorConfigInfo;
 }
 
 - (NSMutableDictionary *)modelThemeImageConfigInfo{
@@ -1271,6 +1495,20 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     return _modelThemeScopeBarBackgroundImagePathConfigInfo;
 }
 
+- (NSMutableDictionary *)modelThemeButtonImageConfigInfo{
+    
+    if (!_modelThemeButtonImageConfigInfo) _modelThemeButtonImageConfigInfo = [NSMutableDictionary dictionary];
+    
+    return _modelThemeButtonImageConfigInfo;
+}
+
+- (NSMutableDictionary *)modelThemeButtonBackgroundImageConfigInfo{
+    
+    if (!_modelThemeButtonBackgroundImageConfigInfo) _modelThemeButtonBackgroundImageConfigInfo = [NSMutableDictionary dictionary];
+    
+    return _modelThemeButtonBackgroundImageConfigInfo;
+}
+
 @end
 
 #pragma mark - ----------------主题设置----------------
@@ -1330,6 +1568,17 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     return colorHexString ? [UIColor leeTheme_ColorWithHexString:colorHexString] : nil;
 }
 
+- (UIColor *)getCurrentThemeTagButtonColorWithType:(LEEThemeIdentifierConfigType)type WithState:(NSNumber *)state{
+    
+    NSDictionary *info = self.lee_theme.modelThemeIdentifierConfigInfo[@(type)];
+    
+    NSString *identifier = info[state];
+    
+    NSString *colorHexString = [LEETheme shareTheme].jsonConfigInfo[[LEETheme currentThemeTag]][@"json"][@"color"][identifier];
+    
+    return colorHexString ? [UIColor leeTheme_ColorWithHexString:colorHexString] : nil;
+}
+
 - (UIImage *)getCurrentThemeTagImageWithType:(LEEThemeIdentifierConfigType)type{
     
     NSString *imageName = [LEETheme shareTheme].jsonConfigInfo[[LEETheme currentThemeTag]][@"json"][@"image"][self.lee_theme.modelThemeIdentifierConfigInfo[@(type)]];
@@ -1341,6 +1590,20 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     return image;
 }
 
+- (UIImage *)getCurrentThemeTagButtonImageWithType:(LEEThemeIdentifierConfigType)type WithState:(NSNumber *)state{
+    
+    NSDictionary *info = self.lee_theme.modelThemeIdentifierConfigInfo[@(type)];
+    
+    NSString *identifier = info[state];
+    
+    NSString *imageName = [LEETheme shareTheme].jsonConfigInfo[[LEETheme currentThemeTag]][@"json"][@"image"][identifier];
+    
+    NSString *path = [LEETheme shareTheme].jsonConfigInfo[[LEETheme currentThemeTag]][@"path"];
+    
+    UIImage *image = path ? [UIImage imageWithContentsOfFile:[path stringByAppendingPathComponent:imageName]] : [UIImage imageNamed:imageName];
+    
+    return image;
+}
 
 - (void)changeThemeConfigWithAboutConfigBlock:(void (^)())aboutConfigBlock{
     
@@ -1865,7 +2128,65 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         aboutConfigBlock = ^(){
             
+            NSDictionary *titleColorInfo = weakSelf.lee_theme.modelThemeButtonTitleColorConfigInfo[[LEETheme currentThemeTag]];
             
+            if (!titleColorInfo) titleColorInfo = weakSelf.lee_theme.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeButtonTitleColor)];
+            
+            for (NSNumber *key in titleColorInfo.allKeys) {
+                
+                id value = titleColorInfo[key];
+                
+                UIColor *titleColor = [value isKindOfClass:[UIColor class]] ? value : nil;
+                
+                if (!titleColor) titleColor = [weakSelf getCurrentThemeTagButtonColorWithType:LEEThemeIdentifierConfigTypeButtonTitleColor WithState:key];
+                
+                if (titleColor) [weakSelf setTitleColor:titleColor forState:(UIControlState)[key integerValue]];
+            }
+            
+            NSDictionary *titleShadowColorInfo = weakSelf.lee_theme.modelThemeButtonShadowTitleColorConfigInfo[[LEETheme currentThemeTag]];
+            
+            if (!titleShadowColorInfo) titleShadowColorInfo = weakSelf.lee_theme.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeButtonTitleShadowColor)];
+            
+            for (NSNumber *key in titleShadowColorInfo.allKeys) {
+                
+                id value = titleShadowColorInfo[key];
+                
+                UIColor *titleShadowColor = [value isKindOfClass:[UIColor class]] ? value : nil;
+                
+                if (!titleShadowColor) titleShadowColor = [weakSelf getCurrentThemeTagButtonColorWithType:LEEThemeIdentifierConfigTypeButtonTitleShadowColor WithState:key];
+                
+                if (titleShadowColor) [weakSelf setTitleShadowColor:titleShadowColor forState:(UIControlState)[key integerValue]];
+            }
+            
+            NSDictionary *imageInfo = weakSelf.lee_theme.modelThemeButtonImageConfigInfo[[LEETheme currentThemeTag]];
+            
+            if (!imageInfo) imageInfo = weakSelf.lee_theme.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeButtonImage)];
+            
+            for (NSNumber *key in imageInfo.allKeys) {
+                
+                id value = imageInfo[key];
+                
+                UIImage *image = [value isKindOfClass:[UIImage class]] ? value : nil;
+                
+                if (!image) image = [weakSelf getCurrentThemeTagButtonImageWithType:LEEThemeIdentifierConfigTypeButtonImage WithState:key];
+                
+                if (image) [weakSelf setImage:image forState:(UIControlState)[key integerValue]];
+            }
+            
+            NSDictionary *backgroundImageInfo = weakSelf.lee_theme.modelThemeButtonBackgroundImageConfigInfo[[LEETheme currentThemeTag]];
+            
+            if (!backgroundImageInfo) backgroundImageInfo = weakSelf.lee_theme.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeButtonBackgroundImage)];
+            
+            for (NSNumber *key in backgroundImageInfo.allKeys) {
+                
+                id value = backgroundImageInfo[key];
+                
+                UIImage *backgroundImage = [value isKindOfClass:[UIImage class]] ? value : nil;
+                
+                if (!backgroundImage) backgroundImage = [weakSelf getCurrentThemeTagButtonImageWithType:LEEThemeIdentifierConfigTypeButtonBackgroundImage WithState:key];
+                
+                if (backgroundImage) [weakSelf setBackgroundImage:backgroundImage forState:(UIControlState)[key integerValue]];
+            }
             
         };
         

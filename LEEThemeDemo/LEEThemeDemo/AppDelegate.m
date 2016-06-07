@@ -21,8 +21,19 @@
 @implementation AppDelegate
 
 
+#pragma mark ---获取document路径
+
+- (NSString *)documentPath{
+    
+    NSArray *array = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    return array.firstObject;
+    
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
     
     NSString *json = [NSString stringWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"tag_red_json.json"] encoding:NSUTF8StringEncoding error:nil];
     
@@ -35,6 +46,10 @@
     NSString *json3 = [NSString stringWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"tag_gray_json.json"] encoding:NSUTF8StringEncoding error:nil];
     
     [LEETheme addThemeConfigJson:json3 WithTag:GRAY WithResourcesPath:nil];
+    
+    NSString *json4 = [NSString stringWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"tag_green_json.json"] encoding:NSUTF8StringEncoding error:nil];
+    
+    [LEETheme addThemeConfigJson:json4 WithTag:GREEN WithResourcesPath:[self documentPath]];
     
     //初始化window
     
@@ -78,6 +93,14 @@
 //    .LeeAddBackgroundImage(GRAY , [UIImage imageNamed:@"picImage.jpg"]);
     
     self.window.rootViewController = tabBarController;
+    
+    //模拟沙盒图片
+    
+    UIImage *testImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"png"]];
+    
+    NSData *imageData = UIImagePNGRepresentation(testImage);
+    
+    [imageData writeToFile:[[self documentPath] stringByAppendingPathComponent:@"test.png"] atomically:YES];
     
     return YES;
 }

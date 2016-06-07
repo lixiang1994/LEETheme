@@ -1,9 +1,10 @@
 {
     "color": {
         "ident1": "#00FF99",
-        "ident2": "#FF0000"
+        "ident2": "#CCFFCC"
     },
     "image": {
-        "ident1": "picImage.jpg"
+        "ident1": "test.png",
+        "ident2": "huaji.jpg"
     }
 }
