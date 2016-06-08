@@ -51,6 +51,10 @@
     
     [LEETheme addThemeConfigJson:json4 WithTag:GREEN WithResourcesPath:[self documentPath]];
     
+    //设置默认主题
+    
+    [LEETheme defaultTheme:RED];
+    
     //初始化window
     
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
