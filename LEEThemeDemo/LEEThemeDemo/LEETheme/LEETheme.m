@@ -506,8 +506,6 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         if (!info) info = [NSMutableDictionary dictionary];
         
-        if (info.count > 0) weakSelf.modelCurrentThemeTag = nil;
-        
         [info setObject:color forKey:@(state)];
         
         [weakSelf.modelThemeButtonTitleColorConfigInfo setObject:info forKey:tag];
@@ -530,8 +528,6 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         NSMutableDictionary *info = weakSelf.modelThemeButtonShadowTitleColorConfigInfo[tag];
         
         if (!info) info = [NSMutableDictionary dictionary];
-        
-        if (info.count > 0) weakSelf.modelCurrentThemeTag = nil;
         
         [info setObject:color forKey:@(state)];
         
@@ -862,8 +858,6 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         if (!info) info = [NSMutableDictionary dictionary];
         
-        if (info.count > 0) weakSelf.modelCurrentThemeTag = nil;
-        
         [info setObject:image forKey:@(state)];
         
         [weakSelf.modelThemeButtonImageConfigInfo setObject:info forKey:tag];
@@ -886,8 +880,6 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         NSMutableDictionary *info = weakSelf.modelThemeButtonBackgroundImageConfigInfo[tag];
         
         if (!info) info = [NSMutableDictionary dictionary];
-        
-        if (info.count > 0) weakSelf.modelCurrentThemeTag = nil;
         
         [info setObject:image forKey:@(state)];
         
@@ -1077,8 +1069,6 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         if (!info) info = [NSMutableDictionary dictionary];
         
-        if (info.count > 0) weakSelf.modelCurrentThemeTag = nil;
-        
         [info setObject:identifier forKey:@(state)];
         
         [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:@(LEEThemeIdentifierConfigTypeButtonTitleColor)];
@@ -1099,8 +1089,6 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeButtonTitleShadowColor)];
         
         if (!info) info = [NSMutableDictionary dictionary];
-        
-        if (info.count > 0) weakSelf.modelCurrentThemeTag = nil;
         
         [info setObject:identifier forKey:@(state)];
         
@@ -1213,8 +1201,6 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         if (!info) info = [NSMutableDictionary dictionary];
         
-        if (info.count > 0) weakSelf.modelCurrentThemeTag = nil;
-        
         [info setObject:identifier forKey:@(state)];
         
         [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:@(LEEThemeIdentifierConfigTypeButtonImage)];
@@ -1235,8 +1221,6 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeButtonBackgroundImage)];
         
         if (!info) info = [NSMutableDictionary dictionary];
-        
-        if (info.count > 0) weakSelf.modelCurrentThemeTag = nil;
         
         [info setObject:identifier forKey:@(state)];
         
@@ -1619,9 +1603,9 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         [UIView setAnimationDuration:self.lee_theme.modelChangeThemeAnimationDuration];
         
-        if (configBlock) configBlock(self);
-        
         if (aboutConfigBlock) aboutConfigBlock();
+        
+        if (configBlock) configBlock(self);
         
         [UIView commitAnimations];
     }
@@ -1634,6 +1618,11 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     if (!model) {
         
+        if ([self isKindOfClass:[LEEThemeConfigModel class]]) {
+            
+            return nil;
+        }
+        
         model = [LEEThemeConfigModel new];
         
         objc_setAssociatedObject(self, _cmd, model , OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -1645,6 +1634,8 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         __weak typeof(self) weakSelf = self;
         
         model.modelInitCurrentThemeConfig = ^(){
+            
+            weakSelf.lee_theme.modelCurrentThemeTag = nil;
             
             if (weakSelf) [weakSelf changeThemeConfigWithAboutConfigBlock:nil];
         };
