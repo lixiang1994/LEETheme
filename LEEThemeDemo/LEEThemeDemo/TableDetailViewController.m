@@ -161,10 +161,6 @@
     
     [LEETheme startTheme:RED];
     
-    self.lee_theme.LeeAddCustomConfig(RED , ^(TableDetailViewController *item){
-        
-        item.title = @"xxx";
-    });
     
 }
 
