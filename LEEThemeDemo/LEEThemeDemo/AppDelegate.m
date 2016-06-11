@@ -34,7 +34,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    
     NSString *json = [NSString stringWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"tag_red_json.json"] encoding:NSUTF8StringEncoding error:nil];
     
     [LEETheme addThemeConfigJson:json WithTag:RED WithResourcesPath:nil];

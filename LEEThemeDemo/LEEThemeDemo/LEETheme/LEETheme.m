@@ -84,6 +84,13 @@ NSString * const LEEThemeCurrentTag = @"LEEThemeCurrentTag";
     
 }
 
++ (NSString *)getResourcesPathWithTag:(NSString *)tag{
+    
+    NSString *path = [LEETheme shareTheme].jsonConfigInfo[tag][@"path"];
+    
+    return path ? path : [[NSBundle mainBundle] bundlePath];
+}
+
 - (void)setCurrentTag:(NSString *)currentTag{
     
     _currentTag = currentTag;

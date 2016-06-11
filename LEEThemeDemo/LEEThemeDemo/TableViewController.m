@@ -35,24 +35,22 @@
     
     [self.tableView registerClass:[CustomTableViewCell class] forCellReuseIdentifier:@"cell"];
     
-    self.tableView.rowHeight = 100.0f;
-    
     //除了可以根据主题设置自身属性外 , 还可以设置外部的东西 例如:视图控制器的标题
     
-    __block typeof(self) Self = self;
+    __weak typeof(self) weakSelf = self;
     
     self.view.lee_theme
     .LeeAddCustomConfig(RED , ^(UIView *item){
         
-        Self.navigationItem.title = @"红色主题列表";
+        weakSelf.navigationItem.title = @"红色主题列表";
     })
     .LeeAddCustomConfig(BLUE , ^(UIView *item){
         
-        Self.navigationItem.title = @"蓝色主题列表";
+        weakSelf.navigationItem.title = @"蓝色主题列表";
     })
     .LeeAddCustomConfig(GRAY , ^(UIView *item){
         
-        Self.navigationItem.title = @"灰色主题列表";
+        weakSelf.navigationItem.title = @"灰色主题列表";
     });
     
 //    self.navigationController.navigationBar.lee_theme
@@ -81,7 +79,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 90;
+    return 90.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

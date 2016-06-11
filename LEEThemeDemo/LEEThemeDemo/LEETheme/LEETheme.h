@@ -77,9 +77,18 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToImageAndState)(NSString *tag , UI
  *
  *  @param json json字符串
  *  @param tag 主题标签
- *  @param path 资源路径
+ *  @param path 资源路径 (传入nil 默认为mainBundle路径)
  */
 + (void)addThemeConfigJson:(NSString *)json WithTag:(NSString *)tag WithResourcesPath:(NSString *)path;
+
+/**
+ *  获取指定主题标签的资源路径
+ *
+ *  @param tag 主题标签
+ *
+ *  @return 资源路径 (如为不存在则返回mainBundle路径)
+ */
++ (NSString *)getResourcesPathWithTag:(NSString *)tag;
 
 @end
 
