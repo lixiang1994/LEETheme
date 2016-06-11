@@ -1816,32 +1816,36 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     if ([self isChangeTheme]) {
         
-        self.lee_theme.modelCurrentThemeTag = [LEETheme currentThemeTag];
+        dispatch_async(dispatch_get_main_queue(), ^{
         
-        LEEThemeConfigBlock configBlock = self.lee_theme.modelThemeConfigInfo[[LEETheme currentThemeTag]];
-        
-        NSDictionary *identifierConfigInfo = self.lee_theme.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeCustomConfig)];
-        
-        [UIView beginAnimations:@"LEEThemeChangeAnimations" context:nil];
-        
-        [UIView setAnimationDuration:self.lee_theme.modelChangeThemeAnimationDuration];
-        
-        if (aboutConfigBlock) aboutConfigBlock();
-        
-        if (configBlock) configBlock(self);
-        
-        if (identifierConfigInfo) {
+            self.lee_theme.modelCurrentThemeTag = [LEETheme currentThemeTag];
             
-            for (NSString *identifier in identifierConfigInfo.allKeys) {
+            LEEThemeConfigBlock configBlock = self.lee_theme.modelThemeConfigInfo[[LEETheme currentThemeTag]];
+            
+            NSDictionary *identifierConfigInfo = self.lee_theme.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeCustomConfig)];
+            
+            [UIView beginAnimations:@"LEEThemeChangeAnimations" context:nil];
+            
+            [UIView setAnimationDuration:self.lee_theme.modelChangeThemeAnimationDuration];
+            
+            if (aboutConfigBlock) aboutConfigBlock();
+            
+            if (configBlock) configBlock(self);
+            
+            if (identifierConfigInfo) {
                 
-                LEEThemeConfigBlock configBlockItem = identifierConfigInfo[identifier];
+                for (NSString *identifier in identifierConfigInfo.allKeys) {
+                    
+                    LEEThemeConfigBlock configBlockItem = identifierConfigInfo[identifier];
+                    
+                    if (configBlockItem) configBlockItem([self getCurrentThemeTagValueWithIdentifier:identifier]);
+                }
                 
-                if (configBlockItem) configBlockItem([self getCurrentThemeTagValueWithIdentifier:identifier]);
             }
             
-        }
+            [UIView commitAnimations];
+        });
         
-        [UIView commitAnimations];
     }
     
 }
