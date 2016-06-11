@@ -93,6 +93,10 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性的设置 , �
 ==============
 LEETheme 使用 GPL V3 许可证，详情见 LICENSE 文件。
 
-相关链接
+友情链接
+==============
+[高效的自动布局库 - SDAutoLayout](https://github.com/gsdios/SDAutoLayout)
+
+个人主页
 ==============
 [我的简书](http://www.jianshu.com/users/a6da0db100c8)
