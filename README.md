@@ -26,6 +26,45 @@
 用法
 ==============
 
+###独立设置模式
+
+	// 添加背景颜色
+	imageView.lee_theme
+    .LeeAddBackgroundColor(@"red" , [UIColor redColor])
+    .LeeAddBackgroundColor(@"blue" , [UIColor blueColor]);
+	
+	// 添加图片
+	imageView.lee_theme
+    .LeeAddImage(@"red" , [UIImage imageNamed:@"red.png"])
+    .LeeAddImage(@"blue" , [UIImage imageNamed:@"blue.png"]);
+	
+	// 添加自定义设置 (每个主题标签对应一个block , 当触发其中添加的主题后会执行相应的block)
+	imageView.lee_theme
+    .LeeAddCustomConfig(RED , ^(UIImageView *item){
+        
+        item.hidden = YES; //简单举例 红色主题启动时 将这个imageview对象隐藏
+    })
+    .LeeAddCustomConfig(BLUE , ^(UIImageView *item){
+        
+        item.hidden = NO; //或者随便做一些其他羞羞的事
+    })
+    .LeeAddCustomConfig(GRAY , ^(UIImageView *item){
+        
+        item.hidden = NO;
+    });
+
+
+LEETheme支持对任何NSObject子类的对象进行其持有属性的设置 , 例如UIImageView类的对象持有image属性 , 那么使用LEETheme就可以为它设置不同主题对应的image属性值, 以此类推 , 当然所有类型的对象都可以添加自定义Block设置.
+
+###JSON设置模式
+	
+未完 待补充
+
+
+###启用主题
+
+未完 待补充
+
 
 安装
 ==============
