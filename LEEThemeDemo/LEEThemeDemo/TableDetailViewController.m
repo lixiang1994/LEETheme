@@ -138,20 +138,28 @@
 
 - (void)configThemeStyle{
     
+//    self.view.lee_theme
+//    .LeeAddCustomConfig(RED , ^(UIView *item){
+//        
+//        item.backgroundColor = [UIColor redColor];
+//    })
+//    .LeeAddCustomConfig(BLUE , ^(UIView *item){
+//        
+//        item.backgroundColor = [UIColor blueColor];
+//    })
+//    .LeeAddCustomConfig(GRAY , ^(UIView *item){
+//        
+//        item.backgroundColor = [UIColor grayColor];
+//    })
+//    .LeeChangeThemeAnimationDuration(1.0f);
+    
+    //等于
+    
     self.view.lee_theme
-    .LeeAddCustomConfig(RED , ^(UIView *item){
-        
-        item.backgroundColor = [UIColor redColor];
-    })
-    .LeeAddCustomConfig(BLUE , ^(UIView *item){
-        
-        item.backgroundColor = [UIColor blueColor];
-    })
-    .LeeAddCustomConfig(GRAY , ^(UIView *item){
-        
-        item.backgroundColor = [UIColor grayColor];
-    })
-    .LeeChangeThemeAnimationDuration(2.0f);
+    .LeeAddBackgroundColor(RED , [UIColor redColor])
+    .LeeAddBackgroundColor(BLUE , [UIColor blueColor])
+    .LeeAddBackgroundColor(GRAY , [UIColor grayColor])
+    .LeeChangeThemeAnimationDuration(1.0f);
     
 }
 

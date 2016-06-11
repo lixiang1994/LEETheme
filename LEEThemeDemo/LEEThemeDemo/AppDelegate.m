@@ -46,6 +46,8 @@
     
     [LEETheme addThemeConfigJson:json3 WithTag:GRAY WithResourcesPath:nil];
     
+    //延迟5秒添加主题 , 模拟动态添加主题功能
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         NSString *json4 = [NSString stringWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"tag_green_json.json"] encoding:NSUTF8StringEncoding error:nil];
