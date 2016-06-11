@@ -27,10 +27,11 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifier)(NSString *identifier)
 typedef LEEThemeConfigModel *(^LEEConfigThemeToColor)(NSString *tag , UIColor *color);
 typedef LEEThemeConfigModel *(^LEEConfigThemeToImage)(NSString *tag , UIImage *image);
 typedef LEEThemeConfigModel *(^LEEConfigThemeToString)(NSString *tag , NSString *string);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToTagAndBlock)(NSString *tag , LEEThemeConfigBlock);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToTagsAndBlock)(NSArray *tags , LEEThemeConfigBlock);
+typedef LEEThemeConfigModel *(^LEEConfigThemeToStringAndBlock)(NSString *tag , LEEThemeConfigBlock);
+typedef LEEThemeConfigModel *(^LEEConfigThemeToArrayAndBlock)(NSArray *tags , LEEThemeConfigBlock);
 typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndState)(NSString *identifier , UIControlState state);
 typedef LEEThemeConfigModel *(^LEEConfigThemeToColorAndState)(NSString *tag , UIColor *color , UIControlState state);
+typedef LEEThemeConfigModel *(^LEEConfigThemeToImageAndState)(NSString *tag , UIImage *image , UIControlState state);
 typedef LEEThemeConfigModel *(^LEEConfigThemeToImageAndState)(NSString *tag , UIImage *image , UIControlState state);
 
 /*
@@ -89,9 +90,9 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToImageAndState)(NSString *tag , UI
 /** Block */
 
 /** 添加自定义设置 -> 格式: .LeeAddCustomConfig(@@"tag" , ^(id item){ code... }) */
-@property (nonatomic , copy , readonly ) LEEConfigThemeToTagAndBlock LeeAddCustomConfig;
+@property (nonatomic , copy , readonly ) LEEConfigThemeToStringAndBlock LeeAddCustomConfig;
 /** 添加多标签自定义设置 -> 格式: .LeeAddCustomConfigs(@@[tag1 , tag2] , ^(id item){ code... }) */
-@property (nonatomic , copy , readonly ) LEEConfigThemeToTagsAndBlock LeeAddCustomConfigs;
+@property (nonatomic , copy , readonly ) LEEConfigThemeToArrayAndBlock LeeAddCustomConfigs;
 
 /** Color */
 
@@ -127,39 +128,51 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToImageAndState)(NSString *tag , UI
 
 /** 添加图片设置 -> 格式: .LeeAddImage(@@"tag" , UIImage) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImage LeeAddImage;
-/** 添加图片设置 -> 格式: .LeeAddImageName(@@"tag" , @"lee") */
+/** 添加图片名称设置 -> 格式: .LeeAddImageName(@@"tag" , @"lee") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddImageName;
-/** 添加图片设置 -> 格式: .LeeAddImagePath(@@"tag" , @"var/XXX/XXXX/lee.png") */
+/** 添加图片路径设置 -> 格式: .LeeAddImagePath(@@"tag" , @"var/XXX/XXXX/lee.png") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddImagePath;
 /** 添加阴影图片设置 -> 格式: .LeeAddShadowImage(@@"tag" , UIImage) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImage LeeAddShadowImage;
-/** 添加阴影图片设置 -> 格式: .LeeAddShadowImageName(@@"tag" , @"lee") */
+/** 添加阴影图片名称设置 -> 格式: .LeeAddShadowImageName(@@"tag" , @"lee") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddShadowImageName;
-/** 添加阴影图片设置 -> 格式: .LeeAddShadowImagePath(@@"tag" , @"var/XXX/XXXX/lee.png") */
+/** 添加阴影图片路径设置 -> 格式: .LeeAddShadowImagePath(@@"tag" , @"var/XXX/XXXX/lee.png") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddShadowImagePath;
 /** 添加选中图片设置 -> 格式: .LeeAddSelectedImage(@@"tag" , UIImage) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImage LeeAddSelectedImage;
-/** 添加选中图片设置 -> 格式: .LeeAddSelectedImageName(@@"tag" , @"lee") */
+/** 添加选中图片名称设置 -> 格式: .LeeAddSelectedImageName(@@"tag" , @"lee") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddSelectedImageName;
-/** 添加选中图片设置 -> 格式: .LeeAddSelectedImagePath(@@"tag" , @"var/XXX/XXXX/lee.png") */
+/** 添加选中图片路径设置 -> 格式: .LeeAddSelectedImagePath(@@"tag" , @"var/XXX/XXXX/lee.png") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddSelectedImagePath;
 /** 添加背景图片设置 -> 格式: .LeeAddBackgroundImage(@@"tag" , UIImage) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImage LeeAddBackgroundImage;
-/** 添加背景图片设置 -> 格式: .LeeAddBackgroundImageName(@@"tag" , @"lee") */
+/** 添加背景图片名称设置 -> 格式: .LeeAddBackgroundImageName(@@"tag" , @"lee") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddBackgroundImageName;
-/** 添加背景图片设置 -> 格式: .LeeAddBackgroundImagePath(@@"tag" , @"var/XXX/XXXX/lee.png") */
+/** 添加背景图片路径设置 -> 格式: .LeeAddBackgroundImagePath(@@"tag" , @"var/XXX/XXXX/lee.png") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddBackgroundImagePath;
+/** 添加返回指示图片设置 -> 格式: .LeeAddBackIndicatorImage(@@"tag" , UIImage) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToImage LeeAddBackIndicatorImage;
+/** 添加返回指示图片名称设置 -> 格式: .LeeAddBackIndicatorImageName(@@"tag" , @"lee") */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddBackIndicatorImageName;
+/** 添加返回指示图片路径设置 -> 格式: .LeeAddBackIndicatorImagePath(@@"tag" , @"var/XXX/XXXX/lee.png") */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddBackIndicatorImagePath;
+/** 添加返回指示图片设置 -> 格式: .LeeAddBackIndicatorTransitionMaskImage(@@"tag" , UIImage) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToImage LeeAddBackIndicatorTransitionMaskImage;
+/** 添加返回指示图片名称设置 -> 格式: .LeeAddBackIndicatorTransitionMaskImageName(@@"tag" , @"lee") */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddBackIndicatorTransitionMaskImageName;
+/** 添加返回指示图片路径设置 -> 格式: .LeeAddBackIndicatorTransitionMaskImagePath(@@"tag" , @"var/XXX/XXXX/lee.png") */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddBackIndicatorTransitionMaskImagePath;
 /** 添加选择指示器图片设置 -> 格式: .LeeAddSelectionIndicatorImage(@@"tag" , UIImage) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImage LeeAddSelectionIndicatorImage;
-/** 添加选择指示器图片设置 -> 格式: .LeeAddSelectionIndicatorImageName(@@"tag" , @"lee") */
+/** 添加选择指示器图片名称设置 -> 格式: .LeeAddSelectionIndicatorImageName(@@"tag" , @"lee") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddSelectionIndicatorImageName;
-/** 添加选择指示器图片设置 -> 格式: .LeeAddSelectionIndicatorImagePath(@@"tag" , @"var/XXX/XXXX/lee.png") */
+/** 添加选择指示器图片路径设置 -> 格式: .LeeAddSelectionIndicatorImagePath(@@"tag" , @"var/XXX/XXXX/lee.png") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddSelectionIndicatorImagePath;
 /** 添加分栏背景图片设置 -> 格式: .LeeAddScopeBarBackgroundImage(@@"tag" , UIImage) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImage LeeAddScopeBarBackgroundImage;
-/** 添加分栏背景图片设置 -> 格式: .LeeAddScopeBarBackgroundImageName(@@"tag" , @"lee") */
+/** 添加分栏背景图片名称设置 -> 格式: .LeeAddScopeBarBackgroundImageName(@@"tag" , @"lee") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddScopeBarBackgroundImageName;
-/** 添加分栏背景图片设置 -> 格式: .LeeAddScopeBarBackgroundImagePath(@@"tag" , @"var/XXX/XXXX/lee.png") */
+/** 添加分栏背景图片路径设置 -> 格式: .LeeAddScopeBarBackgroundImagePath(@@"tag" , @"var/XXX/XXXX/lee.png") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddScopeBarBackgroundImagePath;
 /** 添加按钮图片设置 -> 格式: .LeeAddButtonImage(@@"tag" , UIImage , UIControlStateNormal) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImageAndState LeeAddButtonImage;
@@ -167,6 +180,13 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToImageAndState)(NSString *tag , UI
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImageAndState LeeAddButtonBackgroundImage;
 
 /** ----JSON设置方式---- */
+
+/** Block */
+
+/** 自定义设置 -> 格式: .LeeCustomConfig(@@"identifier" , ^(id value){ code... }) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToStringAndBlock LeeCustomConfig;
+
+/** Color */
 
 /** 设置渲染颜色标识符 -> 格式: .LeeConfigTintColor(@@"identifier") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeConfigTintColor;
@@ -195,6 +215,8 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToImageAndState)(NSString *tag , UI
 /** 设置按钮标题阴影颜色标识符 -> 格式: .LeeConfigButtonTitleColor(@@"identifier" , UIControlStateNormal) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifierAndState LeeConfigButtonTitleShadowColor;
 
+/** Image */
+
 /** 设置图片标识符 -> 格式: .LeeConfigImage(@@"identifier") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeConfigImage;
 /** 设置阴影图片标识符 -> 格式: .LeeConfigShadowImage(@@"identifier") */
@@ -203,6 +225,10 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToImageAndState)(NSString *tag , UI
 @property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeConfigSelectedImage;
 /** 设置背景图片标识符 -> 格式: .LeeConfigBackgroundImage(@@"identifier") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeConfigBackgroundImage;
+/** 设置返回指示图片标识符 -> 格式: .LeeConfigBackIndicatorImage(@@"identifier") */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeConfigBackIndicatorImage;
+/** 设置返回指示图片标识符 -> 格式: .LeeConfigBackIndicatorTransitionMaskImage(@@"identifier") */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeConfigBackIndicatorTransitionMaskImage;
 /** 设置选择指示器图片标识符 -> 格式: .LeeConfigSelectionIndicatorImage(@@"identifier") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeConfigSelectionIndicatorImage;
 /** 设置分栏背景图片标识符 -> 格式: .LeeConfigScopeBarBackgroundImage(@@"identifier") */

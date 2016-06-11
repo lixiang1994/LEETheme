@@ -6,5 +6,9 @@
     "image": {
         "ident1": "huaji.jpg",
         "ident2": "huajis.jpg"
+    },
+    "other": {
+        "ident1": "1234",
+        "ident2": "111"
     }
 }

@@ -55,6 +55,16 @@
         Self.navigationItem.title = @"灰色主题列表";
     });
     
+//    self.navigationController.navigationBar.lee_theme
+//    .LeeConfigBackIndicatorImage(@"ident1")
+//    .LeeConfigBackIndicatorTransitionMaskImage(@"ident2");
+//    .LeeAddBackIndicatorImage(RED , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"picImage" ofType:@"jpg"]])
+//    .LeeAddBackIndicatorImage(BLUE , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huaji" ofType:@"jpg"]])
+//    .LeeAddBackIndicatorImage(GRAY , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huajis" ofType:@"jpg"]])
+//    .LeeAddBackIndicatorTransitionMaskImage(RED , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"picImage" ofType:@"jpg"]])
+//    .LeeAddBackIndicatorTransitionMaskImage(BLUE , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huaji" ofType:@"jpg"]])
+//    .LeeAddBackIndicatorTransitionMaskImage(GRAY , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huajis" ofType:@"jpg"]]);
+    
 }
 
 - (void)didReceiveMemoryWarning {
