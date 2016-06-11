@@ -119,13 +119,6 @@
     .LeeConfigButtonBackgroundImage(@"ident1" , UIControlStateHighlighted)
     .LeeConfigButtonBackgroundImage(@"ident1" , UIControlStateSelected);
     
-    button1.lee_theme
-    .LeeCustomConfig(@"ident1" , ^(id value){
-        
-        NSLog(@"%@" , value);
-        
-    });
-    
 }
 
 #pragma mark - 设置主题样式
