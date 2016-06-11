@@ -14,15 +14,12 @@ s.author             = { "LEE" => "applelixiang@126.com" }
 s.platform     = :ios
 s.platform     = :ios, "7.0"
 
-s.source       = { :git => "https://github.com/gsdios/SDAutoLayout.git", :tag => "2.1.1"}
+s.source       = { :git => "https://github.com/lixiang1994/LEETheme.git", :tag => s.version.to_s}
 
-s.source_files  = "SDAutoLayoutDemo/SDAutoLayout/**/*.{h,m}"
+s.source_files  = "LEEThemeDemo/LEEThemeDemo/LEETheme/**/*.{h,m}"
 
 # s.public_header_files = "Classes/**/*.h"
 
-
 s.requires_arc = true
-
-# s.dependency "JSONKit", "~> 1.4"
 
 end
