@@ -77,12 +77,12 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性的设置 , �
 		    	"identifier2": "#000000"
 		},
 		"image": {
-			"identifier1(唯一标识符)": "图片名称",
-			 "identifier2": "lee.png"
+			"identifier3(唯一标识符)": "图片名称",
+			 "identifier4": "lee.png"
 		},
 		"other": {
-			"identifier1(唯一标识符)": "其他值",
-			 "identifier2": "12345"
+			"identifier5(唯一标识符)": "其他值",
+			 "identifier6": "12345"
 		}
 	}
 
