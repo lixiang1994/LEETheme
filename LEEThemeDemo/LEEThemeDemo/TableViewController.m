@@ -35,6 +35,8 @@
     
     [self.tableView registerClass:[CustomTableViewCell class] forCellReuseIdentifier:@"cell"];
     
+    self.tableView.rowHeight = 100.0f;
+    
     //除了可以根据主题设置自身属性外 , 还可以设置外部的东西 例如:视图控制器的标题
     
     __weak typeof(self) weakSelf = self;

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "LEETheme"
-s.version      = "1.0.0"
+s.version      = "1.0.1"
 s.summary      = "最好用的主题管理库"
 
 s.homepage     = "https://github.com/lixiang1994/LEETheme"
@@ -14,7 +14,7 @@ s.author             = { "LEE" => "applelixiang@126.com" }
 s.platform     = :ios
 s.platform     = :ios, "7.0"
 
-s.source       = { :git => "https://github.com/lixiang1994/LEETheme.git", :tag => s.version.to_s}
+s.source       = { :git => "https://github.com/lixiang1994/LEETheme.git", :tag => "1.0.1"}
 
 s.source_files  = "LEEThemeDemo/LEEThemeDemo/LEETheme/**/*.{h,m}"
 
