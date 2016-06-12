@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "LEETheme"
-s.version      = "1.0.1"
+s.version      = "1.0.2"
 s.summary      = "最好用的主题管理库"
 
 s.homepage     = "https://github.com/lixiang1994/LEETheme"
