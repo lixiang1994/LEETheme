@@ -5,7 +5,7 @@
 [![CocoaPods](http://img.shields.io/cocoapods/v/LEETheme.svg?style=flat)](http://cocoapods.org/?q= LEETheme)&nbsp;
 [![CocoaPods](http://img.shields.io/cocoapods/p/LEETheme.svg?style=flat)](http://cocoapods.org/?q= LEETheme)&nbsp;
 [![Support](https://img.shields.io/badge/support-iOS7%2B-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
-[![Build Status](https://travis-ci.org/ibireme/YYWebImage.svg?branch=master)]()
+[![Build Status](https://travis-ci.org/ibireme/LEETheme.svg?branch=master)]()
 
 
 
@@ -28,7 +28,7 @@
 用法
 ==============
 
-###独立设置模式
+### 独立设置模式
 
 主要适用于固定主题样式的情况下使用
  
@@ -61,7 +61,7 @@
 
 LEETheme支持对任何NSObject子类的对象进行其持有属性的设置 , 例如UIImageView类的对象持有image属性 , 那么使用LEETheme就可以为它设置不同主题对应的image属性值, 以此类推 , 当然所有类型的对象都可以添加自定义Block设置.
 
-###JSON设置模式
+### JSON设置模式
 	
 适用于固定和动态主题样式的情况下使用
  
@@ -69,7 +69,7 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性的设置 , �
  
  缺点:手写JSON会耗些时间 
 
-#####JSON标准格式
+##### JSON标准格式
 
 	{
 		"color": {
@@ -94,12 +94,12 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性的设置 , �
 
 ![JSON配置关系图](https://github.com/lixiang1994/LEETheme/blob/master/JSON配置关系图.png)
 
-#####添加JSON配置
+##### 添加JSON配置
 
 	//添加json , 设置所属主题标签 , 设置资源路径 
 	[LEETheme addThemeConfigJson:json WithTag:@"red" WithResourcesPath:nil];
 
-#####对象设置
+##### 对象设置
 
 	// 设置背景颜色
 	imageView.lee_theme.LeeConfigBackgroundColor(@"identifier2");
@@ -114,7 +114,7 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性的设置 , �
         
 	 });
 
-###启用主题
+### 启用主题
 
 启用主题后 , LEETheme会自动保存当前所启用的主题 , APP下一次开启会自动启用上一次的主题.
 
@@ -127,7 +127,7 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性的设置 , �
 	[LEETheme defaultTheme:@"主题标签"];
 	
 
-###原理展示图
+### 原理展示图
 
 ![原理展示图](https://github.com/lixiang1994/LEETheme/blob/master/LEETheme原理展示图.png)
 
@@ -149,7 +149,7 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性的设置 , �
 
 系统要求
 ==============
-该项目最低支持 `iOS 7.0` 和 `Xcode 7.0`。
+该库最低支持 `iOS 7.0` 和 `Xcode 7.0`。
 
 
 许可证
