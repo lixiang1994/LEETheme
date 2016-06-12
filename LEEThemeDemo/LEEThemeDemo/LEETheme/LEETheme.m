@@ -12,7 +12,7 @@
  *
  *  @author LEE
  *  @copyright    Copyright © 2016年 lee. All rights reserved.
- *  @version    V1.0.2
+ *  @version    V1.0.3
  */
 
 
@@ -22,7 +22,6 @@
 
 NSString * const LEEThemeChangingNotificaiton = @"LEEThemeChangingNotificaiton";
 NSString * const LEEThemeCurrentTag = @"LEEThemeCurrentTag";
-
 
 @interface LEETheme ()
 
@@ -122,34 +121,17 @@ NSString * const LEEThemeCurrentTag = @"LEEThemeCurrentTag";
 
 typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
+    /** 标识符设置类型 - Block */
+    
     LEEThemeIdentifierConfigTypeCustomConfig,
     
     /** 标识符设置类型 - Color */
-    
-    LEEThemeIdentifierConfigTypeTintColor,
-    LEEThemeIdentifierConfigTypeTextColor,
-    LEEThemeIdentifierConfigTypeFillColor,
-    LEEThemeIdentifierConfigTypeStrokeColor,
-    LEEThemeIdentifierConfigTypeBorderColor,
-    LEEThemeIdentifierConfigTypeShadowColor,
-    LEEThemeIdentifierConfigTypeOnTintColor,
-    LEEThemeIdentifierConfigTypeThumbTintColor,
-    LEEThemeIdentifierConfigTypeBarTintColor,
-    LEEThemeIdentifierConfigTypeBackgroundColor,
-    LEEThemeIdentifierConfigTypePlaceholderColor,
+
     LEEThemeIdentifierConfigTypeButtonTitleColor,
     LEEThemeIdentifierConfigTypeButtonTitleShadowColor,
     
     /** 标识符设置类型 - Image */
     
-    LEEThemeIdentifierConfigTypeImage,
-    LEEThemeIdentifierConfigTypeShadowImage,
-    LEEThemeIdentifierConfigTypeSelectedImage,
-    LEEThemeIdentifierConfigTypeBackgroundImage,
-    LEEThemeIdentifierConfigTypeBackIndicatorImage,
-    LEEThemeIdentifierConfigTypeBackIndicatorTransitionMaskImage,
-    LEEThemeIdentifierConfigTypeSelectionIndicatorImage,
-    LEEThemeIdentifierConfigTypeScopeBarBackgroundImage,
     LEEThemeIdentifierConfigTypeButtonImage,
     LEEThemeIdentifierConfigTypeButtonBackgroundImage
     
@@ -162,47 +144,13 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
 @property (nonatomic , copy ) NSString *modelCurrentThemeTag;
 
 @property (nonatomic , copy ) NSMutableDictionary *modelThemeConfigInfo;
-
 @property (nonatomic , copy ) NSMutableDictionary *modelThemeIdentifierConfigInfo;
 
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeTintColorConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeTextColorConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeFillColorConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeStrokeColorConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeBorderColorConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeShadowColorConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeOnTintColorConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeThumbTintColorConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeBarTintColorConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeBackgroundColorConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemePlaceholderColorConfigInfo;
+@property (nonatomic , copy ) NSMutableDictionary *modelThemeColorConfigInfo;
 @property (nonatomic , copy ) NSMutableDictionary *modelThemeButtonTitleColorConfigInfo;
 @property (nonatomic , copy ) NSMutableDictionary *modelThemeButtonShadowTitleColorConfigInfo;
 
 @property (nonatomic , copy ) NSMutableDictionary *modelThemeImageConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeImageNameConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeImagePathConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeShadowImageConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeShadowImageNameConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeShadowImagePathConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeSelectedImageConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeSelectedImageNameConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeSelectedImagePathConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeBackgroundImageConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeBackgroundImageNameConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeBackgroundImagePathConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeBackIndicatorImageConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeBackIndicatorImageNameConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeBackIndicatorImagePathConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeBackIndicatorTransitionMaskImageConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeBackIndicatorTransitionMaskImageNameConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeBackIndicatorTransitionMaskImagePathConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeSelectionIndicatorImageConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeSelectionIndicatorImageNameConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeSelectionIndicatorImagePathConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeScopeBarBackgroundImageConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeScopeBarBackgroundImageNameConfigInfo;
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeScopeBarBackgroundImagePathConfigInfo;
 @property (nonatomic , copy ) NSMutableDictionary *modelThemeButtonImageConfigInfo;
 @property (nonatomic , copy ) NSMutableDictionary *modelThemeButtonBackgroundImageConfigInfo;
 
@@ -218,44 +166,11 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     _modelThemeConfigInfo = nil;
     _modelThemeIdentifierConfigInfo = nil;
     
-    _modelThemeTintColorConfigInfo = nil;
-    _modelThemeTextColorConfigInfo = nil;
-    _modelThemeFillColorConfigInfo = nil;
-    _modelThemeStrokeColorConfigInfo = nil;
-    _modelThemeBorderColorConfigInfo = nil;
-    _modelThemeShadowColorConfigInfo = nil;
-    _modelThemeOnTintColorConfigInfo = nil;
-    _modelThemeThumbTintColorConfigInfo = nil;
-    _modelThemeBarTintColorConfigInfo = nil;
-    _modelThemeBackgroundColorConfigInfo = nil;
-    _modelThemePlaceholderColorConfigInfo = nil;
+    _modelThemeColorConfigInfo = nil;
     _modelThemeButtonTitleColorConfigInfo = nil;
     _modelThemeButtonShadowTitleColorConfigInfo = nil;
     
     _modelThemeImageConfigInfo = nil;
-    _modelThemeImageNameConfigInfo = nil;
-    _modelThemeImagePathConfigInfo = nil;
-    _modelThemeShadowImageConfigInfo = nil;
-    _modelThemeShadowImageNameConfigInfo = nil;
-    _modelThemeShadowImagePathConfigInfo = nil;
-    _modelThemeSelectedImageConfigInfo = nil;
-    _modelThemeSelectedImageNameConfigInfo = nil;
-    _modelThemeSelectedImagePathConfigInfo = nil;
-    _modelThemeBackgroundImageConfigInfo = nil;
-    _modelThemeBackgroundImageNameConfigInfo = nil;
-    _modelThemeBackgroundImagePathConfigInfo = nil;
-    _modelThemeBackIndicatorImageConfigInfo = nil;
-    _modelThemeBackIndicatorImageNameConfigInfo = nil;
-    _modelThemeBackIndicatorImagePathConfigInfo = nil;
-    _modelThemeBackIndicatorTransitionMaskImageConfigInfo = nil;
-    _modelThemeBackIndicatorTransitionMaskImageNameConfigInfo = nil;
-    _modelThemeBackIndicatorTransitionMaskImagePathConfigInfo = nil;
-    _modelThemeSelectionIndicatorImageConfigInfo = nil;
-    _modelThemeSelectionIndicatorImageNameConfigInfo = nil;
-    _modelThemeSelectionIndicatorImagePathConfigInfo = nil;
-    _modelThemeScopeBarBackgroundImageConfigInfo = nil;
-    _modelThemeScopeBarBackgroundImageNameConfigInfo = nil;
-    _modelThemeScopeBarBackgroundImagePathConfigInfo = nil;
     _modelThemeButtonImageConfigInfo = nil;
     _modelThemeButtonBackgroundImageConfigInfo = nil;
 }
@@ -335,19 +250,36 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
 }
 
+- (LEEConfigThemeToKeyPathAndColor)LeeAddKeyPathAndColor{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *tag , NSString *keyPath , UIColor *color){
+        
+        [[LEETheme shareTheme].allTags addObject:tag];
+        
+        NSMutableDictionary *info = [weakSelf.modelThemeColorConfigInfo objectForKey:keyPath];
+        
+        if (!info) info = [NSMutableDictionary dictionary];
+        
+        [info setObject:color forKey:tag];
+        
+        [weakSelf.modelThemeColorConfigInfo setObject:info forKey:keyPath];
+        
+        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
+        
+        return weakSelf;
+    };
+    
+}
+
 - (LEEConfigThemeToColor)LeeAddTintColor{
     
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , UIColor *color){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeTintColorConfigInfo setObject:color forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndColor(tag , @"tintColor" , color);
     };
     
 }
@@ -358,13 +290,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *tag , UIColor *color){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeTextColorConfigInfo setObject:color forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndColor(tag , @"textColor" , color);
     };
     
 }
@@ -375,13 +301,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *tag , UIColor *color){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeFillColorConfigInfo setObject:color forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndColor(tag , @"fillColor" , color);
     };
     
 }
@@ -392,13 +312,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *tag , UIColor *color){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeStrokeColorConfigInfo setObject:color forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndColor(tag , @"strokeColor" , color);
     };
     
 }
@@ -409,13 +323,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *tag , UIColor *color){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeBorderColorConfigInfo setObject:color forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndColor(tag , @"borderColor" , color);
     };
     
 }
@@ -426,13 +334,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *tag , UIColor *color){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeShadowColorConfigInfo setObject:color forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndColor(tag , @"shadowColor" , color);
     };
     
 }
@@ -443,13 +345,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *tag , UIColor *color){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeOnTintColorConfigInfo setObject:color forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndColor(tag , @"onTintColor" , color);
     };
     
 }
@@ -460,13 +356,18 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *tag , UIColor *color){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
+        return weakSelf.LeeAddKeyPathAndColor(tag , @"thumbTintColor" , color);
+    };
+    
+}
+
+- (LEEConfigThemeToColor)LeeAddSeparatorColor{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *tag , UIColor *color){
         
-        [weakSelf.modelThemeThumbTintColorConfigInfo setObject:color forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndColor(tag , @"separatorColor" , color);
     };
     
 }
@@ -477,13 +378,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *tag , UIColor *color){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeBarTintColorConfigInfo setObject:color forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndColor(tag , @"barTintColor" , color);
     };
     
 }
@@ -494,13 +389,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *tag , UIColor *color){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeBackgroundColorConfigInfo setObject:color forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndColor(tag , @"backgroundColor" , color);
     };
     
 }
@@ -511,13 +400,18 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *tag , UIColor *color){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
+        return weakSelf.LeeAddKeyPathAndColor(tag , @"_placeholderLabel.textColor" , color);
+    };
+    
+}
+
+- (LEEConfigThemeToColor)LeeAddHighlightedTextColor{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *tag , UIColor *color){
         
-        [weakSelf.modelThemePlaceholderColorConfigInfo setObject:color forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndColor(tag , @"highlightedTextColor" , color);
     };
     
 }
@@ -568,53 +462,36 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
 }
 
+- (LEEConfigThemeToKeyPathAndImage)LeeAddKeyPathAndImage{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *tag , NSString *keyPath , id image){
+        
+        [[LEETheme shareTheme].allTags addObject:tag];
+        
+        NSMutableDictionary *info = [weakSelf.modelThemeImageConfigInfo objectForKey:keyPath];
+        
+        if (!info) info = [NSMutableDictionary dictionary];
+        
+        [info setObject:image forKey:tag];
+        
+        [weakSelf.modelThemeImageConfigInfo setObject:info forKey:keyPath];
+        
+        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
+        
+        return weakSelf;
+    };
+    
+}
+
 - (LEEConfigThemeToImage)LeeAddImage{
     
     __weak typeof(self) weakSelf = self;
     
-    return ^(NSString *tag , UIImage *image){
+    return ^(NSString *tag , id image){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeImageConfigInfo setObject:image forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
-    };
-    
-}
-
-- (LEEConfigThemeToString)LeeAddImageName{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , NSString *imageName){
-        
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeImageNameConfigInfo setObject:imageName forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
-    };
-    
-}
-
-- (LEEConfigThemeToString)LeeAddImagePath{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , NSString *imagePath){
-        
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeImagePathConfigInfo setObject:imagePath forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndImage(tag , @"image" , image);
     };
     
 }
@@ -623,49 +500,9 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     __weak typeof(self) weakSelf = self;
     
-    return ^(NSString *tag , UIImage *image){
+    return ^(NSString *tag , id image){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeShadowImageConfigInfo setObject:image forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
-    };
-    
-}
-
-- (LEEConfigThemeToString)LeeAddShadowImageName{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , NSString *imageName){
-        
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeShadowImageNameConfigInfo setObject:imageName forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
-    };
-    
-}
-
-- (LEEConfigThemeToString)LeeAddShadowImagePath{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , NSString *imagePath){
-        
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeShadowImagePathConfigInfo setObject:imagePath forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndImage(tag , @"shadowImage" , image);
     };
     
 }
@@ -674,49 +511,9 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     __weak typeof(self) weakSelf = self;
     
-    return ^(NSString *tag , UIImage *image){
+    return ^(NSString *tag , id image){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeSelectedImageConfigInfo setObject:image forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
-    };
-    
-}
-
-- (LEEConfigThemeToString)LeeAddSelectedImageName{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , NSString *imageName){
-        
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeSelectedImageNameConfigInfo setObject:imageName forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
-    };
-    
-}
-
-- (LEEConfigThemeToString)LeeAddSelectedImagePath{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , NSString *imagePath){
-        
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeSelectedImagePathConfigInfo setObject:imagePath forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndImage(tag , @"selectedImage" , image);
     };
     
 }
@@ -725,49 +522,9 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     __weak typeof(self) weakSelf = self;
     
-    return ^(NSString *tag , UIImage *image){
+    return ^(NSString *tag , id image){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeBackgroundImageConfigInfo setObject:image forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
-    };
-    
-}
-
-- (LEEConfigThemeToString)LeeAddBackgroundImageName{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , NSString *imageName){
-        
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeBackgroundImageNameConfigInfo setObject:imageName forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
-    };
-    
-}
-
-- (LEEConfigThemeToString)LeeAddBackgroundImagePath{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , NSString *imagePath){
-        
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeBackgroundImagePathConfigInfo setObject:imagePath forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndImage(tag , @"backgroundImage" , image);
     };
     
 }
@@ -776,49 +533,9 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     __weak typeof(self) weakSelf = self;
     
-    return ^(NSString *tag , UIImage *image){
+    return ^(NSString *tag , id image){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeBackIndicatorImageConfigInfo setObject:image forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
-    };
-    
-}
-
-- (LEEConfigThemeToString)LeeAddBackIndicatorImageName{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , NSString *imageName){
-        
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeBackIndicatorImageNameConfigInfo setObject:imageName forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
-    };
-    
-}
-
-- (LEEConfigThemeToString)LeeAddBackIndicatorImagePath{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , NSString *imageName){
-        
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeBackIndicatorImagePathConfigInfo setObject:imageName forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndImage(tag , @"backIndicatorImage" , image);
     };
     
 }
@@ -827,49 +544,9 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     __weak typeof(self) weakSelf = self;
     
-    return ^(NSString *tag , UIImage *image){
+    return ^(NSString *tag , id image){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeBackIndicatorTransitionMaskImageConfigInfo setObject:image forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
-    };
-    
-}
-
-- (LEEConfigThemeToString)LeeAddBackIndicatorTransitionMaskImageName{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , NSString *imageName){
-        
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeBackIndicatorTransitionMaskImageNameConfigInfo setObject:imageName forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
-    };
-    
-}
-
-- (LEEConfigThemeToString)LeeAddBackIndicatorTransitionMaskImagePath{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , NSString *imageName){
-        
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeBackIndicatorTransitionMaskImagePathConfigInfo setObject:imageName forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndImage(tag , @"backIndicatorTransitionMaskImage" , image);
     };
     
 }
@@ -878,49 +555,9 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     __weak typeof(self) weakSelf = self;
     
-    return ^(NSString *tag , UIImage *image){
+    return ^(NSString *tag , id image){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeSelectionIndicatorImageConfigInfo setObject:image forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
-    };
-    
-}
-
-- (LEEConfigThemeToString)LeeAddSelectionIndicatorImageName{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , NSString *imageName){
-        
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeSelectionIndicatorImageNameConfigInfo setObject:imageName forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
-    };
-    
-}
-
-- (LEEConfigThemeToString)LeeAddSelectionIndicatorImagePath{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , NSString *imagePath){
-        
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeSelectionIndicatorImagePathConfigInfo setObject:imagePath forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndImage(tag , @"selectionIndicatorImage" , image);
     };
     
 }
@@ -929,49 +566,9 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     __weak typeof(self) weakSelf = self;
     
-    return ^(NSString *tag , UIImage *image){
+    return ^(NSString *tag , id image){
         
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeScopeBarBackgroundImageConfigInfo setObject:image forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
-    };
-    
-}
-
-- (LEEConfigThemeToString)LeeAddScopeBarBackgroundImageName{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , NSString *imageName){
-        
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeScopeBarBackgroundImageNameConfigInfo setObject:imageName forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
-    };
-    
-}
-
-- (LEEConfigThemeToString)LeeAddScopeBarBackgroundImagePath{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , NSString *imagePath){
-        
-        [[LEETheme shareTheme].allTags addObject:tag];
-        
-        [weakSelf.modelThemeScopeBarBackgroundImagePathConfigInfo setObject:imagePath forKey:tag];
-        
-        [weakSelf initCurrentThemeConfigHandleWithTag:tag];
-        
-        return weakSelf;
+        return weakSelf.LeeAddKeyPathAndImage(tag , @"scopeBarBackgroundImage" , image);
     };
     
 }
@@ -1051,7 +648,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeTintColor)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"tintColor"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1066,7 +663,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeTextColor)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"textColor"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1081,7 +678,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeFillColor)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"fillColor"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1096,7 +693,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeStrokeColor)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"strokeColor"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1111,7 +708,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeBorderColor)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"borderColor"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1126,7 +723,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeShadowColor)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"shadowColor"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1141,7 +738,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeOnTintColor)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"onTintColor"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1156,7 +753,22 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeThumbTintColor)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"thumbTintColor"];
+        
+        [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
+        
+        return weakSelf;
+    };
+    
+}
+
+- (LEEConfigThemeToIdentifier)LeeConfigSeparatorColor{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *identifier){
+        
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"separatorColor"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1171,7 +783,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeBarTintColor)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"barTintColor"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1186,7 +798,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeBackgroundColor)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"backgroundColor"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1201,7 +813,22 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypePlaceholderColor)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"_placeholderLabel.textColor"];
+        
+        [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
+        
+        return weakSelf;
+    };
+    
+}
+
+- (LEEConfigThemeToIdentifier)LeeConfigHighlightedTextColor{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *identifier){
+        
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"highlightedTextColor"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1258,7 +885,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeImage)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"image"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1273,7 +900,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeShadowImage)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"shadowImage"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1288,7 +915,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeSelectedImage)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"selectedImage"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1303,7 +930,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeBackgroundImage)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"backgroundImage"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1318,7 +945,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeBackIndicatorImage)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"backIndicatorImage"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1333,7 +960,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeBackIndicatorTransitionMaskImage)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"backIndicatorTransitionMaskImage"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1348,7 +975,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeSelectionIndicatorImage)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"selectionIndicatorImage"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1363,7 +990,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(NSString *identifier){
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@(LEEThemeIdentifierConfigTypeScopeBarBackgroundImage)];
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"scopeBarBackgroundImage"];
         
         [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
         
@@ -1443,81 +1070,11 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     return _modelThemeIdentifierConfigInfo;
 }
 
-- (NSMutableDictionary *)modelThemeTintColorConfigInfo{
+- (NSMutableDictionary *)modelThemeColorConfigInfo{
     
-    if (!_modelThemeTintColorConfigInfo) _modelThemeTintColorConfigInfo = [NSMutableDictionary dictionary];
+    if (!_modelThemeColorConfigInfo) _modelThemeColorConfigInfo = [NSMutableDictionary dictionary];
     
-    return _modelThemeTintColorConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeTextColorConfigInfo{
-    
-    if (!_modelThemeTextColorConfigInfo) _modelThemeTextColorConfigInfo = [NSMutableDictionary dictionary];
-
-    return _modelThemeTextColorConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeFillColorConfigInfo{
-    
-    if (!_modelThemeFillColorConfigInfo) _modelThemeFillColorConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeFillColorConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeStrokeColorConfigInfo{
-    
-    if (!_modelThemeStrokeColorConfigInfo) _modelThemeStrokeColorConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeStrokeColorConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeBorderColorConfigInfo{
-    
-    if (!_modelThemeBorderColorConfigInfo) _modelThemeBorderColorConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeBorderColorConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeShadowColorConfigInfo{
-    
-    if (!_modelThemeShadowColorConfigInfo) _modelThemeShadowColorConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeShadowColorConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeOnTintColorConfigInfo{
-    
-    if (!_modelThemeOnTintColorConfigInfo) _modelThemeOnTintColorConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeOnTintColorConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeThumbTintColorConfigInfo{
-    
-    if (!_modelThemeThumbTintColorConfigInfo) _modelThemeThumbTintColorConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeThumbTintColorConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeBarTintColorConfigInfo{
-    
-    if (!_modelThemeBarTintColorConfigInfo) _modelThemeBarTintColorConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeBarTintColorConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeBackgroundColorConfigInfo{
-    
-    if (!_modelThemeBackgroundColorConfigInfo) _modelThemeBackgroundColorConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeBackgroundColorConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemePlaceholderColorConfigInfo{
-    
-    if (!_modelThemePlaceholderColorConfigInfo) _modelThemePlaceholderColorConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemePlaceholderColorConfigInfo;
+    return _modelThemeColorConfigInfo;
 }
 
 - (NSMutableDictionary *)modelThemeButtonTitleColorConfigInfo{
@@ -1539,167 +1096,6 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     if (!_modelThemeImageConfigInfo) _modelThemeImageConfigInfo = [NSMutableDictionary dictionary];
     
     return _modelThemeImageConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeImageNameConfigInfo{
-    
-    if (!_modelThemeImageNameConfigInfo) _modelThemeImageNameConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeImageNameConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeImagePathConfigInfo{
-    
-    if (!_modelThemeImagePathConfigInfo) _modelThemeImagePathConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeImagePathConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeShadowImageConfigInfo{
-    
-    if (!_modelThemeShadowImageConfigInfo) _modelThemeShadowImageConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeShadowImageConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeShadowImageNameConfigInfo{
-    
-    if (!_modelThemeShadowImageNameConfigInfo) _modelThemeShadowImageNameConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeShadowImageNameConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeShadowImagePathConfigInfo{
-    
-    if (!_modelThemeShadowImagePathConfigInfo) _modelThemeShadowImagePathConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeShadowImagePathConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeSelectedImageConfigInfo{
-    
-    if (!_modelThemeSelectedImageConfigInfo) _modelThemeSelectedImageConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeSelectedImageConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeSelectedImageNameConfigInfo{
-    
-    if (!_modelThemeSelectedImageNameConfigInfo) _modelThemeSelectedImageNameConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeSelectedImageNameConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeSelectedImagePathConfigInfo{
-    
-    if (!_modelThemeSelectedImagePathConfigInfo) _modelThemeSelectedImagePathConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeSelectedImagePathConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeBackgroundImageConfigInfo{
-    
-    if (!_modelThemeBackgroundImageConfigInfo) _modelThemeBackgroundImageConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeBackgroundImageConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeBackgroundImageNameConfigInfo{
-    
-    if (!_modelThemeBackgroundImageNameConfigInfo) _modelThemeBackgroundImageNameConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeBackgroundImageNameConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeBackgroundImagePathConfigInfo{
-    
-    if (!_modelThemeBackgroundImagePathConfigInfo) _modelThemeBackgroundImagePathConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeBackgroundImagePathConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeBackIndicatorImageConfigInfo{
-    
-    if (!_modelThemeBackIndicatorImageConfigInfo) _modelThemeBackIndicatorImageConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeBackIndicatorImageConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeBackIndicatorImageNameConfigInfo{
-    
-    if (!_modelThemeBackIndicatorImageNameConfigInfo) _modelThemeBackIndicatorImageNameConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeBackIndicatorImageNameConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeBackIndicatorImagePathConfigInfo{
-    
-    if (!_modelThemeBackIndicatorImagePathConfigInfo) _modelThemeBackIndicatorImagePathConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeBackIndicatorImagePathConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeBackIndicatorTransitionMaskImageConfigInfo{
-    
-    if (!_modelThemeBackIndicatorTransitionMaskImageConfigInfo) _modelThemeBackIndicatorTransitionMaskImageConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeBackIndicatorTransitionMaskImageConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeBackIndicatorTransitionMaskImageNameConfigInfo{
-    
-    if (!_modelThemeBackIndicatorTransitionMaskImageNameConfigInfo) _modelThemeBackIndicatorTransitionMaskImageNameConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeBackIndicatorTransitionMaskImageNameConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeBackIndicatorTransitionMaskImagePathConfigInfo{
-    
-    if (!_modelThemeBackIndicatorTransitionMaskImagePathConfigInfo) _modelThemeBackIndicatorTransitionMaskImagePathConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeBackIndicatorTransitionMaskImagePathConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeSelectionIndicatorImageConfigInfo{
-    
-    if (!_modelThemeSelectionIndicatorImageConfigInfo) _modelThemeSelectionIndicatorImageConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeSelectionIndicatorImageConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeSelectionIndicatorImageNameConfigInfo{
-    
-    if (!_modelThemeSelectionIndicatorImageNameConfigInfo) _modelThemeSelectionIndicatorImageNameConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeSelectionIndicatorImageNameConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeSelectionIndicatorImagePathConfigInfo{
-    
-    if (!_modelThemeSelectionIndicatorImagePathConfigInfo) _modelThemeSelectionIndicatorImagePathConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeSelectionIndicatorImagePathConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeScopeBarBackgroundImageConfigInfo{
-    
-    if (!_modelThemeScopeBarBackgroundImageConfigInfo) _modelThemeScopeBarBackgroundImageConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeScopeBarBackgroundImageConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeScopeBarBackgroundImageNameConfigInfo{
-    
-    if (!_modelThemeScopeBarBackgroundImageNameConfigInfo) _modelThemeScopeBarBackgroundImageNameConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeScopeBarBackgroundImageNameConfigInfo;
-}
-
-- (NSMutableDictionary *)modelThemeScopeBarBackgroundImagePathConfigInfo{
-    
-    if (!_modelThemeScopeBarBackgroundImagePathConfigInfo) _modelThemeScopeBarBackgroundImagePathConfigInfo = [NSMutableDictionary dictionary];
-    
-    return _modelThemeScopeBarBackgroundImagePathConfigInfo;
 }
 
 - (NSMutableDictionary *)modelThemeButtonImageConfigInfo{
@@ -1768,6 +1164,11 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     return (!self.lee_theme.modelCurrentThemeTag || ![self.lee_theme.modelCurrentThemeTag isEqualToString:[LEETheme currentThemeTag]]) ? YES : NO;
 }
 
+- (UIColor *)getCurrentThemeTagColorWithKeyPath:(NSString *)keyPath{
+    
+    return [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:self.lee_theme.modelThemeIdentifierConfigInfo[keyPath]];
+}
+
 - (UIColor *)getCurrentThemeTagColorWithType:(LEEThemeIdentifierConfigType)type{
     
     return [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:self.lee_theme.modelThemeIdentifierConfigInfo[@(type)]];
@@ -1780,6 +1181,11 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     NSString *identifier = info[state];
     
     return [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:identifier];
+}
+
+- (UIImage *)getCurrentThemeTagImageWithKeyPath:(NSString *)keyPath{
+    
+    return [UIImage leeTheme_ImageFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:self.lee_theme.modelThemeIdentifierConfigInfo[keyPath]];
 }
 
 - (UIImage *)getCurrentThemeTagImageWithType:(LEEThemeIdentifierConfigType)type{
@@ -1820,6 +1226,38 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
             [UIView setAnimationDuration:self.lee_theme.modelChangeThemeAnimationDuration];
             
             if (aboutConfigBlock) aboutConfigBlock();
+            
+            for (NSString *keyPath in self.lee_theme.modelThemeColorConfigInfo) {
+                
+                UIColor *color = self.lee_theme.modelThemeColorConfigInfo[keyPath][[LEETheme currentThemeTag]];
+                
+                if (color) [self setValue:color forKeyPath:keyPath];
+            }
+            
+            for (NSString *keyPath in self.lee_theme.modelThemeImageConfigInfo) {
+                
+                id image = self.lee_theme.modelThemeImageConfigInfo[keyPath][[LEETheme currentThemeTag]];
+                
+                if ([image isKindOfClass:[NSString class]]) {
+                    
+                    image = [UIImage imageNamed:image];
+                    
+                    if (!image) image = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:image]];
+                    
+                    if (!image) image = [UIImage imageWithContentsOfFile:image];
+                }
+                
+                if (image) if ([image isKindOfClass:[UIImage class]]) [self setValue:image forKeyPath:keyPath];
+            }
+            
+            for (NSString *keyPath in self.lee_theme.modelThemeIdentifierConfigInfo) {
+                
+                id value = [self getCurrentThemeTagColorWithKeyPath:keyPath];
+                
+                if (!value) value = [self getCurrentThemeTagImageWithKeyPath:keyPath];
+                
+                if (value) [self setValue:value forKeyPath:keyPath];
+            }
             
             if (configBlock) configBlock(self);
             
@@ -1905,17 +1343,17 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
             
             if (tempAboutConfigBlock) tempAboutConfigBlock();
             
-            UIColor *borderColor = weakSelf.lee_theme.modelThemeBorderColorConfigInfo[[LEETheme currentThemeTag]];
-            
-            UIColor *shadowColor = weakSelf.lee_theme.modelThemeShadowColorConfigInfo[[LEETheme currentThemeTag]];
-            
-            if (!borderColor) borderColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeBorderColor];
-            
-            if (!shadowColor) shadowColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeShadowColor];
-            
-            if (borderColor) [weakSelf setBorderColor:borderColor.CGColor];
-            
-            if (shadowColor) [weakSelf setShadowColor:shadowColor.CGColor];
+//            UIColor *borderColor = weakSelf.lee_theme.modelThemeBorderColorConfigInfo[[LEETheme currentThemeTag]];
+//            
+//            UIColor *shadowColor = weakSelf.lee_theme.modelThemeShadowColorConfigInfo[[LEETheme currentThemeTag]];
+//            
+//            if (!borderColor) borderColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeBorderColor];
+//            
+//            if (!shadowColor) shadowColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeShadowColor];
+//            
+//            if (borderColor) [weakSelf setBorderColor:borderColor.CGColor];
+//            
+//            if (shadowColor) [weakSelf setShadowColor:shadowColor.CGColor];
         };
         
         [super changeThemeConfigWithAboutConfigBlock:aboutConfigBlock];
@@ -1935,442 +1373,17 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         aboutConfigBlock = ^(){
           
-            UIColor *fillColor = weakSelf.lee_theme.modelThemeFillColorConfigInfo[[LEETheme currentThemeTag]];
-            
-            UIColor *strokeColor = weakSelf.lee_theme.modelThemeStrokeColorConfigInfo[[LEETheme currentThemeTag]];
-            
-            if (!fillColor) fillColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeFillColor];
-            
-            if (!strokeColor) strokeColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeStrokeColor];
-            
-            if (fillColor) [weakSelf setFillColor:fillColor.CGColor];
-            
-            if (strokeColor) [weakSelf setStrokeColor:strokeColor.CGColor];
-        };
-        
-        [super changeThemeConfigWithAboutConfigBlock:aboutConfigBlock];
-    }
-    
-}
-
-@end
-
-@implementation UIView (LEEThemeConfigView)
-
-- (void)changeThemeConfigWithAboutConfigBlock:(void (^)())aboutConfigBlock{
-    
-    if ([self isChangeTheme]) {
-        
-        void (^tempAboutConfigBlock)() = aboutConfigBlock;
-        
-        __weak typeof(self) weakSelf = self;
-        
-        aboutConfigBlock = ^(){
-            
-            if (tempAboutConfigBlock) tempAboutConfigBlock();
-            
-            UIColor *backgroundColor = weakSelf.lee_theme.modelThemeBackgroundColorConfigInfo[[LEETheme currentThemeTag]];
-            
-            UIColor *tintColor = weakSelf.lee_theme.modelThemeTintColorConfigInfo[[LEETheme currentThemeTag]];
-            
-            if (!backgroundColor) backgroundColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeBackgroundColor];
-            
-            if (!tintColor) tintColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeTintColor];
-            
-            if (backgroundColor) [weakSelf setBackgroundColor:backgroundColor];
-            
-            if (tintColor) [weakSelf setTintColor:tintColor];
-        };
-        
-        [super changeThemeConfigWithAboutConfigBlock:aboutConfigBlock];
-    }
-    
-}
-
-@end
-
-@implementation UITextField (LEEThemeConfigTextField)
-
-- (void)changeThemeConfigWithAboutConfigBlock:(void (^)())aboutConfigBlock{
-    
-    if ([self isChangeTheme]) {
-        
-        __weak typeof(self) weakSelf = self;
-        
-        aboutConfigBlock = ^(){
-            
-            UIColor *textColor = weakSelf.lee_theme.modelThemeTextColorConfigInfo[[LEETheme currentThemeTag]];
-            
-            UIColor *placeholderColor = weakSelf.lee_theme.modelThemePlaceholderColorConfigInfo[[LEETheme currentThemeTag]];
-            
-            if (!textColor) textColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeTextColor];
-            
-            if (!placeholderColor) placeholderColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypePlaceholderColor];
-            
-            if (textColor) [weakSelf setTextColor:textColor];
-            
-            if (placeholderColor) [weakSelf setValue:placeholderColor forKeyPath:@"_placeholderLabel.textColor"];
-        };
-        
-        [super changeThemeConfigWithAboutConfigBlock:aboutConfigBlock];
-    }
-    
-}
-
-@end
-
-@implementation UITextView (LEEThemeConfigTextView)
-
-- (void)changeThemeConfigWithAboutConfigBlock:(void (^)())aboutConfigBlock{
-    
-    if ([self isChangeTheme]) {
-        
-        __weak typeof(self) weakSelf = self;
-        
-        aboutConfigBlock = ^(){
-            
-            UIColor *textColor = weakSelf.lee_theme.modelThemeTextColorConfigInfo[[LEETheme currentThemeTag]];
-            
-            if (!textColor) textColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeTextColor];
-            
-            if (textColor) [weakSelf setTextColor:textColor];
-        };
-        
-        [super changeThemeConfigWithAboutConfigBlock:aboutConfigBlock];
-    }
-    
-}
-
-@end
-
-@implementation UILabel (LEEThemeConfigLabel)
-
-- (void)changeThemeConfigWithAboutConfigBlock:(void (^)())aboutConfigBlock{
-    
-    if ([self isChangeTheme]) {
-     
-        __weak typeof(self) weakSelf = self;
-        
-        aboutConfigBlock = ^(){
-          
-            UIColor *textColor = weakSelf.lee_theme.modelThemeTextColorConfigInfo[[LEETheme currentThemeTag]];
-            
-            UIColor *shadowColor = weakSelf.lee_theme.modelThemeShadowColorConfigInfo[[LEETheme currentThemeTag]];
-            
-            if (!textColor) textColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeTextColor];
-            
-            if (!shadowColor) shadowColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeShadowColor];
-            
-            if (textColor) [weakSelf setTextColor:textColor];
-            
-            if (shadowColor) [weakSelf setShadowColor:shadowColor];
-        };
-        
-        [super changeThemeConfigWithAboutConfigBlock:aboutConfigBlock];
-    }
-    
-}
-
-@end
-
-@implementation UISwitch (LEEThemeConfigSwitch)
-
-- (void)changeThemeConfigWithAboutConfigBlock:(void (^)())aboutConfigBlock{
-    
-    if ([self isChangeTheme]) {
-        
-        __weak typeof(self) weakSelf = self;
-        
-        aboutConfigBlock = ^(){
-            
-            UIColor *onTintColor = weakSelf.lee_theme.modelThemeOnTintColorConfigInfo[[LEETheme currentThemeTag]];
-            
-            UIColor *thumbTintColor = weakSelf.lee_theme.modelThemeThumbTintColorConfigInfo[[LEETheme currentThemeTag]];
-            
-            if (!onTintColor) onTintColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeOnTintColor];
-            
-            if (!thumbTintColor) thumbTintColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeThumbTintColor];
-            
-            if (onTintColor) [weakSelf setOnTintColor:onTintColor];
-            
-            if (thumbTintColor) [weakSelf setThumbTintColor:thumbTintColor];
-        };
-        
-        [super changeThemeConfigWithAboutConfigBlock:aboutConfigBlock];
-    }
-    
-}
-
-@end
-
-@implementation UISearchBar (LEEThemeConfigSearchBar)
-
-- (void)changeThemeConfigWithAboutConfigBlock:(void (^)())aboutConfigBlock{
-    
-    if ([self isChangeTheme]) {
-        
-        __weak typeof(self) weakSelf = self;
-        
-        aboutConfigBlock = ^(){
-            
-            UIColor *barTintColor = weakSelf.lee_theme.modelThemeBarTintColorConfigInfo[[LEETheme currentThemeTag]];
-            
-            if (!barTintColor) barTintColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeBarTintColor];
-            
-            if (barTintColor) [weakSelf setBarTintColor:barTintColor];
-            
-            UIImage *backgroundImage = weakSelf.lee_theme.modelThemeBackgroundImageConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *backgroundImageName = weakSelf.lee_theme.modelThemeBackgroundImageNameConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *backgroundImagePath = weakSelf.lee_theme.modelThemeBackgroundImagePathConfigInfo[[LEETheme currentThemeTag]];
-            
-            UIImage *scopeBarBackgroundImage = weakSelf.lee_theme.modelThemeScopeBarBackgroundImageConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *scopeBarBackgroundImageName = weakSelf.lee_theme.modelThemeScopeBarBackgroundImageNameConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *scopeBarBackgroundImagePath = weakSelf.lee_theme.modelThemeScopeBarBackgroundImagePathConfigInfo[[LEETheme currentThemeTag]];
-            
-            if (!backgroundImage) backgroundImage = [UIImage imageNamed:backgroundImageName];
-            
-            if (!backgroundImage) backgroundImage = [UIImage imageWithContentsOfFile:backgroundImagePath];
-            
-            if (!backgroundImage) backgroundImage = [weakSelf getCurrentThemeTagImageWithType:LEEThemeIdentifierConfigTypeBackgroundImage];
-            
-            if (backgroundImage) [weakSelf setBackgroundImage:backgroundImage];
-            
-            if (!scopeBarBackgroundImage) scopeBarBackgroundImage = [UIImage imageNamed:scopeBarBackgroundImageName];
-            
-            if (!scopeBarBackgroundImage) scopeBarBackgroundImage = [UIImage imageWithContentsOfFile:scopeBarBackgroundImagePath];
-            
-            if (!scopeBarBackgroundImage) scopeBarBackgroundImage = [weakSelf getCurrentThemeTagImageWithType:LEEThemeIdentifierConfigTypeScopeBarBackgroundImage];
-            
-            if (scopeBarBackgroundImage) [weakSelf setScopeBarBackgroundImage:scopeBarBackgroundImage];
-            
-        };
-        
-        [super changeThemeConfigWithAboutConfigBlock:aboutConfigBlock];
-    }
-    
-}
-
-@end
-
-@implementation UINavigationBar (LEEThemeConfigNavigationBar)
-
-- (void)changeThemeConfigWithAboutConfigBlock:(void (^)())aboutConfigBlock{
-    
-    if ([self isChangeTheme]) {
-        
-        __weak typeof(self) weakSelf = self;
-        
-        aboutConfigBlock = ^(){
-            
-            UIColor *barTintColor = weakSelf.lee_theme.modelThemeBarTintColorConfigInfo[[LEETheme currentThemeTag]];
-            
-            if (!barTintColor) barTintColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeBarTintColor];
-            
-            if (barTintColor) [weakSelf setBarTintColor:barTintColor];
-            
-            UIImage *shadowImage = weakSelf.lee_theme.modelThemeShadowImageConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *shadowImageName = weakSelf.lee_theme.modelThemeShadowImageNameConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *shadowImagePath = weakSelf.lee_theme.modelThemeShadowImagePathConfigInfo[[LEETheme currentThemeTag]];
-            
-            UIImage *backIndicatorImage = weakSelf.lee_theme.modelThemeBackIndicatorImageConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *backIndicatorImageName = weakSelf.lee_theme.modelThemeBackIndicatorImageNameConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *backIndicatorImagePath = weakSelf.lee_theme.modelThemeBackIndicatorImagePathConfigInfo[[LEETheme currentThemeTag]];
-            
-            UIImage *backIndicatorTransitionMaskImage = weakSelf.lee_theme.modelThemeBackIndicatorTransitionMaskImageConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *backIndicatorTransitionMaskImageName = weakSelf.lee_theme.modelThemeBackIndicatorTransitionMaskImageNameConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *backIndicatorTransitionMaskImagePath = weakSelf.lee_theme.modelThemeBackIndicatorTransitionMaskImagePathConfigInfo[[LEETheme currentThemeTag]];
-            
-            if (!shadowImage) shadowImage = [UIImage imageNamed:shadowImageName];
-            
-            if (!shadowImage) shadowImage = [UIImage imageWithContentsOfFile:shadowImagePath];
-            
-            if (!shadowImage) shadowImage = [weakSelf getCurrentThemeTagImageWithType:LEEThemeIdentifierConfigTypeShadowImage];
-            
-            if (shadowImage) [weakSelf setShadowImage:shadowImage];
-            
-            if (!backIndicatorImage) backIndicatorImage = [UIImage imageNamed:backIndicatorImageName];
-            
-            if (!backIndicatorImage) backIndicatorImage = [UIImage imageWithContentsOfFile:backIndicatorImagePath];
-            
-            if (!backIndicatorImage) backIndicatorImage = [weakSelf getCurrentThemeTagImageWithType:LEEThemeIdentifierConfigTypeBackIndicatorImage];
-            
-            if (backIndicatorImage) [weakSelf setBackIndicatorImage:backIndicatorImage];
-            
-            if (!backIndicatorTransitionMaskImage) backIndicatorTransitionMaskImage = [UIImage imageNamed:backIndicatorTransitionMaskImageName];
-            
-            if (!backIndicatorTransitionMaskImage) backIndicatorTransitionMaskImage = [UIImage imageWithContentsOfFile:backIndicatorTransitionMaskImagePath];
-            
-            if (!backIndicatorTransitionMaskImage) backIndicatorTransitionMaskImage = [weakSelf getCurrentThemeTagImageWithType:LEEThemeIdentifierConfigTypeBackIndicatorTransitionMaskImage];
-            
-            if (backIndicatorTransitionMaskImage) [weakSelf setBackIndicatorTransitionMaskImage:backIndicatorTransitionMaskImage];
-        };
-        
-        [super changeThemeConfigWithAboutConfigBlock:aboutConfigBlock];
-    }
-    
-}
-
-@end
-
-@implementation UITabBar (LEEThemeConfigTabBar)
-
-- (void)changeThemeConfigWithAboutConfigBlock:(void (^)())aboutConfigBlock{
-    
-    if ([self isChangeTheme]) {
-        
-        __weak typeof(self) weakSelf = self;
-        
-        aboutConfigBlock = ^(){
-            
-            UIColor *barTintColor = weakSelf.lee_theme.modelThemeBarTintColorConfigInfo[[LEETheme currentThemeTag]];
-            
-            if (!barTintColor) barTintColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeBarTintColor];
-            
-            if (barTintColor) [weakSelf setBarTintColor:barTintColor];
-            
-            UIImage *shadowImage = weakSelf.lee_theme.modelThemeShadowImageConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *shadowImageName = weakSelf.lee_theme.modelThemeShadowImageNameConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *shadowImagePath = weakSelf.lee_theme.modelThemeShadowImagePathConfigInfo[[LEETheme currentThemeTag]];
-            
-            UIImage *backgroundImage = weakSelf.lee_theme.modelThemeBackgroundImageConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *backgroundImageName = weakSelf.lee_theme.modelThemeBackgroundImageNameConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *backgroundImagePath = weakSelf.lee_theme.modelThemeBackgroundImagePathConfigInfo[[LEETheme currentThemeTag]];
-            
-            UIImage *selectionIndicatorImage = weakSelf.lee_theme.modelThemeSelectionIndicatorImageConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *selectionIndicatorImageName = weakSelf.lee_theme.modelThemeSelectionIndicatorImageNameConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *selectionIndicatorImagePath = weakSelf.lee_theme.modelThemeSelectionIndicatorImagePathConfigInfo[[LEETheme currentThemeTag]];
-            
-            if (!shadowImage) shadowImage = [UIImage imageNamed:shadowImageName];
-            
-            if (!shadowImage) shadowImage = [UIImage imageWithContentsOfFile:shadowImagePath];
-            
-            if (!shadowImage) shadowImage = [weakSelf getCurrentThemeTagImageWithType:LEEThemeIdentifierConfigTypeShadowImage];
-            
-            if (shadowImage) [weakSelf setShadowImage:shadowImage];
-            
-            if (!backgroundImage) backgroundImage = [UIImage imageNamed:backgroundImageName];
-            
-            if (!backgroundImage) backgroundImage = [UIImage imageWithContentsOfFile:backgroundImagePath];
-            
-            if (!backgroundImage) backgroundImage = [weakSelf getCurrentThemeTagImageWithType:LEEThemeIdentifierConfigTypeBackgroundImage];
-            
-            if (backgroundImage) [weakSelf setBackgroundImage:backgroundImage];
-            
-            if (!selectionIndicatorImage) selectionIndicatorImage = [UIImage imageNamed:selectionIndicatorImageName];
-            
-            if (!selectionIndicatorImage) selectionIndicatorImage = [UIImage imageWithContentsOfFile:selectionIndicatorImagePath];
-            
-            if (!selectionIndicatorImage) selectionIndicatorImage = [weakSelf getCurrentThemeTagImageWithType:LEEThemeIdentifierConfigTypeSelectionIndicatorImage];
-            
-            if (selectionIndicatorImage) [weakSelf setSelectionIndicatorImage:selectionIndicatorImage];
-        };
-        
-        [super changeThemeConfigWithAboutConfigBlock:aboutConfigBlock];
-    }
-    
-}
-
-@end
-
-@implementation UIToolbar (LEEThemeConfigToolbar)
-
-- (void)changeThemeConfigWithAboutConfigBlock:(void (^)())aboutConfigBlock{
-    
-    if ([self isChangeTheme]) {
-        
-        __weak typeof(self) weakSelf = self;
-        
-        aboutConfigBlock = ^(){
-            
-            UIColor *barTintColor = weakSelf.lee_theme.modelThemeBarTintColorConfigInfo[[LEETheme currentThemeTag]];
-            
-            if (!barTintColor) barTintColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeBarTintColor];
-            
-            if (barTintColor) [weakSelf setBarTintColor:barTintColor];
-        };
-        
-        [super changeThemeConfigWithAboutConfigBlock:aboutConfigBlock];
-    }
-    
-}
-
-@end
-
-@implementation UIBarItem (LEEThemeConfigBarItem)
-
-- (void)changeThemeConfigWithAboutConfigBlock:(void (^)())aboutConfigBlock{
-    
-    if ([self isChangeTheme]) {
-        
-        void (^tempAboutConfigBlock)() = aboutConfigBlock;
-        
-        __weak typeof(self) weakSelf = self;
-        
-        aboutConfigBlock = ^(){
-            
-            if (tempAboutConfigBlock) tempAboutConfigBlock();
-            
-            UIImage *image = weakSelf.lee_theme.modelThemeImageConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *imageName = weakSelf.lee_theme.modelThemeImageNameConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *imagePath = weakSelf.lee_theme.modelThemeImagePathConfigInfo[[LEETheme currentThemeTag]];
-            
-            if (!image) image = [UIImage imageNamed:imageName];
-            
-            if (!image) image = [UIImage imageWithContentsOfFile:imagePath];
-            
-            if (!image) image = [weakSelf getCurrentThemeTagImageWithType:LEEThemeIdentifierConfigTypeImage];
-            
-            if (image) [weakSelf setImage:image];
-        };
-        
-        [super changeThemeConfigWithAboutConfigBlock:aboutConfigBlock];
-    }
-    
-}
-
-@end
-
-@implementation UITabBarItem (LEEThemeConfigTabBarItem)
-
-- (void)changeThemeConfigWithAboutConfigBlock:(void (^)())aboutConfigBlock{
-    
-    if ([self isChangeTheme]) {
-        
-        __weak typeof(self) weakSelf = self;
-        
-        aboutConfigBlock = ^(){
-            
-            UIImage *selectedImage = weakSelf.lee_theme.modelThemeSelectedImageConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *selectedImageName = weakSelf.lee_theme.modelThemeSelectedImageNameConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *selectedImagePath = weakSelf.lee_theme.modelThemeSelectedImagePathConfigInfo[[LEETheme currentThemeTag]];
-            
-            if (!selectedImage) selectedImage = [UIImage imageNamed:selectedImageName];
-            
-            if (!selectedImage) selectedImage = [UIImage imageWithContentsOfFile:selectedImagePath];
-            
-            if (!selectedImage) selectedImage = [weakSelf getCurrentThemeTagImageWithType:LEEThemeIdentifierConfigTypeSelectedImage];
-            
-            if (selectedImage) [weakSelf setSelectedImage:selectedImage];
+//            UIColor *fillColor = weakSelf.lee_theme.modelThemeFillColorConfigInfo[[LEETheme currentThemeTag]];
+//            
+//            UIColor *strokeColor = weakSelf.lee_theme.modelThemeStrokeColorConfigInfo[[LEETheme currentThemeTag]];
+//            
+//            if (!fillColor) fillColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeFillColor];
+//            
+//            if (!strokeColor) strokeColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeStrokeColor];
+//            
+//            if (fillColor) [weakSelf setFillColor:fillColor.CGColor];
+//            
+//            if (strokeColor) [weakSelf setStrokeColor:strokeColor.CGColor];
         };
         
         [super changeThemeConfigWithAboutConfigBlock:aboutConfigBlock];
@@ -2458,39 +1471,6 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
 }
 
 @end
-
-@implementation UIImageView (LEEThemeConfigImageView)
-
-- (void)changeThemeConfigWithAboutConfigBlock:(void (^)())aboutConfigBlock{
-    
-    if ([self isChangeTheme]) {
-        
-        __weak typeof(self) weakSelf = self;
-        
-        aboutConfigBlock = ^(){
-        
-            UIImage *image = weakSelf.lee_theme.modelThemeImageConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *imageName = weakSelf.lee_theme.modelThemeImageNameConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSString *imagePath = weakSelf.lee_theme.modelThemeImagePathConfigInfo[[LEETheme currentThemeTag]];
-            
-            if (!image) image = [UIImage imageNamed:imageName];
-            
-            if (!image) image = [UIImage imageWithContentsOfFile:imagePath];
-            
-            if (!image) image = [weakSelf getCurrentThemeTagImageWithType:LEEThemeIdentifierConfigTypeImage];
-            
-            if (image) [weakSelf setImage:image];
-        };
-        
-        [super changeThemeConfigWithAboutConfigBlock:aboutConfigBlock];
-    }
-    
-}
-
-@end
-
 
 #pragma mark - ----------------工具扩展----------------
 

@@ -4,11 +4,11 @@
         "ident2": "#FFFFCC"
     },
     "image": {
-        "ident1": "huaji.jpg",
-        "ident2": "huajis.jpg"
+        "ident3": "huaji.jpg",
+        "ident4": "huajis.jpg"
     },
     "other": {
-        "ident1": "1234",
-        "ident2": "111"
+        "ident5": "1234",
+        "ident6": "111"
     }
 }

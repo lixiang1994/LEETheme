@@ -115,9 +115,9 @@
 //    .LeeConfigButtonTitleColor(@"ident1" , UIControlStateHighlighted);
     
     button1.lee_theme
-    .LeeConfigButtonBackgroundImage(@"ident2" , UIControlStateNormal)
-    .LeeConfigButtonBackgroundImage(@"ident1" , UIControlStateHighlighted)
-    .LeeConfigButtonBackgroundImage(@"ident1" , UIControlStateSelected);
+    .LeeConfigButtonBackgroundImage(@"ident3" , UIControlStateNormal)
+    .LeeConfigButtonBackgroundImage(@"ident4" , UIControlStateHighlighted)
+    .LeeConfigButtonBackgroundImage(@"ident3" , UIControlStateSelected);
     
 }
 
