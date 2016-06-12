@@ -13,7 +13,7 @@
  *
  *  @author LEE
  *  @copyright    Copyright © 2016年 lee. All rights reserved.
- *  @version    V1.0
+ *  @version    V1.0.2
  */
 
 #import <Foundation/Foundation.h>
@@ -287,11 +287,19 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToImageAndState)(NSString *tag , UI
  *                 代码无BUG!
  */
 
+
 @interface UIColor (LEEThemeColor)
 
 + (UIColor *)leeTheme_ColorWithHexString:(NSString *)hexString;
 
++ (UIColor *)leeTheme_ColorFromJsonWithTag:(NSString *)tag WithIdentifier:(NSString *)identifier;
+
 @end
 
+@interface UIImage (LEEThemeImage)
+
++ (UIImage *)leeTheme_ImageFromJsonWithTag:(NSString *)tag WithIdentifier:(NSString *)identifier;
+
+@end
 
 

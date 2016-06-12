@@ -12,7 +12,7 @@
  *
  *  @author LEE
  *  @copyright    Copyright © 2016年 lee. All rights reserved.
- *  @version    V1.0
+ *  @version    V1.0.2
  */
 
 
@@ -1770,9 +1770,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
 
 - (UIColor *)getCurrentThemeTagColorWithType:(LEEThemeIdentifierConfigType)type{
     
-    NSString *colorHexString = [LEETheme shareTheme].jsonConfigInfo[[LEETheme currentThemeTag]][@"json"][@"color"][self.lee_theme.modelThemeIdentifierConfigInfo[@(type)]];
-    
-    return colorHexString ? [UIColor leeTheme_ColorWithHexString:colorHexString] : nil;
+    return [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:self.lee_theme.modelThemeIdentifierConfigInfo[@(type)]];
 }
 
 - (UIColor *)getCurrentThemeTagButtonColorWithType:(LEEThemeIdentifierConfigType)type WithState:(NSNumber *)state{
@@ -1781,22 +1779,12 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     NSString *identifier = info[state];
     
-    NSString *colorHexString = [LEETheme shareTheme].jsonConfigInfo[[LEETheme currentThemeTag]][@"json"][@"color"][identifier];
-    
-    return colorHexString ? [UIColor leeTheme_ColorWithHexString:colorHexString] : nil;
+    return [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:identifier];
 }
 
 - (UIImage *)getCurrentThemeTagImageWithType:(LEEThemeIdentifierConfigType)type{
     
-    NSString *imageName = [LEETheme shareTheme].jsonConfigInfo[[LEETheme currentThemeTag]][@"json"][@"image"][self.lee_theme.modelThemeIdentifierConfigInfo[@(type)]];
-    
-    NSString *path = [LEETheme shareTheme].jsonConfigInfo[[LEETheme currentThemeTag]][@"path"];
-    
-    UIImage *image = path ? [UIImage imageWithContentsOfFile:[path stringByAppendingPathComponent:imageName]] : [UIImage imageNamed:imageName];
-    
-    if (!image) image = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:imageName]];
-    
-    return image;
+    return [UIImage leeTheme_ImageFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:self.lee_theme.modelThemeIdentifierConfigInfo[@(type)]];
 }
 
 - (UIImage *)getCurrentThemeTagButtonImageWithType:(LEEThemeIdentifierConfigType)type WithState:(NSNumber *)state{
@@ -1805,15 +1793,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     NSString *identifier = info[state];
     
-    NSString *imageName = [LEETheme shareTheme].jsonConfigInfo[[LEETheme currentThemeTag]][@"json"][@"image"][identifier];
-    
-    NSString *path = [LEETheme shareTheme].jsonConfigInfo[[LEETheme currentThemeTag]][@"path"];
-    
-    UIImage *image = path ? [UIImage imageWithContentsOfFile:[path stringByAppendingPathComponent:imageName]] : [UIImage imageNamed:imageName];
-    
-    if (!image) image = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:imageName]];
-    
-    return image;
+    return [UIImage leeTheme_ImageFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:identifier];
 }
 
 - (id)getCurrentThemeTagValueWithIdentifier:(NSString *)identifier{
@@ -2566,6 +2546,30 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     unsigned hexComponent;
     [[NSScanner scannerWithString: fullHex] scanHexInt: &hexComponent];
     return hexComponent / 255.0f;
+}
+
++ (UIColor *)leeTheme_ColorFromJsonWithTag:(NSString *)tag WithIdentifier:(NSString *)identifier{
+    
+    NSString *colorHexString = [LEETheme shareTheme].jsonConfigInfo[tag][@"json"][@"color"][identifier];
+    
+    return colorHexString ? [UIColor leeTheme_ColorWithHexString:colorHexString] : nil;
+}
+
+@end
+
+@implementation UIImage (LEEThemeImage) 
+
++ (UIImage *)leeTheme_ImageFromJsonWithTag:(NSString *)tag WithIdentifier:(NSString *)identifier{
+    
+    NSString *imageName = [LEETheme shareTheme].jsonConfigInfo[tag][@"json"][@"image"][identifier];
+    
+    NSString *path = [LEETheme shareTheme].jsonConfigInfo[[LEETheme currentThemeTag]][@"path"];
+    
+    UIImage *image = path ? [UIImage imageWithContentsOfFile:[path stringByAppendingPathComponent:imageName]] : [UIImage imageNamed:imageName];
+    
+    if (!image) image = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:imageName]];
+    
+    return image;
 }
 
 @end
