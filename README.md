@@ -30,6 +30,13 @@
 
 ###独立设置模式
 
+主要适用于固定主题样式的情况下使用
+ 
+ 优点:直观 清晰 , 编码时可随初始化控件编写完成 , 不影响编码思路.
+ 
+ 缺点:位于代码中 , 修改可能会不方便些
+
+
 	// 添加背景颜色
 	imageView.lee_theme
     .LeeAddBackgroundColor(@"red" , [UIColor redColor])
@@ -42,17 +49,13 @@
 	
 	// 添加自定义设置 (每个主题标签对应一个block , 当触发其中添加的主题后会执行相应的block)
 	imageView.lee_theme
-    .LeeAddCustomConfig(RED , ^(UIImageView *item){
+    .LeeAddCustomConfig(@"red" , ^(UIImageView *item){
         
         item.hidden = YES; //简单举例 红色主题启动时 将这个imageview对象隐藏
     })
-    .LeeAddCustomConfig(BLUE , ^(UIImageView *item){
+    .LeeAddCustomConfig(@"blue" , ^(UIImageView *item){
         
         item.hidden = NO; //或者随便做一些其他羞羞的事
-    })
-    .LeeAddCustomConfig(GRAY , ^(UIImageView *item){
-        
-        item.hidden = NO;
     });
 
 
@@ -60,13 +63,73 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性的设置 , �
 
 ###JSON设置模式
 	
-未完 待补充
+适用于固定和动态主题样式的情况下使用
+ 
+ 优点:主题配置信息在JSON中 , 方便统一管理 , 可动态增加新主题JSON配置.
+ 
+ 缺点:手写JSON会耗些时间 
 
+#####JSON标准格式
+
+	{
+		"color": {
+		   	"identifier1(唯一标识符)": "十六进制颜色值",
+		    	"identifier2": "#000000"
+		},
+		"image": {
+			"identifier1(唯一标识符)": "图片名称",
+			 "identifier2": "lee.png"
+		},
+		"other": {
+			"identifier1(唯一标识符)": "其他值",
+			 "identifier2": "12345"
+		}
+	}
+
+这里一般分为3种类型
+
+1. 颜色类型 (color) - 适用于颜色属性
+2. 图片类型 (image) - 适用于图片属性
+3. 其他类型 (other) - 适用于自定义Block
+
+![JSON配置关系图](https://github.com/lixiang1994/LEETheme/blob/master/JSON配置关系图.png)
+
+#####添加JSON配置
+
+	//添加json , 设置所属主题标签 , 设置资源路径 
+	[LEETheme addThemeConfigJson:json WithTag:@"red" WithResourcesPath:nil];
+
+#####对象设置
+
+	// 设置背景颜色
+	imageView.lee_theme.LeeConfigBackgroundColor(@"identifier2");
+	
+	// 设置图片
+	imageView.lee_theme.LeeConfigImage(@"identifier2");
+
+	//自定义设置 (如果没有对应的标识符 则不会触发该block执行 , 如果有 则执行)
+	imageView.lee_theme.LeeCustomConfig(@"identifier2" , ^(id value){
+        
+        	//value 为当前主题的JSON配置中 other 类型下 "identifier2"对应的值
+        
+	 });
 
 ###启用主题
 
-未完 待补充
+启用主题后 , LEETheme会自动保存当前所启用的主题 , APP下一次开启会自动启用上一次的主题.
 
+	//启用主题
+	[LEETheme startTheme:@"主题标签"];
+	
+建议在`- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions`中添加默认主题的设置 , 指定第一次启动APP时默认启用的主题.	
+	
+	//设置默认主题
+	[LEETheme defaultTheme:@"主题标签"];
+	
+
+###原理展示图
+
+![原理展示图](https://github.com/lixiang1994/LEETheme/blob/master/LEETheme原理展示图.png)
 
 安装
 ==============
