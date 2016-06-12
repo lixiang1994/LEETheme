@@ -14,7 +14,7 @@ s.author             = { "LEE" => "applelixiang@126.com" }
 s.platform     = :ios
 s.platform     = :ios, "7.0"
 
-s.source       = { :git => "https://github.com/lixiang1994/LEETheme.git", :tag => "1.0.1"}
+s.source       = { :git => "https://github.com/lixiang1994/LEETheme.git", :tag => "1.0.2"}
 
 s.source_files  = "LEEThemeDemo/LEEThemeDemo/LEETheme/**/*.{h,m}"
 
