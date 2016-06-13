@@ -108,10 +108,11 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性的设置 , �
 	imageView.lee_theme.LeeConfigImage(@"identifier2");
 
 	//自定义设置 (如果没有对应的标识符 则不会触发该block执行 , 如果有 则执行)
-	imageView.lee_theme.LeeCustomConfig(@"identifier2" , ^(id value){
-        
+	imageView.lee_theme.LeeCustomConfig(@"identifier2" , ^(id item , id value){
+        	
+        	//item 为当前对象
         	//value 为当前主题的JSON配置中 other 类型下 "identifier2"对应的值
-        
+        	item.alpha = [value floatValue]; //举个例子 设置一下透明度
 	 });
 
 ### 启用主题
@@ -130,6 +131,14 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性的设置 , �
 ### 原理展示图
 
 ![原理展示图](https://github.com/lixiang1994/LEETheme/blob/master/LEETheme原理展示图.png)
+
+### 注意事项
+
+- 独立设置模式与JSON设置模式可以同时使用.
+- 当一个对象同时使用了2种设置模式 那么同主题设置JSON模式优先级高于独立模式.
+- JSON中的标识符(identifier)要确保在当前JSON中是唯一的.
+- 每个主题对应的JSON中 标识符(identifier)要相同.
+- 不要忘记设置默认主题 , 否则会导致第一次启动无效果.
 
 安装
 ==============
