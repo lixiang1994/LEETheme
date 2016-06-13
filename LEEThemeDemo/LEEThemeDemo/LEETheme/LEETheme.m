@@ -49,6 +49,8 @@ NSString * const LEEThemeCurrentTag = @"LEEThemeCurrentTag";
 
 + (void)startTheme:(NSString *)tag{
     
+    NSAssert([[LEETheme shareTheme].allTags containsObject:tag], @"所启用的主题不存在 - 请检查是否添加了该%@主题的设置" , tag);
+    
     [LEETheme shareTheme].currentTag = tag;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:LEEThemeChangingNotificaiton object:nil userInfo:nil];
@@ -56,7 +58,7 @@ NSString * const LEEThemeCurrentTag = @"LEEThemeCurrentTag";
 
 + (void)defaultTheme:(NSString *)tag{
     
-    if (![LEETheme shareTheme].currentTag && ![[NSUserDefaults standardUserDefaults] objectForKey:LEEThemeCurrentTag]) [LEETheme startTheme:tag];
+    if (![LEETheme shareTheme].currentTag && ![[NSUserDefaults standardUserDefaults] objectForKey:LEEThemeCurrentTag]) [LEETheme shareTheme].currentTag = tag;
 }
 
 + (NSString *)currentThemeTag{
@@ -182,7 +184,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         //默认属性值
         
-        _modelChangeThemeAnimationDuration = 0.2f; //默认更改主题动画时长为0.2秒
+        _modelChangeThemeAnimationDuration = 0.1f; //默认更改主题动画时长为0.1秒
     }
     return self;
 }
@@ -412,6 +414,28 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     return ^(NSString *tag , UIColor *color){
         
         return weakSelf.LeeAddKeyPathAndColor(tag , @"highlightedTextColor" , color);
+    };
+    
+}
+
+- (LEEConfigThemeToColor)LeeAddCurrentPageIndicatorTintColor{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *tag , UIColor *color){
+        
+        return weakSelf.LeeAddKeyPathAndColor(tag , @"currentPageIndicatorTintColor" , color);
+    };
+    
+}
+
+- (LEEConfigThemeToColor)LeeAddPageIndicatorTintColor{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *tag , UIColor *color){
+        
+        return weakSelf.LeeAddKeyPathAndColor(tag , @"pageIndicatorTintColor" , color);
     };
     
 }
@@ -837,6 +861,36 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
 }
 
+- (LEEConfigThemeToIdentifier)LeeConfigPageIndicatorTintColor{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *identifier){
+        
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"pageIndicatorTintColor"];
+        
+        [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
+        
+        return weakSelf;
+    };
+    
+}
+
+- (LEEConfigThemeToIdentifier)LeeConfigCurrentPageIndicatorTintColor{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *identifier){
+        
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:identifier forKey:@"currentPageIndicatorTintColor"];
+        
+        [weakSelf initCurrentThemeConfigHandleWithIdentifier:identifier];
+        
+        return weakSelf;
+    };
+    
+}
+
 - (LEEConfigThemeToIdentifierAndState)LeeConfigButtonTitleColor{
     
     __weak typeof(self) weakSelf = self;
@@ -1156,7 +1210,11 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
 
 - (void)changeThemeConfigNotify:(NSNotification *)notify{
     
-    [self changeThemeConfigWithAboutConfigBlock:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+
+        [self changeThemeConfigWithAboutConfigBlock:nil];
+    });
+
 }
 
 - (BOOL)isChangeTheme{
@@ -1164,14 +1222,24 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     return (!self.lee_theme.modelCurrentThemeTag || ![self.lee_theme.modelCurrentThemeTag isEqualToString:[LEETheme currentThemeTag]]) ? YES : NO;
 }
 
+- (BOOL)isCGColorWithKeyPath:(NSString *)keyPath{
+    
+    objc_property_t property = class_getProperty([self class] , [keyPath UTF8String]);
+    
+    if(property != NULL) {
+        
+        return ([[NSString stringWithUTF8String:property_getAttributes(property)] isEqualToString:@"T^{CGColor=}"]) ? YES : NO;
+    
+    } else {
+        
+        return NO;
+    }
+    
+}
+
 - (UIColor *)getCurrentThemeTagColorWithKeyPath:(NSString *)keyPath{
     
     return [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:self.lee_theme.modelThemeIdentifierConfigInfo[keyPath]];
-}
-
-- (UIColor *)getCurrentThemeTagColorWithType:(LEEThemeIdentifierConfigType)type{
-    
-    return [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:self.lee_theme.modelThemeIdentifierConfigInfo[@(type)]];
 }
 
 - (UIColor *)getCurrentThemeTagButtonColorWithType:(LEEThemeIdentifierConfigType)type WithState:(NSNumber *)state{
@@ -1186,11 +1254,6 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
 - (UIImage *)getCurrentThemeTagImageWithKeyPath:(NSString *)keyPath{
     
     return [UIImage leeTheme_ImageFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:self.lee_theme.modelThemeIdentifierConfigInfo[keyPath]];
-}
-
-- (UIImage *)getCurrentThemeTagImageWithType:(LEEThemeIdentifierConfigType)type{
-    
-    return [UIImage leeTheme_ImageFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:self.lee_theme.modelThemeIdentifierConfigInfo[@(type)]];
 }
 
 - (UIImage *)getCurrentThemeTagButtonImageWithType:(LEEThemeIdentifierConfigType)type WithState:(NSNumber *)state{
@@ -1213,68 +1276,68 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     if ([self isChangeTheme]) {
         
-        dispatch_async(dispatch_get_main_queue(), ^{
+        self.lee_theme.modelCurrentThemeTag = [LEETheme currentThemeTag];
         
-            self.lee_theme.modelCurrentThemeTag = [LEETheme currentThemeTag];
-            
-            LEEThemeConfigBlock configBlock = self.lee_theme.modelThemeConfigInfo[[LEETheme currentThemeTag]];
-            
-            NSDictionary *identifierConfigInfo = self.lee_theme.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeCustomConfig)];
-            
-            [UIView beginAnimations:@"LEEThemeChangeAnimations" context:nil];
-            
-            [UIView setAnimationDuration:self.lee_theme.modelChangeThemeAnimationDuration];
-            
-            if (aboutConfigBlock) aboutConfigBlock();
-            
-            for (NSString *keyPath in self.lee_theme.modelThemeColorConfigInfo) {
-                
-                UIColor *color = self.lee_theme.modelThemeColorConfigInfo[keyPath][[LEETheme currentThemeTag]];
-                
-                if (color) [self setValue:color forKeyPath:keyPath];
-            }
-            
-            for (NSString *keyPath in self.lee_theme.modelThemeImageConfigInfo) {
-                
-                id image = self.lee_theme.modelThemeImageConfigInfo[keyPath][[LEETheme currentThemeTag]];
-                
-                if ([image isKindOfClass:[NSString class]]) {
-                    
-                    image = [UIImage imageNamed:image];
-                    
-                    if (!image) image = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:image]];
-                    
-                    if (!image) image = [UIImage imageWithContentsOfFile:image];
-                }
-                
-                if (image) if ([image isKindOfClass:[UIImage class]]) [self setValue:image forKeyPath:keyPath];
-            }
-            
-            for (NSString *keyPath in self.lee_theme.modelThemeIdentifierConfigInfo) {
-                
-                id value = [self getCurrentThemeTagColorWithKeyPath:keyPath];
-                
-                if (!value) value = [self getCurrentThemeTagImageWithKeyPath:keyPath];
-                
-                if (value) [self setValue:value forKeyPath:keyPath];
-            }
-            
-            if (configBlock) configBlock(self);
-            
-            if (identifierConfigInfo) {
-                
-                for (NSString *identifier in identifierConfigInfo.allKeys) {
-                    
-                    LEEThemeConfigBlock configBlockItem = identifierConfigInfo[identifier];
-                    
-                    if (configBlockItem) configBlockItem([self getCurrentThemeTagValueWithIdentifier:identifier]);
-                }
-                
-            }
-            
-            [UIView commitAnimations];
-        });
+        LEEThemeConfigBlock configBlock = self.lee_theme.modelThemeConfigInfo[[LEETheme currentThemeTag]];
         
+        NSDictionary *identifierConfigInfo = self.lee_theme.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeCustomConfig)];
+        
+        [UIView beginAnimations:@"LEEThemeChangeAnimations" context:nil];
+        
+        [UIView setAnimationDuration:self.lee_theme.modelChangeThemeAnimationDuration];
+        
+        if (aboutConfigBlock) aboutConfigBlock();
+        
+        for (NSString *keyPath in self.lee_theme.modelThemeColorConfigInfo) {
+            
+            UIColor *color = self.lee_theme.modelThemeColorConfigInfo[keyPath][[LEETheme currentThemeTag]];
+            
+            if (color) [self isCGColorWithKeyPath:keyPath] ? [self setValue:(id)color.CGColor forKeyPath:keyPath] : [self setValue:color forKeyPath:keyPath];
+        }
+        
+        for (NSString *keyPath in self.lee_theme.modelThemeImageConfigInfo) {
+            
+            id image = self.lee_theme.modelThemeImageConfigInfo[keyPath][[LEETheme currentThemeTag]];
+            
+            if ([image isKindOfClass:[NSString class]]) {
+                
+                image = [UIImage imageNamed:image];
+                
+                if (!image) image = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:image]];
+                
+                if (!image) image = [UIImage imageWithContentsOfFile:image];
+            }
+            
+            if (image) if ([image isKindOfClass:[UIImage class]]) [self setValue:image forKeyPath:keyPath];
+        }
+        
+        for (NSString *keyPath in self.lee_theme.modelThemeIdentifierConfigInfo) {
+            
+            if (![keyPath isKindOfClass:[NSString class]]) continue;
+            
+            id value = [self getCurrentThemeTagColorWithKeyPath:keyPath];
+            
+            if ([self isCGColorWithKeyPath:keyPath]) value = (id)[(UIColor *)value CGColor];
+            
+            if (!value) value = [self getCurrentThemeTagImageWithKeyPath:keyPath];
+            
+            if (value) [self setValue:value forKeyPath:keyPath];
+        }
+        
+        if (configBlock) configBlock(self);
+        
+        if (identifierConfigInfo) {
+            
+            for (NSString *identifier in identifierConfigInfo.allKeys) {
+                
+                LEEThemeConfigBlock configBlockItem = identifierConfigInfo[identifier];
+                
+                if (configBlockItem) configBlockItem([self getCurrentThemeTagValueWithIdentifier:identifier]);
+            }
+            
+        }
+        
+        [UIView commitAnimations];
     }
     
 }
@@ -1325,70 +1388,6 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
 - (void)setIsLeeTheme:(BOOL)isLeeTheme{
     
     objc_setAssociatedObject(self, @selector(isLeeTheme), @(isLeeTheme) , OBJC_ASSOCIATION_ASSIGN);
-}
-
-@end
-
-@implementation CALayer (LEEThemeConfigLayer)
-
-- (void)changeThemeConfigWithAboutConfigBlock:(void (^)())aboutConfigBlock{
-    
-    if ([self isChangeTheme]) {
-        
-        void (^tempAboutConfigBlock)() = aboutConfigBlock;
-        
-        __weak typeof(self) weakSelf = self;
-        
-        aboutConfigBlock = ^(){
-            
-            if (tempAboutConfigBlock) tempAboutConfigBlock();
-            
-//            UIColor *borderColor = weakSelf.lee_theme.modelThemeBorderColorConfigInfo[[LEETheme currentThemeTag]];
-//            
-//            UIColor *shadowColor = weakSelf.lee_theme.modelThemeShadowColorConfigInfo[[LEETheme currentThemeTag]];
-//            
-//            if (!borderColor) borderColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeBorderColor];
-//            
-//            if (!shadowColor) shadowColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeShadowColor];
-//            
-//            if (borderColor) [weakSelf setBorderColor:borderColor.CGColor];
-//            
-//            if (shadowColor) [weakSelf setShadowColor:shadowColor.CGColor];
-        };
-        
-        [super changeThemeConfigWithAboutConfigBlock:aboutConfigBlock];
-    }
-    
-}
-
-@end
-
-@implementation CAShapeLayer (LEEThemeConfigShapeLayer)
-
-- (void)changeThemeConfigWithAboutConfigBlock:(void (^)())aboutConfigBlock{
-    
-    if ([self isChangeTheme]) {
-        
-        __weak typeof(self) weakSelf = self;
-        
-        aboutConfigBlock = ^(){
-          
-//            UIColor *fillColor = weakSelf.lee_theme.modelThemeFillColorConfigInfo[[LEETheme currentThemeTag]];
-//            
-//            UIColor *strokeColor = weakSelf.lee_theme.modelThemeStrokeColorConfigInfo[[LEETheme currentThemeTag]];
-//            
-//            if (!fillColor) fillColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeFillColor];
-//            
-//            if (!strokeColor) strokeColor = [weakSelf getCurrentThemeTagColorWithType:LEEThemeIdentifierConfigTypeStrokeColor];
-//            
-//            if (fillColor) [weakSelf setFillColor:fillColor.CGColor];
-//            
-//            if (strokeColor) [weakSelf setStrokeColor:strokeColor.CGColor];
-        };
-        
-        [super changeThemeConfigWithAboutConfigBlock:aboutConfigBlock];
-    }
-    
 }
 
 @end

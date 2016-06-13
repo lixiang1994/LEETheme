@@ -119,6 +119,37 @@
     .LeeConfigButtonBackgroundImage(@"ident4" , UIControlStateHighlighted)
     .LeeConfigButtonBackgroundImage(@"ident3" , UIControlStateSelected);
     
+    button1.layer.borderWidth = 4;
+    
+    button1.layer.lee_theme
+//    .LeeConfigBorderColor(@"ident2");
+    .LeeAddBorderColor(RED , [UIColor redColor])
+    .LeeAddBorderColor(BLUE , [UIColor blueColor])
+    .LeeAddBorderColor(GRAY , [UIColor grayColor]);
+    
+    UIPageControl *pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame)-80, CGRectGetWidth(self.view.frame), 50)];
+    
+    pageControl.numberOfPages = 8;
+    
+    pageControl.currentPage = 2;
+    
+    //设置没有选中圆点的颜色
+    
+    pageControl.lee_theme
+    .LeeConfigPageIndicatorTintColor(@"ident2")
+    .LeeConfigCurrentPageIndicatorTintColor(@"ident1");
+//    .LeeAddPageIndicatorTintColor(RED , [UIColor whiteColor])
+//    .LeeAddPageIndicatorTintColor(BLUE , [UIColor blackColor])
+//    .LeeAddPageIndicatorTintColor(GRAY , [UIColor orangeColor]);
+    
+    //设置选中圆点的颜色
+    
+    pageControl.lee_theme
+    .LeeAddCurrentPageIndicatorTintColor(RED , [UIColor lightGrayColor])
+    .LeeAddCurrentPageIndicatorTintColor(BLUE , [UIColor whiteColor])
+    .LeeAddCurrentPageIndicatorTintColor(GRAY , [UIColor greenColor]);
+    [self.view addSubview:pageControl];
+    
 }
 
 #pragma mark - 设置主题样式

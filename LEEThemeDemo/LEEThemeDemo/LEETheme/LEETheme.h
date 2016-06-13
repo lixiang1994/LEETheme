@@ -107,8 +107,6 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToKeyPathAndString)(NSString *tag ,
 
 /** Color */
 
-@property (nonatomic , copy , readonly ) LEEConfigThemeToKeyPathAndColor LeeAddKeyPathAndColor;
-
 /** 添加渲染颜色设置 -> 格式: .LeeAddTintColor(@@"tag" , UIColor) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToColor LeeAddTintColor;
 /** 添加文本颜色设置 -> 格式: .LeeAddTextColor(@@"tag" , UIColor) */
@@ -135,35 +133,43 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToKeyPathAndString)(NSString *tag ,
 @property (nonatomic , copy , readonly ) LEEConfigThemeToColor LeeAddPlaceholderColor;
 /** 添加高亮文本颜色设置 -> 格式: .LeeAddHighlightedTextColor(@@"tag" , UIColor) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToColor LeeAddHighlightedTextColor;
+/** 添加页数指示渲染颜色设置 -> 格式: .LeeAddPageIndicatorTintColor(@@"tag" , UIColor) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToColor LeeAddPageIndicatorTintColor;
+/** 添加当前页数指示渲染颜色设置 -> 格式: .LeeAddCurrentPageIndicatorTintColor(@@"tag" , UIColor) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToColor LeeAddCurrentPageIndicatorTintColor;
 /** 添加按钮标题颜色设置 -> 格式: .LeeAddButtonTitleColor(@@"tag" , UIColor , UIControlStateNormal) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToColorAndState LeeAddButtonTitleColor;
 /** 添加按钮标题阴影颜色设置 -> 格式: .LeeAddButtonTitleShadowColor(@@"tag" , UIColor , UIControlStateNormal) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToColorAndState LeeAddButtonTitleShadowColor;
 
-/** Image */
+/** 添加属性颜色设置 -> 格式: .LeeAddKeyPathAndColor(@@"tag" , @"keyPath" , UIColor) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToKeyPathAndColor LeeAddKeyPathAndColor;
 
-@property (nonatomic , copy , readonly ) LEEConfigThemeToKeyPathAndImage LeeAddKeyPathAndImage;
+/** Image */
 
 /** 添加图片设置 -> 格式: .LeeAddImage(@@"tag" , UIImage 或 @"imageName" 或 @"imagePath") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImage LeeAddImage;
-/** 添加阴影图片设置 -> 格式: .LeeAddShadowImage(@@"tag" , UIImage) */
+/** 添加阴影图片设置 -> 格式: .LeeAddShadowImage(@@"tag" , UIImage 或 @"imageName" 或 @"imagePath") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImage LeeAddShadowImage;
-/** 添加选中图片设置 -> 格式: .LeeAddSelectedImage(@@"tag" , UIImage) */
+/** 添加选中图片设置 -> 格式: .LeeAddSelectedImage(@@"tag" , UIImage 或 @"imageName" 或 @"imagePath") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImage LeeAddSelectedImage;
-/** 添加背景图片设置 -> 格式: .LeeAddBackgroundImage(@@"tag" , UIImage) */
+/** 添加背景图片设置 -> 格式: .LeeAddBackgroundImage(@@"tag" , UIImage 或 @"imageName" 或 @"imagePath") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImage LeeAddBackgroundImage;
-/** 添加返回指示图片设置 -> 格式: .LeeAddBackIndicatorImage(@@"tag" , UIImage) */
+/** 添加返回指示图片设置 -> 格式: .LeeAddBackIndicatorImage(@@"tag" , UIImage 或 @"imageName" 或 @"imagePath") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImage LeeAddBackIndicatorImage;
-/** 添加返回指示图片设置 -> 格式: .LeeAddBackIndicatorTransitionMaskImage(@@"tag" , UIImage) */
+/** 添加返回指示图片设置 -> 格式: .LeeAddBackIndicatorTransitionMaskImage(@@"tag" , UIImage 或 @"imageName" 或 @"imagePath") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImage LeeAddBackIndicatorTransitionMaskImage;
-/** 添加选择指示器图片设置 -> 格式: .LeeAddSelectionIndicatorImage(@@"tag" , UIImage) */
+/** 添加选择指示器图片设置 -> 格式: .LeeAddSelectionIndicatorImage(@@"tag" , UIImage 或 @"imageName" 或 @"imagePath") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImage LeeAddSelectionIndicatorImage;
-/** 添加分栏背景图片设置 -> 格式: .LeeAddScopeBarBackgroundImage(@@"tag" , UIImage) */
+/** 添加分栏背景图片设置 -> 格式: .LeeAddScopeBarBackgroundImage(@@"tag" , UIImage 或 @"imageName" 或 @"imagePath") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImage LeeAddScopeBarBackgroundImage;
 /** 添加按钮图片设置 -> 格式: .LeeAddButtonImage(@@"tag" , UIImage , UIControlStateNormal) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImageAndState LeeAddButtonImage;
 /** 添加按钮背景图片设置 -> 格式: .LeeAddButtonBackgroundImage(@@"tag" , UIImage , UIControlStateNormal) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToImageAndState LeeAddButtonBackgroundImage;
+
+/** 添加属性图片设置 -> 格式: .LeeAddKeyPathAndImage(@@"tag" , @"keyPath" , UIImage 或 @"imageName" 或 @"imagePath") */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToKeyPathAndImage LeeAddKeyPathAndImage;
 
 /** ----JSON设置方式---- */
 
@@ -200,6 +206,10 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToKeyPathAndString)(NSString *tag ,
 @property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeConfigPlaceholderColor;
 /** 设置高亮文本颜色标识符 -> 格式: .LeeConfigHighlightedTextColor(@@"identifier") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeConfigHighlightedTextColor;
+/** 设置页数指示渲染颜色标识符 -> 格式: .LeeConfigPageIndicatorTintColor(@@"identifier") */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeConfigPageIndicatorTintColor;
+/** 设置当前页数指示渲染颜色标识符 -> 格式: .LeeConfigCurrentPageIndicatorTintColor(@@"identifier") */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeConfigCurrentPageIndicatorTintColor;
 /** 设置按钮标题颜色标识符 -> 格式: .LeeConfigButtonTitleColor(@@"identifier" , UIControlStateNormal) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifierAndState LeeConfigButtonTitleColor;
 /** 设置按钮标题阴影颜色标识符 -> 格式: .LeeConfigButtonTitleColor(@@"identifier" , UIControlStateNormal) */
