@@ -150,6 +150,12 @@
     .LeeAddCurrentPageIndicatorTintColor(GRAY , [UIColor greenColor]);
     [self.view addSubview:pageControl];
     
+//    button1.lee_theme.LeeCustomConfig(@"ident6" , ^(UIButton *item , id value){
+//        
+//        item.alpha = [value floatValue];
+//        
+//    });
+    
 }
 
 #pragma mark - 设置主题样式
