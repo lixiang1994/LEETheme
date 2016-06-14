@@ -105,10 +105,10 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性的设置 , �
 	imageView.lee_theme.LeeConfigBackgroundColor(@"identifier2");
 	
 	// 设置图片
-	imageView.lee_theme.LeeConfigImage(@"identifier2");
+	imageView.lee_theme.LeeConfigImage(@"identifier4");
 
 	//自定义设置 (如果没有对应的标识符 则不会触发该block执行 , 如果有 则执行)
-	imageView.lee_theme.LeeCustomConfig(@"identifier2" , ^(id item , id value){
+	imageView.lee_theme.LeeCustomConfig(@"identifier6" , ^(id item , id value){
         	
         	//item 为当前对象
         	//value 为当前主题的JSON配置中 other 类型下 "identifier2"对应的值
