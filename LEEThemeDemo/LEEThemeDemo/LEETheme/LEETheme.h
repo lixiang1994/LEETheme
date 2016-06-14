@@ -256,8 +256,8 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 /** 设置按钮背景图片标识符 -> 格式: .LeeConfigButtonBackgroundImage(@@"identifier" , UIControlStateNormal) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifierAndState LeeConfigButtonBackgroundImage;
 
-/** 设置属性标识符 -> 格式: .LeeAddKeyPathAndColor(@@"keyPath" , @@"identifier") */
-@property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeAddKeyPathAndIdentifier;
+/** 设置属性标识符 -> 格式: .LeeConfigKeyPathAndIdentifier(@@"keyPath" , @@"identifier") */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToString LeeConfigKeyPathAndIdentifier;
 
 /** ----通用设置---- */
 
