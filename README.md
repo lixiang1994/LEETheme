@@ -16,9 +16,10 @@
 
 特性
 ==============
-- 两种设置模式,可根据对象单独添加设置,可通过JSON配置统一设置,满足不同风格的开发者。
+- 两种设置模式,可根据对象单独添加设置,可通过JSON配置统一设置,也可混合使用,满足不同风格的开发者。
 - 轻量级设计,整个框架只有2个文件构成。
-- 支持所有NSObject子类对象,包含所有常用视图对象的颜色和图片等设置。
+- 支持所有NSObject子类对象,包含所有常用视图对象的颜色和图片等属性的快捷设置方法。
+- 支持自定义类型对象的自定义属性设置。
 - 支持动态添加主题,可实现网络主题切换功能。
 - 语法优雅,高效简洁,一行代码完成对象设置。
 - 当前主题记忆功能,下一次启动自动布置。
@@ -181,6 +182,10 @@ LEETheme 使用 GPL V3 许可证，详情见 LICENSE 文件。
 友情链接
 ==============
 [高效的自动布局库 - SDAutoLayout](https://github.com/gsdios/SDAutoLayout)
+
+[一行代码搞定Alert - LEEAlert](https://github.com/lixiang1994/LEEAlert)
+
+[一行代码搞定ActionSheet - LEEActionSheet](https://github.com/lixiang1994/LEEActionSheet)
 
 个人主页
 ==============
