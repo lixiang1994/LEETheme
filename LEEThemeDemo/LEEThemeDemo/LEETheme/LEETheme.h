@@ -70,6 +70,13 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 + (void)defaultTheme:(NSString *)tag;
 
 /**
+ *  默认更改主题动画时长 (这是所有对象默认的时长 , 但如果你对某个对象单独进行了时长设置 , 那么该对象将以单独设置的为准)
+ *
+ *  @param duration 动画时长
+ */
++ (void)defaultChangeThemeAnimationDuration:(CGFloat)duration;
+
+/**
  *  当前主题标签
  *
  *  @return 主题标签 tag

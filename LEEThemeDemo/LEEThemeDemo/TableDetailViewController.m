@@ -159,7 +159,7 @@
     .LeeAddBackgroundColor(RED , [UIColor redColor])
     .LeeAddBackgroundColor(BLUE , [UIColor blueColor])
     .LeeAddBackgroundColor(GRAY , [UIColor grayColor])
-    .LeeChangeThemeAnimationDuration(1.0f);
+    .LeeChangeThemeAnimationDuration(1.0f); //设置改变主题的动画时长
     
 }
 

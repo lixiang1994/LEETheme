@@ -60,6 +60,10 @@
     
     [LEETheme defaultTheme:RED];
     
+    //设置默认改变主题的动画时长
+    
+    [LEETheme defaultChangeThemeAnimationDuration:0.1f];
+    
     //初始化window
     
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
