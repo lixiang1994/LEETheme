@@ -1216,10 +1216,13 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
 
 - (void)lee_dealloc{
     
-    if ([self isLeeTheme]) [[NSNotificationCenter defaultCenter] removeObserver:self name:LEEThemeChangingNotificaiton object:nil];
-    
-    if ([self isLeeTheme]) objc_removeAssociatedObjects(self);
-    
+    if ([self isLeeTheme]) {
+        
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:LEEThemeChangingNotificaiton object:nil];
+        
+        objc_removeAssociatedObjects(self);
+    }
+
     [self lee_dealloc];
 }
 
@@ -1366,10 +1369,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     if (!model) {
         
-        if ([self isKindOfClass:[LEEThemeConfigModel class]]) {
-            
-            return nil;
-        }
+        NSAssert(![self isKindOfClass:[LEEThemeConfigModel class]], @"是不是点多了? ( *・ω・)✄╰ひ╯ ");
         
         model = [LEEThemeConfigModel new];
         
