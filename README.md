@@ -127,6 +127,19 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性的设置 , �
 	//设置默认主题
 	[LEETheme defaultTheme:@"主题标签"];
 	
+### 设置改变主题的动画时长
+
+设置一个默认的主题改变时动画时长 如果不设置 默认为0秒
+	
+	//设置默认改变主题的动画时长 (建议和默认主题 一起设置)
+	[LEETheme defaultChangeThemeAnimationDuration:0.1f];
+
+如果单独为某个对象设置了动画时长 那么该对象在更改主题样式时 会以单独设置的为准 , 例如:
+
+	// 设置背景颜色 并设置动画时长
+	imageView.lee_theme.LeeConfigBackgroundColor(@"identifier2")
+	.LeeChangeThemeAnimationDuration(1.0f);
+	
 
 ### 原理展示图
 
