@@ -323,4 +323,6 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 
 @end
 
+#define LEEColorRGBA(R , G , B , A) [UIColor colorWithRed:R/255.0f green:G/255.0f blue:B/255.0f alpha:A]
 
+#define LEEColorRGB(R , G , B) LEEColorRGBA(R , G , B , 1.0f)
