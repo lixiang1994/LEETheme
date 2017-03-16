@@ -1,0 +1,22 @@
+{
+"error": 0,
+"code": 200,
+"code_desc": "请求成功",
+"msg": "帖子列表",
+"is_login": 0,
+"app_id": 1,
+"data": {
+"circleInfo": {
+"fid": "696",
+"groupid": "7",
+"groupname": "米尔大本营",
+"threads": "2978",
+"name": "每日签到",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/meiriqiandao.png",
+"description": "快乐一天的开始",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/meiriqiandao.jpg"
+},
+"newsList": []
+}
+}

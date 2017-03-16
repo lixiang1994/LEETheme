@@ -1,14 +1,10 @@
-
-/*!
- *  @header TableViewController.h
- *          LEEThemeDemo
- *
- *  @brief  表视图控制器
- *
- *  @author 李响
- *  @copyright    Copyright © 2016年 lee. All rights reserved.
- *  @version    16/4/22.
- */
+//
+//  TableViewController.h
+//  LEEThemeDemo
+//
+//  Created by 李响 on 2017/3/16.
+//  Copyright © 2017年 lee. All rights reserved.
+//
 
 #import <UIKit/UIKit.h>
 

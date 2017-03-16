@@ -1,0 +1,10 @@
+{
+"error": 0,
+"code": 200,
+"code_desc": "请求成功",
+"msg": "精华列表",
+"app_id": 1,
+"data": {
+"newsList": []
+}
+}

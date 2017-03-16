@@ -1,0 +1,45 @@
+
+html{
+    width:100%%;
+    height:100%%;
+    margin:0 auto;
+    padding:0;
+    background-color:%@;
+    color:%@;
+}
+
+body{
+    width:100%%;
+    height:100%%;
+    margin:0 auto;
+    padding:0;
+    font-size:%@px;
+    line-height:1.7;
+    background-color:transparent;
+    word-wrap:break-word;
+    outline: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    overflow-y: scroll;
+}
+
+div{
+    margin-left:15;
+    margin-right:15;
+    padding:0;
+    height:auto;
+    overflow:hidden;
+    background-color:transparent;
+}
+
+img.image{
+    width:100%%;
+    height:auto;
+    text-align:center;
+    border:0;
+    padding:0;
+    margin-top:5;
+    margin-bottom:5;
+}

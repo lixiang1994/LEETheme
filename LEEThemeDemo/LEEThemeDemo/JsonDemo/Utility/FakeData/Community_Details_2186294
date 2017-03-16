@@ -1,0 +1,41 @@
+{
+"error": 0,
+"code": 200,
+"code_desc": "请求成功",
+"msg": "帖子详情",
+"is_login": 0,
+"app_id": 1,
+"data": {
+"tid": "2186294",
+"fid": "671",
+"title": "三月春",
+"authorId": "1175563",
+"author": "戏江南.",
+"publishTime": "1489424906",
+"url": "http://bbs.mier123.com/thread-2186294-1-1.html",
+"userImg": "http://image.mier123.com/uc_server/data/avatar/001/17/55/63_avatar_small.jpg",
+"level": "14",
+"levelName": "上校",
+"commentSum": "150",
+"shareUrl": "http://bbs.mier123.com/forum.php?mod=viewthread&tid=2186294&extra=page%3D1&mobile=2",
+"shareUrl_wx": "http://bbs.mier123.com/forum.php?mod=viewthread&tid=2186294&extra=page%3D1&mobile=2",
+"imgArr": [],
+"isNewVersion": "true",
+"webContent": "三月烟雨柳千垂，绿意朦胧轻风吹。夜半时做飞花梦，醒来犹知春日归。\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/17031401c37debf847c1314dd67437238404e628.jpg\" width=\"494\" height=\"371\" >\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/170314018c844a79c98a8ef9dbeb4956c4568a8f.jpg\" width=\"937\" height=\"703\" >\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/17031401445cac685ef7333a1dfc3be272d42a41.jpg\" width=\"503\" height=\"377\" >\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/17031401660aefaa78e1d8a871b5a3ec2fed67d9.jpg\" width=\"873\" height=\"655\" >\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/1703140111161aa6ac551ff0af805b4caa894260.jpg\" width=\"959\" height=\"719\" >\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/170314010d888c618167684d08132eb19bd4198d.jpg\" width=\"952\" height=\"715\" >\n",
+"shareImg": "http://image.mier123.com/data/attachment/forum/201703/14/17031401c37debf847c1314dd67437238404e628.jpg",
+"circleInfo": {
+"fid": "671",
+"groupid": "5",
+"groupname": "兴趣战区",
+"threads": "46906",
+"name": "战友畅谈",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/zhanyouchangtan.png",
+"description": "畅所欲言，展现自我",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/zhanyouchangtan.jpg"
+},
+"follow": "0",
+"address": "未知",
+"laud": "30"
+}
+}

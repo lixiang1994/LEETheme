@@ -1,24 +1,18 @@
-
-/*!
- *  @header TableViewController.m
- *          LEEThemeDemo
- *
- *  @brief  表视图控制器
- *
- *  @author 李响
- *  @copyright    Copyright © 2016年 lee. All rights reserved.
- *  @version    16/4/22.
- */
+//
+//  TableViewController.m
+//  LEEThemeDemo
+//
+//  Created by 李响 on 2017/3/16.
+//  Copyright © 2017年 lee. All rights reserved.
+//
 
 #import "TableViewController.h"
 
-#import "LEETheme.h"
-
-#import "CustomTableViewCell.h"
-
-#import "TableDetailViewController.h"
+#import "Mier_CommunityViewController.h"
 
 @interface TableViewController ()
+
+@property (nonatomic , strong ) NSMutableArray *dataArray;
 
 @end
 
@@ -33,43 +27,14 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    [self.tableView registerClass:[CustomTableViewCell class] forCellReuseIdentifier:@"cell"];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     
-    self.tableView.rowHeight = 100.0f;
+    _dataArray = [NSMutableArray array];
     
-    self.tableView.lee_theme
-    .LeeConfigSeparatorColor(@"ident1");
-//    .LeeAddSeparatorColor(RED , [UIColor redColor])
-//    .LeeAddSeparatorColor(BLUE , [UIColor blueColor])
-//    .LeeAddSeparatorColor(GRAY , [UIColor grayColor]);
-    
-    //除了可以根据主题设置自身属性外 , 还可以设置外部的东西 例如:视图控制器的标题
-    
-    __weak typeof(self) weakSelf = self;
-    
-    self.view.lee_theme
-    .LeeAddCustomConfig(RED , ^(UIView *item){
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0f) {
         
-        weakSelf.navigationItem.title = @"红色主题列表";
-    })
-    .LeeAddCustomConfig(BLUE , ^(UIView *item){
-        
-        weakSelf.navigationItem.title = @"蓝色主题列表";
-    })
-    .LeeAddCustomConfig(GRAY , ^(UIView *item){
-        
-        weakSelf.navigationItem.title = @"灰色主题列表";
-    });
-    
-//    self.navigationController.navigationBar.lee_theme
-//    .LeeConfigBackIndicatorImage(@"ident1")
-//    .LeeConfigBackIndicatorTransitionMaskImage(@"ident2");
-//    .LeeAddBackIndicatorImage(RED , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"picImage" ofType:@"jpg"]])
-//    .LeeAddBackIndicatorImage(BLUE , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huaji" ofType:@"jpg"]])
-//    .LeeAddBackIndicatorImage(GRAY , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huajis" ofType:@"jpg"]])
-//    .LeeAddBackIndicatorTransitionMaskImage(RED , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"picImage" ofType:@"jpg"]])
-//    .LeeAddBackIndicatorTransitionMaskImage(BLUE , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huaji" ofType:@"jpg"]])
-//    .LeeAddBackIndicatorTransitionMaskImage(GRAY , [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"huajis" ofType:@"jpg"]]);
+        [_dataArray addObject:@"米尔社区Demo"];
+    }
     
 }
 
@@ -87,22 +52,42 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 90.0f;
+    return self.dataArray.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 80.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    
+    cell.textLabel.text = self.dataArray[indexPath.row];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    TableDetailViewController *tdVC = [[TableDetailViewController alloc] init];
+    switch (indexPath.row) {
+        
+        case 0:
+        {
+            Mier_CommunityViewController *vc = [[Mier_CommunityViewController alloc] init];
+            
+            vc.hidesBottomBarWhenPushed = YES;
+            
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
     
-    [self.navigationController pushViewController:tdVC animated:YES];
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 /*

@@ -1,0 +1,241 @@
+{
+"error": 0,
+"code": 200,
+"code_desc": "请求成功",
+"msg": "帖子列表",
+"is_login": 0,
+"app_id": 1,
+"data": {
+"circleInfo": {
+"fid": "681",
+"groupid": "6",
+"groupname": "米尔军营",
+"threads": "4382",
+"name": "陆军军团",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/lujunjuntuan.png",
+"description": "米尔陆军因为你的到来而精彩",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/lujunjuntuan.jpg"
+},
+"newsList": [
+{
+"tid": "2187054",
+"groupid": "6",
+"fid": "681",
+"title": "祝贺！",
+"publishTime": "1489585590",
+"timeAgo": "昨天 21:46",
+"authorId": "463251",
+"author": "春华秋月实",
+"authorHead": "http://image.mier123.com/uc_server/data/avatar/000/46/32/51_avatar_small.jpg",
+"level": "17",
+"levelName": "中将",
+"address": "",
+"replies": "0",
+"views": "0",
+"circleName": "陆军军团",
+"picList": [],
+"picCount": "0",
+"newsAbstract": "祝贺！祝贺！"
+},
+{
+"tid": "2186974",
+"groupid": "6",
+"fid": "681",
+"title": "米尔陆军2017年3月15日上榜名单",
+"publishTime": "1489577250",
+"timeAgo": "昨天 19:27",
+"authorId": "220244",
+"author": "米尔死神",
+"authorHead": "http://image.mier123.com/api/images/pl_icon_default_head14.png",
+"level": "9",
+"levelName": "少尉",
+"address": "",
+"replies": "4",
+"views": "17",
+"circleName": "陆军军团",
+"picList": [
+"http://image.mier123.com/forum.php?mod=attachment&aid=MTY5NDY4MXwyN2M3MDY4OHwxNDcxNTI3NzAwfDIyMDI0NHwyMTAxNTI4&noupdate=yes"
+],
+"picCount": "1",
+"newsAbstract": "米尔陆军2017年3月15日上榜名单陆军第一名上榜战友：奖励1军功1威望1魅力10银币。陆军上榜战友：各奖励1军功1威望10银币。陆军军团司令部2017年3月15日米尔陆军军团"
+},
+{
+"tid": "2186572",
+"groupid": "6",
+"fid": "681",
+"title": "米尔陆军2017年3月14日上榜名单",
+"publishTime": "1489490016",
+"timeAgo": "前天 19:13",
+"authorId": "220244",
+"author": "米尔死神",
+"authorHead": "http://image.mier123.com/api/images/pl_icon_default_head14.png",
+"level": "9",
+"levelName": "少尉",
+"address": "",
+"replies": "4",
+"views": "16",
+"circleName": "陆军军团",
+"picList": [
+"http://image.mier123.com/forum.php?mod=attachment&aid=MTY5NDY4MXwyN2M3MDY4OHwxNDcxNTI3NzAwfDIyMDI0NHwyMTAxNTI4&noupdate=yes"
+],
+"picCount": "1",
+"newsAbstract": "米尔陆军2017年3月14日上榜名单陆军第一名上榜战友：奖励1军功1威望1魅力10银币。陆军上榜战友：各奖励1军功1威望10银币。陆军军团司令部2017年3月14日米尔陆军军团"
+},
+{
+"tid": "2186286",
+"groupid": "6",
+"fid": "681",
+"title": "米尔陆军2017年3月13日上榜名单",
+"publishTime": "1489416887",
+"timeAgo": "03-13 22:54",
+"authorId": "220244",
+"author": "米尔死神",
+"authorHead": "http://image.mier123.com/api/images/pl_icon_default_head14.png",
+"level": "9",
+"levelName": "少尉",
+"address": "",
+"replies": "6",
+"views": "33",
+"circleName": "陆军军团",
+"picList": [
+"http://image.mier123.com/forum.php?mod=attachment&aid=MTY5NDY4MXwyN2M3MDY4OHwxNDcxNTI3NzAwfDIyMDI0NHwyMTAxNTI4&noupdate=yes"
+],
+"picCount": "1",
+"newsAbstract": "米尔陆军2017年3月13日上榜名单陆军第一名上榜战友：奖励1军功1威望1魅力10银币。陆军上榜战友：各奖励1军功1威望10银币。陆军军团司令部2017年3月13日米尔陆军军团"
+},
+{
+"tid": "2185918",
+"groupid": "6",
+"fid": "681",
+"title": "米尔陆军2017年3月12日上榜名单",
+"publishTime": "1489323561",
+"timeAgo": "03-12 20:59",
+"authorId": "220244",
+"author": "米尔死神",
+"authorHead": "http://image.mier123.com/api/images/pl_icon_default_head14.png",
+"level": "9",
+"levelName": "少尉",
+"address": "",
+"replies": "7",
+"views": "45",
+"circleName": "陆军军团",
+"picList": [
+"http://image.mier123.com/forum.php?mod=attachment&aid=MTY5NDY4MXwyN2M3MDY4OHwxNDcxNTI3NzAwfDIyMDI0NHwyMTAxNTI4&noupdate=yes"
+],
+"picCount": "1",
+"newsAbstract": "米尔陆军2017年3月12日上榜名单陆军第一名上榜战友：奖励1军功1威望1魅力10银币。陆军上榜战友：各奖励1军功1威望10银币。陆军军团司令部2017年3月12日米尔陆军军团"
+},
+{
+"tid": "2185916",
+"groupid": "6",
+"fid": "681",
+"title": "热烈祝贺时事观注者同志晋升少尉军衔！",
+"publishTime": "1489323250",
+"timeAgo": "03-12 20:54",
+"authorId": "220244",
+"author": "米尔死神",
+"authorHead": "http://image.mier123.com/api/images/pl_icon_default_head14.png",
+"level": "9",
+"levelName": "少尉",
+"address": "",
+"replies": "11",
+"views": "82",
+"circleName": "陆军军团",
+"picList": [
+"http://image.mier123.com/data/attachment/forum/201703/12/205456y43do9zdhdppcls9.png"
+],
+"picCount": "1",
+"newsAbstract": "热烈祝贺时事观注者同志晋升少尉军衔！时事观注者：现任米尔陆军少尉军衔。该同志自从加入米尔陆军军团以来，工作训练勤勤恳恳，进步神速，军事过硬，能够团结同志，经过不懈努力终于凭借过硬本领晋升为少尉军衔，特发此贴表示祝贺！希望该同志继续发扬优良作"
+},
+{
+"tid": "2185514",
+"groupid": "6",
+"fid": "681",
+"title": "米尔陆军2017年3月11日上榜名单",
+"publishTime": "1489231837",
+"timeAgo": "03-11 19:30",
+"authorId": "257048",
+"author": "1217",
+"authorHead": "http://image.mier123.com/uc_server/data/avatar/000/25/70/48_avatar_small.jpg",
+"level": "10",
+"levelName": "中尉",
+"address": "",
+"replies": "6",
+"views": "53",
+"circleName": "陆军军团",
+"picList": [
+"http://image.mier123.com/forum.php?mod=attachment&aid=MTY5NDY4MXwyN2M3MDY4OHwxNDcxNTI3NzAwfDIyMDI0NHwyMTAxNTI4&noupdate=yes"
+],
+"picCount": "1",
+"newsAbstract": "米尔陆军2017年3月11日上榜名单陆军第一名上榜战友：奖励1军功1威望1魅力10银币。陆军上榜战友：各奖励1军功1威望10银币。陆军军团司令部2017年3月11日米尔陆军军团"
+},
+{
+"tid": "2185154",
+"groupid": "6",
+"fid": "681",
+"title": "米尔陆军2017年3月10日上榜名单",
+"publishTime": "1489151758",
+"timeAgo": "03-10 21:15",
+"authorId": "220244",
+"author": "米尔死神",
+"authorHead": "http://image.mier123.com/api/images/pl_icon_default_head14.png",
+"level": "9",
+"levelName": "少尉",
+"address": "",
+"replies": "3",
+"views": "27",
+"circleName": "陆军军团",
+"picList": [
+"http://image.mier123.com/forum.php?mod=attachment&aid=MTY5NDY4MXwyN2M3MDY4OHwxNDcxNTI3NzAwfDIyMDI0NHwyMTAxNTI4&noupdate=yes"
+],
+"picCount": "1",
+"newsAbstract": "米尔陆军2017年3月10日上榜名单陆军第一名上榜战友：奖励1军功1威望1魅力10银币。陆军上榜战友：各奖励1军功1威望10银币。陆军军团司令部2017年3月10日米尔陆军军团"
+},
+{
+"tid": "2184738",
+"groupid": "6",
+"fid": "681",
+"title": "米尔陆军2017年3月9日上榜名单",
+"publishTime": "1489068207",
+"timeAgo": "03-09 22:03",
+"authorId": "220244",
+"author": "米尔死神",
+"authorHead": "http://image.mier123.com/api/images/pl_icon_default_head14.png",
+"level": "9",
+"levelName": "少尉",
+"address": "",
+"replies": "7",
+"views": "73",
+"circleName": "陆军军团",
+"picList": [
+"http://image.mier123.com/forum.php?mod=attachment&aid=MTY5NDY4MXwyN2M3MDY4OHwxNDcxNTI3NzAwfDIyMDI0NHwyMTAxNTI4&noupdate=yes"
+],
+"picCount": "1",
+"newsAbstract": "米尔陆军2017年3月9日上榜名单陆军第一名上榜战友：奖励1军功1威望1魅力10银币。陆军上榜战友：各奖励1军功1威望10银币。陆军军团司令部2017年3月9日米尔陆军军团"
+},
+{
+"tid": "2184248",
+"groupid": "6",
+"fid": "681",
+"title": "米尔陆军2017年3月8日上榜名单",
+"publishTime": "1488973467",
+"timeAgo": "03-08 19:44",
+"authorId": "220244",
+"author": "米尔死神",
+"authorHead": "http://image.mier123.com/api/images/pl_icon_default_head14.png",
+"level": "9",
+"levelName": "少尉",
+"address": "",
+"replies": "6",
+"views": "76",
+"circleName": "陆军军团",
+"picList": [
+"http://image.mier123.com/forum.php?mod=attachment&aid=MTY5NDY4MXwyN2M3MDY4OHwxNDcxNTI3NzAwfDIyMDI0NHwyMTAxNTI4&noupdate=yes"
+],
+"picCount": "1",
+"newsAbstract": "米尔陆军2017年3月8日上榜名单陆军第一名上榜战友：奖励1军功1威望1魅力10银币。陆军上榜战友：各奖励1军功1威望10银币。陆军军团司令部2017年3月8日米尔陆军军团"
+}
+]
+}
+}

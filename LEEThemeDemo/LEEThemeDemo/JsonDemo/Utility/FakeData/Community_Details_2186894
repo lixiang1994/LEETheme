@@ -1,0 +1,41 @@
+{
+"error": 0,
+"code": 200,
+"code_desc": "请求成功",
+"msg": "帖子详情",
+"is_login": 0,
+"app_id": 1,
+"data": {
+"tid": "2186536",
+"fid": "671",
+"title": "灞桥春",
+"authorId": "1904190",
+"author": "拙愚",
+"publishTime": "1489479391",
+"url": "http://bbs.mier123.com/thread-2186536-1-1.html",
+"userImg": "http://wx.qlogo.cn/mmopen/Q3auHgzwzM60HpIhC2n62zuR8BWSSuh7kX6xVZGZO8mNDKvia7fKk3N9CzasjfIynIuffPAVdiaorKQbqRh429B1Xibsu0nibJMbN6BOtsGoGmk/0",
+"level": "12",
+"levelName": "少校",
+"commentSum": "43",
+"shareUrl": "http://bbs.mier123.com/forum.php?mod=viewthread&tid=2186536&extra=page%3D1&mobile=2",
+"shareUrl_wx": "http://bbs.mier123.com/forum.php?mod=viewthread&tid=2186536&extra=page%3D1&mobile=2",
+"imgArr": [],
+"isNewVersion": "true",
+"webContent": "灞柳柔柔弱纤纤\n盈盈小草天蓝蓝\n碧波荡漾春来早\n蓬莱仙境在长安\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/170314161621220b9ac2b111bbb255a42694df2c.jpg\" width=\"744\" height=\"992\" >\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/17031416f64550322dc2d6130482eddd3bde6421.jpg\" width=\"744\" height=\"992\" >\n",
+"shareImg": "http://image.mier123.com/data/attachment/forum/201703/14/170314161621220b9ac2b111bbb255a42694df2c.jpg",
+"circleInfo": {
+"fid": "671",
+"groupid": "5",
+"groupname": "兴趣战区",
+"threads": "46906",
+"name": "战友畅谈",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/zhanyouchangtan.png",
+"description": "畅所欲言，展现自我",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/zhanyouchangtan.jpg"
+},
+"follow": "0",
+"address": "未知",
+"laud": "17"
+}
+}

@@ -1,0 +1,197 @@
+{
+"error": 0,
+"code": 200,
+"code_desc": "请求成功",
+"msg": "板块列表",
+"is_login": 0,
+"app_id": 1,
+"data": [
+{
+"fid": "5",
+"groupid": "3",
+"groupname": "军事战区",
+"name": "军情观察",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/junqingguancha.png",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/junqingguancha.jpg",
+"description": "冷眼看世界，理性并包容的讨论",
+"threads": "21792"
+},
+{
+"fid": "12",
+"groupid": "3",
+"groupname": "军事战区",
+"name": "军事贴图",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/junshitietu.png",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/junshitietu.jpg",
+"description": "各种各样的古今中外军事图片",
+"threads": "2364"
+},
+{
+"fid": "683",
+"groupid": "3",
+"groupname": "军事战区",
+"name": "军迷谈兵",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/junmitanbing.png",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/junmitanbing.jpg",
+"description": "原创，交流，探讨",
+"threads": "8051"
+},
+{
+"fid": "759",
+"groupid": "3",
+"groupname": "军事战区",
+"name": "兵器装备",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/bingqizhuangbei.png",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/bingqizhuangbei.jpg",
+"description": "探讨天下神奇兵器",
+"threads": "768"
+},
+{
+"fid": "333",
+"groupid": "4",
+"groupname": "综合战区",
+"name": "中外历史",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/zhongwailishi.png",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/zhongwailishi.jpg",
+"description": "古今中外，以史为鉴",
+"threads": "11791"
+},
+{
+"fid": "700",
+"groupid": "4",
+"groupname": "综合战区",
+"name": "环球杂谈",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/huanqiuzatan.png",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/huanqiuzatan.jpg",
+"description": "大千世界，无奇不有",
+"threads": "23078"
+},
+{
+"fid": "35",
+"groupid": "4",
+"groupname": "综合战区",
+"name": "唯美贴图",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/weimeitietu.png",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/weimeitietu.jpg",
+"description": "各种美图共赏",
+"threads": "7173"
+},
+{
+"fid": "754",
+"groupid": "4",
+"groupname": "综合战区",
+"name": "开心一刻",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/kaixinyike.png",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/kaixinyike.jpg",
+"description": "搞笑贴图，轻松一刻",
+"threads": "3397"
+},
+{
+"fid": "671",
+"groupid": "5",
+"groupname": "兴趣战区",
+"name": "战友畅谈",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/zhanyouchangtan.png",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/zhanyouchangtan.jpg",
+"description": "畅所欲言，展现自我",
+"threads": "46380"
+},
+{
+"fid": "753",
+"groupid": "5",
+"groupname": "兴趣战区",
+"name": "摄影美食",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/sheyingmeishi.png",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/sheyingmeishi.jpg",
+"description": "光与影的艺术，舌尖上的中国",
+"threads": "7105"
+},
+{
+"fid": "762",
+"groupid": "5",
+"groupname": "兴趣战区",
+"name": "文学诗词",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/wenxueshici.png",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/wenxueshici.jpg",
+"description": "原创文学，炮火之下的温柔与豪情",
+"threads": "6348"
+},
+{
+"fid": "681",
+"groupid": "6",
+"groupname": "米尔军营",
+"name": "陆军军团",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/lujunjuntuan.png",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/lujunjuntuan.jpg",
+"description": "米尔陆军因为你的到来而精彩",
+"threads": "4371"
+},
+{
+"fid": "682",
+"groupid": "6",
+"groupname": "米尔军营",
+"name": "海军军团",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/haijunjuntuan.png",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/haijunjuntuan.jpg",
+"description": "来的都是兄弟，我们并肩战斗",
+"threads": "3073"
+},
+{
+"fid": "680",
+"groupid": "6",
+"groupname": "米尔军营",
+"name": "空军军团",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/kongjunjuntuan.png",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/kongjunjuntuan.jpg",
+"description": "蓝天在呼唤，米尔需要你",
+"threads": "2527"
+},
+{
+"fid": "696",
+"groupid": "7",
+"groupname": "米尔大本营",
+"name": "每日签到",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/meiriqiandao.png",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/meiriqiandao.jpg",
+"description": "快乐一天的开始",
+"threads": "2970"
+},
+{
+"fid": "706",
+"groupid": "7",
+"groupname": "米尔大本营",
+"name": "社区公告",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/shequgonggao.png",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/shequgonggao.jpg",
+"description": "官方公告",
+"threads": "942"
+},
+{
+"fid": "785",
+"groupid": "7",
+"groupname": "米尔大本营",
+"name": "用户反馈",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/yonghufankui.png",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/yonghufankui.jpg",
+"description": "欢迎反馈，一起改进米尔军事",
+"threads": "14"
+}
+]
+}

@@ -1,0 +1,243 @@
+{
+"error": 0,
+"code": 200,
+"code_desc": "请求成功",
+"msg": "帖子列表",
+"is_login": 0,
+"app_id": 1,
+"data": {
+"circleInfo": {
+"fid": "680",
+"groupid": "6",
+"groupname": "米尔军营",
+"threads": "2536",
+"name": "空军军团",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/kongjunjuntuan.png",
+"description": "蓝天在呼唤，米尔需要你",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/kongjunjuntuan.jpg"
+},
+"newsList": [
+{
+"tid": "2187036",
+"groupid": "6",
+"fid": "680",
+"title": "2017年3月15日空军军团发帖排行奖励榜",
+"publishTime": "1489583633",
+"timeAgo": "昨天 21:13",
+"authorId": "273296",
+"author": "心怀天下1",
+"authorHead": "http://image.mier123.com/uc_server/data/avatar/000/27/32/96_avatar_small.jpg",
+"level": "12",
+"levelName": "少校",
+"address": "",
+"replies": "3",
+"views": "6",
+"circleName": "空军军团",
+"picList": [
+"http://image.mier123.com/data/attachment/forum/201703/15/211331wr5igrhihkkjirbk.png"
+],
+"picCount": "1",
+"newsAbstract": "2017年3月15日空军军团发帖排行奖励榜为鼓励战友们积极发帖、回帖的热情，切实提高空军战友们在论坛活跃度，继续加强空军的战斗力，使论坛稳定繁荣发展。现对2017年3月15日发帖排行在前20名中的空军军团人员予以奖励。奖励标准如下：1、第一"
+},
+{
+"tid": "2186596",
+"groupid": "6",
+"fid": "680",
+"title": "2017年3月14日空军军团发帖排行奖励榜",
+"publishTime": "1489495441",
+"timeAgo": "前天 20:44",
+"authorId": "273296",
+"author": "心怀天下1",
+"authorHead": "http://image.mier123.com/uc_server/data/avatar/000/27/32/96_avatar_small.jpg",
+"level": "12",
+"levelName": "少校",
+"address": "",
+"replies": "2",
+"views": "7",
+"circleName": "空军军团",
+"picList": [
+"http://wx4.sinaimg.cn/mw690/9680dda9gy1fdmnnfwh2mj211h1oqjxp.jpg"
+],
+"picCount": "1",
+"newsAbstract": "2017年3月14日空军军团发帖排行奖励榜为鼓励战友们积极发帖、回帖的热情，切实提高空军战友们在论坛活跃度，继续加强空军的战斗力，使论坛稳定繁荣发展。现对2017年3月14日发帖排行在前20名中的空军军团人员予以奖励。奖励标准如下：1、第一"
+},
+{
+"tid": "2186262",
+"groupid": "6",
+"fid": "680",
+"title": "2017年3月13日空军军团发帖排行奖励榜",
+"publishTime": "1489409855",
+"timeAgo": "03-13 20:57",
+"authorId": "273296",
+"author": "心怀天下1",
+"authorHead": "http://image.mier123.com/uc_server/data/avatar/000/27/32/96_avatar_small.jpg",
+"level": "12",
+"levelName": "少校",
+"address": "",
+"replies": "6",
+"views": "28",
+"circleName": "空军军团",
+"picList": [
+"http://image.mier123.com/data/attachment/forum/201703/13/205731nylry9o9yhi9euqk.png"
+],
+"picCount": "1",
+"newsAbstract": "2017年3月13日空军军团发帖排行奖励榜为鼓励战友们积极发帖、回帖的热情，切实提高空军战友们在论坛活跃度，继续加强空军的战斗力，使论坛稳定繁荣发展。现对2017年3月13日发帖排行在前20名中的空军军团人员予以奖励。奖励标准如下：1、第一"
+},
+{
+"tid": "2185928",
+"groupid": "6",
+"fid": "680",
+"title": "2017年3月12日空军军团发帖排行奖励榜",
+"publishTime": "1489325070",
+"timeAgo": "03-12 21:24",
+"authorId": "273296",
+"author": "心怀天下1",
+"authorHead": "http://image.mier123.com/uc_server/data/avatar/000/27/32/96_avatar_small.jpg",
+"level": "12",
+"levelName": "少校",
+"address": "",
+"replies": "4",
+"views": "23",
+"circleName": "空军军团",
+"picList": [
+"http://image.mier123.com/data/attachment/forum/201703/12/212423iwcnuihuuxafnu6z.png"
+],
+"picCount": "1",
+"newsAbstract": "2017年3月12日空军军团发帖排行奖励榜为鼓励战友们积极发帖、回帖的热情，切实提高空军战友们在论坛活跃度，继续加强空军的战斗力，使论坛稳定繁荣发展。现对2017年3月12日发帖排行在前20名中的空军军团人员予以奖励。奖励标准如下：1、第一"
+},
+{
+"tid": "2185548",
+"groupid": "6",
+"fid": "680",
+"title": "2017年3月11日空军军团发帖排行奖励榜",
+"publishTime": "1489238188",
+"timeAgo": "03-11 21:16",
+"authorId": "273296",
+"author": "心怀天下1",
+"authorHead": "http://image.mier123.com/uc_server/data/avatar/000/27/32/96_avatar_small.jpg",
+"level": "12",
+"levelName": "少校",
+"address": "",
+"replies": "3",
+"views": "21",
+"circleName": "空军军团",
+"picList": [
+"http://image.mier123.com/data/attachment/forum/201703/11/211551sqppdycpy6pyz6xq.png"
+],
+"picCount": "1",
+"newsAbstract": "2017年3月11日空军军团发帖排行奖励榜为鼓励战友们积极发帖、回帖的热情，切实提高空军战友们在论坛活跃度，继续加强空军的战斗力，使论坛稳定繁荣发展。现对2017年3月11日发帖排行在前20名中的空军军团人员予以奖励。奖励标准如下：1、第一"
+},
+{
+"tid": "2185158",
+"groupid": "6",
+"fid": "680",
+"title": "2017年3月10日空军军团发帖排行奖励榜",
+"publishTime": "1489152025",
+"timeAgo": "03-10 21:20",
+"authorId": "273296",
+"author": "心怀天下1",
+"authorHead": "http://image.mier123.com/uc_server/data/avatar/000/27/32/96_avatar_small.jpg",
+"level": "12",
+"levelName": "少校",
+"address": "",
+"replies": "3",
+"views": "23",
+"circleName": "空军军团",
+"picList": [
+"http://image.mier123.com/data/attachment/forum/201703/10/211750o4bxdnumnd3bze4e.png"
+],
+"picCount": "1",
+"newsAbstract": "2017年3月10日空军军团发帖排行奖励榜为鼓励战友们积极发帖、回帖的热情，切实提高空军战友们在论坛活跃度，继续加强空军的战斗力，使论坛稳定繁荣发展。现对2017年3月10日发帖排行在前20名中的空军军团人员予以奖励。奖励标准如下：1、第一"
+},
+{
+"tid": "2184698",
+"groupid": "6",
+"fid": "680",
+"title": "2017年3月9日空军军团发帖排行奖励榜",
+"publishTime": "1489064601",
+"timeAgo": "03-09 21:03",
+"authorId": "273296",
+"author": "心怀天下1",
+"authorHead": "http://image.mier123.com/uc_server/data/avatar/000/27/32/96_avatar_small.jpg",
+"level": "12",
+"levelName": "少校",
+"address": "",
+"replies": "3",
+"views": "26",
+"circleName": "空军军团",
+"picList": [
+"http://image.mier123.com/data/attachment/forum/201703/09/210313qqmb2xqxkxdqsz9y.png"
+],
+"picCount": "1",
+"newsAbstract": "2017年3月9日空军军团发帖排行奖励榜为鼓励战友们积极发帖、回帖的热情，切实提高空军战友们在论坛活跃度，继续加强空军的战斗力，使论坛稳定繁荣发展。现对2017年3月9日发帖排行在前20名中的空军军团人员予以奖励。奖励标准如下：1、第一名奖"
+},
+{
+"tid": "2184298",
+"groupid": "6",
+"fid": "680",
+"title": "2017年3月8日空军军团发帖排行奖励榜",
+"publishTime": "1488978703",
+"timeAgo": "03-08 21:11",
+"authorId": "273296",
+"author": "心怀天下1",
+"authorHead": "http://image.mier123.com/uc_server/data/avatar/000/27/32/96_avatar_small.jpg",
+"level": "12",
+"levelName": "少校",
+"address": "",
+"replies": "3",
+"views": "32",
+"circleName": "空军军团",
+"picList": [
+"http://image.mier123.com/data/attachment/forum/201703/08/211039svyj2vrrj0nwg4wv.png"
+],
+"picCount": "1",
+"newsAbstract": "2017年3月8日空军军团发帖排行奖励榜为鼓励战友们积极发帖、回帖的热情，切实提高空军战友们在论坛活跃度，继续加强空军的战斗力，使论坛稳定繁荣发展。现对2017年3月8日发帖排行在前20名中的空军军团人员予以奖励。奖励标准如下：1、第一名奖"
+},
+{
+"tid": "2183928",
+"groupid": "6",
+"fid": "680",
+"title": "2017年3月7日空军军团发帖排行奖励榜",
+"publishTime": "1488892473",
+"timeAgo": "03-07 21:14",
+"authorId": "273296",
+"author": "心怀天下1",
+"authorHead": "http://image.mier123.com/uc_server/data/avatar/000/27/32/96_avatar_small.jpg",
+"level": "12",
+"levelName": "少校",
+"address": "",
+"replies": "7",
+"views": "78",
+"circleName": "空军军团",
+"picList": [
+"http://image.mier123.com/data/attachment/forum/201703/07/211521vbxrrigpgxbcc7fe.png"
+],
+"picCount": "1",
+"newsAbstract": "2017年3月7日空军军团发帖排行奖励榜为鼓励战友们积极发帖、回帖的热情，切实提高空军战友们在论坛活跃度，继续加强空军的战斗力，使论坛稳定繁荣发展。现对2017年3月7日发帖排行在前20名中的空军军团人员予以奖励。奖励标准如下：1、第一名奖"
+},
+{
+"tid": "2183552",
+"groupid": "6",
+"fid": "680",
+"title": "2017年3月6日空军军团发帖排行奖励榜",
+"publishTime": "1488806748",
+"timeAgo": "03-06 21:25",
+"authorId": "273296",
+"author": "心怀天下1",
+"authorHead": "http://image.mier123.com/uc_server/data/avatar/000/27/32/96_avatar_small.jpg",
+"level": "12",
+"levelName": "少校",
+"address": "",
+"replies": "4",
+"views": "46",
+"circleName": "空军军团",
+"picList": [
+"http://image.mier123.com/data/attachment/forum/201703/06/212530lhog0663384hk3h0.png"
+],
+"picCount": "1",
+"newsAbstract": "2017年3月6日空军军团发帖排行奖励榜为鼓励战友们积极发帖、回帖的热情，切实提高空军战友们在论坛活跃度，继续加强空军的战斗力，使论坛稳定繁荣发展。现对2017年3月6日发帖排行在前20名中的空军军团人员予以奖励。奖励标准如下：1、第一名奖"
+}
+]
+}
+}

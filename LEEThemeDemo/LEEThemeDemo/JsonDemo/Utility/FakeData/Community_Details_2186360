@@ -1,0 +1,41 @@
+{
+"error": 0,
+"code": 200,
+"code_desc": "请求成功",
+"msg": "帖子详情",
+"is_login": 0,
+"app_id": 1,
+"data": {
+"tid": "2186360",
+"fid": "700",
+"title": "改革开放前中国农村穷到什么程度",
+"authorId": "2316958",
+"author": "XWFD",
+"publishTime": "1489453673",
+"url": "http://bbs.mier123.com/thread-2186360-1-1.html",
+"userImg": "http://image.mier123.com/api/images/pl_icon_default_head16.png",
+"level": "3",
+"levelName": "中士",
+"commentSum": "443",
+"shareUrl": "http://bbs.mier123.com/forum.php?mod=viewthread&tid=2186360&extra=page%3D1&mobile=2",
+"shareUrl_wx": "http://bbs.mier123.com/forum.php?mod=viewthread&tid=2186360&extra=page%3D1&mobile=2",
+"imgArr": [],
+"isNewVersion": "true",
+"webContent": "<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/17031409f7f095160963b869e1a932609f803236.jpg\" width=\"720\" height=\"1123\" >\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/17031409c6a876a09c888bcf74ac1c6ded95e8c3.jpg\" width=\"719\" height=\"1118\" >\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/17031409911bf7a0f6f3915a07ddc80ce564d09a.jpg\" width=\"720\" height=\"1139\" >\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/17031409bfe4994ec046bb4ede945aa15dea87b8.jpg\" width=\"719\" height=\"1149\" >\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/170314091de7c42c7a86123ac851dc655127fdb1.jpg\" width=\"720\" height=\"1141\" >\n",
+"shareImg": "http://image.mier123.com/data/attachment/forum/201703/14/17031409f7f095160963b869e1a932609f803236.jpg",
+"circleInfo": {
+"fid": "700",
+"groupid": "4",
+"groupname": "综合战区",
+"threads": "23335",
+"name": "环球杂谈",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/huanqiuzatan.png",
+"description": "大千世界，无奇不有",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/huanqiuzatan.jpg"
+},
+"follow": "0",
+"address": "未知",
+"laud": "8"
+}
+}
