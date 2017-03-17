@@ -32,11 +32,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    // 初始化数据
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self initData];
+    
+    // 设置主题样式
+    
+    [self configTheme];
+}
+
+#pragma mark - 初始化数据
+
+- (void)initData{
     
     self.title = @"演示Demo";
     
@@ -50,7 +57,19 @@
     }
     
     [_dataArray addObject:@"新浪微博列表(来自YYKitDemo)"];
+}
+
+#pragma mark - 设置主题
+
+- (void)configTheme{
     
+    self.view.lee_theme
+    .LeeAddBackgroundColor(DAY , LEEColorRGB(255, 255, 255))
+    .LeeAddBackgroundColor(NIGHT , LEEColorRGB(55, 55, 55));
+    
+    self.tableView.lee_theme
+    .LeeAddSeparatorColor(DAY , LEEColorRGB(187, 187, 187))
+    .LeeAddSeparatorColor(NIGHT , LEEColorRGB(119, 119, 119));
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,7 +98,21 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
+    cell.lee_theme
+    .LeeAddBackgroundColor(DAY , LEEColorRGB(255, 255, 255))
+    .LeeAddBackgroundColor(NIGHT , LEEColorRGB(55, 55, 55));
+    
     cell.textLabel.text = self.dataArray[indexPath.row];
+    
+    cell.textLabel.lee_theme
+    .LeeAddTextColor(DAY , [UIColor blackColor])
+    .LeeAddTextColor(NIGHT , [UIColor whiteColor]);
+    
+    cell.selectedBackgroundView = [UIView new];
+    
+    cell.selectedBackgroundView.lee_theme
+    .LeeAddBackgroundColor(DAY , LEEColorRGB(221, 221, 221))
+    .LeeAddBackgroundColor(NIGHT , LEEColorRGB(85, 85, 85));
     
     return cell;
 }

@@ -33,9 +33,17 @@
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    button.frame = CGRectMake(0, 100, self.view.frame.size.width, 40.0f);
+    button.frame = CGRectMake(0, 100, 120, 40.0f);
+    
+    button.center = CGPointMake(self.view.frame.size.width * 0.5f, button.center.y);
     
     [button setTitle:@"切换主题" forState:UIControlStateNormal];
+    
+    [button.layer setBorderWidth:0.5f];
+    
+    [button.layer setBorderColor:[[UIColor grayColor] colorWithAlphaComponent:0.5f].CGColor];
+    
+    [button.layer setCornerRadius:5.0f];
     
     [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     
