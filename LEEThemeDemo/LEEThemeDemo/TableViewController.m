@@ -10,6 +10,8 @@
 
 #import "Mier_CommunityViewController.h"
 
+#import "WBStatusTimelineViewController.h"
+
 @interface TableViewController ()
 
 @property (nonatomic , strong ) NSMutableArray *dataArray;
@@ -17,6 +19,15 @@
 @end
 
 @implementation TableViewController
+
+- (void)viewDidAppear:(BOOL)animated{
+    
+    [super viewDidAppear:animated];
+    
+    // 显示UINavigationBar
+    
+    self.navigationController.navigationBar.hidden = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,14 +38,18 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    self.title = @"演示Demo";
+    
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     
     _dataArray = [NSMutableArray array];
     
     if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0f) {
         
-        [_dataArray addObject:@"米尔社区Demo"];
+        [_dataArray addObject:@"米尔社区Demo(来自米尔军事)"];
     }
+    
+    [_dataArray addObject:@"新浪微博列表(来自YYKitDemo)"];
     
 }
 
@@ -76,6 +91,17 @@
         case 0:
         {
             Mier_CommunityViewController *vc = [[Mier_CommunityViewController alloc] init];
+            
+            vc.hidesBottomBarWhenPushed = YES;
+            
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+            
+        case 1:
+        {
+            
+            WBStatusTimelineViewController *vc = [[WBStatusTimelineViewController alloc] init];
             
             vc.hidesBottomBarWhenPushed = YES;
             

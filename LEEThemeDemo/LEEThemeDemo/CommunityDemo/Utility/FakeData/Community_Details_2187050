@@ -1,0 +1,41 @@
+{
+"error": 0,
+"code": 200,
+"code_desc": "请求成功",
+"msg": "帖子详情",
+"is_login": 0,
+"app_id": 1,
+"data": {
+"tid": "2187050",
+"fid": "671",
+"title": "虎姐就是虎姐和凤凰涅槃没关系",
+"authorId": "2225834",
+"author": "虎姐",
+"publishTime": "1489585262",
+"url": "http://bbs.mier123.com/thread-2187050-1-1.html",
+"userImg": "http://image.mier123.com/uc_server/data/avatar/002/22/58/34_avatar_small.jpg",
+"level": "5",
+"levelName": "四级军士长",
+"commentSum": "153",
+"shareUrl": "http://bbs.mier123.com/forum.php?mod=viewthread&tid=2187050&extra=page%3D1&mobile=2",
+"shareUrl_wx": "http://bbs.mier123.com/forum.php?mod=viewthread&tid=2187050&extra=page%3D1&mobile=2",
+"imgArr": [],
+"isNewVersion": "true",
+"webContent": "最近大家把凤凰涅槃当虎姐了，我声明没关系！",
+"shareImg": "",
+"circleInfo": {
+"fid": "671",
+"groupid": "5",
+"groupname": "兴趣战区",
+"threads": "46928",
+"name": "战友畅谈",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/zhanyouchangtan.png",
+"description": "畅所欲言，展现自我",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/zhanyouchangtan.jpg"
+},
+"follow": "0",
+"address": "未知",
+"laud": "14"
+}
+}

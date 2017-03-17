@@ -1,0 +1,41 @@
+{
+"error": 0,
+"code": 200,
+"code_desc": "请求成功",
+"msg": "帖子详情",
+"is_login": 0,
+"app_id": 1,
+"data": {
+"tid": "2186320",
+"fid": "671",
+"title": "草书一前贤联求对",
+"authorId": "1489301",
+"author": "散淡人",
+"publishTime": "1489448079",
+"url": "http://bbs.mier123.com/thread-2186320-1-1.html",
+"userImg": "http://image.mier123.com/uc_server/data/avatar/001/48/93/01_avatar_small.jpg",
+"level": "13",
+"levelName": "中校",
+"commentSum": "134",
+"shareUrl": "http://bbs.mier123.com/forum.php?mod=viewthread&tid=2186320&extra=page%3D1&mobile=2",
+"shareUrl_wx": "http://bbs.mier123.com/forum.php?mod=viewthread&tid=2186320&extra=page%3D1&mobile=2",
+"imgArr": [],
+"isNewVersion": "true",
+"webContent": "乐事狂歌动月影==，，请入对！\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/17031407ef6b80a80576e3bc35a349d856a6209c.jpg\" width=\"209\" height=\"854\" >\n",
+"shareImg": "http://image.mier123.com/data/attachment/forum/201703/14/17031407ef6b80a80576e3bc35a349d856a6209c.jpg",
+"circleInfo": {
+"fid": "671",
+"groupid": "5",
+"groupname": "兴趣战区",
+"threads": "46928",
+"name": "战友畅谈",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/zhanyouchangtan.png",
+"description": "畅所欲言，展现自我",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/zhanyouchangtan.jpg"
+},
+"follow": "0",
+"address": "未知",
+"laud": "16"
+}
+}

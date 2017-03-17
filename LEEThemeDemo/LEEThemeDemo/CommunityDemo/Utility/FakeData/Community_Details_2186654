@@ -1,0 +1,41 @@
+{
+"error": 0,
+"code": 200,
+"code_desc": "请求成功",
+"msg": "帖子详情",
+"is_login": 0,
+"app_id": 1,
+"data": {
+"tid": "2186654",
+"fid": "671",
+"title": "沁园春~志士仁人祭",
+"authorId": "2208968",
+"author": "雅儒隐士?",
+"publishTime": "1489503276",
+"url": "http://bbs.mier123.com/thread-2186654-1-1.html",
+"userImg": "http://image.mier123.com/uc_server/data/avatar/002/20/89/68_avatar_small.jpg",
+"level": "4",
+"levelName": "上士",
+"commentSum": "150",
+"shareUrl": "http://bbs.mier123.com/forum.php?mod=viewthread&tid=2186654&extra=page%3D1&mobile=2",
+"shareUrl_wx": "http://bbs.mier123.com/forum.php?mod=viewthread&tid=2186654&extra=page%3D1&mobile=2",
+"imgArr": [],
+"isNewVersion": "true",
+"webContent": "上阕\n\n\n千古风流，罄墨丹书，泣血阙歌。\n\n是“成仁慷慨，乌江项羽，\n\n决死壮烈，易水荆轲。\n\n阵马风墙，穷追万里，\n\n岂可沽名纵孟婆。\n\n雄心在，硬弓食八斗，\n\n不老廉颇。\n\n\n下阕\n\n\n英雄醉卧蹉跎，问伍子昭关剩几多。\n\n效“武投冲邈，思唐李靖，\n\n文匡帷幄，追汉萧何。\n\n勋烈常昭，荩臣不死，\n\n慈母生儿为灭倭。\n\n凭壶口，笑沙浊万丈，\n\n与志成说。\n\n\n\n\n\n沁园春格律，\n\n又名《寿星明》。格局开张，宜抒壮阔豪迈情感。苏、辛一派最喜用之。一百十四字，前片四平韵，后片五平韵，亦有于过片处增一暗韵者。上片四五句和六七句，下片三四句和五六句需对仗\n\n【定格】\n中仄平平，仄仄平平，仄仄仄平。\n仄『中平中仄，中平中仄，中平中仄，中仄平平』。\n中仄平平，中平中仄，中仄平平中仄平。\n平平仄，仄中平中仄，中仄平平。\n\n平平中仄平平，仄中仄平平中仄平。\n仄『中平中仄，中平中仄，中平中仄，中仄平平』。\n中仄平平，中平中仄，中仄平平中仄平。\n平平仄，仄中平中仄，中仄平平。\n\n荩臣:指抗日英雄张自忠将军。\n\n冲邈:深远宏大。\n\n\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/1703142280c98a582efe664c95eedbf17fb92f61.jpg\" width=\"450\" height=\"253\" >\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/170314224781df42c7df8d6e423dfac280262280.jpg\" width=\"480\" height=\"480\" >\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/17031422e2d29b6c972c82c793629c895651ebb1.jpg\" width=\"352\" height=\"450\" >\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/170314227278bb0d759dbd102ced50cfe3d590f1.jpg\" width=\"480\" height=\"800\" >\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/170314220d5005fa0282b498bc821bf7779d2a82.jpg\" width=\"605\" height=\"375\" >\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/14/1703142203c5b5d4f55d2dc6a19f0c201a289bc4.jpg\" width=\"605\" height=\"375\" >\n",
+"shareImg": "http://image.mier123.com/data/attachment/forum/201703/14/1703142280c98a582efe664c95eedbf17fb92f61.jpg",
+"circleInfo": {
+"fid": "671",
+"groupid": "5",
+"groupname": "兴趣战区",
+"threads": "46928",
+"name": "战友畅谈",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/zhanyouchangtan.png",
+"description": "畅所欲言，展现自我",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/zhanyouchangtan.jpg"
+},
+"follow": "0",
+"address": "未知",
+"laud": "12"
+}
+}

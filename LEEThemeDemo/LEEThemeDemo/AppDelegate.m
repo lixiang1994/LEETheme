@@ -20,15 +20,13 @@
 
 @implementation AppDelegate
 
-
-#pragma mark ---获取document路径
+#pragma mark - 获取document路径
 
 - (NSString *)documentPath{
     
     NSArray *array = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
     return array.firstObject;
-    
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

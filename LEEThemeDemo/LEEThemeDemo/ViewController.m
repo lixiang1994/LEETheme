@@ -8,8 +8,6 @@
 
 #import "ViewController.h"
 
-#import "LEETheme.h"
-
 @interface ViewController ()
 
 @end
@@ -27,20 +25,48 @@
     //设置主题样式
     
     [self configTheme];
-     }
+}
 
 #pragma mark - 初始化子视图
 
 - (void)initSubviews{
     
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    button.frame = CGRectMake(0, 100, self.view.frame.size.width, 40.0f);
+    
+    [button setTitle:@"切换主题" forState:UIControlStateNormal];
+    
+    [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:button];
+    
+    button.lee_theme
+    .LeeAddButtonTitleColor(DAY , [UIColor blackColor] , UIControlStateNormal)
+    .LeeAddButtonTitleColor(NIGHT , [UIColor whiteColor] , UIControlStateNormal);
 }
 
 #pragma mark - 设置主题
 
 - (void)configTheme{
     
+    self.view.lee_theme
+    .LeeAddBackgroundColor(DAY , LEEColorRGB(255, 255, 255))
+    .LeeAddBackgroundColor(NIGHT , LEEColorRGB(55, 55, 55));
 }
 
+- (void)buttonAction:(UIButton *)sender{
+    
+    if ([[LEETheme currentThemeTag] isEqualToString:DAY]) {
+        
+        [LEETheme startTheme:NIGHT];
+        
+    } else {
+        
+        [LEETheme startTheme:DAY];
+    }
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

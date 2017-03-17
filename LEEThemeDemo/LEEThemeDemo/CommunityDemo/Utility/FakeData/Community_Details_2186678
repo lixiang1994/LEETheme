@@ -1,0 +1,41 @@
+{
+"error": 0,
+"code": 200,
+"code_desc": "请求成功",
+"msg": "帖子详情",
+"is_login": 0,
+"app_id": 1,
+"data": {
+"tid": "2186678",
+"fid": "671",
+"title": "三棵树二歪一正，求对？",
+"authorId": "2057468",
+"author": "淡泊",
+"publishTime": "1489528271",
+"url": "http://bbs.mier123.com/thread-2186678-1-1.html",
+"userImg": "http://q.qlogo.cn/qqapp/1103461621/CA076A8C38ED08C23EE085FA3D0F27B1/40",
+"level": "8",
+"levelName": "一级军士长",
+"commentSum": "165",
+"shareUrl": "http://bbs.mier123.com/forum.php?mod=viewthread&tid=2186678&extra=page%3D1&mobile=2",
+"shareUrl_wx": "http://bbs.mier123.com/forum.php?mod=viewthread&tid=2186678&extra=page%3D1&mobile=2",
+"imgArr": [],
+"isNewVersion": "true",
+"webContent": "\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/15/1703150542dcdf7f0afc92fa384d69cb5036580c.jpg\" width=\"296\" height=\"212\" >\n三棵树二歪一正，求对？\n——\n——\n树语：哈尔滨有个地名（三裸树）\n歪一说歪二，看着你长歪了啊，可惜！\n歪二说：以我（坐标）看，你才不正！\n……\n《绝对真理存在于相对真理之中》\n——（毛选）\n……\n如以任一歪树定坐标为正，其另一树必不正。（实际都是歪树）！\n……\n树三（直树）插话，实际我长的正，以真正长的（直）来说，你两树皆不正！\n……\n两歪树不服，齐心说：即便我们左歪又斜，但以我们坐标看，你才是不正！\n……\n《偏見此无知离真理更远》\n——（列宁文选）\n——————淡泊杂文——\n\n",
+"shareImg": "http://image.mier123.com/data/attachment/forum/201703/15/1703150542dcdf7f0afc92fa384d69cb5036580c.jpg",
+"circleInfo": {
+"fid": "671",
+"groupid": "5",
+"groupname": "兴趣战区",
+"threads": "46928",
+"name": "战友畅谈",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/zhanyouchangtan.png",
+"description": "畅所欲言，展现自我",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/zhanyouchangtan.jpg"
+},
+"follow": "0",
+"address": "未知",
+"laud": "10"
+}
+}

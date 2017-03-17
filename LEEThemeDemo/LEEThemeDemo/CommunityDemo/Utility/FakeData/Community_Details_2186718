@@ -1,0 +1,41 @@
+{
+"error": 0,
+"code": 200,
+"code_desc": "请求成功",
+"msg": "帖子详情",
+"is_login": 0,
+"app_id": 1,
+"data": {
+"tid": "2186718",
+"fid": "671",
+"title": "求对",
+"authorId": "2208968",
+"author": "雅儒隐士?",
+"publishTime": "1489536706",
+"url": "http://bbs.mier123.com/thread-2186718-1-1.html",
+"userImg": "http://image.mier123.com/uc_server/data/avatar/002/20/89/68_avatar_small.jpg",
+"level": "4",
+"levelName": "上士",
+"commentSum": "77",
+"shareUrl": "http://bbs.mier123.com/forum.php?mod=viewthread&tid=2186718&extra=page%3D1&mobile=2",
+"shareUrl_wx": "http://bbs.mier123.com/forum.php?mod=viewthread&tid=2186718&extra=page%3D1&mobile=2",
+"imgArr": [],
+"isNewVersion": "true",
+"webContent": "\n\n唯我禅心清似水，任它世事冷如冰\n\n\n\n\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/15/170315086af77a85b160592c7166051ca8a28950.jpg\" width=\"200\" height=\"200\" >\n\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/15/17031508b9af995c6cccade02550b8e8102a4b62.jpg\" width=\"392\" height=\"294\" >\n\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/15/17031508f34897c2629e7a9846866b8e36f2910b.jpg\" width=\"400\" height=\"300\" >\n\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/15/17031508b06cc61e1e39d422ed4636696edbc740.jpg\" width=\"895\" height=\"1118\" >\n\n<img class=\"image\" src=\"\" data-src=\"http://image.mier123.com/data/attachment/forum/201703/15/170315080655941c7d62860036f7f5b842721cf8.jpg\" width=\"485\" height=\"750\" >\n",
+"shareImg": "http://image.mier123.com/data/attachment/forum/201703/15/170315086af77a85b160592c7166051ca8a28950.jpg",
+"circleInfo": {
+"fid": "671",
+"groupid": "5",
+"groupname": "兴趣战区",
+"threads": "46928",
+"name": "战友畅谈",
+"attention": "0",
+"img": "http://image.mier123.com/api/images/quanzi/1109/zhanyouchangtan.png",
+"description": "畅所欲言，展现自我",
+"headimg": "http://image.mier123.com/api/images/quanzi/head/20161109/zhanyouchangtan.jpg"
+},
+"follow": "0",
+"address": "未知",
+"laud": "8"
+}
+}

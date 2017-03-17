@@ -1,0 +1,78 @@
+{
+    "color": {
+        
+            "common_font_color_1" : "#222222",
+            "common_font_color_2" : "#333333",
+            "common_font_color_3" : "#666666",
+            "common_font_color_4" : "#999999",
+            "common_font_color_5" : "#bbbbbb",
+            "common_font_color_6" : "#dddddd",
+            "common_font_color_7" : "#ffffff",
+            "common_font_color_8" : "#1676bd",
+            "common_font_color_9" : "#007dce",
+            "common_font_color_10" : "#c50000",
+            "common_font_color_11" : "#ff0000",
+            "common_font_color_12" : "#fe9a00",
+            "common_font_color_13" : "#f8c743",
+        
+            "common_bg_color_1" : "#000000",
+            "common_bg_color_2" : "#252525",
+            "common_bg_color_3" : "#d7d7d7",
+            "common_bg_color_4" : "#e8e8e8",
+            "common_bg_color_5" : "#f3f3f3",
+            "common_bg_color_6" : "#f8f8f8",
+            "common_bg_color_7" : "#fafafa",
+            "common_bg_color_8" : "#ffffff",
+            
+            "common_bg_blue_1" : "#68c2ff",
+            "common_bg_blue_2" : "#44b6ff",
+            "common_bg_blue_3" : "#008cea",
+            "common_bg_blue_4" : "#007dce",
+            "common_bg_blue_5" : "#1676bd",
+        
+            "common_bg_red_1" : "#c50000",
+            "common_bg_red_2" : "#ff0000",
+            "common_bg_yellow_1" : "#fe9a00",
+            "common_bg_yellow_2" : "#f8c743",
+            "common_bg_white_1" : "#ffffff",
+        
+            "common_black_transparent100" : "#ff000000",
+            "common_black_transparent90" : "#e6000000",
+            "common_black_transparent80" : "#cc000000",
+            "common_black_transparent70" : "#b3000000",
+            "common_black_transparent60" : "#99000000",
+            "common_black_transparent50" : "#80000000",
+            "common_black_transparent40" : "#66000000",
+            "common_black_transparent30" : "#4c000000",
+            "common_black_transparent20" : "#33000000",
+            "common_black_transparent10" : "#19000000",
+            "common_black_transparent0" : "#00000000",
+            
+            "common_nav_bg_color1" : "#007dce",
+            "common_nav_bg_color2" : "#ffffff",
+            "common_nav_bg_divider" : "#d7d7d7",
+        
+            "common_tab_bg_color" : "#fafafa",
+            "common_tab_bar_divider" : "#d7d7d7",
+        
+            "common_bar_divider1" : "#e8e8e8",
+            "common_bar_divider2" : "#d7d7d7",
+            "common_bar_divider3" : "#ffffff",
+        
+            },
+    
+    "image": {
+    
+        "newstoolbar_collection_btn_select_image" : "base_action_bar_back.png",
+        "newstoolbar_collection_btn_noselect_image" : "base_action_bar_back_shoucang.png",
+        "newstoolbar_share_btn_image" : "base_action_bar_back_zhuanfa_new.png",
+        "newstoolbar_comment_btn_image" : "pic_base_action_bar_back_comment.png",
+        "newstoolbar_report_btn_image" : "base_action_bar_report.png",
+        
+    },
+    
+    "other": {
+
+    }
+}
+
