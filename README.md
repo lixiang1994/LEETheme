@@ -1,8 +1,7 @@
 
 # LEETheme - 最好用的轻量级主题管理框架
 
-[![License GPL]](https://github.com/lixiang1994/LEETheme/blob/master/LICENSE)
-[License GPL](https://img.shields.io/aur/license/yaourt.svg?maxAge=2592000)&nbsp;
+[![](https://img.shields.io/aur/license/yaourt.svg?maxAge=2592000)](https://github.com/lixiang1994/LEETheme/blob/master/LICENSE)&nbsp;
 
 [![CocoaPods](http://img.shields.io/cocoapods/v/LEETheme.svg?style=flat)](http://cocoapods.org/?q= LEETheme)&nbsp;
 [![CocoaPods](http://img.shields.io/cocoapods/p/LEETheme.svg?style=flat)](http://cocoapods.org/?q= LEETheme)&nbsp;
