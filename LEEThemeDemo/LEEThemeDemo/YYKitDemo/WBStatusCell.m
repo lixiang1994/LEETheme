@@ -826,7 +826,7 @@
         
         imageView.lee_theme
         .LeeAddBackgroundColor(DAY , kWBCellHighlightColor)
-        .LeeAddBackgroundColor(DAY , kWBCellHighlightColor_Night);
+        .LeeAddBackgroundColor(NIGHT , kWBCellHighlightColor_Night);
         
         imageView.exclusiveTouch = YES;
         imageView.touchBlock = ^(YYControl *view, YYGestureRecognizerState state, NSSet *touches, UIEvent *event) {
