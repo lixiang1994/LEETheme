@@ -79,14 +79,6 @@
     .LeeAddBarTintColor(DAY , LEEColorRGB(255, 255, 255))
     .LeeAddBarTintColor(NIGHT , LEEColorRGB(85, 85, 85));
     
-    // 模拟沙盒图片
-    
-    UIImage *testImage = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"test" ofType:@"png"]];
-    
-    NSData *imageData = UIImagePNGRepresentation(testImage);
-    
-    [imageData writeToFile:[[self documentPath] stringByAppendingPathComponent:@"test.png"] atomically:YES];
-    
     return YES;
 }
 
