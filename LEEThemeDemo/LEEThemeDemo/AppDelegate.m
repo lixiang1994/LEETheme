@@ -44,7 +44,7 @@
     
     [self.window makeKeyAndVisible];
     
-    UITabBarController *tabBarController = [[UITabBarController alloc]init];
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
     
     ViewController *systemVC = [[ViewController alloc] init];
     
@@ -54,13 +54,30 @@
     
     UINavigationController *tableNC = [[UINavigationController alloc] initWithRootViewController:[[TableViewController alloc] init]];
     
-    tableNC.navigationBar.lee_theme.LeeConfigTintColor(@"ident1");
-    
     tableNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"列表" image:[UIImage imageNamed:@""] tag:1];
     
     [tabBarController addChildViewController:tableNC];
     
     self.window.rootViewController = tabBarController;
+    
+    // 设置主题
+    
+    tableNC.navigationBar.lee_theme
+    .LeeAddBarTintColor(DAY , LEEColorRGB(255, 255, 255))
+    .LeeAddBarTintColor(NIGHT , LEEColorRGB(85, 85, 85))
+    .LeeAddCustomConfig(DAY , ^(UINavigationBar *item){
+        
+        item.barStyle = UIBarStyleDefault;
+    })
+    .LeeAddCustomConfig(NIGHT , ^(UINavigationBar *item){
+        
+        item.barStyle = UIBarStyleBlack;
+    });
+    
+    
+    tabBarController.tabBar.lee_theme
+    .LeeAddBarTintColor(DAY , LEEColorRGB(255, 255, 255))
+    .LeeAddBarTintColor(NIGHT , LEEColorRGB(85, 85, 85));
     
     // 模拟沙盒图片
     
