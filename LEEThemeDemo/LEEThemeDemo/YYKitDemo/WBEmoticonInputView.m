@@ -279,7 +279,7 @@
 - (instancetype)init {
     self = [super init];
     self.frame = CGRectMake(0, 0, kScreenWidth, kViewHeight);
-    self.backgroundColor = UIColorHex(f9f9f9);
+//    self.backgroundColor = UIColorHex(f9f9f9);
     [self _initGroups];
     [self _initTopLine];
     [self _initCollectionView];
@@ -287,6 +287,12 @@
     
     _currentPageIndex = NSNotFound;
     [self _toolbarBtnDidTapped:_toolbarButtons.firstObject];
+    
+    // 设置主题
+    
+    self.lee_theme
+    .LeeAddBackgroundColor(DAY , UIColorHex(F9F9F9))
+    .LeeAddBackgroundColor(NIGHT , UIColorHex(444444));
     
     return self;
 }
@@ -318,9 +324,15 @@
     UIView *line = [UIView new];
     line.width = self.width;
     line.height = CGFloatFromPixel(1);
-    line.backgroundColor = UIColorHex(bfbfbf);
+//    line.backgroundColor = UIColorHex(bfbfbf);
     line.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self addSubview:line];
+    
+    // 设置主题
+    
+    line.lee_theme
+    .LeeAddBackgroundColor(DAY , UIColorHex(bfbfbf))
+    .LeeAddBackgroundColor(NIGHT , UIColorHex(808080));
 }
 
 - (void)_initCollectionView {

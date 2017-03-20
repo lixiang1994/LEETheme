@@ -14,8 +14,19 @@
 - (instancetype)init {
     self = [super init];
     _font = [UIFont systemFontOfSize:17];
-    _textColor = [UIColor colorWithWhite:0.2 alpha:1];
+    _textColor = UIColorHex(333333);
     _highlightTextColor = UIColorHex(527ead);
+    
+    self.lee_theme
+    .LeeAddCustomConfig(DAY , ^(WBStatusComposeTextParser *item){
+        
+        item.textColor = UIColorHex(333333);
+    })
+    .LeeAddCustomConfig(NIGHT , ^(WBStatusComposeTextParser *item){
+        
+        item.textColor = UIColorHex(777777);
+    });
+    
     return self;
 }
 

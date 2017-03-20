@@ -46,7 +46,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+//    self.view.backgroundColor = [UIColor whiteColor];
+    
+    // 设置主题
+    
+    self.view.lee_theme
+    .LeeAddBackgroundColor(DAY , [UIColor whiteColor])
+    .LeeAddBackgroundColor(NIGHT , UIColorHex(333333));
+    
     if ([self respondsToSelector:@selector( setAutomaticallyAdjustsScrollViewInsets:)]) {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
@@ -121,18 +128,42 @@
         _textView.placeholderAttributedText = atr;
     }
     
+    _textView.lee_theme
+    .LeeAddCustomConfig(DAY , ^(YYTextView *item){
+        
+        item.keyboardAppearance = UIKeyboardAppearanceDefault;
+    })
+    .LeeAddCustomConfig(NIGHT , ^(YYTextView *item){
+        
+        item.keyboardAppearance = UIKeyboardAppearanceDark;
+    });
+    
     [self.view addSubview:_textView];
 }
 
 - (void)_initToolbar {
     if (_toolbar) return;
     _toolbar = [UIView new];
-    _toolbar.backgroundColor = [UIColor whiteColor];
+//    _toolbar.backgroundColor = [UIColor whiteColor];
+    
+    // 设置主题
+    
+    _toolbar.lee_theme
+    .LeeAddBackgroundColor(DAY , [UIColor whiteColor])
+    .LeeAddBackgroundColor(NIGHT , UIColorHex(747474));
+    
     _toolbar.size = CGSizeMake(self.view.width, kToolbarHeight);
     _toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
     _toolbarBackground = [UIView new];
-    _toolbarBackground.backgroundColor = UIColorHex(F9F9F9);
+//    _toolbarBackground.backgroundColor = UIColorHex(F9F9F9);
+    
+    // 设置主题
+    
+    _toolbarBackground.lee_theme
+    .LeeAddBackgroundColor(DAY , UIColorHex(F9F9F9))
+    .LeeAddBackgroundColor(NIGHT , UIColorHex(444444));
+    
     _toolbarBackground.size = CGSizeMake(_toolbar.width, 46);
     _toolbarBackground.bottom = _toolbar.height;
     _toolbarBackground.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
@@ -141,7 +172,14 @@
     _toolbarBackground.height = 300; // extend
     
     UIView *line = [UIView new];
-    line.backgroundColor = UIColorHex(BFBFBF);
+//    line.backgroundColor = UIColorHex(BFBFBF);
+    
+    // 设置主题
+    
+    line.lee_theme
+    .LeeAddBackgroundColor(DAY , UIColorHex(BFBFBF))
+    .LeeAddBackgroundColor(NIGHT , UIColorHex(999999));
+    
     line.width = _toolbarBackground.width;
     line.height = CGFloatFromPixel(1);
     line.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -153,16 +191,32 @@
     _toolbarPOIButton.left = 5;
     _toolbarPOIButton.clipsToBounds = YES;
     _toolbarPOIButton.layer.cornerRadius = _toolbarPOIButton.height / 2;
-    _toolbarPOIButton.layer.borderColor = UIColorHex(e4e4e4).CGColor;
+//    _toolbarPOIButton.layer.borderColor = UIColorHex(e4e4e4).CGColor;
     _toolbarPOIButton.layer.borderWidth = CGFloatFromPixel(1);
     _toolbarPOIButton.titleLabel.font = [UIFont systemFontOfSize:14];
     _toolbarPOIButton.adjustsImageWhenHighlighted = NO;
     [_toolbarPOIButton setTitle:@"显示位置 " forState:UIControlStateNormal];
-    [_toolbarPOIButton setTitleColor:UIColorHex(939393) forState:UIControlStateNormal];
-    [_toolbarPOIButton setImage:[WBStatusHelper imageNamed:@"compose_locatebutton_ready"] forState:UIControlStateNormal];
-    [_toolbarPOIButton setBackgroundImage:[UIImage imageWithColor:UIColorHex(f8f8f8)] forState:UIControlStateNormal];
-    [_toolbarPOIButton setBackgroundImage:[UIImage imageWithColor:UIColorHex(e0e0e0)] forState:UIControlStateHighlighted];
+//    [_toolbarPOIButton setTitleColor:UIColorHex(939393) forState:UIControlStateNormal];
+    [_toolbarPOIButton setImage:[[WBStatusHelper imageNamed:@"compose_locatebutton_ready"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+//    [_toolbarPOIButton setBackgroundImage:[UIImage imageWithColor:UIColorHex(f8f8f8)] forState:UIControlStateNormal];
+//    [_toolbarPOIButton setBackgroundImage:[UIImage imageWithColor:UIColorHex(e0e0e0)] forState:UIControlStateHighlighted];
     [_toolbar addSubview:_toolbarPOIButton];
+    
+    // 设置主题
+    
+    _toolbarPOIButton.layer.lee_theme
+    .LeeAddBorderColor(DAY , UIColorHex(e4e4e4))
+    .LeeAddBorderColor(NIGHT , UIColorHex(666666));
+    
+    _toolbarPOIButton.lee_theme
+    .LeeAddTintColor(DAY , UIColorHex(939393))
+    .LeeAddTintColor(NIGHT , UIColorHex(444444))
+    .LeeAddButtonTitleColor(DAY , UIColorHex(939393) , UIControlStateNormal)
+    .LeeAddButtonTitleColor(NIGHT , UIColorHex(444444) , UIControlStateNormal)
+    .LeeAddButtonBackgroundImage(DAY , [UIImage imageWithColor:UIColorHex(f8f8f8)] , UIControlStateNormal)
+    .LeeAddButtonBackgroundImage(NIGHT , [UIImage imageWithColor:UIColorHex(707070)] , UIControlStateNormal)
+    .LeeAddButtonBackgroundImage(DAY , [UIImage imageWithColor:UIColorHex(e0e0e0)] , UIControlStateHighlighted)
+    .LeeAddButtonBackgroundImage(NIGHT , [UIImage imageWithColor:UIColorHex(666666)] , UIControlStateHighlighted);
     
     _toolbarGroupButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _toolbarGroupButton.size = CGSizeMake(62, 26);
@@ -171,16 +225,32 @@
     _toolbarGroupButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
     _toolbarGroupButton.clipsToBounds = YES;
     _toolbarGroupButton.layer.cornerRadius = _toolbarGroupButton.height / 2;
-    _toolbarGroupButton.layer.borderColor = UIColorHex(e4e4e4).CGColor;
+//    _toolbarGroupButton.layer.borderColor = UIColorHex(e4e4e4).CGColor;
     _toolbarGroupButton.layer.borderWidth = CGFloatFromPixel(1);
     _toolbarGroupButton.titleLabel.font = [UIFont systemFontOfSize:14];
     _toolbarGroupButton.adjustsImageWhenHighlighted = NO;
     [_toolbarGroupButton setTitle:@"公开 " forState:UIControlStateNormal];
-    [_toolbarGroupButton setTitleColor:UIColorHex(527ead) forState:UIControlStateNormal];
-    [_toolbarGroupButton setImage:[WBStatusHelper imageNamed:@"compose_publicbutton"] forState:UIControlStateNormal];
-    [_toolbarGroupButton setBackgroundImage:[UIImage imageWithColor:UIColorHex(f8f8f8)] forState:UIControlStateNormal];
-    [_toolbarGroupButton setBackgroundImage:[UIImage imageWithColor:UIColorHex(e0e0e0)] forState:UIControlStateHighlighted];
+//    [_toolbarGroupButton setTitleColor:UIColorHex(527ead) forState:UIControlStateNormal];
+    [_toolbarGroupButton setImage:[[WBStatusHelper imageNamed:@"compose_publicbutton"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+//    [_toolbarGroupButton setBackgroundImage:[UIImage imageWithColor:UIColorHex(f8f8f8)] forState:UIControlStateNormal];
+//    [_toolbarGroupButton setBackgroundImage:[UIImage imageWithColor:UIColorHex(e0e0e0)] forState:UIControlStateHighlighted];
     [_toolbar addSubview:_toolbarGroupButton];
+    
+    // 设置主题
+    
+    _toolbarGroupButton.layer.lee_theme
+    .LeeAddBorderColor(DAY , UIColorHex(e4e4e4))
+    .LeeAddBorderColor(NIGHT , UIColorHex(666666));
+    
+    _toolbarGroupButton.lee_theme
+    .LeeAddTintColor(DAY , UIColorHex(527ead))
+    .LeeAddTintColor(NIGHT , UIColorHex(444444))
+    .LeeAddButtonTitleColor(DAY , UIColorHex(527ead) , UIControlStateNormal)
+    .LeeAddButtonTitleColor(NIGHT , UIColorHex(444444) , UIControlStateNormal)
+    .LeeAddButtonBackgroundImage(DAY , [UIImage imageWithColor:UIColorHex(f8f8f8)] , UIControlStateNormal)
+    .LeeAddButtonBackgroundImage(NIGHT , [UIImage imageWithColor:UIColorHex(707070)] , UIControlStateNormal)
+    .LeeAddButtonBackgroundImage(DAY , [UIImage imageWithColor:UIColorHex(e0e0e0)] , UIControlStateHighlighted)
+    .LeeAddButtonBackgroundImage(NIGHT , [UIImage imageWithColor:UIColorHex(666666)] , UIControlStateHighlighted);
     
     _toolbarPictureButton = [self _toolbarButtonWithImage:@"compose_toolbar_picture"
                                                 highlight:@"compose_toolbar_picture_highlighted"];
