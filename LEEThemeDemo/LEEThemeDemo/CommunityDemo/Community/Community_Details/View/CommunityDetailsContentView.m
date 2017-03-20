@@ -80,27 +80,27 @@
     
     if (self) {
         
-        //添加通知
+        // 设置通知
         
-        [self addNotification];
+        [self configNotification];
         
-        //初始化数据
+        // 初始化数据
         
         [self initData];
         
-        //初始化子视图
+        // 初始化子视图
         
         [self initSubview];
         
-        //设置自动布局
+        // 设置自动布局
         
         [self configAutoLayout];
         
-        //设置主题模式
+        // 设置主题模式
         
         [self configTheme];
         
-        //设置Block
+        // 设置Block
         
         [self configBlock];
     }
@@ -108,11 +108,34 @@
     return self;
 }
 
-#pragma mark - 添加通知
+#pragma mark - 设置通知
 
-- (void)addNotification{
+- (void)configNotification{
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willEnterForegroundNotification:) name:UIApplicationWillEnterForegroundNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeFontSizeNotify:) name:NOTIFICATION_FONTSIZE object:nil];
+}
+
+#pragma mark - 改变字体通知
+
+- (void)changeFontSizeNotify:(NSNotification *)notify{
+    
+    NSInteger fontSize = [FontSizeManager textFontSizeForWebContent:16.0f + [SetManager shareManager].fontSizeLevel * 2];
+    
+    NSString *js = [NSString stringWithFormat:@"configFontSize('%ld')" , fontSize];
+    
+    // 设置字体大小
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [self.webView evaluateJavaScript:js completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+        
+        // 更新webview高度
+        
+        if (weakSelf) [weakSelf updateWebViewHeight];
+    }];
+    
 }
 
 #pragma mark - 从后台回到前台

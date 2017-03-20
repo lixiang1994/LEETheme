@@ -564,7 +564,7 @@
     
     __weak typeof(self) weakSelf = self;
     
-    AllShareView *shareView = [[AllShareView alloc] initWithFrame:CGRectMake(0, 0, self.view.width , 0) ShowMore:NO];
+    AllShareView *shareView = [[AllShareView alloc] initWithFrame:CGRectMake(0, 0, self.view.width , 0) ShowMore:YES];
     
     shareView.OpenShareBlock = ^(ShareType type){
         
@@ -601,6 +601,33 @@
                 
             }];
             
+        }
+        
+    };
+    
+    shareView.OpenMoreBlock = ^(MoreType type){
+      
+        switch (type) {
+            
+            case MoreTypeToTheme:
+            {
+                
+                // 切换主题
+                
+                if ([[LEETheme currentThemeTag] isEqualToString:DAY]) {
+                    
+                    [LEETheme startTheme:NIGHT];
+                    
+                } else {
+                    
+                    [LEETheme startTheme:DAY];
+                }
+                
+            }
+                break;
+                
+            default:
+                break;
         }
         
     };

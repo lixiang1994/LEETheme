@@ -14,11 +14,19 @@
 - (void)setTweet:(T1Tweet *)tweet {
     if (_tweet != tweet) {
         _tweet = tweet;
-        [self layout];
+        
+        self.lee_theme
+        .LeeAddCustomConfigs(@[DAY , NIGHT] , ^(T1StatusLayout *item){
+            
+            [item layout];
+        });
     }
 }
 
 - (void)layout {
+    
+    BOOL isDay = [[LEETheme currentThemeTag] isEqualToString:DAY];
+    
     [self reset];
     if (!_tweet) {
         if (_conversation) {
@@ -66,7 +74,9 @@
         [dateText insertAttributedString:icon atIndex:0];
     }
     dateText.font = nameSubFont;
-    dateText.color = kT1UserNameSubColor;
+//    dateText.color = kT1UserNameSubColor;
+    // 设置主题
+    dateText.color = isDay ? kT1UserNameSubColor : kT1UserNameSubColor_Night;
     dateText.alignment = NSTextAlignmentRight;
     
     _dateTextLayout = [YYTextLayout layoutWithContainerSize:CGSizeMake(kT1ContentWidth, kT1UserNameSubFontSize * 2) text:dateText];
@@ -75,12 +85,16 @@
     UIFont *nameFont = [UIFont systemFontOfSize:kT1UserNameFontSize];
     NSMutableAttributedString *nameText = [[NSMutableAttributedString alloc] initWithString:(tweet.user.name ? tweet.user.name : @"")];
     nameText.font = nameFont;
-    nameText.color = kT1UserNameColor;
+//    nameText.color = kT1UserNameColor;
+    // 设置主题
+    nameText.color = isDay ? kT1UserNameColor : kT1UserNameColor_Night;
     if (tweet.user.screenName) {
         NSMutableAttributedString *screenNameText = [[NSMutableAttributedString alloc] initWithString:tweet.user.screenName];
         [screenNameText insertString:@" @" atIndex:0];
         screenNameText.font = nameSubFont;
-        screenNameText.color = kT1UserNameSubColor;
+//        screenNameText.color = kT1UserNameSubColor;
+        // 设置主题
+        screenNameText.color = isDay ? kT1UserNameColor : kT1UserNameColor_Night;
         [nameText appendAttributedString:screenNameText];
     }
     nameText.lineBreakMode = NSLineBreakByCharWrapping;
@@ -102,7 +116,9 @@
     if (socialString) {
         NSMutableAttributedString *socialText = [[NSMutableAttributedString alloc] initWithString:socialString];
         socialText.font = nameSubFont;
-        socialText.color = kT1UserNameSubColor;
+//        socialText.color = kT1UserNameSubColor;
+        // 设置主题
+        socialText.color = isDay ? kT1UserNameSubColor : kT1UserNameSubColor_Night;
         socialText.lineBreakMode = NSLineBreakByCharWrapping;
         YYTextContainer *socialContainer = [YYTextContainer containerWithSize:CGSizeMake(kT1ContentWidth, kT1UserNameFontSize * 2)];
         socialContainer.maximumNumberOfRows = 1;
@@ -152,12 +168,18 @@
         T1Tweet *quote = _tweet.quotedStatus;
         NSMutableAttributedString *nameText = [[NSMutableAttributedString alloc] initWithString:(quote.user.name ? quote.user.name : @"")];
         nameText.font = nameFont;
-        nameText.color = kT1UserNameColor;
+//        nameText.color = kT1UserNameColor;
+        // 设置主题
+        nameText.color = isDay ? kT1UserNameColor : kT1UserNameColor_Night;
+      
         if (quote.user.screenName) {
             NSMutableAttributedString *screenNameText = [[NSMutableAttributedString alloc] initWithString:quote.user.screenName];
             [screenNameText insertString:@" @" atIndex:0];
             screenNameText.font = nameSubFont;
-            screenNameText.color = kT1UserNameSubColor;
+//            screenNameText.color = kT1UserNameSubColor;
+            // 设置主题
+            screenNameText.color = isDay ? kT1UserNameSubColor : kT1UserNameSubColor_Night;
+            
             [nameText appendAttributedString:screenNameText];
         }
         nameText.lineBreakMode = NSLineBreakByCharWrapping;
@@ -231,9 +253,14 @@
 
 - (NSAttributedString *)textForTweet:(T1Tweet *)tweet{
     if (tweet.text.length == 0) return nil;
+    
+    BOOL isDay = [[LEETheme currentThemeTag] isEqualToString:DAY];
+    
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:tweet.text];
     text.font = [UIFont systemFontOfSize:kT1TextFontSize];
-    text.color = kT1TextColor;
+//    text.color = kT1TextColor;
+    
+    text.color = isDay ? kT1TextColor : kT1TextColor_Night;
     
     for (T1URL *url in tweet.urls) {
         if (url.ranges) {
@@ -292,10 +319,15 @@
     if (range.location >= text.length) return;
     if (range.location + range.length > text.length) return;
     
+    // 设置主题
+    
+    BOOL isDay = [[LEETheme currentThemeTag] isEqualToString:DAY];
+    
     YYTextBorder *border = [YYTextBorder new];
     border.cornerRadius = 3;
     border.insets = UIEdgeInsetsMake(-2, -2, -2, -2);
-    border.fillColor = kT1TextHighlightedBackgroundColor;
+//    border.fillColor = kT1TextHighlightedBackgroundColor;
+    border.fillColor = isDay ? kT1TextHighlightedBackgroundColor : kT1TextHighlightedBackgroundColor_Night;
     
     YYTextHighlight *highlight = [YYTextHighlight new];
     [highlight setBackgroundBorder:border];

@@ -38,6 +38,18 @@
 #define kT1TextActionRetweetColor UIColorHex(19CF86)
 #define kT1TextActionFavoriteColor UIColorHex(FAB81E)
 
+// 扩展 夜间
+
+#define kT1UserNameColor_Night UIColorHex(646464)
+#define kT1UserNameSubColor_Night UIColorHex(8899A6)
+#define kT1CellBGHighlightColor_Night [UIColor colorWithWhite:0.000 alpha:0.141]
+#define kT1TextColor_Night UIColorHex(646464)
+#define kT1TextHighlightedColor_Night UIColorHex(1A91DA)
+#define kT1TextActionsColor_Night UIColorHex(8899A6)
+#define kT1TextHighlightedBackgroundColor_Night UIColorHex(242424)
+
+#define kT1TextActionRetweetColor_Night UIColorHex(009966)
+#define kT1TextActionFavoriteColor_Night UIColorHex(FAB81E)
 
 @interface T1StatusLayout : NSObject
 

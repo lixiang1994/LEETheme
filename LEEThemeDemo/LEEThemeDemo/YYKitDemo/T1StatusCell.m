@@ -18,19 +18,35 @@
     self.width = kT1ContentWidth;
     self.clipsToBounds = YES;
     self.layer.cornerRadius = kCornerRaadius;
-    self.layer.borderColor = [UIColor colorWithWhite:0.865 alpha:1.000].CGColor;
+//    self.layer.borderColor = [UIColor colorWithWhite:0.865 alpha:1.000].CGColor;
     self.layer.borderWidth = CGFloatFromPixel(1);
+    
+    // 设置主题
+    
+    self.layer.lee_theme
+    .LeeAddBorderColor(DAY , [UIColor colorWithWhite:0.865 alpha:1.000])
+    .LeeAddBorderColor(NIGHT , UIColorHex(444444));
     
     NSMutableArray *imageViews = [NSMutableArray new];
     for (int i = 0; i < 4; i++) {
         UIImageView *imageView = [UIImageView new];
-        imageView.backgroundColor = [UIColor colorWithWhite:0.958 alpha:1.000];
+//        imageView.backgroundColor = [UIColor colorWithWhite:0.958 alpha:1.000];
         imageView.clipsToBounds = YES;
         imageView.contentMode = UIViewContentModeScaleAspectFill;
-        imageView.layer.borderColor = self.layer.borderColor;
+//        imageView.layer.borderColor = self.layer.borderColor;
         imageView.layer.borderWidth = self.layer.borderWidth;
         [self addSubview:imageView];
         [imageViews addObject:imageView];
+        
+        // 设置主题
+        
+        imageView.layer.lee_theme
+        .LeeAddBorderColor(DAY , [UIColor colorWithWhite:0.865 alpha:1.000])
+        .LeeAddBorderColor(NIGHT , UIColorHex(444444));
+        
+        imageView.lee_theme
+        .LeeAddBackgroundColor(DAY , [UIColor colorWithWhite:0.958 alpha:1.000])
+        .LeeAddBackgroundColor(NIGHT , UIColorHex(222222));
     }
     _imageViews = imageViews;
     
@@ -480,7 +496,14 @@
 - (instancetype)init {
     self = [super init];
     self.width = kScreenWidth;
-    self.backgroundColor = [UIColor whiteColor];
+//    self.backgroundColor = [UIColor whiteColor];
+    
+    // 设置主题
+    
+    self.lee_theme
+    .LeeAddBackgroundColor(DAY , [UIColor whiteColor])
+    .LeeAddBackgroundColor(NIGHT , UIColorHex(333333));
+    
     self.exclusiveTouch = YES;
     self.clipsToBounds = YES;
     
@@ -508,14 +531,24 @@
     _avatarView.clipsToBounds = YES;
     _avatarView.layer.cornerRadius = 4;
     _avatarView.layer.borderWidth = CGFloatFromPixel(1);
-    _avatarView.layer.borderColor = [UIColor colorWithWhite:0.000 alpha:0.118].CGColor;
-    _avatarView.backgroundColor = [UIColor colorWithWhite:0.908 alpha:1.000];
+//    _avatarView.layer.borderColor = [UIColor colorWithWhite:0.000 alpha:0.118].CGColor;
+//    _avatarView.backgroundColor = [UIColor colorWithWhite:0.908 alpha:1.000];
     _avatarView.contentMode = UIViewContentModeScaleAspectFill;
     _avatarView.left = kT1CellPadding;
     _avatarView.size = CGSizeMake(kT1AvatarSize, kT1AvatarSize);
     _avatarView.exclusiveTouch = YES;
     
     [self addSubview:_avatarView];
+    
+    // 设置主题
+    
+    _avatarView.layer.lee_theme
+    .LeeAddBorderColor(DAY , [UIColor colorWithWhite:0.000 alpha:0.118])
+    .LeeAddBorderColor(NIGHT , UIColorHex(444444));
+    
+    _avatarView.lee_theme
+    .LeeAddBackgroundColor(DAY , [UIColor colorWithWhite:0.908 alpha:1.000])
+    .LeeAddBackgroundColor(NIGHT , UIColorHex(222222));
     
     _conversationTopJoin = [UIView new];
     _conversationTopJoin.userInteractionEnabled = NO;
@@ -596,15 +629,23 @@
     _topLine = [UIView new];
     _topLine.width = kScreenWidth;
     _topLine.height = CGFloatFromPixel(1);
-    _topLine.backgroundColor = [UIColor colorWithWhite:0.823 alpha:1.000];
+//    _topLine.backgroundColor = [UIColor colorWithWhite:0.823 alpha:1.000];
     [self addSubview:_topLine];
+    
+    // 设置主题
+    
+    _topLine.lee_theme
+    .LeeAddBackgroundColor(DAY , [UIColor colorWithWhite:0.823 alpha:1.000])
+    .LeeAddBackgroundColor(NIGHT , UIColorHex(555555));
+    
+    BOOL isDay = [[LEETheme currentThemeTag] isEqualToString:DAY];
     
     @weakify(self);
     self.touchBlock = ^(YYControl *view, YYGestureRecognizerState state, NSSet *touches, UIEvent *event) {
         @strongify(self);
         if (!self) return;
         if (state == YYGestureRecognizerStateBegan) {
-            self.backgroundColor = kT1CellBGHighlightColor;
+            self.backgroundColor = isDay ? kT1CellBGHighlightColor : kT1CellBGHighlightColor_Night;
         } else if (state != YYGestureRecognizerStateMoved) {
             self.backgroundColor = [UIColor clearColor];
         }

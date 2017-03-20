@@ -32,12 +32,18 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.view.backgroundColor = [UIColor whiteColor];
+//    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.919];
+//    self.view.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.919];
+    
+    // 设置主题
+    
+    self.view.lee_theme
+    .LeeAddBackgroundColor(DAY , [UIColor whiteColor])
+    .LeeAddBackgroundColor(NIGHT , UIColorHex(333333));
     
     if ([self respondsToSelector:@selector( setAutomaticallyAdjustsScrollViewInsets:)]) {
         self.automaticallyAdjustsScrollViewInsets = NO;

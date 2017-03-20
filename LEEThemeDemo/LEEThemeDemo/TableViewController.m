@@ -12,6 +12,8 @@
 
 #import "WBStatusTimelineViewController.h"
 
+#import "T1HomeTimelineItemsViewController.h"
+
 @interface TableViewController ()
 
 @property (nonatomic , strong ) NSMutableArray *dataArray;
@@ -20,9 +22,9 @@
 
 @implementation TableViewController
 
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated{
     
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
     
     // 显示UINavigationBar
     
@@ -53,10 +55,12 @@
     
     if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0f) {
         
-        [_dataArray addObject:@"米尔社区Demo(来自米尔军事)"];
+        [_dataArray addObject:@"米尔社区(来自米尔军事)"];
     }
     
-    [_dataArray addObject:@"新浪微博列表(来自YYKitDemo)"];
+    [_dataArray addObject:@"新浪微博(来自YYKitDemo)"];
+    
+    [_dataArray addObject:@"Twitter(来自YYKitDemo)"];
 }
 
 #pragma mark - 设置主题
@@ -127,7 +131,7 @@
             
             vc.hidesBottomBarWhenPushed = YES;
             
-            [self.navigationController pushViewController:vc animated:YES];
+            [self.navigationController pushViewController:vc animated:NO];
         }
             break;
             
@@ -135,6 +139,17 @@
         {
             
             WBStatusTimelineViewController *vc = [[WBStatusTimelineViewController alloc] init];
+            
+            vc.hidesBottomBarWhenPushed = YES;
+            
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+            
+        case 2:
+        {
+            
+            T1HomeTimelineItemsViewController *vc = [[T1HomeTimelineItemsViewController alloc] init];
             
             vc.hidesBottomBarWhenPushed = YES;
             

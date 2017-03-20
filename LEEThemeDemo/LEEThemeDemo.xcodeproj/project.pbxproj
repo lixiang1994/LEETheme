@@ -1117,7 +1117,7 @@
 				9B7876AD1E7A921F00D4151A /* LEETheme */,
 				9B7873291E7A3F4A00D4151A /* Librarys */,
 				9B7877111E7B8BCF00D4151A /* MierCommunityDemo(米尔社区Demo) */,
-				9B78789F1E7B92DE00D4151A /* YYKitDemo */,
+				9B78789F1E7B92DE00D4151A /* YYKitDemo(微博AndTwitter) */,
 				9B0049361CC9CE25001AC212 /* AppDelegate.h */,
 				9B0049371CC9CE25001AC212 /* AppDelegate.m */,
 				9B0049391CC9CE25001AC212 /* ViewController.h */,
@@ -2408,7 +2408,7 @@
 			path = ShareView;
 			sourceTree = "<group>";
 		};
-		9B78789F1E7B92DE00D4151A /* YYKitDemo */ = {
+		9B78789F1E7B92DE00D4151A /* YYKitDemo(微博AndTwitter) */ = {
 			isa = PBXGroup;
 			children = (
 				9B7879841E7B9A7D00D4151A /* Vendor */,
@@ -2534,6 +2534,7 @@
 				9B7879271E7B92DE00D4151A /* YYWebImageExample.h */,
 				9B7879281E7B92DE00D4151A /* YYWebImageExample.m */,
 			);
+			name = "YYKitDemo(微博AndTwitter)";
 			path = YYKitDemo;
 			sourceTree = "<group>";
 		};
