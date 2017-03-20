@@ -102,6 +102,8 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
+    // 设置主题
+    
     cell.lee_theme
     .LeeAddBackgroundColor(DAY , LEEColorRGB(255, 255, 255))
     .LeeAddBackgroundColor(NIGHT , LEEColorRGB(55, 55, 55));
