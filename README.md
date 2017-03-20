@@ -13,7 +13,8 @@
 ==============
 
 ![朋友圈Demo演示](https://github.com/lixiang1994/LEETheme/blob/master/朋友圈Demo日夜间切换演示.gif)
-
+![新日间Demo演示](https://github.com/lixiang1994/LEETheme/blob/master/日间演示.gif)
+![新夜间Demo演示](https://github.com/lixiang1994/LEETheme/blob/master/夜间演示.gif)
 特性
 ==============
 - 两种设置模式,可根据对象单独添加设置,可通过JSON配置统一设置,也可混合使用,满足不同风格的开发者。
