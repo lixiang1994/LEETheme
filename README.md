@@ -5,15 +5,15 @@
 [![CocoaPods](http://img.shields.io/cocoapods/v/LEETheme.svg?style=flat)](http://cocoapods.org/?q= LEETheme)&nbsp;
 [![CocoaPods](http://img.shields.io/cocoapods/p/LEETheme.svg?style=flat)](http://cocoapods.org/?q= LEETheme)&nbsp;
 [![Support](https://img.shields.io/badge/support-iOS7%2B-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
-[![Build Status](https://travis-ci.org/lixiang1994/LEETheme.svg?branch=master)]()
+[![Build Status](https://travis-ci.org/lixiang1994/LEETheme.svg?branch=master)]()&nbsp;
+
 
 
 演示
 ==============
-
-![朋友圈Demo演示](https://github.com/lixiang1994/LEETheme/blob/master/朋友圈Demo日夜间切换演示.gif)
 ![新日间Demo演示](https://github.com/lixiang1994/LEETheme/blob/master/日间演示.gif)
 ![新夜间Demo演示](https://github.com/lixiang1994/LEETheme/blob/master/夜间演示.gif)
+
 
 
 特性
@@ -27,6 +27,7 @@
 - 当前主题记忆功能,下一次启动自动布置。
 - 异步切换主题样式，避免主线程阻塞。
 - 完善的文档注释和使用教程。
+
 
 用法
 ==============
