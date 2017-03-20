@@ -1,12 +1,11 @@
 
 # LEETheme - 最好用的轻量级主题管理框架
 
-[![License GPL](https://img.shields.io/aur/license/yaourt.svg?maxAge=2592000)](../LICENSE)&nbsp;
+[![License GPL](https://img.shields.io/aur/license/yaourt.svg?maxAge=2592000)](https://github.com/lixiang1994/LEETheme/blob/master/LICENSE)&nbsp;
 [![CocoaPods](http://img.shields.io/cocoapods/v/LEETheme.svg?style=flat)](http://cocoapods.org/?q= LEETheme)&nbsp;
 [![CocoaPods](http://img.shields.io/cocoapods/p/LEETheme.svg?style=flat)](http://cocoapods.org/?q= LEETheme)&nbsp;
 [![Support](https://img.shields.io/badge/support-iOS7%2B-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
 [![Build Status](https://travis-ci.org/lixiang1994/LEETheme.svg?branch=master)]()
-
 
 
 演示
@@ -15,6 +14,8 @@
 ![朋友圈Demo演示](https://github.com/lixiang1994/LEETheme/blob/master/朋友圈Demo日夜间切换演示.gif)
 ![新日间Demo演示](https://github.com/lixiang1994/LEETheme/blob/master/日间演示.gif)
 ![新夜间Demo演示](https://github.com/lixiang1994/LEETheme/blob/master/夜间演示.gif)
+
+
 特性
 ==============
 - 两种设置模式,可根据对象单独添加设置,可通过JSON配置统一设置,也可混合使用,满足不同风格的开发者。
