@@ -14,6 +14,8 @@
 ![新日间Demo演示](https://github.com/lixiang1994/LEETheme/blob/master/社区日间.gif)
 ![新夜间Demo演示](https://github.com/lixiang1994/LEETheme/blob/master/社区夜间.gif)
 
+![新日间Demo演示](https://github.com/lixiang1994/LEETheme/blob/master/微博日间.gif)
+![新夜间Demo演示](https://github.com/lixiang1994/LEETheme/blob/master/微博夜间.gif)
 
 
 特性
