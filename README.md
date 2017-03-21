@@ -11,8 +11,8 @@
 
 演示
 ==============
-![新日间Demo演示](https://github.com/lixiang1994/LEETheme/blob/master/日间演示.gif)
-![新夜间Demo演示](https://github.com/lixiang1994/LEETheme/blob/master/夜间演示.gif)
+![新日间Demo演示](https://github.com/lixiang1994/LEETheme/blob/master/社区日间.gif)
+![新夜间Demo演示](https://github.com/lixiang1994/LEETheme/blob/master/社区夜间.gif)
 
 
 
