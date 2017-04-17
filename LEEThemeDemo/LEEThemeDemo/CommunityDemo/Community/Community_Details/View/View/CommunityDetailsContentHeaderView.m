@@ -83,7 +83,7 @@
     
     _nameRankView = [[NameRankView alloc] init];
     
-    _nameRankView.fontSize = 16.0f;
+    _nameRankView.fontSize = 14.0f;
     
     _nameRankView.backgroundColor = [UIColor clearColor];
     
@@ -201,7 +201,7 @@
     // 标题Label
     
     _titleLabel.sd_layout
-    .topSpaceToView(self.headImageView , 15.0f)
+    .topSpaceToView(self.headImageView , 30.0f)
     .leftSpaceToView(self , 15.0f)
     .rightSpaceToView(self , 15.0f)
     .heightIs(0.0f);

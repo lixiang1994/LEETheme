@@ -175,7 +175,7 @@
     .heightIs(120.0f);
     
     _backButton.sd_layout
-    .topSpaceToView(self.picImageView , 20.0f)
+    .topSpaceToView(self.picImageView , 5.0f)
     .leftSpaceToView(self.picImageView , 5.0f)
     .widthIs(40.0f)
     .heightIs(40.0f);

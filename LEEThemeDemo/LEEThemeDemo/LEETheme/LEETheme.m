@@ -37,6 +37,10 @@ NSString * const LEEThemeCurrentTag = @"LEEThemeCurrentTag";
 
 @implementation LEETheme
 
+#if !__has_feature(objc_arc)
+#error "ARC才可以  ( *・ω・)✄╰ひ╯ "
+#endif
+
 + (LEETheme *)shareTheme{
     
     static LEETheme *themeManager = nil;

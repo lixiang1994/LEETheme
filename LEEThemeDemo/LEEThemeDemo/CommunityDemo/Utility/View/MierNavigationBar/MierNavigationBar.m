@@ -452,7 +452,7 @@
         [self addSubview:_lineView];
         
         _lineView.sd_layout
-        .bottomEqualToView(self)
+        .topSpaceToView(self, 63.5f)
         .leftEqualToView(self)
         .rightEqualToView(self)
         .heightIs(0.5f);

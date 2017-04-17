@@ -142,7 +142,7 @@ static NSString * const CommunityCircleDetailsCellHeaderViewID = @"CommunityCirc
 
 - (void)initSubview{
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 20, self.view.width, self.view.height - 20) style:UITableViewStyleGrouped];
     
     _tableView.hidden = YES;
     
@@ -272,7 +272,7 @@ static NSString * const CommunityCircleDetailsCellHeaderViewID = @"CommunityCirc
         
         if (!weakSelf) return;
         
-        weakSelf.navigationBar.hidden = result;
+        [weakSelf retractNavigationBar];
         
         if (result) {
         
@@ -414,6 +414,31 @@ static NSString * const CommunityCircleDetailsCellHeaderViewID = @"CommunityCirc
         [self.tableView deleteRowsAtIndexPaths:indexPathArray withRowAnimation:UITableViewRowAnimationFade];
     }
     
+}
+
+#pragma mark - 展开导航栏
+
+- (void)spreadNavigationBar{
+    
+    [UIView animateWithDuration:0.2f animations:^{
+        
+        self.navigationBar.top = 0.0f;
+        
+        self.navigationBar.height = 64.0f;
+    }];
+    
+}
+
+#pragma mark - 收起导航栏
+
+- (void)retractNavigationBar{
+    
+    [UIView animateWithDuration:0.2f animations:^{
+        
+        self.navigationBar.top = - 64.0f;
+        
+        self.navigationBar.height = 84.0f;
+    }];
 }
 
 #pragma mark - UITableViewDelegate , UITableViewDataSource
@@ -588,13 +613,13 @@ static NSString * const CommunityCircleDetailsCellHeaderViewID = @"CommunityCirc
         
         if (!self.tableView.bounces) self.tableView.bounces = YES;
         
-        if (self.navigationBar.hidden) self.navigationBar.hidden = NO;
+        [self spreadNavigationBar];
         
     } else {
         
         if (self.tableView.bounces) self.tableView.bounces = NO;
         
-        if (!self.navigationBar.hidden) self.navigationBar.hidden = YES;
+        [self retractNavigationBar];
     }
     
 }
