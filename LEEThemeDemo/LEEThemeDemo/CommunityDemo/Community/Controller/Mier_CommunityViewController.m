@@ -47,6 +47,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.fd_interactivePopDisabled = YES;
+    
     //初始化数据
     
     [self initData];
@@ -70,7 +72,6 @@
     //加载数据
     
     [self loadData];
-    
 }
 
 #pragma mark - 设置NavigationBar

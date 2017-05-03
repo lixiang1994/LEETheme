@@ -8,9 +8,9 @@
 
 #import "AppDelegate.h"
 
-#import "ViewController.h"
+#import "TabBarController.h"
 
-#import "TableViewController.h"
+#import "LEEBubble.h"
 
 #import "LEETheme.h"
 
@@ -38,46 +38,58 @@
     
     // 初始化window
     
-    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     self.window.backgroundColor = [UIColor whiteColor];
     
     [self.window makeKeyAndVisible];
     
-    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    self.window.rootViewController = [[TabBarController alloc] init];
     
-    ViewController *systemVC = [[ViewController alloc] init];
+    // 初始化气泡
     
-    systemVC.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"视图" image:[UIImage imageNamed:@""] tag:0];
+    LEEBubble *bubble = [[LEEBubble alloc]initWithFrame:CGRectMake(CGRectGetWidth(self.window.frame) - 58, CGRectGetHeight(self.window.frame) - 123, 48, 48)];
     
-    [tabBarController addChildViewController:systemVC];
+    bubble.edgeInsets = UIEdgeInsetsMake(64, 0 , 0 , 0);
     
-    UINavigationController *tableNC = [[UINavigationController alloc] initWithRootViewController:[[TableViewController alloc] init]];
+    [self.window addSubview:bubble];
     
-    tableNC.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"列表" image:[UIImage imageNamed:@""] tag:1];
-    
-    [tabBarController addChildViewController:tableNC];
-    
-    self.window.rootViewController = tabBarController;
-    
-    // 设置主题
-    
-    tableNC.navigationBar.lee_theme
-    .LeeAddBarTintColor(DAY , LEEColorRGB(255, 255, 255))
-    .LeeAddBarTintColor(NIGHT , LEEColorRGB(85, 85, 85))
-    .LeeAddCustomConfig(DAY , ^(UINavigationBar *item){
+    bubble.lee_theme
+    .LeeThemeChangingBlock(^(NSString *tag, LEEBubble * item) {
+       
+        if ([tag isEqualToString:DAY]) {
+            
+            item.image = [UIImage imageNamed:@"night"];
+            
+        } else if ([tag isEqualToString:NIGHT]) {
+            
+            item.image = [UIImage imageNamed:@"day"];
         
-        item.barStyle = UIBarStyleDefault;
-    })
-    .LeeAddCustomConfig(NIGHT , ^(UINavigationBar *item){
+        } else {
+            
+            item.image = [UIImage imageNamed:@"day"];
+        }
         
-        item.barStyle = UIBarStyleBlack;
     });
     
+    __weak typeof(self) weakSelf = self;
     
-    tabBarController.tabBar.lee_theme
-    .LeeAddBarTintColor(DAY , LEEColorRGB(255, 255, 255))
-    .LeeAddBarTintColor(NIGHT , LEEColorRGB(85, 85, 85));
+    bubble.clickBubbleBlock = ^(){
+        
+        if (weakSelf){
+            
+            if ([[LEETheme currentThemeTag] isEqualToString:DAY]) {
+                
+                [LEETheme startTheme:NIGHT];
+                
+            } else {
+                
+                [LEETheme startTheme:DAY];
+            }
+            
+        }
+        
+    };
     
     return YES;
 }
@@ -97,11 +109,11 @@
     
     [LEETheme defaultTheme:DAY];
     
-    [LEETheme defaultChangeThemeAnimationDuration:0.1f];
+    [LEETheme defaultChangeThemeAnimationDuration:0.0f];
     
-    [LEETheme addThemeConfigJson:dayJson WithTag:DAY WithResourcesPath:nil];
+    [LEETheme addThemeConfigWithJson:dayJson Tag:DAY ResourcesPath:nil];
     
-    [LEETheme addThemeConfigJson:nightJson WithTag:NIGHT WithResourcesPath:nil];
+    [LEETheme addThemeConfigWithJson:nightJson Tag:NIGHT ResourcesPath:nil];
 }
 
 

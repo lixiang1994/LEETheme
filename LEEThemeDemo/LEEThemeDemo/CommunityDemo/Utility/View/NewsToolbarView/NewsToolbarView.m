@@ -441,31 +441,31 @@
             
         case NewsToolbarStyleTypeGallery:
             
-            self.backgroundColor = [UIColor leeTheme_ColorFromJsonWithTag:NIGHT WithIdentifier:common_bg_color_6];
+            self.backgroundColor = [UIColor leeTheme_ColorFromJsonWithTag:NIGHT Identifier:common_bg_color_6];
             
-            self.lineView.backgroundColor = [UIColor leeTheme_ColorFromJsonWithTag:NIGHT WithIdentifier:common_bar_divider1];
+            self.lineView.backgroundColor = [UIColor leeTheme_ColorFromJsonWithTag:NIGHT Identifier:common_bar_divider1];
             
-            self.editItem.backgroundColor = [UIColor leeTheme_ColorFromJsonWithTag:NIGHT WithIdentifier:common_bg_color_8];
+            self.editItem.backgroundColor = [UIColor leeTheme_ColorFromJsonWithTag:NIGHT Identifier:common_bg_color_8];
             
             [self.editItem setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             
-            self.editItem.layer.borderColor = [UIColor leeTheme_ColorFromJsonWithTag:NIGHT WithIdentifier:common_bar_divider1].CGColor;
+            self.editItem.layer.borderColor = [UIColor leeTheme_ColorFromJsonWithTag:NIGHT Identifier:common_bar_divider1].CGColor;
             
             if (self.commentItem) {
                 
-                [self.commentItem setImage:[UIImage leeTheme_ImageFromJsonWithTag:NIGHT WithIdentifier:newstoolbar_comment_btn_image] forState:UIControlStateNormal];
+                [self.commentItem setImage:[UIImage leeTheme_ImageFromJsonWithTag:NIGHT Identifier:newstoolbar_comment_btn_image] forState:UIControlStateNormal];
             }
             
             if (_favItem) {
                 
-                self.favItem.imageOff = [UIImage leeTheme_ImageFromJsonWithTag:NIGHT WithIdentifier:newstoolbar_collection_btn_noselect_image];
+                self.favItem.imageOff = [UIImage leeTheme_ImageFromJsonWithTag:NIGHT Identifier:newstoolbar_collection_btn_noselect_image];
                 
                 self.favItem.lee_theme.LeeConfigKeyPathAndIdentifier(@"imageOn" , newstoolbar_collection_btn_select_image);
             }
 
             if (_shareItem) {
                 
-                [self.shareItem setImage:[UIImage leeTheme_ImageFromJsonWithTag:NIGHT WithIdentifier:newstoolbar_share_btn_image] forState:UIControlStateNormal];
+                [self.shareItem setImage:[UIImage leeTheme_ImageFromJsonWithTag:NIGHT Identifier:newstoolbar_share_btn_image] forState:UIControlStateNormal];
             }
             
             break;

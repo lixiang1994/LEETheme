@@ -29,6 +29,15 @@
     // 显示UINavigationBar
     
     self.navigationController.navigationBar.hidden = NO;
+    
+    // 判断当前主题是否为 DAY 或 NIGHT
+    
+    if (![[LEETheme currentThemeTag] isEqualToString:DAY] &&
+        ![[LEETheme currentThemeTag] isEqualToString:NIGHT]) {
+        
+        [LEETheme startTheme:DAY];
+    }
+    
 }
 
 - (void)viewDidLoad {
@@ -47,7 +56,7 @@
 
 - (void)initData{
     
-    self.title = @"演示Demo";
+    self.navigationItem.title = @"演示Demo";
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     
@@ -109,6 +118,8 @@
     .LeeAddBackgroundColor(NIGHT , LEEColorRGB(55, 55, 55));
     
     cell.textLabel.text = self.dataArray[indexPath.row];
+    
+    cell.textLabel.backgroundColor = [UIColor clearColor];
     
     cell.textLabel.lee_theme
     .LeeAddTextColor(DAY , [UIColor blackColor])

@@ -259,7 +259,45 @@
     
     self.lee_theme.LeeConfigBackgroundColor(common_bg_color_8);
     
-    self.webView.lee_theme.LeeConfigBackgroundColor(common_bg_color_8);
+    self.webView.lee_theme
+    .LeeConfigBackgroundColor(common_bg_color_8)
+    .LeeAddCustomConfig(DAY , ^(WKWebView *webView){
+        
+        if (webView.URL) {
+            
+            //设置背景颜色
+            
+            [webView evaluateJavaScript:@"configBackgroundColor('ffffff')" completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+                
+            }];
+            
+            //设置字体颜色
+            
+            [webView evaluateJavaScript:@"configFontColor('333333')" completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+                
+            }];
+        }
+
+    })
+    .LeeAddCustomConfig(NIGHT , ^(WKWebView *webView){
+        
+        if (webView.URL) {
+            
+            //设置背景颜色
+            
+            [webView evaluateJavaScript:@"configBackgroundColor('252525')" completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+                
+            }];
+            
+            //设置字体颜色
+            
+            [webView evaluateJavaScript:@"configFontColor('777777')" completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+                
+            }];
+        }
+        
+    });
+    
 }
 
 #pragma mark - 设置Block

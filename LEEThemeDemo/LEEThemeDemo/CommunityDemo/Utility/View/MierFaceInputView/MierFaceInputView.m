@@ -326,7 +326,7 @@
     
     if (enable) {
 
-        self.deleteButton.tintColor = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:common_bg_blue_4];
+        self.deleteButton.tintColor = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] Identifier:common_bg_blue_4];
         
     } else {
         

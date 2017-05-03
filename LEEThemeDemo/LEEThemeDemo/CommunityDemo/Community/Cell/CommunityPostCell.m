@@ -425,7 +425,7 @@
     
     titleString.font = [UIFont boldSystemFontOfSize:16.0f];
     
-    titleString.color = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:common_font_color_1];
+    titleString.color = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] Identifier:common_font_color_1];
     
     self.titleLabel.attributedText = titleString;
     
@@ -443,7 +443,7 @@
         
         contentString.font = [UIFont systemFontOfSize:14.0f];
         
-        contentString.color = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:common_font_color_4];
+        contentString.color = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] Identifier:common_font_color_4];
         
         self.contentLabel.attributedText = contentString;
         

@@ -74,7 +74,7 @@
     
     _leftLineView = [[UIView alloc] init];
     
-    _leftLineView.backgroundColor = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:common_bg_blue_4];
+    _leftLineView.backgroundColor = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] Identifier:common_bg_blue_4];
     
     [self.contentView addSubview:_leftLineView];
     

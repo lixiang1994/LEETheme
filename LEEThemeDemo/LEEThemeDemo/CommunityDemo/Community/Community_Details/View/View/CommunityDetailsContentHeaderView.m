@@ -127,7 +127,7 @@
     
     // 关注按钮
     
-    UIColor *blueColor = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:common_bg_blue_4];
+    UIColor *blueColor = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] Identifier:common_bg_blue_4];
     
     _followButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -358,7 +358,7 @@
     
     titleString.font = [UIFont boldSystemFontOfSize:20.0f];
     
-    titleString.color = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:common_font_color_1];
+    titleString.color = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] Identifier:common_font_color_1];
     
     self.titleLabel.attributedText = titleString;
     

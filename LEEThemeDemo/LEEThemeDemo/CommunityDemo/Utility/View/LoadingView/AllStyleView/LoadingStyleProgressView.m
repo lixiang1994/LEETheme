@@ -175,7 +175,7 @@
         
         _titleImageView.center = CGPointMake(CGRectGetWidth(self.frame) / 2 , _titleImageView.center.y);
         
-        _titleImageView.image = [UIImage leeTheme_ImageFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:detail_load_image];
+        _titleImageView.image = [UIImage leeTheme_ImageFromJsonWithTag:[LEETheme currentThemeTag] Identifier:detail_load_image];
         
     }
     

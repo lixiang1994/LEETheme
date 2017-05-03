@@ -508,7 +508,7 @@
     
     if (self.editView.text.length > 0) {
         
-        self.sendButton.backgroundColor = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] WithIdentifier:common_bg_blue_4];
+        self.sendButton.backgroundColor = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] Identifier:common_bg_blue_4];
         
         [self.faceView deleteButtonEnable:YES];
         
