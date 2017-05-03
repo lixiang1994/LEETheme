@@ -18,6 +18,10 @@
 
 @property (nonatomic , strong ) UICollectionViewFlowLayout *flowLayout; //布局
 
+@property (nonatomic , strong ) UIView *topView;
+
+@property (nonatomic , strong ) UIView *bottomView;
+
 @property (nonatomic , strong ) UILabel *pageLable; //页码Label
 
 @property (nonatomic , strong ) UIButton *saveButton; //保存按钮
@@ -77,8 +81,8 @@
 
 #pragma mark - 初始化数据
 
--(void)initData{
- 
+- (void)initData{
+    
     self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0f];
     
     self.frame = CGRectMake(0, 0, CGRectGetWidth([[UIScreen mainScreen] bounds]), CGRectGetHeight([[UIScreen mainScreen] bounds]));
@@ -126,9 +130,23 @@
     
     [self addSubview:_collectionView];
     
+    // 初始化顶部视图
+    
+    _topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 20.0f)];
+    
+    [self addSubview:_topView];
+    
+    // 初始化底部视图
+    
+    _bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.frame.size.height - 80, self.frame.size.width, 80)];
+    
+    [_bottomView.layer addSublayer:[self shadowAsInverseWithSize:CGSizeMake(self.frame.size.width, 80)]];
+    
+    [self addSubview:_bottomView];
+    
     // 初始化页码Label
     
-    _pageLable = [[UILabel alloc] initWithFrame:CGRectMake(0, self.frame.size.height - 50, self.frame.size.width, 20.0f)];
+    _pageLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, self.frame.size.width, 20)];
     
     _pageLable.textColor = [UIColor whiteColor];
     
@@ -136,7 +154,7 @@
     
     _pageLable.textAlignment = NSTextAlignmentCenter;
     
-    [self addSubview:_pageLable];
+    [self.bottomView addSubview:_pageLable];
     
     //初始化保存按钮
     
@@ -144,7 +162,7 @@
     
     _saveButton.hidden = YES;
     
-    _saveButton.frame = CGRectMake(self.frame.size.width - 60.0f, self.frame.size.height - 60.0f, 40.0f, 40.0f);
+    _saveButton.frame = CGRectMake(self.frame.size.width - 60.0f, 20.0f, 40.0f, 40.0f);
     
     [_saveButton setTitle:@"保存" forState:UIControlStateNormal];
     
@@ -152,8 +170,7 @@
     
     [_saveButton addTarget:self action:@selector(saveImageAction) forControlEvents:UIControlEventTouchUpInside];
     
-    [self addSubview:_saveButton];
-    
+    [self.bottomView addSubview:_saveButton];
 }
 
 #pragma mark - 设置自动布局
@@ -183,13 +200,13 @@
             if ([url isKindOfClass:[NSString class]]) {
                 
                 [tempImageUrlArray addObject:[NSURL URLWithString:url]];
-            
+                
             } else if ([url isKindOfClass:[NSURL class]]) {
                 
                 [tempImageUrlArray addObject:url];
                 
             } else {
-
+                
                 NSLog(@"图片Url对象类型错误 应为NSUrl或NSString. [当前类型: %@]" , NSStringFromClass([url class]));
             }
             
@@ -325,7 +342,7 @@
             self.alpha = 0.0f;
             
             self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0f];
-        
+            
         } completion:^(BOOL finished) {
             
             [self removeFromSuperview];
@@ -387,9 +404,29 @@
     [self showMessage:msg];
 }
 
+#pragma mark - 阴影处理
+
+- (CAGradientLayer *)shadowAsInverseWithSize:(CGSize)size{
+    
+    long top = strtoul([@"00" UTF8String], 0, 16);
+    long bot = strtoul([@"dd" UTF8String], 0, 16);
+    
+    UIColor *topColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:top / 255.0f];
+    UIColor *botColor = [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:bot / 255.0f];
+    
+    CAGradientLayer *layer = [[CAGradientLayer alloc] init];
+    CGRect newShadowFrame = CGRectMake(0, 0, size.width, size.height);
+    layer.frame = newShadowFrame;
+    
+    // 添加渐变的颜色组合
+    layer.colors = [NSArray arrayWithObjects:(id)topColor.CGColor,(id)botColor.CGColor, nil];
+    
+    return layer;
+}
+
 #pragma mark - UICollectionViewDelegate , UICollectionViewDataSource
 
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
     return 1;
 }
@@ -406,7 +443,7 @@
     __weak typeof(self) weakSelf = self;
     
     cell.loadFinishBlock = ^(NSURL *url , UIImage *image){
-      
+        
         if (weakSelf) {
             
             //判断是否为当前显示的图片 如果是则显示保存按钮
@@ -441,7 +478,7 @@
 
 #pragma mark - UIScrollViewDelegate
 
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     
     //设置当前页数与下标
     
@@ -465,7 +502,7 @@
         
         self.saveButton.hidden = YES;
     }
-
+    
 }
 
 @end
@@ -512,7 +549,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        //初始化滑动视图
+        // 初始化滑动视图
         
         _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
         
@@ -528,7 +565,7 @@
         
         [self.contentView addSubview:_scrollView];
         
-        //初始化单击手势
+        // 初始化单击手势
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
         
@@ -540,7 +577,7 @@
         
         [self.scrollView addGestureRecognizer:tap];
         
-        //初始化图片视图
+        // 初始化图片视图
         
         _imageView = [[UIImageView alloc]init];
         
@@ -548,7 +585,7 @@
         
         [self.scrollView addSubview:_imageView];
         
-        //初始化图片点击手势
+        // 初始化图片点击手势
         
         UITapGestureRecognizer *imageDoubleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(imageTapAction:)];
         
@@ -558,7 +595,7 @@
         
         [self.imageView addGestureRecognizer:imageDoubleTap];
         
-        //当没有检测到图片双击手势时 或者 检测图片双击手势失败，单击手势才有效
+        // 当没有检测到图片双击手势时 或者 检测图片双击手势失败，单击手势才有效
         
         [tap requireGestureRecognizerToFail:imageDoubleTap];
         
@@ -631,7 +668,7 @@
         }
         
     } transform:^UIImage * _Nullable(UIImage * _Nonnull image, NSURL * _Nonnull url) {
-       
+        
         return image;
         
     } completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
@@ -662,7 +699,14 @@
                 
                 strongSelf.scrollView.contentSize = CGSizeMake(CGRectGetWidth(strongSelf.imageView.frame), CGRectGetHeight(strongSelf.imageView.frame));
                 
-                strongSelf.imageView.center = CGPointMake(CGRectGetWidth(strongSelf.scrollView.frame) / 2 , CGRectGetHeight(strongSelf.scrollView.frame) / 2 );
+                if (strongSelf.imageView.frame.size.height > strongSelf.scrollView.frame.size.height){
+                    
+                    strongSelf.imageView.center = CGPointMake(strongSelf.scrollView.contentSize.width / 2, strongSelf.scrollView.contentSize.height / 2);
+                    
+                } else {
+                    
+                    strongSelf.imageView.center = CGPointMake(CGRectGetWidth(strongSelf.scrollView.frame) / 2 , CGRectGetHeight(strongSelf.scrollView.frame) / 2);
+                }
                 
                 //调用加载完成回调Block
                 
