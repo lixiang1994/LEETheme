@@ -56,7 +56,7 @@
     
     bubble.lee_theme
     .LeeThemeChangingBlock(^(NSString *tag, LEEBubble * item) {
-       
+        
         if ([tag isEqualToString:DAY]) {
             
             item.image = [UIImage imageNamed:@"night"];

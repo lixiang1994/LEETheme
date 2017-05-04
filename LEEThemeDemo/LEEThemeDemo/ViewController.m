@@ -10,12 +10,14 @@
 
 #import "MBProgressHUD.h"
 
-@interface ViewController ()
+@interface ViewController ()<UIScrollViewDelegate , UIGestureRecognizerDelegate>
 
 /**
  红色主题标签
  */
 @property (nonatomic , copy ) NSString *redTag;
+
+@property (nonatomic , strong ) UIScrollView *scrollView;
 
 @end
 
@@ -36,11 +38,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     _redTag = @"red";
     
     // 检查红色主题
     
     [self checkRedTheme];
+    
+    // 初始化数据
+    
+    [self initData];
     
     // 初始化子视图
     
@@ -51,6 +59,15 @@
     [self configTheme];
 }
 
+#pragma mark - 初始化数据
+
+- (void)initData{
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter]  addObserver:self selector:@selector(keyboardWillHidden:) name:UIKeyboardWillHideNotification object:nil];
+}
+
 #pragma mark - 初始化子视图
 
 - (void)initSubviews{
@@ -59,12 +76,26 @@
     
     // 滑动视图
     
-    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    _scrollView = [[UIScrollView alloc] init];
     
-    scrollView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));
+    _scrollView.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 64);
 
-    [self.view addSubview:scrollView];
+    _scrollView.delegate = self;
     
+    [self.view addSubview:_scrollView];
+    
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGestureRecognizerAction:)];
+    
+    tap.delegate = self;
+    
+    [self.scrollView addGestureRecognizer:tap];
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panGestureRecognizerAction:)];
+    
+    pan.delegate = self;
+    
+    [self.scrollView addGestureRecognizer:pan];
     
     // view
     
@@ -80,7 +111,7 @@
     
     view.layer.cornerRadius = 5.0f;
     
-    [scrollView addSubview:view];
+    [self.scrollView addSubview:view];
     
     
     view.lee_theme
@@ -105,7 +136,6 @@
     .LeeAddBorderColor(NIGHT, LEEColorRGB(70, 70, 70))
     .LeeConfigBorderColor(@"ident2");
     
-    
     // label
     
     UILabel *label = [[UILabel alloc] init];
@@ -118,7 +148,7 @@
     
     label.textAlignment = NSTextAlignmentCenter;
     
-    [scrollView addSubview:label];
+    [self.scrollView addSubview:label];
     
     
     label.lee_theme
@@ -145,7 +175,7 @@
     
     [button.layer setCornerRadius:5.0f];
     
-    [scrollView addSubview:button];
+    [self.scrollView addSubview:button];
     
     
     button.lee_theme
@@ -170,7 +200,7 @@
     
     imageView.center = CGPointMake(centerX, imageView.center.y);
     
-    [scrollView addSubview:imageView];
+    [self.scrollView addSubview:imageView];
     
     
     imageView.lee_theme
@@ -189,7 +219,7 @@
     
     slider.value = 0.4f;
     
-    [scrollView addSubview:slider];
+    [self.scrollView addSubview:slider];
     
     
     slider.lee_theme
@@ -205,7 +235,7 @@
     
     switchItem.center = CGPointMake(centerX, switchItem.center.y);
     
-    [scrollView addSubview:switchItem];
+    [self.scrollView addSubview:switchItem];
     
     
     switchItem.lee_theme
@@ -214,8 +244,32 @@
     .LeeConfigOnTintColor(@"ident1");
     
     
-    // 
+    // textfield
     
+    UITextField *textfield = [[UITextField alloc] init];
+    
+    textfield.frame = CGRectMake(0, 440, 200, 40.0f);
+    
+    textfield.center = CGPointMake(centerX, textfield.center.y);
+    
+    textfield.borderStyle = UITextBorderStyleRoundedRect;
+    
+    textfield.placeholder = @"这是一个输入框";
+    
+    [self.scrollView addSubview:textfield];
+    
+    
+    textfield.lee_theme
+    .LeeAddBackgroundColor(DAY, LEEColorRGB(255, 255, 255))
+    .LeeAddBackgroundColor(NIGHT, LEEColorRGB(30, 30, 30))
+    .LeeAddTextColor(DAY, LEEColorRGB(0, 0, 0))
+    .LeeAddTextColor(NIGHT, LEEColorRGB(200, 200, 200))
+    .LeeConfigTextColor(@"ident1")
+    .LeeAddPlaceholderColor(DAY, LEEColorRGB(200, 200, 200))
+    .LeeAddPlaceholderColor(NIGHT, LEEColorRGB(80, 80, 80))
+    .LeeConfigPlaceholderColor(@"ident2");
+    
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, 500)];
 }
 
 #pragma mark - 设置主题
@@ -343,9 +397,85 @@
     [LEETheme startTheme:self.redTag];
 }
 
+#pragma mark - 单击手势事件
+
+- (void)tapGestureRecognizerAction:(UITapGestureRecognizer *)tap{
+    
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+}
+
+#pragma mark - 拖动手势事件
+
+- (void)panGestureRecognizerAction:(UIPanGestureRecognizer *)pan{
+    
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+}
+
+#pragma mark - 键盘通知事件
+
+- (void)keyboardWillShow:(NSNotification *)notify{
+    
+    NSDictionary *info = [notify userInfo];
+    
+    NSValue *value = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
+    
+    CGSize keyboardSize = [value CGRectValue].size;
+    
+    //取得键盘的动画时间，这样可以在视图上移的时候更连贯
+    
+    //double duration = [[notif.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    
+    self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0);
+    
+    //获取第一响应者视图
+    
+    UIView *firstResponderView = [self findFirstResponder:self.scrollView];
+    
+    if (firstResponderView) {
+        
+        //将第一响应者视图移动到可显示区域
+        
+        [self.scrollView scrollRectToVisible:firstResponderView.frame animated:YES];
+    }
+
+}
+
+- (void)keyboardWillHidden:(NSNotification *)notify{
+    
+    self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+}
+
+#pragma mark - 查找第一响应者
+
+- (UIView *)findFirstResponder:(UIView *)view{
+    
+    if (view.isFirstResponder) return view;
+    
+    for (UIView *subView in view.subviews) {
+        
+        UIView *firstResponder = [self findFirstResponder:subView];
+        
+        if (firstResponder) return firstResponder;
+    }
+    
+    return nil;
+}
+
+
 - (void)didReceiveMemoryWarning {
     
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - UIScrollViewDelegate
+
+
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    
+    return YES;
 }
 
 @end

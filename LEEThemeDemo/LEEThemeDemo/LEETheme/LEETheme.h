@@ -189,9 +189,6 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 /** 添加按钮标题阴影颜色设置 -> 格式: .LeeAddButtonTitleShadowColor(@@"tag" , UIColor , UIControlStateNormal) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToT_ColorAndState LeeAddButtonTitleShadowColor;
 
-/** 添加颜色设置 -> 格式: .LeeAddSelectorAndColor(@@"tag" , @@selector(XXX:) , UIColor 或 @"F3F3F3") */
-@property (nonatomic , copy , readonly ) LEEConfigThemeToT_SelectorAndColor LeeAddSelectorAndColor;
-
 /** Image快捷设置方法 */
 
 /** 添加图片设置 -> 格式: .LeeAddImage(@@"tag" , UIImage 或 @@"imageName" 或 @@"imagePath") */
@@ -219,15 +216,20 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 /** 添加按钮背景图片设置 -> 格式: .LeeAddButtonBackgroundImage(@@"tag" , UIImage , UIControlStateNormal) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToT_ImageAndState LeeAddButtonBackgroundImage;
 
+/** 添加颜色设置 -> 格式: .LeeAddSelectorAndColor(@@"tag" , @@selector(XXX:) , UIColor 或 @"F3F3F3") */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToT_SelectorAndColor LeeAddSelectorAndColor;
+
 /** 添加图片设置 -> 格式: .LeeAddSelectorAndImage(@@"tag" , @@selector(XXX:) , UIImage 或 @"imageName" 或 @"imagePath") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToT_SelectorAndImage LeeAddSelectorAndImage;
 
 /** ----通用设置---- */
 
+
 /** 设置主题更改过渡动画时长 -> 格式: .LeeChangeThemeAnimationDuration(0.1f) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToFloat LeeChangeThemeAnimationDuration;
 
 /** 基础设置方法 */
+
 
 /** 添加路径设置 -> 格式: .LeeAddKeyPathAndValue(@@"tag" , @@"keyPath" , id) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToT_KeyPathAndValue LeeAddKeyPathAndValue;
@@ -240,15 +242,14 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 /** 移除方法设置 -> 格式: .LeeRemoveKeyPath(@@"tag" , @@selector(XXX:XXX:)) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToT_Selector LeeRemoveSelector;
 
-
-/** 移除标签设置 -> 格式: .LeeClearTagConfig(@@"tag") */
-@property (nonatomic , copy , readonly ) LEEConfigThemeToTag LeeClearTagConfig;
-/** 移除属性设置 -> 格式: .LeeClearKeyPathConfig(@@"keyPath") */
-@property (nonatomic , copy , readonly ) LEEConfigThemeToKeyPath LeeClearKeyPathConfig;
-/** 移除方法设置 -> 格式: .LeeClearSelectorConfig(@selector(XXXX:)) */
-@property (nonatomic , copy , readonly )LEEConfigThemeToSelector LeeClearSelectorConfig;
 /** 移除全部设置 -> 格式: .LeeClearAllConfig() */
 @property (nonatomic , copy , readonly ) LEEConfigTheme LeeClearAllConfig;
+/** 移除标签全部的设置 -> 格式: .LeeClearAllConfig_Tag(@@"tag") */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToTag LeeClearAllConfig_Tag;
+/** 移除路径全部的设置 -> 格式: .LeeClearAllConfig_KeyPath(@@"keyPath") */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToKeyPath LeeClearAllConfig_KeyPath;
+/** 移除方法全部的设置 -> 格式: .LeeClearAllConfig_Selector(@selector(XXXX:)) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToSelector LeeClearAllConfig_Selector;
 
 @end
 
@@ -331,10 +332,19 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 
 /** 设置路径标识符 -> 格式: .LeeConfigKeyPathAndIdentifier(@@"keyPath" , @@"identifier") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToKeyPathAndIdentifier LeeConfigKeyPathAndIdentifier;
-/** 设置方法标识符 -> 格式: .LeeConfigKeyPathAndIdentifier(@@"keyPath" , @@"identifier") */
+/** 设置方法标识符 -> 格式: .LeeConfigKeyPathAndIdentifier(@@selector(XXX:) , @@"identifier") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToSelectorAndIdentifier LeeConfigSelectorAndIdentifier;
-/** 设置方法标识符 -> 格式: .LeeConfigSelectorAndIdentifierAndValueArray(@@"keyPath" , @@"identifier" , 0 , @@[id , id]) */
+/** 设置方法标识符 -> 格式: .LeeConfigSelectorAndIdentifierAndValueArray(@@selector(XXX:XXX:) , @@"identifier" , 0 , @@[id , id]) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToSelectorAndIdentifierAndValueIndexAndValueArray LeeConfigSelectorAndIdentifierAndValueIndexAndValueArray;
+/** 移除路径标识符设置 -> 格式: .LeeRemoveKeyPathIdentifier(@@"keyPath") */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToKeyPath LeeRemoveKeyPathIdentifier;
+/** 移除方法标识符设置 -> 格式: .LeeRemoveSelectorIdentifier(@@selector(XXX:)) */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToSelector LeeRemoveSelectorIdentifier;
+/** 移除标识符设置 -> 格式: .LeeRemoveIdentifier(@@"identifier") */
+@property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeRemoveIdentifier;
+
+/** 移除全部设置(Josn模式) -> 格式: .LeeClearAllConfigOnJsonMode() */
+@property (nonatomic , copy , readonly ) LEEConfigTheme LeeClearAllConfigOnJsonMode;
 
 @end
 

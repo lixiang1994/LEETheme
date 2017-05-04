@@ -254,11 +254,20 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     self = [super init];
     if (self) {
         
-        //默认属性值
+        // 默认属性值
         
         _modelChangeThemeAnimationDuration = -1.f; //默认为小于0
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leeTheme_RemoveThemeTagNotify:) name:LEEThemeRemoveTagNotificaiton object:nil];
     }
     return self;
+}
+
+- (void)leeTheme_RemoveThemeTagNotify:(NSNotification *)notify{
+    
+    NSString *tag = notify.userInfo[@"tag"];
+    
+    self.LeeClearAllConfig_Tag(tag);
 }
 
 - (void)updateCurrentThemeConfigHandleWithTag:(NSString *)tag{
@@ -280,7 +289,7 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
             
             weakSelf.modelChangingBlock = changingBlock;
             
-            if (self.modelConfigThemeChangingBlock) self.modelConfigThemeChangingBlock();
+            if (weakSelf.modelConfigThemeChangingBlock) weakSelf.modelConfigThemeChangingBlock();
         }
             
         return weakSelf;
@@ -338,41 +347,6 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
             }];
 
         }
-        
-        return weakSelf;
-    };
-    
-}
-
-#define kGetColor(color) \
-({\
-id value = nil;\
-if ([color isKindOfClass:NSString.class]) {\
-value = [UIColor leeTheme_ColorWithHexString:color];\
-} else {\
-value = color;\
-}\
-(value);\
-})
-
-- (LEEConfigThemeToT_SelectorAndColor)LeeAddSelectorAndColor{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , SEL sel , id color){
-        
-        id value = nil;
-        
-        if ([color isKindOfClass:NSString.class]) {
-            
-            value = [UIColor leeTheme_ColorWithHexString:color];
-        
-        } else {
-        
-            value = color;
-        }
-        
-        if (value) weakSelf.LeeAddSelectorAndValues(tag , sel , kGetColor(color) , nil);
         
         return weakSelf;
     };
@@ -587,43 +561,6 @@ value = color;\
     };
     
 }
-#define kGetImage(image) \
-({\
-id value = nil;\
-if ([image isKindOfClass:NSString.class]) {\
-    value = [UIImage imageNamed:image];\
-    if (!value) value = [UIImage imageWithContentsOfFile:image];\
-} else {\
-    value = image;\
-}\
-(value);\
-})
-
-- (LEEConfigThemeToT_SelectorAndImage)LeeAddSelectorAndImage{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(NSString *tag , SEL sel , id image){
-        
-        id value = nil;
-        
-        if ([image isKindOfClass:NSString.class]) {
-            
-            value = [UIImage imageNamed:image];
-            
-            if (!value) value = [UIImage imageWithContentsOfFile:image];
-            
-        } else {
-            
-            value = image;
-        }
-        
-        if (value) weakSelf.LeeAddSelectorAndValues(tag , sel , kGetImage(image) , nil);
-        
-        return weakSelf;
-    };
-    
-}
 
 - (LEEConfigThemeToT_Image)LeeAddImage{
     
@@ -757,6 +694,56 @@ if ([image isKindOfClass:NSString.class]) {\
     
 }
 
+- (LEEConfigThemeToT_SelectorAndColor)LeeAddSelectorAndColor{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *tag , SEL sel , id color){
+        
+        id value = nil;
+        
+        if ([color isKindOfClass:NSString.class]) {
+            
+            value = [UIColor leeTheme_ColorWithHexString:color];
+            
+        } else {
+            
+            value = color;
+        }
+        
+        if (value) weakSelf.LeeAddSelectorAndValues(tag , sel , value , nil);
+        
+        return weakSelf;
+    };
+    
+}
+
+- (LEEConfigThemeToT_SelectorAndImage)LeeAddSelectorAndImage{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *tag , SEL sel , id image){
+        
+        id value = nil;
+        
+        if ([image isKindOfClass:NSString.class]) {
+            
+            value = [UIImage imageNamed:image];
+            
+            if (!value) value = [UIImage imageWithContentsOfFile:image];
+            
+        } else {
+            
+            value = image;
+        }
+        
+        if (value) weakSelf.LeeAddSelectorAndValues(tag , sel , value , nil);
+        
+        return weakSelf;
+    };
+    
+}
+
 - (LEEConfigThemeToT_KeyPathAndValue)LeeAddKeyPathAndValue{
     
     __weak typeof(self) weakSelf = self;
@@ -878,19 +865,51 @@ if ([image isKindOfClass:NSString.class]) {\
     
 }
 
-- (LEEConfigThemeToTag)LeeClearTagConfig{
+- (LEEConfigTheme)LeeClearAllConfig{
     
     __weak typeof(self) weakSelf = self;
     
-    return ^(NSString *tag){
+    return ^(){
         
+        weakSelf.modelChangingBlock = nil;
+        
+        [weakSelf.modelThemeBlockConfigInfo removeAllObjects];
+        
+        [weakSelf.modelThemeKeyPathConfigInfo removeAllObjects];
+        
+        [weakSelf.modelThemeSelectorConfigInfo removeAllObjects];
+        
+        weakSelf.modelChangeThemeAnimationDuration = -1.f;
         
         return weakSelf;
     };
     
 }
 
-- (LEEConfigThemeToKeyPath)LeeClearSingleConfig{
+- (LEEConfigThemeToTag)LeeClearAllConfig_Tag{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *tag){
+        
+        [weakSelf.modelThemeBlockConfigInfo removeObjectForKey:tag];
+        
+        for (id keyPath in weakSelf.modelThemeKeyPathConfigInfo) {
+            
+            weakSelf.LeeRemoveKeyPath(tag, keyPath);
+        }
+        
+        for (id selector in weakSelf.modelThemeSelectorConfigInfo) {
+            
+            weakSelf.LeeRemoveSelector(tag, NSSelectorFromString(selector));
+        }
+        
+        return weakSelf;
+    };
+    
+}
+
+- (LEEConfigThemeToKeyPath)LeeClearAllConfig_KeyPath{
     
     __weak typeof(self) weakSelf = self;
     
@@ -898,24 +917,18 @@ if ([image isKindOfClass:NSString.class]) {\
         
         if ([weakSelf.modelThemeKeyPathConfigInfo containsObjectForKey:keyPath]) [weakSelf.modelThemeKeyPathConfigInfo removeObjectForKey:keyPath];
         
-        if ([weakSelf.modelThemeSelectorConfigInfo containsObjectForKey:keyPath]) [weakSelf.modelThemeSelectorConfigInfo removeObjectForKey:keyPath];
-        
         return weakSelf;
     };
     
 }
 
-- (LEEConfigTheme)LeeClearAllConfig{
+- (LEEConfigThemeToSelector)LeeClearAllConfig_Selector{
     
     __weak typeof(self) weakSelf = self;
     
-    return ^(){
+    return ^(SEL selector){
         
-        [weakSelf.modelThemeBlockConfigInfo removeAllObjects];
-        
-        [weakSelf.modelThemeKeyPathConfigInfo removeAllObjects];
-        
-        [weakSelf.modelThemeSelectorConfigInfo removeAllObjects];
+        if ([weakSelf.modelThemeSelectorConfigInfo containsObjectForKey:NSStringFromSelector(selector)]) [weakSelf.modelThemeSelectorConfigInfo removeObjectForKey:NSStringFromSelector(selector)];
         
         return weakSelf;
     };
@@ -984,7 +997,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
             
             for (NSString *tag in [LEETheme shareTheme].allTags) {
                 
-                id value = [self getValueWithTag:tag Identifier:identifier];
+                id value = [weakSelf getValueWithTag:tag Identifier:identifier];
                 
                 if (value) {
                     
@@ -1005,7 +1018,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
             
             if (!info) info = [NSMutableDictionary dictionary];
             
-            [info setObject:configBlock forKey:identifier];
+            [info setObject:identifier forKey:configBlock];
             
             [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:@(LEEThemeIdentifierConfigTypeBlock)];
         }
@@ -1366,7 +1379,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         for (NSString *tag in [LEETheme shareTheme].allTags) {
             
-            id value = [self getValueWithTag:tag Identifier:identifier];
+            id value = [weakSelf getValueWithTag:tag Identifier:identifier];
             
             if (value) weakSelf.LeeAddKeyPathAndValue(tag, keyPath, value);
         }
@@ -1375,7 +1388,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         if (!info) info = [NSMutableDictionary dictionary];
         
-        [info setObject:keyPath forKey:identifier];
+        [info setObject:identifier forKey:keyPath];
         
         [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:@(LEEThemeIdentifierConfigTypeKeyPath)];
         
@@ -1390,22 +1403,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     return ^(SEL sel , NSString *identifier){
         
-        for (NSString *tag in [LEETheme shareTheme].allTags) {
-            
-            id value = [self getValueWithTag:tag Identifier:identifier];
-            
-            if (value) weakSelf.LeeAddSelectorAndValues(tag, sel, value, nil);
-        }
-        
-        NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[@(LEEThemeIdentifierConfigTypeSelector)];
-        
-        if (!info) info = [NSMutableDictionary dictionary];
-        
-        [info setObject:NSStringFromSelector(sel) forKey:identifier];
-        
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:@(LEEThemeIdentifierConfigTypeSelector)];
-        
-        return weakSelf;
+        return weakSelf.LeeConfigSelectorAndIdentifierAndValueIndexAndValueArray(sel , identifier , 0 , nil);
     };
     
 }
@@ -1425,7 +1423,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         for (NSString *tag in [LEETheme shareTheme].allTags) {
             
-            id value = [self getValueWithTag:tag Identifier:identifier];
+            id value = [weakSelf getValueWithTag:tag Identifier:identifier];
             
             if (value) {
                 
@@ -1444,11 +1442,199 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         NSDictionary *selInfo = @{@"selector" : NSStringFromSelector(sel) ,
                                   @"valueindex" : @(valueIndex) ,
-                                  @"othervalues" : otherValues};
+                                  @"othervalues" : otherValues ? : @[]};
         
-        [info setObject:selInfo forKey:identifier];
+        [info setObject:identifier forKey:selInfo];
         
         [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:@(LEEThemeIdentifierConfigTypeSelector)];
+        
+        return weakSelf;
+    };
+    
+}
+
+- (LEEConfigThemeToKeyPath)LeeRemoveKeyPathIdentifier{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *keyPath){
+        
+        id type = @(LEEThemeIdentifierConfigTypeKeyPath);
+        
+        NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[type];
+        
+        for (id key in [info copy]) {
+            
+            if ([key isEqualToString:keyPath]) {
+                
+                for (NSString *tag in [LEETheme shareTheme].allTags) {
+                    
+                    id value = [weakSelf getValueWithTag:tag Identifier:info[key]];
+                    
+                    if (value) weakSelf.LeeRemoveKeyPath(tag, keyPath);
+                }
+                
+                [info removeObjectForKey:key];
+            }
+            
+        }
+        
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:type];
+        
+        return weakSelf;
+    };
+    
+}
+
+- (LEEConfigThemeToSelector)LeeRemoveSelectorIdentifier{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(SEL sel){
+        
+        id type = @(LEEThemeIdentifierConfigTypeSelector);
+        
+        NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[type];
+        
+        for (id key in [info copy]) {
+            
+            NSString *selString = key[@"selector"];
+            
+            if ([selString isEqualToString:NSStringFromSelector(sel)]) {
+                
+                for (NSString *tag in [LEETheme shareTheme].allTags) {
+                    
+                    id value = [weakSelf getValueWithTag:tag Identifier:info[key]];
+                    
+                    if (value) weakSelf.LeeRemoveSelector(tag, sel);
+                }
+                
+                [info removeObjectForKey:key];
+            }
+            
+        }
+        
+        [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:type];
+        
+        return weakSelf;
+    };
+    
+}
+
+- (LEEConfigThemeToIdentifier)LeeRemoveIdentifier{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(NSString *identifier){
+      
+        for (id type in [weakSelf.modelThemeIdentifierConfigInfo copy]) {
+         
+            NSMutableDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[type];
+            
+            for (id key in [info copy]) {
+                
+                if ([info[key] isEqualToString:identifier]) {
+                    
+                    for (NSString *tag in [LEETheme shareTheme].allTags) {
+                        
+                        id value = [weakSelf getValueWithTag:tag Identifier:identifier];
+                        
+                        if (!value) continue;
+                        
+                        switch ([type integerValue]) {
+                                
+                            case LEEThemeIdentifierConfigTypeBlock:
+                            {
+                                NSMutableDictionary *info = weakSelf.modelThemeBlockConfigInfo[tag];
+                                
+                                [info removeObjectForKey:key];
+                                
+                                [weakSelf.modelThemeBlockConfigInfo setObject:info forKey:tag];
+                            }
+                                break;
+                                
+                            case LEEThemeIdentifierConfigTypeKeyPath:
+                            {
+                                weakSelf.LeeRemoveKeyPath(tag, key);
+                            }
+                                break;
+                                
+                            case LEEThemeIdentifierConfigTypeSelector:
+                            {
+                                weakSelf.LeeRemoveSelector(tag, NSSelectorFromString(key[@"selector"]));
+                            }
+                                break;
+                                
+                            default:
+                                break;
+                        }
+                        
+                    }
+                    
+                    [info removeObjectForKey:key];
+                }
+                
+            }
+            
+            [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:type];
+        }
+        
+        return weakSelf;
+    };
+    
+}
+
+- (LEEConfigTheme)LeeClearAllConfigOnJsonMode{
+    
+    __weak typeof(self) weakSelf = self;
+    
+    return ^(){
+        
+        for (NSNumber *type in weakSelf.modelThemeIdentifierConfigInfo) {
+            
+            NSDictionary *info = weakSelf.modelThemeIdentifierConfigInfo[type];
+            
+            for (id key in info) {
+                
+                NSString *identifier = info[key];
+                
+                for (NSString *tag in [LEETheme allThemeTag]) {
+                    
+                    id value = [weakSelf getValueWithTag:tag Identifier:identifier];
+                    
+                    if (!value) continue;
+                    
+                    switch ([type integerValue]) {
+                            
+                        case LEEThemeIdentifierConfigTypeBlock:
+                        {
+                            [weakSelf.modelThemeBlockConfigInfo removeObjectForKey:tag];
+                        }
+                            break;
+                            
+                        case LEEThemeIdentifierConfigTypeKeyPath:
+                        {
+                            weakSelf.LeeRemoveKeyPath(tag, key);
+                        }
+                            break;
+                            
+                        case LEEThemeIdentifierConfigTypeSelector:
+                        {
+                            weakSelf.LeeRemoveSelector(tag, NSSelectorFromString(key[@"selector"]));
+                        }
+                            break;
+                            
+                        default:
+                            break;
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+        [weakSelf.modelThemeIdentifierConfigInfo removeAllObjects];
         
         return weakSelf;
     };
@@ -1502,14 +1688,16 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     NSString *tag = notify.userInfo[@"tag"];
     
-    NSDictionary *configInfo = [self modelThemeIdentifierConfigInfo];
+    NSDictionary *configInfo = self.modelThemeIdentifierConfigInfo;
     
     for (NSNumber *type in configInfo) {
         
         NSDictionary *info = configInfo[type];
         
-        for (NSString *identifier in info) {
+        for (id key in info) {
         
+            NSString *identifier = info[key];
+            
             id value = [self getValueWithTag:tag Identifier:identifier];
             
             if (value) {
@@ -1522,7 +1710,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                         
                         if (!blockInfo) blockInfo = [NSMutableDictionary dictionary];
                         
-                        [blockInfo setObject:value forKey:info[identifier]];
+                        [blockInfo setObject:value forKey:key];
                         
                         [self.modelThemeBlockConfigInfo setObject:blockInfo forKey:tag];
                     }
@@ -1530,33 +1718,23 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                         
                     case LEEThemeIdentifierConfigTypeKeyPath:
                     {
-                        self.LeeAddKeyPathAndValue(tag, info[identifier], value);
+                        self.LeeAddKeyPathAndValue(tag, key, value);
                     }
                         break;
                         
                     case LEEThemeIdentifierConfigTypeSelector:
                     {
-                        id sel = info[identifier];
+                        id sel = key;
                         
-                        if ([sel isKindOfClass:NSString.class]) {
-                            
-                            self.LeeAddSelectorAndValues(tag, NSSelectorFromString(sel), value, nil);
-                            
-                        } else if ([sel isKindOfClass:NSDictionary.class]) {
-                            
-                            NSDictionary *selInfo = sel;
-                            
-                            NSString *selString = selInfo[@"selector"];
-                            
-                            NSInteger valueIndex = [selInfo[@"valueindex"] integerValue];
-                            
-                            NSMutableArray *values = [NSMutableArray arrayWithArray:selInfo[@"othervalues"]];
-                            
-                            [values insertObject:value atIndex:valueIndex];
-                            
-                            self.LeeAddSelectorAndValueArray(tag, NSSelectorFromString(selString),values);
-                        }
+                        NSString *selString = sel[@"selector"];
                         
+                        NSInteger valueIndex = [sel[@"valueindex"] integerValue];
+                        
+                        NSMutableArray *values = [NSMutableArray arrayWithArray:sel[@"othervalues"]];
+                        
+                        [values insertObject:value atIndex:valueIndex];
+                        
+                        self.LeeAddSelectorAndValueArray(tag, NSSelectorFromString(selString),values);
                     }
                         break;
                         
@@ -1572,63 +1750,9 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
 }
 
-- (void)leeTheme_RemoveThemeTagNotify:(NSNotification *)notify{
-    
-    NSString *tag = notify.userInfo[@"tag"];
-    
-    NSDictionary *configInfo = [self modelThemeIdentifierConfigInfo];
-    
-    for (NSNumber *type in configInfo) {
-        
-        NSDictionary *info = configInfo[type];
-        
-        for (NSString *identifier in info) {
-            
-            switch ([type integerValue]) {
-                    
-                case LEEThemeIdentifierConfigTypeBlock:
-                {
-                    [self.modelThemeBlockConfigInfo removeObjectForKey:tag];
-                }
-                    break;
-                    
-                case LEEThemeIdentifierConfigTypeKeyPath:
-                {
-                    self.LeeRemoveKeyPath(tag, info[identifier]);
-                }
-                    break;
-                    
-                case LEEThemeIdentifierConfigTypeSelector:
-                {
-                    id sel = info[identifier];
-                    
-                    if ([sel isKindOfClass:NSString.class]) {
-                        
-                        self.LeeRemoveSelector(tag, NSSelectorFromString(sel));
-                        
-                    } else if ([sel isKindOfClass:NSDictionary.class]) {
-                        
-                        NSDictionary *selInfo = sel;
-                        
-                        self.LeeRemoveSelector(tag, NSSelectorFromString(selInfo[@"selector"]));
-                    }
-                    
-                }
-                    break;
-                    
-                default:
-                    break;
-            }
-            
-        }
-    
-    }
-    
-}
-
 - (NSMutableDictionary *)modelThemeIdentifierConfigInfo{
     
-    // @{type : @{identifier : (sel or keypath or block)}}
+    // @{type : @{(sel or keypath or block) : identifier}}
     
     NSMutableDictionary *dic = objc_getAssociatedObject(self, _cmd);
     
@@ -1639,8 +1763,6 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         objc_setAssociatedObject(self, _cmd, dic , OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leeTheme_AddThemeTagNotify:) name:LEEThemeAddTagNotificaiton object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leeTheme_RemoveThemeTagNotify:) name:LEEThemeRemoveTagNotificaiton object:nil];
     }
     
     return dic;
