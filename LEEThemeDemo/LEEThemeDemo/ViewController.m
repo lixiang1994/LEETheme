@@ -10,7 +10,7 @@
 
 #import "MBProgressHUD.h"
 
-@interface ViewController ()<UIScrollViewDelegate , UIGestureRecognizerDelegate>
+@interface ViewController ()<UIScrollViewDelegate>
 
 /**
  红色主题标签
@@ -87,15 +87,7 @@
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGestureRecognizerAction:)];
     
-    tap.delegate = self;
-    
     [self.scrollView addGestureRecognizer:tap];
-    
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panGestureRecognizerAction:)];
-    
-    pan.delegate = self;
-    
-    [self.scrollView addGestureRecognizer:pan];
     
     // view
     
@@ -404,13 +396,6 @@
     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
 }
 
-#pragma mark - 拖动手势事件
-
-- (void)panGestureRecognizerAction:(UIPanGestureRecognizer *)pan{
-    
-    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
-}
-
 #pragma mark - 键盘通知事件
 
 - (void)keyboardWillShow:(NSNotification *)notify{
@@ -470,12 +455,9 @@
 
 #pragma mark - UIScrollViewDelegate
 
-
-#pragma mark - UIGestureRecognizerDelegate
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     
-    return YES;
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
 }
 
 @end
