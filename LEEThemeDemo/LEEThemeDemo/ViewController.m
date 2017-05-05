@@ -411,9 +411,19 @@
 
 - (void)removeRedItemAction{
     
-    // 移除新的主题
+    // 移除新的主题配置
     
     [LEETheme removeThemeConfigWithTag:self.redTag];
+    
+    // 移除图片资源
+    
+    NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+    
+    NSString *themePath = [documentsPath stringByAppendingPathComponent:@"theme_resources"];
+    
+    NSString *path = [themePath stringByAppendingPathComponent:self.redTag];
+    
+    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
     
     // 检查红色主题
     
