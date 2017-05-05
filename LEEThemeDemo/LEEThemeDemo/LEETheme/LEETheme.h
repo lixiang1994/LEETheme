@@ -98,9 +98,9 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 + (NSString *)currentThemeTag;
 
 /**
- 全部主题标签
- 
- @return 主题标签集合
+ *  全部主题标签
+ *
+ *  @return 主题标签集合
  */
 + (NSArray *)allThemeTag;
 
@@ -243,13 +243,13 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 
 /** 添加路径设置 -> 格式: .LeeAddKeyPathAndValue(@@"tag" , @@"keyPath" , id) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToT_KeyPathAndValue LeeAddKeyPathAndValue;
-/** 添加方法设置 -> 格式: .LeeAddKeyPathAndValue(@@"tag" , @@selector(XXX:XXX:) , id , id) */
+/** 添加方法设置 -> 格式: .LeeAddSelectorAndValues(@@"tag" , @@selector(XXX:XXX:) , id , id) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToT_SelectorAndValues LeeAddSelectorAndValues;
-/** 添加方法设置 -> 格式: .LeeAddKeyPathAndValue(@@"tag" , @@selector(XXX:XXX:) , @@[id , id]) */
+/** 添加方法设置 -> 格式: .LeeAddSelectorAndValueArray(@@"tag" , @@selector(XXX:XXX:) , @@[id , id]) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToT_SelectorAndValueArray LeeAddSelectorAndValueArray;
 /** 移除路径设置 -> 格式: .LeeRemoveKeyPath(@@"tag" , @@"keyPath") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToT_KeyPath LeeRemoveKeyPath;
-/** 移除方法设置 -> 格式: .LeeRemoveKeyPath(@@"tag" , @@selector(XXX:XXX:)) */
+/** 移除方法设置 -> 格式: .LeeRemoveSelector(@@"tag" , @@selector(XXX:XXX:)) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToT_Selector LeeRemoveSelector;
 
 /** 移除全部设置 -> 格式: .LeeClearAllConfig() */
@@ -342,9 +342,9 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 
 /** 设置路径标识符 -> 格式: .LeeConfigKeyPathAndIdentifier(@@"keyPath" , @@"identifier") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToKeyPathAndIdentifier LeeConfigKeyPathAndIdentifier;
-/** 设置方法标识符 -> 格式: .LeeConfigKeyPathAndIdentifier(@@selector(XXX:) , @@"identifier") */
+/** 设置方法标识符 -> 格式: .LeeConfigSelectorAndIdentifier(@@selector(XXX:) , @@"identifier") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToSelectorAndIdentifier LeeConfigSelectorAndIdentifier;
-/** 设置方法标识符 -> 格式: .LeeConfigSelectorAndIdentifierAndValueArray(@@selector(XXX:XXX:) , @@"identifier" , 0 , @@[id , id]) */
+/** 设置方法标识符 -> 格式: .LeeConfigSelectorAndIdentifierAndValueIndexAndValueArray(@@selector(XXX:XXX:) , @@"identifier" , 0 , @@[id , id]) */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToSelectorAndIdentifierAndValueIndexAndValueArray LeeConfigSelectorAndIdentifierAndValueIndexAndValueArray;
 /** 移除路径标识符设置 -> 格式: .LeeRemoveKeyPathIdentifier(@@"keyPath") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToKeyPath LeeRemoveKeyPathIdentifier;
@@ -353,7 +353,7 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 /** 移除标识符设置 -> 格式: .LeeRemoveIdentifier(@@"identifier") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeRemoveIdentifier;
 
-/** 移除全部设置(Josn模式) -> 格式: .LeeClearAllConfigOnIdentifierMode() */
+/** 移除全部设置(标识符模式) -> 格式: .LeeClearAllConfigOnIdentifierMode() */
 @property (nonatomic , copy , readonly ) LEEConfigTheme LeeClearAllConfigOnIdentifierMode;
 
 @end

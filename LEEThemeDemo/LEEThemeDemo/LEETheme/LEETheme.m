@@ -958,7 +958,7 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
     return ^(NSString *keyPath){
         
-        if ([weakSelf.modelThemeKeyPathConfigInfo containsObjectForKey:keyPath]) [weakSelf.modelThemeKeyPathConfigInfo removeObjectForKey:keyPath];
+        [weakSelf.modelThemeKeyPathConfigInfo removeObjectForKey:keyPath];
         
         return weakSelf;
     };
@@ -971,7 +971,7 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
     return ^(SEL selector){
         
-        if ([weakSelf.modelThemeSelectorConfigInfo containsObjectForKey:NSStringFromSelector(selector)]) [weakSelf.modelThemeSelectorConfigInfo removeObjectForKey:NSStringFromSelector(selector)];
+        [weakSelf.modelThemeSelectorConfigInfo removeObjectForKey:NSStringFromSelector(selector)];
         
         return weakSelf;
     };
