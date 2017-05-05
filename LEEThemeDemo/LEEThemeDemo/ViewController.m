@@ -275,6 +275,10 @@
     // 添加方法选择器以及参数测试 可为对象添加其自定义的方法设置 并传入指定的参数
     
     self.lee_theme
+    .LeeThemeChangingBlock(^(NSString *tag, id item) {
+        
+        [item checkRedTheme];
+    })
     .LeeAddSelectorAndValues(DAY , @selector(test:), [UIColor whiteColor] , nil)
     .LeeAddSelectorAndValues(NIGHT, @selector(test:), [UIColor blackColor] , nil);
 }
