@@ -119,7 +119,7 @@
         
         _promptBarView = [[UIView alloc]initWithFrame:CGRectMake(0, -35, CGRectGetWidth(self.frame) , 35)];
         
-        _promptBarView.backgroundColor = [[UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] Identifier:common_bg_blue_4] colorWithAlphaComponent:0.8f];
+        _promptBarView.backgroundColor = [LEEColorFromIdentifier([LEETheme currentThemeTag], common_bg_blue_4) colorWithAlphaComponent:0.8f];
         
         _promptBarView.clipsToBounds = YES;
         

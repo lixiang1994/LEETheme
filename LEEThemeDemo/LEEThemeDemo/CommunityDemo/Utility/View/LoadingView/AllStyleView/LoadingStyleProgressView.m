@@ -167,16 +167,15 @@
 
 #pragma mark ---LazyLoading
 
--(UIImageView *)titleImageView{
+- (UIImageView *)titleImageView{
     
-    if (_titleImageView == nil) {
+    if (!_titleImageView) {
         
         _titleImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0 , _circleImageView.frame.origin.y + CGRectGetHeight(_circleImageView.frame) + 10, 117 , 32)];
         
         _titleImageView.center = CGPointMake(CGRectGetWidth(self.frame) / 2 , _titleImageView.center.y);
         
-        _titleImageView.image = [UIImage leeTheme_ImageFromJsonWithTag:[LEETheme currentThemeTag] Identifier:detail_load_image];
-        
+        _titleImageView.image = LEEImageFromIdentifier([LEETheme currentThemeTag], detail_load_image);
     }
     
     return _titleImageView;

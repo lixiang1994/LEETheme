@@ -273,7 +273,7 @@
     
     [contentAttributes setObject:[UIFont systemFontOfSize:16.0f] forKey:NSFontAttributeName];
     
-    [contentAttributes setObject:[UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] Identifier:common_font_color_3] forKey:NSForegroundColorAttributeName];
+    [contentAttributes setObject:LEEColorFromIdentifier([LEETheme currentThemeTag], common_font_color_3) forKey:NSForegroundColorAttributeName];
     
     NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     
@@ -985,7 +985,7 @@
     
     contentText.font = [UIFont systemFontOfSize:16.0f];
     
-    contentText.color = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] Identifier:common_font_color_3];
+    contentText.color = LEEColorFromIdentifier([LEETheme currentThemeTag], common_font_color_3);
     
     contentText.lineSpacing = 8.0f;
     
@@ -1229,7 +1229,7 @@
             
             contentText.font = [UIFont systemFontOfSize:16.0f];
             
-            contentText.color = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] Identifier:common_font_color_3];
+            contentText.color = LEEColorFromIdentifier([LEETheme currentThemeTag], common_font_color_3);
             
             contentText.lineSpacing = 8.0f;
             
@@ -1364,11 +1364,11 @@
             
             TZImagePickerController *imagePickerVC = [[TZImagePickerController alloc] initWithMaxImagesCount:9 - [self getImageCount] delegate:self];
             
-            imagePickerVC.navigationBar.barTintColor = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] Identifier:common_bg_blue_4];
+            imagePickerVC.navigationBar.barTintColor = LEEColorFromIdentifier([LEETheme currentThemeTag], common_bg_blue_4);
             
             imagePickerVC.oKButtonTitleColorDisabled = [UIColor lightGrayColor];
             
-            imagePickerVC.oKButtonTitleColorNormal = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] Identifier:common_bg_blue_4];
+            imagePickerVC.oKButtonTitleColorNormal = LEEColorFromIdentifier([LEETheme currentThemeTag], common_bg_blue_4);
             
             imagePickerVC.allowPickingVideo = NO;
             

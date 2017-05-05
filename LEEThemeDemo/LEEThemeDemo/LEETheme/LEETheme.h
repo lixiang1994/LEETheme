@@ -133,6 +133,16 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
  */
 + (NSString *)getResourcesPathWithTag:(NSString *)tag;
 
+/**
+ *  获取值
+ *
+ *  @param tag          主题标签
+ *  @param identifier   标识符
+ *
+ *  @return 值对象 (UIColor或UIImage或NSString 如为不存在则返回nil)
+ */
++ (id)getValueWithTag:(NSString *)tag Identifier:(NSString *)identifier;
+
 @end
 
 @interface LEEThemeConfigModel : NSObject
@@ -253,7 +263,7 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 
 @end
 
-@interface LEEThemeConfigModel (JsonModeExtend)
+@interface LEEThemeConfigModel (IdentifierModeExtend)
 
 /** Block */
 
@@ -343,8 +353,8 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 /** 移除标识符设置 -> 格式: .LeeRemoveIdentifier(@@"identifier") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToIdentifier LeeRemoveIdentifier;
 
-/** 移除全部设置(Josn模式) -> 格式: .LeeClearAllConfigOnJsonMode() */
-@property (nonatomic , copy , readonly ) LEEConfigTheme LeeClearAllConfigOnJsonMode;
+/** 移除全部设置(Josn模式) -> 格式: .LeeClearAllConfigOnIdentifierMode() */
+@property (nonatomic , copy , readonly ) LEEConfigTheme LeeClearAllConfigOnIdentifierMode;
 
 @end
 
@@ -388,14 +398,6 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 
 + (UIColor *)leeTheme_ColorWithHexString:(NSString *)hexString;
 
-+ (UIColor *)leeTheme_ColorFromJsonWithTag:(NSString *)tag Identifier:(NSString *)identifier;
-
-@end
-
-@interface UIImage (LEEThemeImage)
-
-+ (UIImage *)leeTheme_ImageFromJsonWithTag:(NSString *)tag Identifier:(NSString *)identifier;
-
 @end
 
 #define LEEColorRGBA(R , G , B , A) [UIColor colorWithRed:R/255.0f green:G/255.0f blue:B/255.0f alpha:A]
@@ -403,3 +405,9 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 #define LEEColorRGB(R , G , B) LEEColorRGBA(R , G , B , 1.0f)
 
 #define LEEColorHex(hex) [UIColor leeTheme_ColorWithHexString:hex]
+
+#define LEEColorFromIdentifier(tag, identifier) ({((UIColor *)([LEETheme getValueWithTag:tag Identifier:identifier]));})
+
+#define LEEImageFromIdentifier(tag, identifier) ({((UIImage *)([LEETheme getValueWithTag:tag Identifier:identifier]));})
+
+#define LEEValueFromIdentifier(tag, identifier) ({([LEETheme getValueWithTag:tag Identifier:identifier]);})

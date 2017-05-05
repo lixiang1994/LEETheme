@@ -214,6 +214,49 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     return path ? path : [[NSBundle mainBundle] bundlePath];
 }
 
++ (id)getValueWithTag:(NSString *)tag Identifier:(NSString *)identifier{
+    
+    id value = nil;
+    
+    NSDictionary *configInfo = [LEETheme shareTheme].configInfo[tag];
+    
+    NSDictionary *info = configInfo[@"info"];
+    
+    NSDictionary *colorInfo = info[@"color"];
+    
+    NSString *colorHexString = colorInfo[identifier];
+    
+    if (colorHexString) {
+        
+        UIColor *color = [UIColor leeTheme_ColorWithHexString:colorHexString];
+        
+        if (color && !value) value = color;
+    }
+    
+    NSDictionary *imageInfo = info[@"image"];
+    
+    NSString *imageName = imageInfo[identifier];
+    
+    if (imageName) {
+        
+        NSString *path = configInfo[@"path"];
+        
+        UIImage *image = path ? [UIImage imageWithContentsOfFile:[path stringByAppendingPathComponent:imageName]] : [UIImage imageNamed:imageName];
+        
+        if (!image) image = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:imageName]];
+        
+        if (!image) image = [UIImage imageNamed:imageName];
+        
+        if (image && !value) value = image;
+    }
+    
+    NSDictionary *otherInfo = info[@"other"];
+    
+    if (!value) value = otherInfo[identifier];
+    
+    return value;
+}
+
 @end
 
 #pragma mark - ----------------主题设置模型----------------
@@ -985,7 +1028,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     LEEThemeIdentifierConfigTypeSelector
 };
 
-@implementation LEEThemeConfigModel (JsonModeExtend)
+@implementation LEEThemeConfigModel (IdentifierModeExtend)
 
 - (LEEConfigThemeToIdentifierAndBlock)LeeCustomConfig{
     
@@ -997,7 +1040,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
             
             for (NSString *tag in [LEETheme shareTheme].allTags) {
                 
-                id value = [weakSelf getValueWithTag:tag Identifier:identifier];
+                id value = [LEETheme getValueWithTag:tag Identifier:identifier];
                 
                 if (value) {
                     
@@ -1379,7 +1422,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         for (NSString *tag in [LEETheme shareTheme].allTags) {
             
-            id value = [weakSelf getValueWithTag:tag Identifier:identifier];
+            id value = [LEETheme getValueWithTag:tag Identifier:identifier];
             
             if (value) weakSelf.LeeAddKeyPathAndValue(tag, keyPath, value);
         }
@@ -1423,7 +1466,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         for (NSString *tag in [LEETheme shareTheme].allTags) {
             
-            id value = [weakSelf getValueWithTag:tag Identifier:identifier];
+            id value = [LEETheme getValueWithTag:tag Identifier:identifier];
             
             if (value) {
                 
@@ -1469,7 +1512,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                 
                 for (NSString *tag in [LEETheme shareTheme].allTags) {
                     
-                    id value = [weakSelf getValueWithTag:tag Identifier:info[key]];
+                    id value = [LEETheme getValueWithTag:tag Identifier:info[key]];
                     
                     if (value) weakSelf.LeeRemoveKeyPath(tag, keyPath);
                 }
@@ -1504,7 +1547,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                 
                 for (NSString *tag in [LEETheme shareTheme].allTags) {
                     
-                    id value = [weakSelf getValueWithTag:tag Identifier:info[key]];
+                    id value = [LEETheme getValueWithTag:tag Identifier:info[key]];
                     
                     if (value) weakSelf.LeeRemoveSelector(tag, sel);
                 }
@@ -1537,7 +1580,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                     
                     for (NSString *tag in [LEETheme shareTheme].allTags) {
                         
-                        id value = [weakSelf getValueWithTag:tag Identifier:identifier];
+                        id value = [LEETheme getValueWithTag:tag Identifier:identifier];
                         
                         if (!value) continue;
                         
@@ -1584,7 +1627,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
 }
 
-- (LEEConfigTheme)LeeClearAllConfigOnJsonMode{
+- (LEEConfigTheme)LeeClearAllConfigOnIdentifierMode{
     
     __weak typeof(self) weakSelf = self;
     
@@ -1600,7 +1643,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                 
                 for (NSString *tag in [LEETheme allThemeTag]) {
                     
-                    id value = [weakSelf getValueWithTag:tag Identifier:identifier];
+                    id value = [LEETheme getValueWithTag:tag Identifier:identifier];
                     
                     if (!value) continue;
                     
@@ -1641,49 +1684,6 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
 }
 
-- (id)getValueWithTag:(NSString *)tag Identifier:(NSString *)identifier{
-    
-    id value = nil;
-    
-    NSDictionary *configInfo = [LEETheme shareTheme].configInfo[tag];
-    
-    NSDictionary *info = configInfo[@"info"];
-    
-    NSDictionary *colorInfo = info[@"color"];
-    
-    NSString *colorHexString = colorInfo[identifier];
-    
-    if (colorHexString) {
-        
-        UIColor *color = [UIColor leeTheme_ColorWithHexString:colorHexString];
-        
-        if (color && !value) value = color;
-    }
-    
-    NSDictionary *imageInfo = info[@"image"];
-    
-    NSString *imageName = imageInfo[identifier];
-    
-    if (imageName) {
-        
-        NSString *path = configInfo[@"path"];
-        
-        UIImage *image = path ? [UIImage imageWithContentsOfFile:[path stringByAppendingPathComponent:imageName]] : [UIImage imageNamed:imageName];
-        
-        if (!image) image = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:imageName]];
-        
-        if (!image) image = [UIImage imageNamed:imageName];
-        
-        if (image && !value) value = image;
-    }
-    
-    NSDictionary *otherInfo = info[@"other"];
-    
-    if (!value) value = otherInfo[identifier];
-    
-    return value;
-}
-
 - (void)leeTheme_AddThemeTagNotify:(NSNotification *)notify{
     
     NSString *tag = notify.userInfo[@"tag"];
@@ -1698,7 +1698,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
             NSString *identifier = info[key];
             
-            id value = [self getValueWithTag:tag Identifier:identifier];
+            id value = [LEETheme getValueWithTag:tag Identifier:identifier];
             
             if (value) {
                 
@@ -2152,29 +2152,4 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     return hexComponent / 255.0f;
 }
 
-+ (UIColor *)leeTheme_ColorFromJsonWithTag:(NSString *)tag Identifier:(NSString *)identifier{
-    
-    NSString *colorHexString = [LEETheme shareTheme].configInfo[tag][@"info"][@"color"][identifier];
-    
-    return colorHexString ? [UIColor leeTheme_ColorWithHexString:colorHexString] : nil;
-}
-
 @end
-
-@implementation UIImage (LEEThemeImage) 
-
-+ (UIImage *)leeTheme_ImageFromJsonWithTag:(NSString *)tag Identifier:(NSString *)identifier{
-    
-    NSString *imageName = [LEETheme shareTheme].configInfo[tag][@"info"][@"image"][identifier];
-    
-    NSString *path = [LEETheme shareTheme].configInfo[[LEETheme currentThemeTag]][@"path"];
-    
-    UIImage *image = path ? [UIImage imageWithContentsOfFile:[path stringByAppendingPathComponent:imageName]] : [UIImage imageNamed:imageName];
-    
-    if (!image) image = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:imageName]];
-    
-    return image;
-}
-
-@end
-

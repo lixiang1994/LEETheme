@@ -186,7 +186,7 @@
 
 - (void)configPostCount:(NSInteger)postCount WithIsShowSort:(BOOL)isShowSort{
     
-    UIColor *blueColor = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] Identifier:common_bg_blue_4];
+    UIColor *blueColor = LEEColorFromIdentifier([LEETheme currentThemeTag], common_bg_blue_4);
     
     NSString *postCountString = [NSString stringWithFormat:@"%ld" , postCount];
     
@@ -356,7 +356,7 @@
 
 - (void)configTheme{
     
-    UIColor *blueColor = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] Identifier:common_bg_blue_3];
+    UIColor *blueColor = LEEColorFromIdentifier([LEETheme currentThemeTag], common_bg_blue_3);
     
     _newestButton.lee_theme
     .LeeAddButtonTitleColor(DAY , [UIColor darkGrayColor] , UIControlStateNormal)

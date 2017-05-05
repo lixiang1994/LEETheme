@@ -505,7 +505,7 @@
             
             moreString.font = [UIFont systemFontOfSize:14.0f];
             
-            moreString.color = [UIColor leeTheme_ColorFromJsonWithTag:[LEETheme currentThemeTag] Identifier:common_bg_blue_4];
+            moreString.color = LEEColorFromIdentifier([LEETheme currentThemeTag], common_bg_blue_4);
             
             moreString.lineSpacing = 8.0f;
             

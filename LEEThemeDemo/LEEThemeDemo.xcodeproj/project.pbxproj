@@ -1139,6 +1139,8 @@
 				9B00493A1CC9CE25001AC212 /* ViewController.m */,
 				9B7875851E7A6A6200D4151A /* TableViewController.h */,
 				9B7875861E7A6A6200D4151A /* TableViewController.m */,
+				9B86B4F81EB84EB400063B00 /* TabBarController.h */,
+				9B86B4F91EB84EB400063B00 /* TabBarController.m */,
 				9B00493C1CC9CE25001AC212 /* Main.storyboard */,
 				9B00493F1CC9CE25001AC212 /* Assets.xcassets */,
 				9B0049411CC9CE25001AC212 /* LaunchScreen.storyboard */,
@@ -1149,8 +1151,6 @@
 				9BCD39561D0513E100135985 /* tag_blue_json.json */,
 				9BF7725C1D0572AB00460B6E /* tag_gray_json.json */,
 				9BCD39581D0513FB00135985 /* tag_green_json.json */,
-				9B86B4F81EB84EB400063B00 /* TabBarController.h */,
-				9B86B4F91EB84EB400063B00 /* TabBarController.m */,
 			);
 			path = LEEThemeDemo;
 			sourceTree = "<group>";
