@@ -292,9 +292,19 @@
     
     if ([[LEETheme allThemeTag] containsObject:self.redTag]) {
         
-        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"启用红色主题" style:UIBarButtonItemStyleDone target:self action:@selector(startRedItemAction)];
         
-        self.navigationItem.rightBarButtonItem = item;
+        if ([[LEETheme currentThemeTag] isEqualToString:self.redTag]) {
+            
+            UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"移除红色主题" style:UIBarButtonItemStyleDone target:self action:@selector(removeRedItemAction)];
+            
+            self.navigationItem.rightBarButtonItem = item;
+            
+        } else {
+            
+            UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"启用红色主题" style:UIBarButtonItemStyleDone target:self action:@selector(startRedItemAction)];
+            
+            self.navigationItem.rightBarButtonItem = item;
+        }
         
     } else {
         
@@ -326,6 +336,8 @@
     [self.view addSubview:hud];
     
     [hud show:YES];
+    
+    self.navigationItem.rightBarButtonItem.enabled = NO;
     
     // 模拟下载新的主题配置
     
@@ -387,6 +399,21 @@
     // 启用新的主题
     
     [LEETheme startTheme:self.redTag];
+    
+    // 检查红色主题
+    
+    [self checkRedTheme];
+}
+
+- (void)removeRedItemAction{
+    
+    // 移除新的主题
+    
+    [LEETheme removeThemeConfigWithTag:self.redTag];
+    
+    // 检查红色主题
+    
+    [self checkRedTheme];
 }
 
 #pragma mark - 单击手势事件

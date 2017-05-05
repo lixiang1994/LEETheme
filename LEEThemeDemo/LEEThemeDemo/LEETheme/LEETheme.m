@@ -937,12 +937,12 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
         
         [weakSelf.modelThemeBlockConfigInfo removeObjectForKey:tag];
         
-        for (id keyPath in weakSelf.modelThemeKeyPathConfigInfo) {
+        for (id keyPath in [weakSelf.modelThemeKeyPathConfigInfo copy]) {
             
             weakSelf.LeeRemoveKeyPath(tag, keyPath);
         }
         
-        for (id selector in weakSelf.modelThemeSelectorConfigInfo) {
+        for (id selector in [weakSelf.modelThemeSelectorConfigInfo copy]) {
             
             weakSelf.LeeRemoveSelector(tag, NSSelectorFromString(selector));
         }
