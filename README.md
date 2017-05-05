@@ -99,12 +99,12 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性或方法的�
 
 ##### 添加新主题的JSON配置
 
-	//添加json , 设置所属主题标签 , 设置资源路径  所添加过的Json配置会自动存储 无需每次都添加
+	// 添加json , 设置所属主题标签 , 设置资源路径  所添加过的Json配置会自动存储 无需每次都添加
 	[LEETheme addThemeConfigWithJson:json Tag:@"red" ResourcesPath:nil];
 
 ##### 移除某一主题的JSON配置
 
-	//所要移除的主题标签
+	// 所要移除的主题标签
 	[LEETheme removeThemeConfigWithTag:@"red"];
 
 ##### 对象设置
@@ -115,7 +115,7 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性或方法的�
 	// 设置图片
 	imageView.lee_theme.LeeConfigImage(@"identifier4");
 
-	//自定义设置 (如果没有对应的标识符 则不会触发该block执行 , 如果有 则执行)
+	// 自定义设置 (如果没有对应的标识符 则不会触发该block执行 , 如果有 则执行)
 	imageView.lee_theme.LeeCustomConfig(@"identifier6" , ^(id item , id value){
         	
         	//item 为当前对象
@@ -127,19 +127,19 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性或方法的�
 
 启用主题后 , LEETheme会自动保存当前所启用的主题 , APP下一次开启会自动启用上一次的主题.
 
-	//启用主题
+	// 启用主题
 	[LEETheme startTheme:@"主题标签"];
 	
 建议在`- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions`中添加默认主题的设置 , 指定第一次启动APP时默认启用的主题.	
 	
-	//设置默认主题
+	// 设置默认主题
 	[LEETheme defaultTheme:@"主题标签"];
 	
 ### 设置改变主题的动画时长
 
 设置一个默认的主题改变时动画时长 如果不设置 默认为0秒
 	
-	//设置默认改变主题的动画时长 (建议和默认主题 一起设置)
+	// 设置默认改变主题的动画时长 (建议和默认主题 一起设置)
 	[LEETheme defaultChangeThemeAnimationDuration:0.1f];
 
 如果单独为某个对象设置了动画时长 那么该对象在更改主题样式时 会以单独设置的为准 , 例如:
