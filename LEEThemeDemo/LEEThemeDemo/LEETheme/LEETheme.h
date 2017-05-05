@@ -76,7 +76,7 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 + (void)startTheme:(NSString *)tag;
 
 /**
- *  默认主题 (必设置 , 应用程序最少需要一个主题)
+ *  默认主题 (必设置 , 应用程序最少需要一个默认主题)
  *
  *
  *  @param tag 主题标签
@@ -401,3 +401,5 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 #define LEEColorRGBA(R , G , B , A) [UIColor colorWithRed:R/255.0f green:G/255.0f blue:B/255.0f alpha:A]
 
 #define LEEColorRGB(R , G , B) LEEColorRGBA(R , G , B , 1.0f)
+
+#define LEEColorHex(hex) [UIColor leeTheme_ColorWithHexString:hex]

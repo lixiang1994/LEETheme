@@ -30,7 +30,7 @@
  下面所用的控件对象都使用默认方式设置了两种主题的样式 (DAY 和 NIGHT), 并使用JSON方式设置了标识符 用于新增主题的演示 (red).
  除了这些 下面还演示了如何添加自定义方法的设置 并且输出log打印调用结果等.
  
- 注: 红色主题仅在本页面演示使用 , 除本页面外仅提供DAY和NIGHT两种主题
+ 注: 红色主题仅在本页面演示使用 , 除本页面外仅提供DAY和NIGHT两种主题演示
  
  */
 
@@ -78,7 +78,7 @@
     
     _scrollView = [[UIScrollView alloc] init];
     
-    _scrollView.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 64);
+    _scrollView.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 64 - 49);
 
     _scrollView.delegate = self;
     
