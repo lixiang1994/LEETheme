@@ -102,11 +102,18 @@
     _style = style;
 //    [self layout];
     
-    // 设置主题
+    // 设置主题  其实这个类是为了计算布局的, 与主题没什么关系, 但由于作者的代码结构设计如此 为了不做过多改动, 所以这里在主题切换时 重新调用布局类来设置样式. 因为重新计算了布局所以看起来在性能上会有影响 , 如果按照正常的写法 设置主题的代码并不会影响多少性能.
     
     self.lee_theme.LeeAddCustomConfigs(@[DAY , NIGHT] , ^(WBStatusLayout *item){
         
-        [item layout];
+//        [item layout];
+        
+        // 因为只能通过重新调用布局方法实现颜色更改 所以这里用异步来解决主线程卡顿 效果上有些差强人意
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+            [item layout];
+        });
     });
     
     return self;

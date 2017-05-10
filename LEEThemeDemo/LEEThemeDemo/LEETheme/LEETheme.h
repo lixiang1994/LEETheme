@@ -88,7 +88,7 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
  *
  *  @param duration 动画时长
  */
-+ (void)defaultChangeThemeAnimationDuration:(CGFloat)duration;
+//+ (void)defaultChangeThemeAnimationDuration:(CGFloat)duration; 暂不支持
 
 /**
  *  当前主题标签
@@ -236,7 +236,7 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 
 
 /** 设置主题更改过渡动画时长 -> 格式: .LeeChangeThemeAnimationDuration(0.1f) */
-@property (nonatomic , copy , readonly ) LEEConfigThemeToFloat LeeChangeThemeAnimationDuration;
+//@property (nonatomic , copy , readonly ) LEEConfigThemeToFloat LeeChangeThemeAnimationDuration; 暂不支持
 
 /** 基础设置方法 */
 

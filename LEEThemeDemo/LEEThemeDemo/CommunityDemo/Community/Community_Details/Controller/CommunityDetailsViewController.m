@@ -574,33 +574,9 @@
             
             //下载分享图片 完成后执行分享
             
-            [[YYWebImageManager sharedManager] requestImageWithURL:[NSURL URLWithString:weakSelf.model.shareImageUrl] options:YYWebImageOptionShowNetworkActivity progress:^(NSInteger receivedSize, NSInteger expectedSize) {
-                
-                
-            } transform:^UIImage * _Nullable(UIImage * _Nonnull image, NSURL * _Nonnull url) {
-                
-                return image;
-                
-            } completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
-                
-                if (weakSelf) {
-                    
-                    if (!image) {
-                        
-                        image = [UIImage imageNamed:@"shareImage"];
-                    }
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        
-                        // 开始分享
-                        
-                        [MierProgressHUD hide];
-                    });
-                    
-                }
-                
-            }];
+            // 开始分享
             
+            [MierProgressHUD hide];
         }
         
     };

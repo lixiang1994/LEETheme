@@ -598,7 +598,9 @@
     }
     
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseInOut animations:^{
-        _likeImageView.layer.transformScale = 1.7;
+        _likeImageView.transform = CGAffineTransformMakeScale(1.7, 1.7);
+//        _likeImageView.layer.transformScale = 1.7;
+//        _likeImageView.layer.transform = CATransform3DScale(CATransform3DIdentity, 1.7, 1.7, 1.0);
     } completion:^(BOOL finished) {
         
         _likeImageView.image = image;
@@ -607,10 +609,14 @@
         [self adjustImage:_likeImageView label:_likeLabel inButton:_likeButton];
         
         [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseInOut animations:^{
-            _likeImageView.layer.transformScale = 0.9;
+            _likeImageView.transform = CGAffineTransformMakeScale(0.9, 0.9);
+//            _likeImageView.layer.transformScale = 0.9;
+//            _likeImageView.layer.transform = CATransform3DScale(CATransform3DIdentity, 0.9, 0.9, 1.0);
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseInOut animations:^{
-                _likeImageView.layer.transformScale = 1;
+                _likeImageView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+//                _likeImageView.layer.transformScale = 1;
+//                _likeImageView.layer.transform = CATransform3DScale(CATransform3DIdentity, 1.0, 1.0, 1.0);
             } completion:^(BOOL finished) {
             }];
         }];
@@ -1119,6 +1125,32 @@
     _statusView.toolbarView.cell = self;
     _statusView.tagView.cell = self;
     [self.contentView addSubview:_statusView];
+    
+    // 设置主题  由于作者的代码结构设计如此 为了不做过多改动, 所以这里在主题切换时 重新调用布局类来设置样式. 因为重新计算了布局所以看起来在性能上会有影响 , 如果按照正常的写法 设置主题的代码并不会影响多少性能.
+    
+    self.lee_theme.LeeAddCustomConfigs(@[DAY , NIGHT], ^(WBStatusCell *item) {
+        
+        if (item.statusView.layout) {
+            
+//            [item setLayout:item.statusView.layout];
+            
+            // 因为只能通过重新调用布局方法实现颜色更改 所以这里用异步来解决主线程卡顿 效果上有些差强人意
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+                [item.statusView.layout layout];
+
+                dispatch_async(dispatch_get_main_queue(), ^{
+
+                    [item setLayout:item.statusView.layout];
+                });
+
+            });
+            
+        }
+        
+    });
+    
     return self;
 }
 

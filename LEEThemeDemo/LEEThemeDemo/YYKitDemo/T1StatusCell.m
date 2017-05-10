@@ -174,8 +174,14 @@
     self.clipsToBounds = YES;
     self.layer.cornerRadius = kCornerRaadius;
     self.layer.borderWidth = CGFloatFromPixel(1);
-    self.layer.borderColor = [UIColor colorWithWhite:0.000 alpha:0.108].CGColor;
+//    self.layer.borderColor = [UIColor colorWithWhite:0.000 alpha:0.108].CGColor;
     self.exclusiveTouch = YES;
+    
+    // 设置主题
+    
+    self.layer.lee_theme
+    .LeeAddBorderColor(DAY, [UIColor colorWithWhite:0.000 alpha:0.108])
+    .LeeAddBorderColor(NIGHT, UIColorHex(444444));
     
     _nameLabel = [YYLabel new];
     _nameLabel.textVerticalAlignment = YYTextVerticalAlignmentCenter;
@@ -804,6 +810,33 @@
     [self.contentView addSubview:_statusView];
     self.contentView.backgroundColor = [UIColor clearColor];
     self.backgroundView.backgroundColor = [UIColor clearColor];
+    
+    // 设置主题  由于作者的代码结构设计如此 为了不做过多改动, 所以这里在主题切换时 重新调用布局类来设置样式. 因为重新计算了布局所以看起来在性能上会有影响 , 如果按照正常的写法 设置主题的代码并不会影响多少性能.
+    
+    self.lee_theme.LeeAddCustomConfigs(@[DAY , NIGHT], ^(T1StatusCell *item) {
+        
+        if (item.layout) {
+            
+//            [item.layout layout];
+            
+//            [item setLayout:item.layout];
+            
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                
+                [item.layout layout];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [item setLayout:item.layout];
+                });
+                
+            });
+            
+        }
+        
+    });
+    
     return self;
 }
 

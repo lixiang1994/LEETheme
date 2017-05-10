@@ -78,6 +78,24 @@
         
         if (weakSelf){
             
+            /*  这是一种巧妙的方法 良好的过渡效果可以很好地提高体验 可以根据你的使用场景来进行尝试
+                
+                关于文字颜色改变时增加过渡的动画效果这点很不好处理, 如果增加动画处理 那么最终导致切换主题时文字颜色与其他颜色或图片不能很好地统一过渡, 效果上总会有些不自然.
+                原理: 切换主题前 获取当前window的截图 并覆盖到window上 > 执行主题切换 > 将覆盖的截图通过动画隐藏 显示出切换完成的真实画面.
+                场景: 比较适用于阅读类APP切换日夜间主题场景.
+                优点: 过渡效果自然统一, 可根据自行调整不同的动画效果等.
+                缺点: 如果当前显示的内容不处于静止状态 那么会产生一种残影的感觉, 例如 列表滑动时切换
+                总结: 可以根据你的使用场景来进行尝试, 一切只为了更好的体验 但也无需强求.
+             */
+            
+            // 覆盖截图
+            
+            UIView *tempView = [weakSelf.window snapshotViewAfterScreenUpdates:NO];
+            
+            [weakSelf.window addSubview:tempView];
+            
+            // 切换主题
+            
             if ([[LEETheme currentThemeTag] isEqualToString:DAY]) {
                 
                 [LEETheme startTheme:NIGHT];
@@ -86,6 +104,17 @@
                 
                 [LEETheme startTheme:DAY];
             }
+            
+            // 增加动画 移除覆盖
+            
+            [UIView animateWithDuration:1.0f animations:^{
+                
+                tempView.alpha = 0.0f;
+                
+            } completion:^(BOOL finished) {
+                
+                [tempView removeFromSuperview];
+            }];
             
         }
         
@@ -109,7 +138,7 @@
     
     [LEETheme defaultTheme:DAY];
     
-    [LEETheme defaultChangeThemeAnimationDuration:0.0f];
+//    [LEETheme defaultChangeThemeAnimationDuration:0.0f];
     
     [LEETheme addThemeConfigWithJson:dayJson Tag:DAY ResourcesPath:nil];
     

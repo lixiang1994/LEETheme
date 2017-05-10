@@ -99,7 +99,7 @@
     
     view.clipsToBounds = YES;
     
-    view.layer.borderWidth = 0.5f;
+    view.layer.borderWidth = 1.5f;
     
     view.layer.cornerRadius = 5.0f;
     
@@ -219,7 +219,7 @@
     .LeeAddSelectorAndColor(NIGHT, @selector(setMinimumTrackTintColor:), LEEColorRGB(28, 124, 177))
     .LeeConfigKeyPathAndIdentifier(@"minimumTrackTintColor", @"ident1");
     //.LeeConfigSelectorAndIdentifier(@selector(setMinimumTrackTintColor:), @"ident1");
- 
+    
     
     // switch
     
@@ -240,7 +240,7 @@
     
     UITextField *textfield = [[UITextField alloc] init];
     
-    textfield.frame = CGRectMake(0, 440, 200, 40.0f);
+    textfield.frame = CGRectMake(0, 500, 200, 40.0f);
     
     textfield.center = CGPointMake(centerX, textfield.center.y);
     
@@ -259,9 +259,21 @@
     .LeeConfigTextColor(@"ident1")
     .LeeAddPlaceholderColor(DAY, LEEColorRGB(200, 200, 200))
     .LeeAddPlaceholderColor(NIGHT, LEEColorRGB(80, 80, 80))
-    .LeeConfigPlaceholderColor(@"ident2");
+    .LeeConfigPlaceholderColor(@"ident2")
+    .LeeAddCustomConfig(DAY, ^(UITextField * item) {
+        
+        item.keyboardAppearance = UIKeyboardAppearanceDefault;
+        
+        [item reloadInputViews];
+    })
+    .LeeAddCustomConfig(NIGHT, ^(UITextField * item) {
+        
+        item.keyboardAppearance = UIKeyboardAppearanceDark;
+        
+        [item reloadInputViews];
+    });
     
-    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, 500)];
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, 560)];
 }
 
 #pragma mark - 设置主题
@@ -277,6 +289,12 @@
     self.lee_theme
     .LeeThemeChangingBlock(^(NSString *tag, id item) {
         
+        // 设置状态栏
+        
+        [item configStatusBar];
+        
+        // 检查红色主题
+        
         [item checkRedTheme];
     })
     .LeeAddSelectorAndValues(DAY , @selector(test:), [UIColor whiteColor] , nil)
@@ -288,6 +306,21 @@
     // 测试方法的参数类型为 CGColor , 上面设置时参数传入的为UIColor对象 , 但调用时会自动转换为CGColor类型 , CGImage也同样支持 , 如遇到不支持的类型可提Issues , 我会及时补充.
     
     NSLog(@"自定义方法测试 %@" , color);
+}
+
+#pragma mark - 设置状态栏
+
+- (void)configStatusBar{
+    
+    if ([[LEETheme currentThemeTag] isEqualToString:DAY]) {
+        
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+        
+    } else if ([[LEETheme currentThemeTag] isEqualToString:NIGHT]) {
+        
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    }
+    
 }
 
 #pragma mark - 检查红色主题

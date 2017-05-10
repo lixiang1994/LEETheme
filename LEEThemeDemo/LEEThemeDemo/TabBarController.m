@@ -13,14 +13,26 @@
 @end
 
 @implementation TabBarController
+{
+    NSArray *classArray;
+}
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
-    [self initTabBarItems];
+    [self initData];
+    
+    [self initSubControllers];
+    
+    [self configTabBarItems];
     
     [self configTheme];
+}
+
+- (void)initData{
+    
+    classArray = @[@"ViewController" , @"TableViewController"];
 }
 
 - (void)configTheme {
@@ -30,27 +42,16 @@
     self.tabBar.lee_theme
     .LeeAddCustomConfigs(@[DAY , NIGHT] , ^(UITabBar *bar){
         
-        if (weakSelf) [weakSelf initTabBarItems];
+        if (weakSelf) [weakSelf configTabBarItems];
     })
+//    .LeeAddBackgroundImage(DAY , [UIImage imageWithColor:LEEColorRGB(255, 255, 255)])
+//    .LeeAddBackgroundImage(NIGHT , [UIImage imageWithColor:LEEColorRGB(40, 40, 40)])
     .LeeAddBarTintColor(DAY , LEEColorRGB(255, 255, 255))
-    .LeeAddBarTintColor(NIGHT , LEEColorRGB(40, 40, 40))
-    .LeeChangeThemeAnimationDuration(0.0f);
+    .LeeAddBarTintColor(NIGHT , LEEColorRGB(40, 40, 40));
 }
 
-#pragma mark - 初始化TabBar选项
-
-- (void)initTabBarItems {
-    
-    //选项属性数组
-    
-    NSArray *itemUnselectImageNameArray = @[@"tab_theme" , @"tab_demo"];
-    
-    NSArray *itemSelectImageNameArray = @[@"tab_theme_sel" , @"tab_demo_sel"];
-    
-    NSArray *nameArray = @[@"演示" , @"demo"];
-    
-    NSArray *classArray = @[@"ViewController" , @"TableViewController"];
-    
+- (void)initSubControllers{
+ 
     NSMutableArray *ncArray = [[NSMutableArray alloc] init];
     
     //循环创建
@@ -77,6 +78,28 @@
             
         }
         
+        [ncArray addObject:nc];
+    }
+    
+    self.viewControllers = ncArray;
+}
+
+#pragma mark - 设置TabBar选项
+
+- (void)configTabBarItems{
+    
+    //选项属性数组
+    
+    NSArray *itemUnselectImageNameArray = @[@"tab_theme" , @"tab_demo"];
+    
+    NSArray *itemSelectImageNameArray = @[@"tab_theme_sel" , @"tab_demo_sel"];
+    
+    NSArray *nameArray = @[@"演示" , @"demo"];
+    
+    for (NSInteger i = 0; i < classArray.count; i++) {
+        
+        UINavigationController *nc = self.viewControllers[i];
+        
         NSString *unSelectImageName = [[LEETheme currentThemeTag] isEqualToString:DAY] ? itemUnselectImageNameArray[i] : [NSString stringWithFormat:@"%@_night" , itemUnselectImageNameArray[i]];
         
         NSString *selectImageName = [[LEETheme currentThemeTag] isEqualToString:DAY] ? itemSelectImageNameArray[i] : [NSString stringWithFormat:@"%@_night" , itemSelectImageNameArray[i]];
@@ -85,7 +108,13 @@
         
         UIImage *selectImage = [[UIImage imageNamed:selectImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         
-        UITabBarItem *tabBarItem  = [[UITabBarItem alloc] initWithTitle:nameArray[i] image:unSelectImage selectedImage:selectImage];
+        UITabBarItem *tabBarItem = nc.tabBarItem;
+        
+        tabBarItem.title = nameArray[i];
+        
+        tabBarItem.selectedImage = selectImage;
+        
+        tabBarItem.image = unSelectImage;
         
         if ([[LEETheme currentThemeTag] isEqualToString:DAY]) {
             
@@ -100,14 +129,8 @@
             [tabBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:LEEColorRGB(230, 230, 230)} forState:UIControlStateNormal];
         }
         
-        nc.tabBarItem = tabBarItem;
-        
-        //将导航控制器添加到数组中
-        
-        [ncArray addObject:nc];
     }
-    
-    self.viewControllers = ncArray;
+
 }
 
 

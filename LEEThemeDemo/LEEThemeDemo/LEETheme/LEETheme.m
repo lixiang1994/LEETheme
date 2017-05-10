@@ -34,9 +34,9 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
 
 @property (nonatomic , copy ) NSString *currentTag;
 
-@property (nonatomic , copy ) NSMutableArray *allTags;
+@property (nonatomic , strong ) NSMutableArray *allTags;
 
-@property (nonatomic , copy ) NSMutableDictionary *configInfo;
+@property (nonatomic , strong ) NSMutableDictionary *configInfo;
 
 @property (nonatomic , assign ) CGFloat animationDuration;
 
@@ -270,9 +270,9 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
 
 @property (nonatomic , copy ) NSString *modelCurrentThemeTag;
 
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeBlockConfigInfo; // @{tag : @{block : value}}
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeKeyPathConfigInfo; // @{keypath : @{tag : value}}
-@property (nonatomic , copy ) NSMutableDictionary *modelThemeSelectorConfigInfo; // @{selector : @{tag : [parameter, parameter,...]}}
+@property (nonatomic , strong ) NSMutableDictionary <NSString * , NSMutableDictionary *>*modelThemeBlockConfigInfo; // @{tag : @{block : value}}
+@property (nonatomic , strong ) NSMutableDictionary <NSString * , NSMutableDictionary *>*modelThemeKeyPathConfigInfo; // @{keypath : @{tag : value}}
+@property (nonatomic , strong ) NSMutableDictionary <NSString * , NSMutableDictionary *>*modelThemeSelectorConfigInfo; // @{selector : @{tag : @[@[parameter, parameter,...] , @[...]]}}
 
 @property (nonatomic , assign ) CGFloat modelChangeThemeAnimationDuration;
 
@@ -317,7 +317,18 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
     if ([[LEETheme currentThemeTag] isEqualToString:tag]) {
         
-        if (self.modelUpdateCurrentThemeConfig) self.modelUpdateCurrentThemeConfig();
+        if ([NSThread isMainThread]) {
+            
+            if (self.modelUpdateCurrentThemeConfig) self.modelUpdateCurrentThemeConfig();
+        
+        } else {
+        
+            dispatch_async(dispatch_get_main_queue(), ^{
+               
+                if (self.modelUpdateCurrentThemeConfig) self.modelUpdateCurrentThemeConfig();
+            });
+        }
+        
     }
     
 }
@@ -754,7 +765,7 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
             value = color;
         }
         
-        if (value) weakSelf.LeeAddSelectorAndValues(tag , sel , value , nil);
+        if (value) weakSelf.LeeAddSelectorAndValueArray(tag , sel , @[value]);
         
         return weakSelf;
     };
@@ -780,7 +791,7 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
             value = image;
         }
         
-        if (value) weakSelf.LeeAddSelectorAndValues(tag , sel , value , nil);
+        if (value) weakSelf.LeeAddSelectorAndValueArray(tag , sel , @[value]);
         
         return weakSelf;
     };
@@ -818,27 +829,24 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
     return ^(NSString *tag, SEL sel , ...){
         
+        if (!sel) return weakSelf;
+        
         NSMutableArray *array = [NSMutableArray array];
         
-        if (sel) {
+        va_list argsList;
+        
+        va_start(argsList, sel);
+        
+        id arg;
+        
+        while ((arg = va_arg(argsList, id))) {
             
-            va_list argsList;
-            
-            va_start(argsList, sel);
-            
-            id arg;
-            
-            while ((arg = va_arg(argsList, id))) {
-                
-                [array addObject:arg];
-            }
-            
-            va_end(argsList);
+            [array addObject:arg];
         }
         
-        weakSelf.LeeAddSelectorAndValueArray(tag, sel, array);
+        va_end(argsList);
         
-        return weakSelf;
+        return weakSelf.LeeAddSelectorAndValueArray(tag, sel, array);
     };
     
 }
@@ -849,6 +857,10 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
     return ^(NSString *tag, SEL sel , NSArray *values){
       
+        if (!tag) return weakSelf;
+        
+        if (!sel) return weakSelf;
+        
         [LEETheme addTagToAllTags:tag];
         
         NSString *key = NSStringFromSelector(sel);
@@ -857,7 +869,18 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
         
         if (!info) info = [NSMutableDictionary dictionary];
         
-        [info setObject:values forKey:tag];
+        NSMutableArray *valuesArray = info[tag];
+        
+        if (!valuesArray) valuesArray = [NSMutableArray array];
+        
+        [[valuesArray copy] enumerateObjectsUsingBlock:^(NSArray *valueArray, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            if ([valueArray isEqualToArray:values]) [valuesArray removeObject:valueArray]; // 过滤相同参数值的数组
+        }];
+        
+        if (values) [valuesArray addObject:values];
+        
+        [info setObject:valuesArray forKey:tag];
         
         [weakSelf.modelThemeSelectorConfigInfo setObject:info forKey:key];
         
@@ -1455,7 +1478,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
     __weak typeof(self) weakSelf = self;
     
-    return ^(SEL sel , NSString *identifier, NSInteger valueIndex , NSArray *otherValues){
+    return ^(SEL sel , NSString *identifier , NSInteger valueIndex , NSArray *otherValues){
         
         /*
             sel             方法
@@ -1734,7 +1757,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                         
                         [values insertObject:value atIndex:valueIndex];
                         
-                        self.LeeAddSelectorAndValueArray(tag, NSSelectorFromString(selString),values);
+                        self.LeeAddSelectorAndValueArray(tag, NSSelectorFromString(selString), values);
                     }
                         break;
                         
@@ -1826,13 +1849,15 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
             
             if (self.lee_theme.modelChangingBlock) self.lee_theme.modelChangingBlock([LEETheme currentThemeTag] , self);
             
-            [UIView beginAnimations:@"LEEThemeChangeAnimations" context:nil];
+            // self.lee_theme.modelChangeThemeAnimationDuration >= 0.0f ? self.lee_theme.modelChangeThemeAnimationDuration : [LEETheme shareTheme].animationDuration
             
-            [UIView setAnimationDuration:self.lee_theme.modelChangeThemeAnimationDuration >= 0.0f ? self.lee_theme.modelChangeThemeAnimationDuration : [LEETheme shareTheme].animationDuration];
+            [CATransaction begin];
             
-            [self changeThemeConfig];
+            [CATransaction setDisableActions:YES];
             
-            [UIView commitAnimations];
+            [self changeThemeConfig]; 
+            
+            [CATransaction commit];
         }
         
     });
@@ -2009,36 +2034,40 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         NSDictionary *info = self.lee_theme.modelThemeSelectorConfigInfo[selector];
         
-        NSArray *array = info[tag];
+        NSArray *valuesArray = info[tag];
         
-        SEL sel = NSSelectorFromString(selector);
-        
-        NSMethodSignature * sig = [self methodSignatureForSelector:sel];
-        
-        if (!sig) [self doesNotRecognizeSelector:sel];
-        
-        NSInvocation *inv = [NSInvocation invocationWithMethodSignature:sig];
-        
-        if (!inv) [self doesNotRecognizeSelector:sel];
-        
-        [inv setTarget:self];
-        
-        [inv setSelector:sel];
-        
-        if (sig.numberOfArguments == array.count + 2) {
+        for (NSArray *values in valuesArray) {
             
-            [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            SEL sel = NSSelectorFromString(selector);
+            
+            NSMethodSignature * sig = [self methodSignatureForSelector:sel];
+            
+            if (!sig) [self doesNotRecognizeSelector:sel];
+            
+            NSInvocation *inv = [NSInvocation invocationWithMethodSignature:sig];
+            
+            if (!inv) [self doesNotRecognizeSelector:sel];
+            
+            [inv setTarget:self];
+            
+            [inv setSelector:sel];
+            
+            if (sig.numberOfArguments == values.count + 2) {
                 
-                NSInteger index = idx + 2;
+                [values enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    
+                    NSInteger index = idx + 2;
+                    
+                    [self setInv:inv Sig:sig Obj:obj Index:index];
+                }];
                 
-                [self setInv:inv Sig:sig Obj:obj Index:index];
-            }];
+                [inv invoke];
+                
+            } else {
+                
+                NSAssert(YES, @"参数个数与方法参数个数不匹配");
+            }
             
-            [inv invoke];
-            
-        } else {
-            
-            // 参数个数与方法参数个数不匹配
         }
         
     }
@@ -2081,7 +2110,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
 
 - (void)setLee_theme:(LEEThemeConfigModel *)lee_theme{
     
-    if(self) if(lee_theme) objc_setAssociatedObject(self, @selector(lee_theme), lee_theme , OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if(self) objc_setAssociatedObject(self, @selector(lee_theme), lee_theme , OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (BOOL)isLeeTheme{
