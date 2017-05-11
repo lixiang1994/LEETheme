@@ -117,12 +117,12 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性或方法的�
 
 	// 自定义设置 (如果没有对应的标识符 则不会触发该block执行 , 如果有 则执行)
 	imageView.lee_theme.LeeCustomConfig(@"identifier6" , ^(id item , id value){
-        	
-        	//item 为当前对象
-        	//value 为当前主题的JSON配置中 other 类型下 "identifier6"对应的值
-        	item.alpha = [value floatValue]; //举个例子 设置一下透明度
-	 });
-	 
+			
+		//item 为当前对象
+		//value 为当前主题的JSON配置中 other 类型下 "identifier6"对应的值
+		item.alpha = [value floatValue]; //举个例子 设置一下透明度
+	});
+
 
 ### 启用主题
 
