@@ -122,6 +122,7 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性或方法的�
         	//value 为当前主题的JSON配置中 other 类型下 "identifier6"对应的值
         	item.alpha = [value floatValue]; //举个例子 设置一下透明度
 	 });
+	 
 
 ### 启用主题
 
