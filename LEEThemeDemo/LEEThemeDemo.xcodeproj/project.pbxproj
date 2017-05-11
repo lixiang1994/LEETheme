@@ -392,7 +392,7 @@
 		9B86B50B1EB9C8E400063B00 /* true_red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B86B5051EB9C8E400063B00 /* true_red@3x.png */; };
 		9B86B50E1EB9CD1D00063B00 /* image_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B86B50C1EB9CD1D00063B00 /* image_red@2x.png */; };
 		9B86B50F1EB9CD1D00063B00 /* image_red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B86B50D1EB9CD1D00063B00 /* image_red@3x.png */; };
-		9B97127C1EC4184000C1CB79 /* LEETheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B97127B1EC4184000C1CB79 /* LEETheme.m */; };
+		9B9712C91EC42C1C00C1CB79 /* LEETheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9712C81EC42C1C00C1CB79 /* LEETheme.m */; };
 		9BCD39551D0503C100135985 /* tag_red_json.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD39541D0503C100135985 /* tag_red_json.json */; };
 		9BCD39571D0513E100135985 /* tag_blue_json.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD39561D0513E100135985 /* tag_blue_json.json */; };
 		9BCD39591D0513FB00135985 /* tag_green_json.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD39581D0513FB00135985 /* tag_green_json.json */; };
@@ -1056,8 +1056,8 @@
 		9B86B5051EB9C8E400063B00 /* true_red@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "true_red@3x.png"; sourceTree = "<group>"; };
 		9B86B50C1EB9CD1D00063B00 /* image_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_red@2x.png"; sourceTree = "<group>"; };
 		9B86B50D1EB9CD1D00063B00 /* image_red@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_red@3x.png"; sourceTree = "<group>"; };
-		9B97127A1EC4184000C1CB79 /* LEETheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEETheme.h; sourceTree = "<group>"; };
-		9B97127B1EC4184000C1CB79 /* LEETheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEETheme.m; sourceTree = "<group>"; };
+		9B9712C71EC42C1C00C1CB79 /* LEETheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEETheme.h; sourceTree = "<group>"; };
+		9B9712C81EC42C1C00C1CB79 /* LEETheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEETheme.m; sourceTree = "<group>"; };
 		9BCD39541D0503C100135985 /* tag_red_json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tag_red_json.json; sourceTree = "<group>"; };
 		9BCD39561D0513E100135985 /* tag_blue_json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tag_blue_json.json; sourceTree = "<group>"; };
 		9BCD39581D0513FB00135985 /* tag_green_json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tag_green_json.json; sourceTree = "<group>"; };
@@ -1128,7 +1128,7 @@
 		9B0049321CC9CE25001AC212 /* LEEThemeDemo */ = {
 			isa = PBXGroup;
 			children = (
-				9B9712791EC4184000C1CB79 /* LEETheme */,
+				9B9712C61EC42C1C00C1CB79 /* LEETheme */,
 				9B86B4FF1EB9C8DA00063B00 /* Resources */,
 				9B7873291E7A3F4A00D4151A /* Librarys */,
 				9B7877111E7B8BCF00D4151A /* MierCommunityDemo(米尔社区Demo) */,
@@ -2596,13 +2596,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		9B9712791EC4184000C1CB79 /* LEETheme */ = {
+		9B9712C61EC42C1C00C1CB79 /* LEETheme */ = {
 			isa = PBXGroup;
 			children = (
-				9B97127A1EC4184000C1CB79 /* LEETheme.h */,
-				9B97127B1EC4184000C1CB79 /* LEETheme.m */,
+				9B9712C71EC42C1C00C1CB79 /* LEETheme.h */,
+				9B9712C81EC42C1C00C1CB79 /* LEETheme.m */,
 			);
-			path = LEETheme;
+			name = LEETheme;
+			path = ../../LEETheme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2887,7 +2888,7 @@
 				9B78766D1E7A739200D4151A /* YYTextInput.m in Sources */,
 				9B78797E1E7B92DF00D4151A /* YYTextMarkdownExample.m in Sources */,
 				9B7876861E7A739200D4151A /* YYThreadSafeDictionary.m in Sources */,
-				9B97127C1EC4184000C1CB79 /* LEETheme.m in Sources */,
+				9B9712C91EC42C1C00C1CB79 /* LEETheme.m in Sources */,
 				9B78763B1E7A739200D4151A /* NSData+YYAdd.m in Sources */,
 				9B78763D1E7A739200D4151A /* NSDictionary+YYAdd.m in Sources */,
 				9B7879741E7B92DE00D4151A /* YYTableViewCell.m in Sources */,
