@@ -1,5 +1,5 @@
 language: objective-c #语言种类
 
-xcode_project: LEEThemeDemo/LEEThemeDemo.xcodeproj # 项目文件相对于.travis.yml文件的路径
+xcode_project: Framework/LEETheme/LEETheme.xcodeproj # 项目文件相对于.travis.yml文件的路径
     
-xcode_scheme: LEEThemeDemo #你需要集成测试的scheme
+xcode_scheme: LEETheme #你需要集成测试的scheme
