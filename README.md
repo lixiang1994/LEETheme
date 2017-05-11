@@ -135,20 +135,28 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性或方法的�
 	// 设置默认主题
 	[LEETheme defaultTheme:@"主题标签"];
 	
-### 设置改变主题的动画时长
+### 关于添加过渡动画效果
 
-设置一个默认的主题改变时动画时长 如果不设置 默认为0秒
+这里提供一个小技巧 可以让过渡更加自然 可根据自身情况调整使用.
+切换主题前 获取当前window的快照视图 并覆盖到window上 > 执行主题切换 > 将覆盖的快照视图通过动画隐藏 显示出切换完成的真实window.
+
+	// 覆盖截图
+        UIView *tempView = [weakSelf.window snapshotViewAfterScreenUpdates:NO];
+	[weakSelf.window addSubview:tempView];
 	
-	// 设置默认改变主题的动画时长 (建议和默认主题 一起设置)
-	[LEETheme defaultChangeThemeAnimationDuration:0.1f];
-
-如果单独为某个对象设置了动画时长 那么该对象在更改主题样式时 会以单独设置的为准 , 例如:
-
-	// 设置背景颜色 并设置动画时长
-	imageView.lee_theme
-	.LeeConfigBackgroundColor(@"identifier2")
-	.LeeChangeThemeAnimationDuration(1.0f);
+	// 切换主题
+	[LEETheme startTheme:@"tag"];
 	
+	// 增加动画 移除覆盖
+	[UIView animateWithDuration:1.0f animations:^{
+                
+		tempView.alpha = 0.0f;
+                
+	} completion:^(BOOL finished) {
+                
+		[tempView removeFromSuperview];
+	}];
+
 
 ### 注意事项
 
