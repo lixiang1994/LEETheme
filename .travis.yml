@@ -4,7 +4,5 @@ xcode_project: Framework/LEETheme/LEETheme.xcodeproj # 项目文件相对于.tra
     
 xcode_scheme: LEETheme #你需要集成测试的scheme
 
-osx_image: xcode7
-
 script:
 - xctool -project Framework/LEETheme/LEETheme.xcodeproj LEETheme build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
