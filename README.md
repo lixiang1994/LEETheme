@@ -140,8 +140,9 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性或方法的�
 这里提供一个小技巧 可以让过渡更加自然 可根据自身情况调整使用.
 切换主题前 获取当前window的快照视图 并覆盖到window上 > 执行主题切换 > 将覆盖的快照视图通过动画隐藏 显示出切换完成的真实window.
 
+
 	// 覆盖截图
-        UIView *tempView = [weakSelf.window snapshotViewAfterScreenUpdates:NO];
+	UIView *tempView = [weakSelf.window snapshotViewAfterScreenUpdates:NO];
 	[weakSelf.window addSubview:tempView];
 	
 	// 切换主题
