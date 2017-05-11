@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B9712C01EC4294300C1CB79 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B9712BF1EC4294300C1CB79 /* Info.plist */; };
-		9B9712C41EC4296E00C1CB79 /* LEETheme.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B9712C21EC4296E00C1CB79 /* LEETheme.h */; };
+		9B9712C41EC4296E00C1CB79 /* LEETheme.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B9712C21EC4296E00C1CB79 /* LEETheme.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B9712C51EC4296E00C1CB79 /* LEETheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9712C31EC4296E00C1CB79 /* LEETheme.m */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				9B9712C11EC4296E00C1CB79 /* LEETheme */,
-				9B9712BF1EC4294300C1CB79 /* Info.plist */,
+				9B9712CA1EC4320200C1CB79 /* Supporting Files */,
 				9B9712AC1EC427D200C1CB79 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +54,14 @@
 			);
 			name = LEETheme;
 			path = ../../LEETheme;
+			sourceTree = "<group>";
+		};
+		9B9712CA1EC4320200C1CB79 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9B9712BF1EC4294300C1CB79 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +133,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B9712C01EC4294300C1CB79 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,6 +19,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+FOUNDATION_EXPORT double LEEThemeVersionNumber;
+FOUNDATION_EXPORT const unsigned char LEEThemeVersionString[];
+
 @class LEEThemeConfigModel;
 
 typedef void(^LEEThemeConfigBlock)(id item);
