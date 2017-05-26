@@ -12,7 +12,7 @@
  *
  *  @author LEE
  *  @copyright    Copyright © 2016 - 2017年 lee. All rights reserved.
- *  @version    V1.1.2
+ *  @version    V1.1.3
  */
 
 
@@ -1811,7 +1811,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         
         [selStringsArray enumerateObjectsUsingBlock:^(NSString *selString, NSUInteger idx, BOOL *stop) {
             
-            NSString *leeSelString = [@"lee_" stringByAppendingString:selString];
+            NSString *leeSelString = [@"lee_theme_" stringByAppendingString:selString];
             
             Method originalMethod = class_getInstanceMethod(self, NSSelectorFromString(selString));
             
@@ -1824,7 +1824,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     
 }
 
-- (void)lee_dealloc{
+- (void)lee_theme_dealloc{
     
     if ([self isLeeTheme]) {
         
@@ -1833,7 +1833,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         objc_removeAssociatedObjects(self);
     }
 
-    [self lee_dealloc];
+    [self lee_theme_dealloc];
 }
 
 - (BOOL)isChangeTheme{
