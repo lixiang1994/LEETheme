@@ -1,14 +1,14 @@
 {
     "color": {
-        "ident1": "#CCCCCC",
-        "ident2": "#000000"
+        "ident1": "#9372b0",
+        "ident2": "#724c94"
     },
     "image": {
-        "ident3": "picImage.jpg",
-        "ident4": "huajis.jpg"
+        "ident3": "image.png",
+        "ident4": "true.png"
     },
     "other": {
-        "ident5": "321",
-        "ident6": "0.5"
+        "ident5": "1.0",
+        "ident6": "1.0"
     }
 }

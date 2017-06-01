@@ -1,14 +1,14 @@
 {
     "color": {
-        "ident1": "#d81e06",
-        "ident2": "#f77e6d"
+        "ident1": "#c22b4f",
+        "ident2": "#9a1938"
     },
     "image": {
-        "ident3": "image_red.png",
-        "ident4": "true_red.png"
+        "ident3": "image.png",
+        "ident4": "true.png"
     },
     "other": {
-        "ident5": "0.5",
+        "ident5": "1.0",
         "ident6": "1.0"
     }
 }

@@ -8,14 +8,9 @@
 
 #import "ViewController.h"
 
-#import "MBProgressHUD.h"
+#import "NewThemeTableViewController.h"
 
 @interface ViewController ()<UIScrollViewDelegate>
-
-/**
- 红色主题标签
- */
-@property (nonatomic , copy ) NSString *redTag;
 
 @property (nonatomic , strong ) UIScrollView *scrollView;
 
@@ -27,24 +22,23 @@
  
  该视图主要为了演示各个控件对象以及自定义对象如何进行主题设置, 并同时模拟了新增主题的使用方法.
  目前为某一对象进行设置的方式为两种, 下面都有演示, 两种方式也支持同时使用.
- 下面所用的控件对象都使用默认方式设置了两种主题的样式 (DAY 和 NIGHT), 并使用JSON方式设置了标识符 用于新增主题的演示 (red).
+ 下面所用的控件对象都使用默认方式设置了两种主题的样式 (DAY 和 NIGHT), 并使用标识符方式设置 用于新增主题的演示 (red等).
  除了这些 下面还演示了如何添加自定义方法的设置 并且输出log打印调用结果等.
  
- 注: 红色主题仅在本页面演示使用 , 除本页面外仅提供DAY和NIGHT两种主题演示
+ 注: 添加主题仅在本页面演示使用 , 除本页面外仅提供DAY和NIGHT两种主题演示
  
  */
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    _redTag = @"red";
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"添加主题" style:UIBarButtonItemStyleDone target:self action:@selector(rightItemAction)];
     
-    // 检查红色主题
-    
-    [self checkRedTheme];
+    self.navigationItem.rightBarButtonItem = item;
     
     // 初始化数据
     
@@ -292,10 +286,6 @@
         // 设置状态栏
         
         [item configStatusBar];
-        
-        // 检查红色主题
-        
-        [item checkRedTheme];
     })
     .LeeAddSelectorAndValues(DAY , @selector(test:), [UIColor whiteColor] , nil)
     .LeeAddSelectorAndValues(NIGHT, @selector(test:), [UIColor blackColor] , nil);
@@ -323,144 +313,15 @@
     
 }
 
-#pragma mark - 检查红色主题
+#pragma mark - 右点击事件
 
-- (void)checkRedTheme{
+- (void)rightItemAction{
     
-    if ([[LEETheme allThemeTag] containsObject:self.redTag]) {
-        
-        
-        if ([[LEETheme currentThemeTag] isEqualToString:self.redTag]) {
-            
-            UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"移除红色主题" style:UIBarButtonItemStyleDone target:self action:@selector(removeRedItemAction)];
-            
-            self.navigationItem.rightBarButtonItem = item;
-            
-        } else {
-            
-            UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"启用红色主题" style:UIBarButtonItemStyleDone target:self action:@selector(startRedItemAction)];
-            
-            self.navigationItem.rightBarButtonItem = item;
-        }
-        
-    } else {
-        
-        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"下载红色主题" style:UIBarButtonItemStyleDone target:self action:@selector(downloadRedItemAction)];
-        
-        self.navigationItem.rightBarButtonItem = item;
-    }
+    NewThemeTableViewController *vc = [[NewThemeTableViewController alloc] init];
     
-}
-
-#pragma mark - 下载红色主题点击事件
-
-- (void)downloadRedItemAction{
+    vc.hidesBottomBarWhenPushed = YES;
     
-    // 预备唱! 大菊花吱呀吱溜溜的转..这里的风景呀真好看..天好看 地好看..还有一群快乐的小伙伴
-    
-    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
-    
-    [hud setFrame:self.view.bounds];
-    
-    [hud setDetailsLabelText:@"下载主题中..."];
-    
-    [hud setRemoveFromSuperViewOnHide:YES];
-    
-    [hud setDetailsLabelFont:[UIFont boldSystemFontOfSize:16.0f]];
-    
-    hud.mode = MBProgressHUDModeIndeterminate;
-    
-    [self.view addSubview:hud];
-    
-    [hud show:YES];
-    
-    self.navigationItem.rightBarButtonItem.enabled = NO;
-    
-    // 模拟下载新的主题配置
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        hud.mode = MBProgressHUDModeText;
-        
-        [hud setDetailsLabelText:@"红色主题下载完成!"];
-        
-        [hud hide:YES afterDelay:2.0f];
-        
-        // 假装得到了请求的配置json数据
-        
-        NSString *redJsonPath = [[NSBundle mainBundle] pathForResource:@"tag_red_json" ofType:@"json"];
-        
-        NSString *redJson = [NSString stringWithContentsOfFile:redJsonPath encoding:NSUTF8StringEncoding error:nil];
-        
-        // 假装下载图片资源 并缓存到沙盒的指定目录下 (建议路径 XXXX/主题资源文件夹/主题名字文件夹/)
-        
-        NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-        
-        NSString *themePath = [documentsPath stringByAppendingPathComponent:@"theme_resources"];
-        
-        NSString *path = [themePath stringByAppendingPathComponent:self.redTag];
-        
-        if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-            
-            [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
-        }
-        
-        // 下载的图片资源建议让服务器根据当前的设备型号去给予 2x 或 3x的图片, 不建议2x,3x一起给, 这样可以减少将近一半的大小, 自己体会.
-        
-        NSArray *imageNameArray = @[@"image_red@2x.png" , @"image_red@3x.png" , @"true_red@2x.png" , @"true_red@3x.png"];
-        
-        for (NSString *imageName in imageNameArray) {
-            
-            UIImage *image = [UIImage imageNamed:imageName];
-            
-            NSData *imageData = UIImagePNGRepresentation(image);
-            
-            [imageData writeToFile:[path stringByAppendingPathComponent:imageName] atomically:YES];
-        }
-        
-        // 添加假装得到的的配置json数据 (添加后LEETheme会自动存储 无需下一次运行时再添加 当然同样的主题添加再多次也无所谓)
-        
-        [LEETheme addThemeConfigWithJson:redJson Tag:self.redTag ResourcesPath:path];
-        
-        // 检查红色主题
-        
-        [self checkRedTheme];
-    });
-    
-}
-
-#pragma mark - 启用红色主题点击事件
-
-- (void)startRedItemAction{
-    
-    // 启用新的主题
-    
-    [LEETheme startTheme:self.redTag];
-    
-    // 检查红色主题
-    
-    [self checkRedTheme];
-}
-
-- (void)removeRedItemAction{
-    
-    // 移除新的主题配置
-    
-    [LEETheme removeThemeConfigWithTag:self.redTag];
-    
-    // 移除图片资源
-    
-    NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-    
-    NSString *themePath = [documentsPath stringByAppendingPathComponent:@"theme_resources"];
-    
-    NSString *path = [themePath stringByAppendingPathComponent:self.redTag];
-    
-    [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
-    
-    // 检查红色主题
-    
-    [self checkRedTheme];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - 单击手势事件
