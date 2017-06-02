@@ -154,9 +154,9 @@
             
             if (weakSelf.contentTextView.attributedText.length) {
                 
-                [LEEAlert alert].custom.config
+                [LEEAlert alert].config
                 .LeeTitle(@"是否保存未发布的内容?")
-                .LeeAddButton(@"保存" , ^(){
+                .LeeAction(@"保存" , ^{
                     
                     if (weakSelf) {
                         
@@ -168,7 +168,7 @@
                     }
                     
                 })
-                .LeeCancelButtonAction(^(){
+                .LeeCancelAction(@"取消" , ^{
                     
                     if (weakSelf) [weakSelf.navigationController popViewControllerAnimated:YES];
                 })
@@ -1435,17 +1435,16 @@
             
             if ([manager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
                 
-                [LEEAlert alert].custom.config
+                [LEEAlert alert].config
                 .LeeTitle(@"您的位置功能尚未开启\n需要您前往设置中开启")
                 .LeeContent(@"开启后可获取您的当前位置")
-                .LeeAddButton(@"去打开" , ^(){
+                .LeeAction(@"去打开" , ^{
                     
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
                     
                     [manager requestWhenInUseAuthorization];
                 })
-                .LeeCancelButtonTitle(@"算了")
-                .LeeCustomBottomSubViewMargin(30.0f)
+                .LeeCancelAction(@"算了" , nil)
                 .LeeShow();
             }
             

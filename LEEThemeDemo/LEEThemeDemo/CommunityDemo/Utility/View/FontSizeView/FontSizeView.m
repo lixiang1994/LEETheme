@@ -10,7 +10,7 @@
 
 #import "SDAutoLayout.h"
 
-#import "LEEActionSheet.h"
+#import "LEEAlert.h"
 
 #import "SetManager.h"
 
@@ -21,8 +21,6 @@
 @property (nonatomic , strong ) UISlider *slider;
 
 @property (nonatomic , strong ) UIButton *increaseButton; //增加按钮
-
-@property (nonatomic , strong ) UIButton *finishButton; //完成按钮
 
 @property (nonatomic , strong ) NSArray *promptInfoArray; //提示信息数组
 
@@ -46,8 +44,6 @@
     _slider = nil;
     
     _increaseButton = nil;
-    
-    _finishButton = nil;
 }
 
 #pragma mark - 初始化
@@ -138,24 +134,6 @@
     [_increaseButton addTarget:self action:@selector(increaseButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self addSubview:_increaseButton];
-    
-    //初始化完成按钮
-    
-    _finishButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    [_finishButton setTitle:@"取消" forState:UIControlStateNormal];
-    
-    [_finishButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
-    [_finishButton setBackgroundColor:[UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0f]];
-    
-    [_finishButton addTarget:self action:@selector(finishButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [_finishButton.layer setBorderColor:[[UIColor grayColor] colorWithAlphaComponent:0.2f].CGColor];
-    
-    [_finishButton.layer setBorderWidth:0.5f];
-    
-    [self addSubview:_finishButton];
 
     //循环创建提示label 和 分段线
     
@@ -188,7 +166,7 @@
     
     self.width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
     
-    self.height = 185.0f;
+    self.height = 140.0f;
     
     //减少按钮
     
@@ -213,14 +191,6 @@
     .leftSpaceToView(_decreaseButton , 5)
     .rightSpaceToView(_increaseButton , 5)
     .heightIs(20);
-    
-    //完成按钮
-    
-    _finishButton.sd_layout
-    .leftEqualToView(self)
-    .rightEqualToView(self)
-    .topSpaceToView(_decreaseButton , 40)
-    .heightIs(45.0f);
     
     //绘制slider线
     
@@ -356,25 +326,33 @@
     [self.promptLabelArray[currentIndex] setAlpha:1.0f];
 }
 
-#pragma mark - 完成按钮点击事件
-
-- (void)finishButtonAction:(UIButton *)sender{
-    
-    [LEEActionSheet closeCustomActionSheet];
-}
-
 #pragma mark - 显示
 
 - (void)show{
     
-    [LEEActionSheet actionSheet].custom.config
-    .LeeCustomView(self)
-    .LeeCustomActionSheetMaxWidth(CGRectGetWidth([[UIScreen mainScreen] bounds]))
-    .LeeCustomActionSheetBottomMargin(0.0f)
-    .LeeCustomTopSubViewMargin(0.0f)
-    .LeeCustomBottomSubViewMargin(0.0f)
-    .LeeCustomCornerRadius(0.0f)
-    .LeeCustomActionSheetTouchClose()
+    [LEEAlert actionsheet].config
+    .LeeAddCustomView(^(LEECustomView *custom) {
+        
+        custom.view = self;
+        
+        custom.isAutoWidth = YES;
+    })
+    .LeeItemInsets(UIEdgeInsetsMake(0, 0, 0, 0))
+    .LeeAddAction(^(LEEAction *action) {
+        
+        action.title = @"取消";
+        
+        action.titleColor = [UIColor grayColor];
+    })
+    .LeeHeaderInsets(UIEdgeInsetsMake(0, 0, 0, 0))
+    .LeeActionSheetBottomMargin(0.0f)
+    .LeeCornerRadius(0.0f)
+    .LeeConfigMaxWidth(^CGFloat(LEEScreenOrientationType type) {
+        
+        // 这是最大宽度为屏幕宽度 (横屏和竖屏)
+        
+        return type == LEEScreenOrientationTypeHorizontal ? CGRectGetHeight([[UIScreen mainScreen] bounds]) : CGRectGetWidth([[UIScreen mainScreen] bounds]);
+    })
     .LeeShow();
 }
 

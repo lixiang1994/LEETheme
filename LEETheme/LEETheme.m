@@ -38,8 +38,6 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
 
 @property (nonatomic , strong ) NSMutableDictionary *configInfo;
 
-@property (nonatomic , assign ) CGFloat animationDuration;
-
 @end
 
 @implementation LEETheme
@@ -80,13 +78,6 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     [LEETheme shareTheme].defaultTag = tag;
     
     if (![LEETheme shareTheme].currentTag && ![[NSUserDefaults standardUserDefaults] objectForKey:LEEThemeCurrentTag]) [LEETheme shareTheme].currentTag = tag;
-}
-
-+ (void)defaultChangeThemeAnimationDuration:(CGFloat)duration{
-    
-    NSAssert(duration >= 0, @"默认的更改主题动画时长不能小于0秒");
-    
-    [LEETheme shareTheme].animationDuration = duration;
 }
 
 + (NSString *)currentThemeTag{
@@ -239,7 +230,11 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
     if (imageName) {
         
+        NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+        
         NSString *path = configInfo[@"path"];
+        
+        if (path) path = [documentsPath stringByAppendingPathComponent:path];
         
         UIImage *image = path ? [UIImage imageWithContentsOfFile:[path stringByAppendingPathComponent:imageName]] : [UIImage imageNamed:imageName];
         
@@ -274,8 +269,6 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
 @property (nonatomic , strong ) NSMutableDictionary <NSString * , NSMutableDictionary *>*modelThemeKeyPathConfigInfo; // @{keypath : @{tag : value}}
 @property (nonatomic , strong ) NSMutableDictionary <NSString * , NSMutableDictionary *>*modelThemeSelectorConfigInfo; // @{selector : @{tag : @[@[parameter, parameter,...] , @[...]]}}
 
-@property (nonatomic , assign ) CGFloat modelChangeThemeAnimationDuration;
-
 @end
 
 @implementation LEEThemeConfigModel
@@ -296,10 +289,6 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
 {
     self = [super init];
     if (self) {
-        
-        // 默认属性值
-        
-        _modelChangeThemeAnimationDuration = -1.f; //默认为小于0
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(leeTheme_RemoveThemeTagNotify:) name:LEEThemeRemoveTagNotificaiton object:nil];
     }
@@ -945,8 +934,6 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
         
         [weakSelf.modelThemeSelectorConfigInfo removeAllObjects];
         
-        weakSelf.modelChangeThemeAnimationDuration = -1.f;
-        
         return weakSelf;
     };
     
@@ -995,19 +982,6 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     return ^(SEL selector){
         
         [weakSelf.modelThemeSelectorConfigInfo removeObjectForKey:NSStringFromSelector(selector)];
-        
-        return weakSelf;
-    };
-    
-}
-
-- (LEEConfigThemeToFloat)LeeChangeThemeAnimationDuration{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    return ^(CGFloat number){
-        
-        _modelChangeThemeAnimationDuration = number;
         
         return weakSelf;
     };
@@ -1848,8 +1822,6 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
         if ([self isChangeTheme]) {
             
             if (self.lee_theme.modelChangingBlock) self.lee_theme.modelChangingBlock([LEETheme currentThemeTag] , self);
-            
-            // self.lee_theme.modelChangeThemeAnimationDuration >= 0.0f ? self.lee_theme.modelChangeThemeAnimationDuration : [LEETheme shareTheme].animationDuration
             
             [CATransaction begin];
             

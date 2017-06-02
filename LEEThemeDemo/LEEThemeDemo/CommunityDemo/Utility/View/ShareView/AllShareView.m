@@ -16,7 +16,7 @@
 
 #import "SDAutoLayout.h"
 
-#import "LEEActionSheet.h"
+#import "LEEAlert.h"
 
 #import "SetManager.h"
 
@@ -39,8 +39,6 @@
 @property (nonatomic , strong ) NSMutableArray *shareButtonArray; //分享按钮数组
 
 @property (nonatomic , strong ) NSMutableArray *moreButtonArray; //更多按钮数组
-
-@property (nonatomic , strong ) UIButton *finishButton; //完成按钮
 
 @end
 
@@ -68,8 +66,6 @@
     _moreInfoArray = nil;
     
     _moreButtonArray = nil;
-    
-    _finishButton = nil;
 }
 
 #pragma mark - 初始化
@@ -206,24 +202,6 @@
         [_shareButtonArray addObject:button];
 
     }
-    
-    //初始化完成按钮
-    
-    _finishButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    [_finishButton setTitle:@"取消" forState:UIControlStateNormal];
-    
-    [_finishButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
-    [_finishButton setBackgroundColor:[UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0f]];
-    
-    [_finishButton addTarget:self action:@selector(finishButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [_finishButton.layer setBorderColor:[[UIColor grayColor] colorWithAlphaComponent:0.2f].CGColor];
-    
-    [_finishButton.layer setBorderWidth:0.5f];
-    
-    [_backGroundView addSubview:_finishButton];
     
     //判断是否显示更多
     
@@ -373,25 +351,14 @@
         
         [_moreScrollView setupAutoContentSizeWithRightView:_moreButtonArray.lastObject rightMargin:20];
         
-        _finishButton.sd_layout
-        .topSpaceToView(_moreScrollView , 20)
-        .leftEqualToView(_backGroundView)
-        .rightEqualToView(_backGroundView)
-        .heightIs(45.0f);
+        [_backGroundView setupAutoHeightWithBottomView:_moreScrollView bottomMargin:20.0f];
         
-        height = 305;
+        height = 260;
         
     } else {
         
-        _finishButton.sd_layout
-        .topSpaceToView(_shareScrollView , 20)
-        .leftEqualToView(_backGroundView)
-        .rightEqualToView(_backGroundView)
-        .heightIs(45.0f);
-        
+        [_backGroundView setupAutoHeightWithBottomView:_shareScrollView bottomMargin:20.0f];
     }
-    
-    [_backGroundView setupAutoHeightWithBottomView:_finishButton bottomMargin:0.0f];
     
     self.height = height;
 }
@@ -402,9 +369,7 @@
     
     __weak typeof(self) weakSelf = self;
     
-    //关闭LEEActionSheet
-    
-    [LEEActionSheet closeCustomActionSheetWithCompletionBlock:^{
+    [LEEAlert closeWithCompletionBlock:^{
         
         if (!weakSelf) return;
        
@@ -427,9 +392,7 @@
     
     __weak typeof(self) weakSelf = self;
     
-    //关闭LEEActionSheet
-    
-    [LEEActionSheet closeCustomActionSheetWithCompletionBlock:^{
+    [LEEAlert closeWithCompletionBlock:^{
         
         if (!weakSelf) return;
         
@@ -453,28 +416,34 @@
     
 }
 
-#pragma mark - 完成按钮点击事件
-
-- (void)finishButtonAction:(UIButton *)sender{
-    
-    [LEEActionSheet closeCustomActionSheet];
-}
-
 #pragma mark - 显示
 
 - (void)show{
     
-    [LEEActionSheet actionSheet].custom.config
-    .LeeCustomView(self)
-    .LeeCustomActionSheetMaxWidth(CGRectGetWidth([[UIScreen mainScreen] bounds]))
-    .LeeCustomActionSheetBottomMargin(0.0f)
-    .LeeCustomTopSubViewMargin(0.0f)
-    .LeeCustomBottomSubViewMargin(0.0f)
-    .LeeCustomCornerRadius(0.0f)
-    .LeeCustomActionSheetTouchClose()
-    .LeeAddQueue(NO)
+    [LEEAlert actionsheet].config
+    .LeeAddCustomView(^(LEECustomView *custom) {
+        
+        custom.view = self;
+        
+        custom.isAutoWidth = YES;
+    })
+    .LeeItemInsets(UIEdgeInsetsMake(0, 0, 0, 0))
+    .LeeAddAction(^(LEEAction *action) {
+        
+        action.title = @"取消";
+        
+        action.titleColor = [UIColor grayColor];
+    })
+    .LeeHeaderInsets(UIEdgeInsetsMake(0, 0, 0, 0))
+    .LeeActionSheetBottomMargin(0.0f)
+    .LeeCornerRadius(0.0f)
+    .LeeConfigMaxWidth(^CGFloat(LEEScreenOrientationType type) {
+        
+        // 这是最大宽度为屏幕宽度 (横屏和竖屏)
+        
+        return type == LEEScreenOrientationTypeHorizontal ? CGRectGetHeight([[UIScreen mainScreen] bounds]) : CGRectGetWidth([[UIScreen mainScreen] bounds]);
+    })
     .LeeShow();
-
 }
 
 @end

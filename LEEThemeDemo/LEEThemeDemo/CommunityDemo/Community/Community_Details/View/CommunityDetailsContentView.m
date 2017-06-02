@@ -324,11 +324,11 @@
         
         if (weakSelf) {
             
-            [LEEAlert alert].custom.config
+            [LEEAlert alert].config
             .LeeTitle(@"提示")
-            .LeeCancelButtonTitle(@"取消")
             .LeeContent(@"长官:你确定要删除该帖子吗?")
-            .LeeAddButton(@"确定", ^(){
+            .LeeCancelAction(@"取消", nil)
+            .LeeAction(@"确定", ^{
                 
                 if (weakSelf) [weakSelf deleteHandle];
             })

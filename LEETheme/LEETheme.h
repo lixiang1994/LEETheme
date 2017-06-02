@@ -87,13 +87,6 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 + (void)defaultTheme:(NSString *)tag;
 
 /**
- *  默认更改主题动画时长 (这是所有对象默认的时长 , 但如果你对某个对象单独进行了时长设置 , 那么该对象将以单独设置的为准)
- *
- *  @param duration 动画时长
- */
-//+ (void)defaultChangeThemeAnimationDuration:(CGFloat)duration; 暂不支持
-
-/**
  *  当前主题标签
  *
  *  @return 主题标签 tag
@@ -116,7 +109,7 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
  *
  *  @param json json字符串
  *  @param tag 主题标签
- *  @param path 资源路径 (传入nil 默认为mainBundle路径)
+ *  @param path 资源路径 (在Documents目录下的路径 如果资源不在Documents目录下应传入nil 例: ResourcesPath:@@"themeResources/day/")
  */
 + (void)addThemeConfigWithJson:(NSString *)json Tag:(NSString *)tag ResourcesPath:(NSString *)path;
 
@@ -267,11 +260,6 @@ typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *ide
 /** 添加图片设置 -> 格式: .LeeAddSelectorAndImage(@@"tag" , @@selector(XXX:) , UIImage 或 @"imageName" 或 @"imagePath") */
 @property (nonatomic , copy , readonly ) LEEConfigThemeToT_SelectorAndImage LeeAddSelectorAndImage;
 
-/** ----通用设置---- */
-
-
-/** 设置主题更改过渡动画时长 -> 格式: .LeeChangeThemeAnimationDuration(0.1f) */
-//@property (nonatomic , copy , readonly ) LEEConfigThemeToFloat LeeChangeThemeAnimationDuration; 暂不支持
 
 /** 基础设置方法 */
 

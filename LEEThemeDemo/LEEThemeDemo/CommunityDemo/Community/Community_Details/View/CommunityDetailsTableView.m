@@ -675,11 +675,11 @@ static NSString * const CommunityDetailsCommentCellHeaderViewID = @"CommunityDet
     
     __weak typeof(self) weakSelf = self;
     
-    [LEEAlert alert].custom.config
+    [LEEAlert alert].config
     .LeeTitle(@"提示")
-    .LeeCancelButtonTitle(@"取消")
     .LeeContent(@"长官：你确定要举报该评论吗？")
-    .LeeAddButton(@"确定", ^(){
+    .LeeCancelAction(@"取消", nil)
+    .LeeAction(@"确定", ^{
         
         __strong typeof(self) strongSelf = weakSelf;
         
@@ -870,11 +870,11 @@ static NSString * const CommunityDetailsCommentCellHeaderViewID = @"CommunityDet
             
             [weakSelf.menuController setMenuVisible:NO];
             
-            [LEEAlert alert].custom.config
+            [LEEAlert alert].config
             .LeeTitle(@"提示")
-            .LeeCancelButtonTitle(@"取消")
             .LeeContent(@"长官：你确定要删除该评论吗？")
-            .LeeAddButton(@"确定", ^(){
+            .LeeCancelAction(@"取消", nil)
+            .LeeAction(@"确定", ^{
                 
                 if (weakSelf) [weakSelf deleteComment:commentModel];
             })

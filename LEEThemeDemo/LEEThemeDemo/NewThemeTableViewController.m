@@ -64,6 +64,18 @@
     self.tableView.lee_theme
     .LeeAddSeparatorColor(DAY , LEEColorRGB(187, 187, 187))
     .LeeAddSeparatorColor(NIGHT , LEEColorRGB(119, 119, 119));
+    
+    self.tableView.lee_theme.LeeThemeChangingBlock(^(NSString *tag, UITableView *item) {
+       
+        // 检查显示的cell的主题状态
+        
+        for (NewThemeTableViewCell *cell in item.visibleCells) {
+            
+            [cell checkThemeState];
+        }
+        
+    });
+    
 }
 
 #pragma mark - 下载主题
@@ -110,9 +122,9 @@
         
         NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
         
-        NSString *themePath = [documentsPath stringByAppendingPathComponent:@"theme_resources"];
+        NSString *themePath = [@"theme_resources" stringByAppendingPathComponent:tag];
         
-        NSString *path = [themePath stringByAppendingPathComponent:tag];
+        NSString *path = [documentsPath stringByAppendingPathComponent:themePath];
         
         if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
             
@@ -141,9 +153,9 @@
             [imageData writeToFile:[path stringByAppendingPathComponent:imageNames[idx]] atomically:YES];
         }];
         
-        // 添加假装得到的的配置json数据 (添加后LEETheme会自动存储 无需下一次运行时再添加 当然同样的主题添加再多次也无所谓)
+        // 添加假装得到的的配置json数据 (添加后会自动存储 无需下一次运行时再添加 当然同样的主题添加再多次也无所谓 值得注意的是ResourcesPath参数传入的是资源路径字符串 其中不包括Documents目录的路径 仅仅为Documents目录之后的路径. 如果资源在mainBundle中 则传入nil)
         
-        [LEETheme addThemeConfigWithJson:redJson Tag:tag ResourcesPath:path];
+        [LEETheme addThemeConfigWithJson:redJson Tag:tag ResourcesPath:themePath];
         
         // 调用完成Block
         
@@ -223,14 +235,6 @@
             case NewThemeStateStart:
             {
                 [LEETheme startTheme:tag];
-                
-                for (NewThemeTableViewCell *cell in tableView.visibleCells) {
-                    
-                    // 更新状态
-                    
-                    [cell checkThemeState];
-                }
-                
             }
                 break;
                 

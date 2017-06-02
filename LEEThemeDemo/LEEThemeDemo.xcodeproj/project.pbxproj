@@ -33,6 +33,7 @@
 		9B1415261EE02EF600173BB9 /* image_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1415251EE02EF600173BB9 /* image_gray@2x.png */; };
 		9B1415281EE02F0C00173BB9 /* true_gray@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1415271EE02F0C00173BB9 /* true_gray@3x.png */; };
 		9B14152A1EE02F1A00173BB9 /* true_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1415291EE02F1A00173BB9 /* true_gray@2x.png */; };
+		9B14152F1EE02FF800173BB9 /* LEEAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B14152D1EE02FF800173BB9 /* LEEAlert.m */; };
 		9B7873E51E7A3F4A00D4151A /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7873301E7A3F4A00D4151A /* UITableView+SDAutoTableViewCellHeight.m */; };
 		9B7873E61E7A3F4A00D4151A /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7873321E7A3F4A00D4151A /* UIView+SDAutoLayout.m */; };
 		9B78743F1E7A3FB800D4151A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 9B78743A1E7A3FB800D4151A /* LICENSE */; };
@@ -61,8 +62,6 @@
 		9B7874FB1E7A57C500D4151A /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7874E51E7A57C500D4151A /* UIView+MJExtension.m */; };
 		9B7874FC1E7A57C500D4151A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9B7874E61E7A57C500D4151A /* README.md */; };
 		9B7875071E7A5AF800D4151A /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7875061E7A5AF800D4151A /* UINavigationController+FDFullscreenPopGesture.m */; };
-		9B7875421E7A612F00D4151A /* LEEActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B78753E1E7A612F00D4151A /* LEEActionSheet.m */; };
-		9B7875431E7A612F00D4151A /* LEEAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7875411E7A612F00D4151A /* LEEAlert.m */; };
 		9B7875461E7A614700D4151A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7875451E7A614700D4151A /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9B7875671E7A649800D4151A /* NSBundle+TZImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B78754D1E7A649800D4151A /* NSBundle+TZImagePicker.m */; };
 		9B7875681E7A649800D4151A /* TZAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B78754F1E7A649800D4151A /* TZAssetCell.m */; };
@@ -468,6 +467,9 @@
 		9B1415251EE02EF600173BB9 /* image_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_gray@2x.png"; sourceTree = "<group>"; };
 		9B1415271EE02F0C00173BB9 /* true_gray@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "true_gray@3x.png"; sourceTree = "<group>"; };
 		9B1415291EE02F1A00173BB9 /* true_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "true_gray@2x.png"; sourceTree = "<group>"; };
+		9B14152C1EE02FF800173BB9 /* LEEAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEAlert.h; sourceTree = "<group>"; };
+		9B14152D1EE02FF800173BB9 /* LEEAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEEAlert.m; sourceTree = "<group>"; };
+		9B14152E1EE02FF800173BB9 /* LEEAlertHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEAlertHelper.h; sourceTree = "<group>"; };
 		9B78732E1E7A3F4A00D4151A /* SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAutoLayout.h; sourceTree = "<group>"; };
 		9B78732F1E7A3F4A00D4151A /* UITableView+SDAutoTableViewCellHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SDAutoTableViewCellHeight.h"; sourceTree = "<group>"; };
 		9B7873301E7A3F4A00D4151A /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
@@ -521,10 +523,6 @@
 		9B7874E61E7A57C500D4151A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9B7875051E7A5AF800D4151A /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		9B7875061E7A5AF800D4151A /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
-		9B78753D1E7A612F00D4151A /* LEEActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEActionSheet.h; sourceTree = "<group>"; };
-		9B78753E1E7A612F00D4151A /* LEEActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEEActionSheet.m; sourceTree = "<group>"; };
-		9B7875401E7A612F00D4151A /* LEEAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEAlert.h; sourceTree = "<group>"; };
-		9B7875411E7A612F00D4151A /* LEEAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEEAlert.m; sourceTree = "<group>"; };
 		9B7875451E7A614700D4151A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		9B78754C1E7A649800D4151A /* NSBundle+TZImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+TZImagePicker.h"; sourceTree = "<group>"; };
 		9B78754D1E7A649800D4151A /* NSBundle+TZImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+TZImagePicker.m"; sourceTree = "<group>"; };
@@ -1215,16 +1213,25 @@
 			path = LEEThemeDemoUITests;
 			sourceTree = "<group>";
 		};
+		9B14152B1EE02FF800173BB9 /* LEEAlert */ = {
+			isa = PBXGroup;
+			children = (
+				9B14152C1EE02FF800173BB9 /* LEEAlert.h */,
+				9B14152D1EE02FF800173BB9 /* LEEAlert.m */,
+				9B14152E1EE02FF800173BB9 /* LEEAlertHelper.h */,
+			);
+			path = LEEAlert;
+			sourceTree = "<group>";
+		};
 		9B7873291E7A3F4A00D4151A /* Librarys */ = {
 			isa = PBXGroup;
 			children = (
+				9B14152B1EE02FF800173BB9 /* LEEAlert */,
 				9B86B4FB1EB8625300063B00 /* LEEBubble */,
 				9B7876FE1E7B80C500D4151A /* fmdb */,
 				9B7875881E7A739200D4151A /* YYKit */,
 				9B7875751E7A64CA00D4151A /* MBProgressHUD */,
 				9B78754B1E7A649800D4151A /* TZImagePickerController */,
-				9B78753C1E7A612F00D4151A /* LEEActionSheet */,
-				9B78753F1E7A612F00D4151A /* LEEAlert */,
 				9B7875041E7A5AF800D4151A /* FDFullscreenPopGesture */,
 				9B7874B51E7A57C500D4151A /* MJRefresh */,
 				9B7874391E7A3FB800D4151A /* DZNEmptyDataSet */,
@@ -1376,24 +1383,6 @@
 				9B7875061E7A5AF800D4151A /* UINavigationController+FDFullscreenPopGesture.m */,
 			);
 			path = FDFullscreenPopGesture;
-			sourceTree = "<group>";
-		};
-		9B78753C1E7A612F00D4151A /* LEEActionSheet */ = {
-			isa = PBXGroup;
-			children = (
-				9B78753D1E7A612F00D4151A /* LEEActionSheet.h */,
-				9B78753E1E7A612F00D4151A /* LEEActionSheet.m */,
-			);
-			path = LEEActionSheet;
-			sourceTree = "<group>";
-		};
-		9B78753F1E7A612F00D4151A /* LEEAlert */ = {
-			isa = PBXGroup;
-			children = (
-				9B7875401E7A612F00D4151A /* LEEAlert.h */,
-				9B7875411E7A612F00D4151A /* LEEAlert.m */,
-			);
-			path = LEEAlert;
 			sourceTree = "<group>";
 		};
 		9B7875441E7A614700D4151A /* Frameworks */ = {
@@ -3063,7 +3052,6 @@
 				9B7878261E7B8BCF00D4151A /* CommunityCommentAPI.m in Sources */,
 				9B7876841E7A739200D4151A /* YYSentinel.m in Sources */,
 				9B78782F1E7B8BCF00D4151A /* CommunityDetailsTableView.m in Sources */,
-				9B7875431E7A612F00D4151A /* LEEAlert.m in Sources */,
 				9B78763E1E7A739200D4151A /* NSKeyedUnarchiver+YYAdd.m in Sources */,
 				9B78782C1E7B8BCF00D4151A /* CommunityDetailsViewController.m in Sources */,
 				9B7879821E7B92DF00D4151A /* YYUtilityExample.m in Sources */,
@@ -3114,7 +3102,6 @@
 				9B7876431E7A739200D4151A /* NSObject+YYAddForKVO.m in Sources */,
 				9B7878641E7B8BCF00D4151A /* ContentImageCacheManager.m in Sources */,
 				9B7878241E7B8BCF00D4151A /* CommunityCircleDetailsHeaderView.m in Sources */,
-				9B7875421E7A612F00D4151A /* LEEActionSheet.m in Sources */,
 				9B78770E1E7B80C500D4151A /* FMResultSet.m in Sources */,
 				9B7876481E7A739200D4151A /* YYCGUtilities.m in Sources */,
 				9B7879681E7B92DE00D4151A /* YYFPSLabel.m in Sources */,
@@ -3137,6 +3124,7 @@
 				9B7878271E7B8BCF00D4151A /* CommunityCommentListAPI.m in Sources */,
 				9B78787A1E7B8BCF00D4151A /* LoadingStylePromptBarView.m in Sources */,
 				9B78767C1E7A739200D4151A /* YYLabel.m in Sources */,
+				9B14152F1EE02FF800173BB9 /* LEEAlert.m in Sources */,
 				9B7876711E7A739200D4151A /* YYTextMagnifier.m in Sources */,
 				9B0049351CC9CE25001AC212 /* main.m in Sources */,
 				9B7874EE1E7A57C500D4151A /* MJRefreshAutoNormalFooter.m in Sources */,
