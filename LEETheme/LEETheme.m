@@ -12,7 +12,7 @@
  *
  *  @author LEE
  *  @copyright    Copyright © 2016 - 2017年 lee. All rights reserved.
- *  @version    V1.1.4
+ *  @version    V1.1.5
  */
 
 
@@ -1519,7 +1519,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
             
         }
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:type];
+        if (info) [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:type];
         
         return weakSelf;
     };
@@ -1554,7 +1554,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
             
         }
         
-        [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:type];
+        if (info) [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:type];
         
         return weakSelf;
     };
@@ -1587,9 +1587,13 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                             {
                                 NSMutableDictionary *info = weakSelf.modelThemeBlockConfigInfo[tag];
                                 
-                                [info removeObjectForKey:key];
+                                if (info) {
+                                    
+                                    [info removeObjectForKey:key];
+                                    
+                                    [weakSelf.modelThemeBlockConfigInfo setObject:info forKey:tag];
+                                }
                                 
-                                [weakSelf.modelThemeBlockConfigInfo setObject:info forKey:tag];
                             }
                                 break;
                                 
@@ -1616,7 +1620,7 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
                 
             }
             
-            [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:type];
+            if (info) [weakSelf.modelThemeIdentifierConfigInfo setObject:info forKey:type];
         }
         
         return weakSelf;
