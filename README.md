@@ -99,13 +99,13 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性或方法的�
 ![JSON配置关系图](https://github.com/lixiang1994/LEETheme/blob/master/Resources/JSON配置关系图.png)
 
 ##### 添加新主题的JSON配置
-
+```
 	/**
          * 添加json , 设置所属主题标签 , 设置资源路径  所添加过的Json配置会自动存储 无需每次都添加
 	 * 关于资源路径的设置 只需要传入documents目录后的路径即可 如:@"theme_resources/black"
 	 */
 	[LEETheme addThemeConfigWithJson:json Tag:@"red" ResourcesPath:nil];
-
+```
 ##### 移除某一主题的JSON配置
 
 	// 所要移除的主题标签
