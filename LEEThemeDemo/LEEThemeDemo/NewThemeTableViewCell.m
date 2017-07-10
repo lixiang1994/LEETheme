@@ -97,15 +97,18 @@
     
     self.lee_theme
     .LeeAddBackgroundColor(DAY , LEEColorRGB(255, 255, 255))
-    .LeeAddBackgroundColor(NIGHT , LEEColorRGB(55, 55, 55));
+    .LeeAddBackgroundColor(NIGHT , LEEColorRGB(55, 55, 55))
+    .LeeConfigBackgroundColor(@"ident7");
     
     self.selectedBackgroundView.lee_theme
     .LeeAddBackgroundColor(DAY , LEEColorRGB(221, 221, 221))
-    .LeeAddBackgroundColor(NIGHT , LEEColorRGB(85, 85, 85));
+    .LeeAddBackgroundColor(NIGHT , LEEColorRGB(85, 85, 85))
+    .LeeConfigBackgroundColor(@"ident7");
     
     self.titleLabel.lee_theme
     .LeeAddTextColor(DAY , [UIColor blackColor])
-    .LeeAddTextColor(NIGHT , [UIColor whiteColor]);
+    .LeeAddTextColor(NIGHT , [UIColor whiteColor])
+    .LeeConfigTextColor(@"ident8");
 }
 
 #pragma mark - 按钮点击事件

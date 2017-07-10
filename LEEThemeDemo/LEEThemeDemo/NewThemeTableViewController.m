@@ -38,6 +38,11 @@
     
     self.navigationItem.title = @"新主题列表";
     
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleDone target:self action:@selector(backAction)];
+    
+    self.navigationItem.leftBarButtonItem = item;
+    
+    
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     
     _dataArray = [NSMutableArray array];
@@ -57,9 +62,15 @@
 
 - (void)configTheme{
     
+    self.navigationItem.leftBarButtonItem.lee_theme
+    .LeeAddTintColor(DAY, [UIColor blackColor])
+    .LeeAddTintColor(NIGHT, [UIColor whiteColor])
+    .LeeConfigTintColor(@"ident7");
+    
     self.view.lee_theme
     .LeeAddBackgroundColor(DAY , LEEColorRGB(255, 255, 255))
-    .LeeAddBackgroundColor(NIGHT , LEEColorRGB(55, 55, 55));
+    .LeeAddBackgroundColor(NIGHT , LEEColorRGB(55, 55, 55))
+    .LeeConfigBackgroundColor(@"ident7");
     
     self.tableView.lee_theme
     .LeeAddSeparatorColor(DAY , LEEColorRGB(187, 187, 187))
@@ -76,6 +87,13 @@
         
     });
     
+}
+
+#pragma mark - 返回事件
+
+- (void)backAction{
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - 下载主题

@@ -13,7 +13,7 @@
  *
  *  @author LEE
  *  @copyright    Copyright © 2016 - 2017年 lee. All rights reserved.
- *  @version    V1.0.2
+ *  @version    V1.1.0
  */
 
 #import <Foundation/Foundation.h>
@@ -44,9 +44,10 @@
  - 支持自定义action添加 可动态调整其样式
  - 支持内部添加的功能项的间距范围设置等
  - 支持圆角设置 支持阴影效果设置
- - 支持队列显示 多个同时显示时根据先后顺序排队弹出.
+ - 支持队列和优先级 多个同时显示时根据优先级顺序排队弹出 添加到队列的如被高优先级覆盖 以后还会继续显示.
  - 支持两种背景样式 1.半透明 (支持自定义透明度比例和颜色) 2.毛玻璃 (支持效果类型)
- - 打开和关闭的动画时长均可自定义
+ - 支持自定义UIView动画方法
+ - 支持自定义打开关闭动画样式(动画方向 渐变过渡 缩放过渡等)
  - 更多特性未来版本中将不断更新.
  
  设置方法结束后在最后请不要忘记使用.LeeShow()方法来显示.
@@ -64,6 +65,10 @@
 + (LEEAlertConfig *)alert;
 
 + (LEEAlertConfig *)actionsheet;
+
+/** 获取Alert窗口 */
+
++ (LEEAlertWindow *)getAlertWindow;
 
 /** 设置主窗口 */
 
@@ -154,11 +159,38 @@
 /** 设置 模糊背景样式及类型 -> 格式: .LeeBackgroundStyleBlur(UIBlurEffectStyleDark) */
 @property (nonatomic , copy , readonly ) LEEConfigToBlurEffectStyle LeeBackgroundStyleBlur;
 
+/** 设置 点击头部关闭 -> 格式: .LeeClickHeaderClose(YES) */
+@property (nonatomic , copy , readonly ) LEEConfigToBool LeeClickHeaderClose;
+
 /** 设置 点击背景关闭 -> 格式: .LeeClickBackgroundClose(YES) */
 @property (nonatomic , copy , readonly ) LEEConfigToBool LeeClickBackgroundClose;
 
-/** 设置 是否加入到队列 -> 格式: .LeeAddQueue() */
-@property (nonatomic , copy , readonly ) LEEConfig LeeAddQueue;
+/** 设置 是否加入到队列 -> 格式: .LeeQueue(YES) */
+@property (nonatomic , copy , readonly ) LEEConfigToBool LeeQueue;
+
+/** 设置 优先级 -> 格式: .LeePriority(1000) */
+@property (nonatomic , copy , readonly ) LEEConfigToInteger LeePriority;
+
+/** 设置 window等级 -> 格式: .LeeWindowLevel(UIWindowLevel) */
+@property (nonatomic , copy , readonly ) LEEConfigToFloat LeeWindowLevel;
+
+/** 设置 是否支持自动旋转 -> 格式: .LeeShouldAutorotate(YES) */
+@property (nonatomic , copy , readonly ) LEEConfigToBool LeeShouldAutorotate;
+
+/** 设置 是否支持显示方向 -> 格式: .LeeShouldAutorotate(UIInterfaceOrientationMaskAll) */
+@property (nonatomic , copy , readonly ) LEEConfigToInterfaceOrientationMask LeeSupportedInterfaceOrientations;
+
+/** 设置 打开动画配置 -> 格式: .LeeOpenAnimationConfig(^(void (^animatingBlock)(void), void (^animatedBlock)(void)) { //code.. }) */
+@property (nonatomic , copy , readonly ) LEEConfigToBlockAndBlock LeeOpenAnimationConfig;
+
+/** 设置 关闭动画配置 -> 格式: .LeeCloseAnimationConfig(^(void (^animatingBlock)(void), void (^animatedBlock)(void)) { //code.. }) */
+@property (nonatomic , copy , readonly ) LEEConfigToBlockAndBlock LeeCloseAnimationConfig;
+
+/** 设置 打开动画样式 -> 格式: .LeeOpenAnimationStyle() */
+@property (nonatomic , copy , readonly ) LEEConfigToAnimationStyle LeeOpenAnimationStyle;
+
+/** 设置 关闭动画样式 -> 格式: .LeeCloseAnimationStyle() */
+@property (nonatomic , copy , readonly ) LEEConfigToAnimationStyle LeeCloseAnimationStyle;
 
 
 /** 显示  -> 格式: .LeeShow() */
@@ -185,10 +217,13 @@
 
 @interface LEEItem : NSObject
 
+/** item类型 */
 @property (nonatomic , assign ) LEEItemType type;
 
+/** item间距范围 */
 @property (nonatomic , assign ) UIEdgeInsets insets;
 
+/** item设置视图Block */
 @property (nonatomic , copy ) void (^block)(id view);
 
 - (void)update;
@@ -197,38 +232,70 @@
 
 @interface LEEAction : NSObject
 
+/** action类型 */
 @property (nonatomic , assign ) LEEActionType type;
 
+/** action标题 */
 @property (nonatomic , strong ) NSString *title;
 
+/** action高亮标题 */
 @property (nonatomic , strong ) NSString *highlight;
 
+/** action标题(attributed) */
+@property (nonatomic , strong ) NSAttributedString *attributedTitle;
+
+/** action高亮标题(attributed) */
+@property (nonatomic , strong ) NSAttributedString *attributedHighlight;
+
+/** action字体 */
 @property (nonatomic , strong ) UIFont *font;
 
+/** action标题颜色 */
 @property (nonatomic , strong ) UIColor *titleColor;
 
+/** action高亮标题颜色 */
 @property (nonatomic , strong ) UIColor *highlightColor;
 
+/** action背景颜色 */
 @property (nonatomic , strong ) UIColor *backgroundColor;
 
+/** action高亮背景颜色 */
 @property (nonatomic , strong ) UIColor *backgroundHighlightColor;
 
-@property (nonatomic , strong ) UIColor *borderColor;
-
+/** action图片 */
 @property (nonatomic , strong ) UIImage *image;
 
+/** action高亮图片 */
 @property (nonatomic , strong ) UIImage *highlightImage;
 
+/** action间距范围 */
+@property (nonatomic , assign ) UIEdgeInsets insets;
+
+/** action图片的间距范围 */
 @property (nonatomic , assign ) UIEdgeInsets imageEdgeInsets;
 
+/** action标题的间距范围 */
 @property (nonatomic , assign ) UIEdgeInsets titleEdgeInsets;
 
-@property (nonatomic , assign ) CGFloat borderWidth;
+/** action圆角曲率 */
+@property (nonatomic , assign ) CGFloat cornerRadius;
 
+/** action高度 */
 @property (nonatomic , assign ) CGFloat height;
 
+/** action边框宽度 */
+@property (nonatomic , assign ) CGFloat borderWidth;
+
+/** action边框颜色 */
+@property (nonatomic , strong ) UIColor *borderColor;
+
+/** action边框位置 */
+@property (nonatomic , assign ) LEEActionBorderPosition borderPosition;
+
+/** action点击不关闭 (仅适用于默认类型) */
 @property (nonatomic , assign ) BOOL isClickNotClose;
 
+/** action点击事件回调Block */
 @property (nonatomic , copy ) void (^clickBlock)();
 
 - (void)update;
@@ -237,10 +304,13 @@
 
 @interface LEECustomView : NSObject
 
+/** 自定义视图对象 */
 @property (nonatomic , strong ) UIView *view;
 
+/** 自定义视图位置类型 (默认为居中) */
 @property (nonatomic , assign ) LEECustomViewPositionType positionType;
 
+/** 是否自动适应宽度 */
 @property (nonatomic , assign ) BOOL isAutoWidth;
 
 @end
@@ -254,6 +324,8 @@
 
 @end
 
+
+@interface LEEAlertWindow : UIWindow @end
 
 @interface LEEBaseViewController : UIViewController @end
 

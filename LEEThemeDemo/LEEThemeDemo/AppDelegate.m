@@ -55,6 +55,9 @@
     [self.window addSubview:bubble];
     
     bubble.lee_theme
+    .LeeAddSelectorAndColor(DAY, @selector(setColor:), [UIColor grayColor])
+    .LeeAddSelectorAndColor(NIGHT, @selector(setColor:), [UIColor grayColor])
+    .LeeConfigSelectorAndIdentifier(@selector(setColor:), @"ident1")
     .LeeThemeChangingBlock(^(NSString *tag, LEEBubble * item) {
         
         if ([tag isEqualToString:DAY]) {

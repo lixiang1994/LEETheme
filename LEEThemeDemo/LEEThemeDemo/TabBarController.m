@@ -40,18 +40,21 @@
     __weak typeof(self) weakSelf = self;
     
     self.tabBar.lee_theme
-    .LeeAddCustomConfigs(@[DAY , NIGHT] , ^(UITabBar *bar){
+    .LeeThemeChangingBlock(^(NSString *tag, id item) {
         
         if (weakSelf) [weakSelf configTabBarItems];
     })
 //    .LeeAddBackgroundImage(DAY , [UIImage imageWithColor:LEEColorRGB(255, 255, 255)])
 //    .LeeAddBackgroundImage(NIGHT , [UIImage imageWithColor:LEEColorRGB(40, 40, 40)])
     .LeeAddBarTintColor(DAY , LEEColorRGB(255, 255, 255))
-    .LeeAddBarTintColor(NIGHT , LEEColorRGB(40, 40, 40));
+    .LeeAddBarTintColor(NIGHT , LEEColorRGB(40, 40, 40))
+    .LeeConfigBarTintColor(@"ident1");
 }
 
 - (void)initSubControllers{
  
+    NSArray *nameArray = @[@"演示" , @"demo"];
+    
     NSMutableArray *ncArray = [[NSMutableArray alloc] init];
     
     //循环创建
@@ -67,15 +70,23 @@
             nc.navigationBar.lee_theme
             .LeeAddBarTintColor(DAY , LEEColorRGB(255, 255, 255))
             .LeeAddBarTintColor(NIGHT , LEEColorRGB(85, 85, 85))
-            .LeeAddCustomConfig(DAY , ^(UINavigationBar *item){
-                
-                item.barStyle = UIBarStyleDefault;
+            .LeeConfigBarTintColor(@"ident1");
+            
+            nc.navigationBar.lee_theme
+            .LeeAddCustomConfig(DAY, ^(UINavigationBar *bar) {
+              
+                bar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor]};
             })
-            .LeeAddCustomConfig(NIGHT , ^(UINavigationBar *item){
+            .LeeAddCustomConfig(NIGHT, ^(UINavigationBar *bar) {
                 
-                item.barStyle = UIBarStyleBlack;
+                bar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+            })
+            .LeeCustomConfig(@"ident7", ^(UINavigationBar *bar, id value) {
+               
+                bar.titleTextAttributes = @{NSForegroundColorAttributeName : value};
             });
             
+            nc.tabBarItem.title = nameArray[i];
         }
         
         [ncArray addObject:nc];
@@ -94,8 +105,6 @@
     
     NSArray *itemSelectImageNameArray = @[@"tab_theme_sel" , @"tab_demo_sel"];
     
-    NSArray *nameArray = @[@"演示" , @"demo"];
-    
     for (NSInteger i = 0; i < classArray.count; i++) {
         
         UINavigationController *nc = self.viewControllers[i];
@@ -110,8 +119,6 @@
         
         UITabBarItem *tabBarItem = nc.tabBarItem;
         
-        tabBarItem.title = nameArray[i];
-        
         tabBarItem.selectedImage = selectImage;
         
         tabBarItem.image = unSelectImage;
@@ -122,11 +129,17 @@
             
             [tabBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:LEEColorRGB(159, 159, 159)} forState:UIControlStateNormal];
             
-        } else {
+        } else if ([[LEETheme currentThemeTag] isEqualToString:NIGHT]) {
             
             [tabBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:LEEColorRGB(28, 125, 178)} forState:UIControlStateSelected];
             
             [tabBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:LEEColorRGB(230, 230, 230)} forState:UIControlStateNormal];
+        
+        } else {
+        
+            [tabBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateSelected];
+            
+            [tabBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
         }
         
     }

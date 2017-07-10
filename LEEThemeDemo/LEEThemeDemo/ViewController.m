@@ -248,6 +248,7 @@
     textfield.lee_theme
     .LeeAddBackgroundColor(DAY, LEEColorRGB(255, 255, 255))
     .LeeAddBackgroundColor(NIGHT, LEEColorRGB(30, 30, 30))
+    .LeeConfigBackgroundColor(@"ident7")
     .LeeAddTextColor(DAY, LEEColorRGB(0, 0, 0))
     .LeeAddTextColor(NIGHT, LEEColorRGB(200, 200, 200))
     .LeeConfigTextColor(@"ident1")
@@ -274,9 +275,15 @@
 
 - (void)configTheme{
     
+    self.navigationItem.rightBarButtonItem.lee_theme
+    .LeeAddTintColor(DAY, [UIColor blackColor])
+    .LeeAddTintColor(NIGHT, [UIColor whiteColor])
+    .LeeConfigTintColor(@"ident7");
+    
     self.view.lee_theme
     .LeeAddBackgroundColor(DAY , LEEColorRGB(255, 255, 255))
-    .LeeAddBackgroundColor(NIGHT , LEEColorRGB(55, 55, 55));
+    .LeeAddBackgroundColor(NIGHT , LEEColorRGB(55, 55, 55))
+    .LeeConfigBackgroundColor(@"ident7");
     
     // 添加方法选择器以及参数测试 可为对象添加其自定义的方法设置 并传入指定的参数
     
@@ -306,7 +313,7 @@
         
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
         
-    } else if ([[LEETheme currentThemeTag] isEqualToString:NIGHT]) {
+    } else {
         
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     }

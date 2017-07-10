@@ -1,7 +1,9 @@
 {
     "color": {
         "ident1": "#5db2d4",
-        "ident2": "#3896bb"
+        "ident2": "#3896bb",
+        "ident7": "#FFFFFF",
+        "ident8": "#000000"
     },
     "image": {
         "ident3": "image.png",
