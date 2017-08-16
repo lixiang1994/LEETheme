@@ -172,6 +172,11 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性或方法的�
 - 每个主题对应的JSON中 标识符(identifier)要相同.
 - 不要忘记设置默认主题, 应用中应该最少会有一个默认的主题.
 
+更多示例Demo
+==============
+
+[新闻资讯详情Demo](https://github.com/lixiang1994/NewsDetailsDemo)
+
 安装
 ==============
 
