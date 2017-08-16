@@ -447,6 +447,7 @@
 		9B0049581CC9CE25001AC212 /* LEEThemeDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEEThemeDemoUITests.m; sourceTree = "<group>"; };
 		9B00495A1CC9CE25001AC212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B0077221CD1B50800EDD034 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		9B1081321F42CBA400D3A7E2 /* LEEThemeHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LEEThemeHelper.h; sourceTree = "<group>"; };
 		9B1415011EDFE98B00173BB9 /* NewThemeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewThemeTableViewController.h; sourceTree = "<group>"; };
 		9B1415021EDFE98B00173BB9 /* NewThemeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewThemeTableViewController.m; sourceTree = "<group>"; };
 		9B1415041EDFEEF400173BB9 /* NewThemeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewThemeTableViewCell.h; sourceTree = "<group>"; };
@@ -2626,6 +2627,7 @@
 			children = (
 				9B9712C71EC42C1C00C1CB79 /* LEETheme.h */,
 				9B9712C81EC42C1C00C1CB79 /* LEETheme.m */,
+				9B1081321F42CBA400D3A7E2 /* LEEThemeHelper.h */,
 			);
 			name = LEETheme;
 			path = ../../LEETheme;

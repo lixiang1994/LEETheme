@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B1081341F442F8600D3A7E2 /* LEEThemeHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B1081331F442F8600D3A7E2 /* LEEThemeHelper.h */; };
 		9B9712C41EC4296E00C1CB79 /* LEETheme.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B9712C21EC4296E00C1CB79 /* LEETheme.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9B9712C51EC4296E00C1CB79 /* LEETheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9712C31EC4296E00C1CB79 /* LEETheme.m */; };
 		9B9712CD1EC433A700C1CB79 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9712CC1EC433A700C1CB79 /* CoreGraphics.framework */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B1081331F442F8600D3A7E2 /* LEEThemeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEThemeHelper.h; sourceTree = "<group>"; };
 		9B9712AB1EC427D200C1CB79 /* LEETheme.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LEETheme.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B9712BF1EC4294300C1CB79 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B9712C21EC4296E00C1CB79 /* LEETheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEETheme.h; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			children = (
 				9B9712C21EC4296E00C1CB79 /* LEETheme.h */,
 				9B9712C31EC4296E00C1CB79 /* LEETheme.m */,
+				9B1081331F442F8600D3A7E2 /* LEEThemeHelper.h */,
 			);
 			name = LEETheme;
 			path = ../../LEETheme;
@@ -92,6 +95,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B9712C41EC4296E00C1CB79 /* LEETheme.h in Headers */,
+				9B1081341F442F8600D3A7E2 /* LEEThemeHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

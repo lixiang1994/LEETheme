@@ -48,7 +48,7 @@
     
     // 初始化气泡
     
-    LEEBubble *bubble = [[LEEBubble alloc]initWithFrame:CGRectMake(CGRectGetWidth(self.window.frame) - 58, CGRectGetHeight(self.window.frame) - 123, 48, 48)];
+    LEEBubble *bubble = [[LEEBubble alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.window.frame) - 58, CGRectGetHeight(self.window.frame) - 123, 48, 48)];
     
     bubble.edgeInsets = UIEdgeInsetsMake(64, 0 , 0 , 0);
     
