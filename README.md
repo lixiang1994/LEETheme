@@ -7,6 +7,7 @@
 [![](https://img.shields.io/badge/support-iOS7%2B-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
 [![](https://img.shields.io/badge/language-Objective--C-f48041.svg?style=flat)](https://www.apple.com/)&nbsp;
 ![Build Status](https://travis-ci.org/lixiang1994/LEETheme.svg?branch=master)&nbsp;
+![](https://img.shields.io/cocoapods/dt/LEETheme.svg)
 
 
 演示
