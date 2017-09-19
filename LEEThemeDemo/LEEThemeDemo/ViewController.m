@@ -34,8 +34,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"添加主题" style:UIBarButtonItemStyleDone target:self action:@selector(rightItemAction)];
     
     self.navigationItem.rightBarButtonItem = item;
@@ -72,9 +70,14 @@
     
     _scrollView = [[UIScrollView alloc] init];
     
-    _scrollView.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 64 - 49);
-
+    _scrollView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 49);
+    
     _scrollView.delegate = self;
+    
+    if (@available(iOS 11.0, *)) {
+        
+        self.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentAutomatic;
+    }
     
     [self.view addSubview:_scrollView];
     
