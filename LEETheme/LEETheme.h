@@ -13,7 +13,7 @@
  *
  *  @author LEE
  *  @copyright    Copyright © 2016 - 2017年 lee. All rights reserved.
- *  @version    V1.1.6
+ *  @version    V1.1.7
  */
 
 #import <Foundation/Foundation.h>
@@ -27,7 +27,7 @@
  *
  * 在使用LEETheme的过程中如果出现bug请及时以以下任意一种方式联系我，我会及时修复bug
  *
- * QQ    : 可以添加SDAutoLayout群 497140713 在这里找到我(LEE)
+ * QQ    : 可以添加SDAutoLayout群 497140713 在这里找到我(LEE 332459523)
  * Email : 18611401994@163.com
  * GitHub: https://github.com/lixiang1994/LEETheme
  * 简书:    http://www.jianshu.com/users/a6da0db100c8
