@@ -91,7 +91,7 @@
     if (kSystemVersion < 7) _textView.top = -64;
     _textView.size = CGSizeMake(self.view.width, self.view.height);
     _textView.textContainerInset = UIEdgeInsetsMake(12, 16, 12, 16);
-    _textView.contentInset = UIEdgeInsetsMake(64, 0, kToolbarHeight, 0);
+    _textView.contentInset = UIEdgeInsetsMake(0, 0, kToolbarHeight, 0);
     _textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _textView.extraAccessoryViewHeight = kToolbarHeight;
     _textView.showsVerticalScrollIndicator = NO;

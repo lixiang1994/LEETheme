@@ -101,6 +101,8 @@
     
     _backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
+    _backButton.hidden = YES;
+    
     [_backButton setImage:[UIImage imageNamed:@"btn_back_normal"] forState:UIControlStateNormal];
     
     _backButton.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5f];

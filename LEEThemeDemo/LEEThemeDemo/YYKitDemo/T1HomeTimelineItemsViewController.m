@@ -27,7 +27,26 @@
     _tableView = [YYTableView new];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    
+    if (@available(iOS 11.0, *)) {
+        
+        _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    
+    _tableView.estimatedRowHeight = 0;
+    
+    _tableView.estimatedSectionHeaderHeight = 0;
+    
+    _tableView.estimatedSectionFooterHeight = 0;
+    
     return self;
+}
+
+- (void)viewSafeAreaInsetsDidChange{
+    
+    [super viewSafeAreaInsetsDidChange];
+    
+    _tableView.contentInset = UIEdgeInsetsMake(self.view.safeAreaInsets.top, 0, 0, 0);
 }
 
 - (void)viewWillAppear:(BOOL)animated {

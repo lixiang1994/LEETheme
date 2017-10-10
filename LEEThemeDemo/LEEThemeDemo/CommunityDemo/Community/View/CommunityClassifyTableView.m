@@ -94,6 +94,17 @@ static NSString * const CommunityPostCellID = @"CommunityPostCell";
     
     self.contentInset = UIEdgeInsetsMake(0, 0, 50.0f, 0);
     
+    if (@available(iOS 11.0, *)) {
+        
+        self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    
+    self.estimatedRowHeight = 0;
+    
+    self.estimatedSectionHeaderHeight = 0;
+    
+    self.estimatedSectionFooterHeight = 0;
+    
     [self registerClass:[CommunityPostCell class] forCellReuseIdentifier:CommunityPostCellID];
 }
 

@@ -12,6 +12,8 @@
 
 @interface MierNavigationBar ()
 
+@property (nonatomic , strong ) UIView *contentView;
+
 @property (nonatomic , strong ) UIView *lineView; //分隔线视图
 
 @property (nonatomic , strong ) UILabel *titleLabel; //标题Label
@@ -73,13 +75,17 @@
 
 - (void)initSubView{
     
+    _contentView = [[UIView alloc] init];
+    
+    [self addSubview:_contentView];
+    
     //标题视图
     
     _titleView = [[UIView alloc] init];
     
     [_titleView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(titleViewTapAction)]];
     
-    [self addSubview:_titleView];
+    [self.contentView addSubview:_titleView];
     
     //左侧视图
     
@@ -87,7 +93,7 @@
     
     [_leftView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(leftViewTapAction)]];
     
-    [self addSubview:_leftView];
+    [self.contentView addSubview:_leftView];
     
     //右侧视图
     
@@ -95,28 +101,46 @@
     
     [_rightView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(rightViewTapAction)]];
     
-    [self addSubview:_rightView];
-    
+    [self.contentView addSubview:_rightView];
 }
 
 - (void)configAutoLayout{
 
+    _contentView.sd_layout
+    .topSpaceToView(self, 20.0f)
+    .leftSpaceToView(self, 0.0f)
+    .rightSpaceToView(self, 0.0f)
+    .heightIs(44.0f);
+    
     _titleView.sd_layout
-    .topSpaceToView(self , 20.0f)
+    .topSpaceToView(self.contentView , 0.0f)
     .centerXEqualToView(self)
     .widthIs(10.0f)
     .heightIs(44.0f);
     
     _leftView.sd_layout
-    .topSpaceToView(self , 20.0f)
+    .topSpaceToView(self.contentView , 0.0f)
     .leftEqualToView(self)
     .widthIs(0.0f)
     .heightIs(44.0f);
     
     _rightView.sd_layout
-    .topSpaceToView(self , 20.0f)
+    .topSpaceToView(self.contentView , 0.0f)
     .rightEqualToView(self)
     .widthIs(0.0f)
+    .heightIs(44.0f);
+    
+    [self setupAutoHeightWithBottomView:self.contentView bottomMargin:0.0f];
+}
+
+- (void)safeAreaInsetsDidChange{
+    
+    [super safeAreaInsetsDidChange];
+    
+    _contentView.sd_layout
+    .topSpaceToView(self, VIEWSAFEAREAINSETS(self).top)
+    .leftSpaceToView(self, VIEWSAFEAREAINSETS(self).left)
+    .rightSpaceToView(self, VIEWSAFEAREAINSETS(self).right)
     .heightIs(44.0f);
 }
 
@@ -307,9 +331,14 @@
 
 - (void)show:(UIViewController *)vc{
     
-    self.frame = CGRectMake(0, 0, CGRectGetWidth([[UIScreen mainScreen] bounds]), 64.0f);
-    
     [vc.view addSubview:self];
+    
+    self.sd_layout
+    .topSpaceToView(vc.view, 0.0f)
+    .leftSpaceToView(vc.view, 0.0f)
+    .rightSpaceToView(vc.view, 0.0f);
+    
+    [self updateLayout];
     
     //设置样式类型
     
@@ -452,10 +481,10 @@
         [self addSubview:_lineView];
         
         _lineView.sd_layout
-        .topSpaceToView(self, 63.5f)
+        .bottomSpaceToView(self, 0.0f)
         .leftEqualToView(self)
         .rightEqualToView(self)
-        .heightIs(0.5f);
+        .heightIs(1.0f/[[UIScreen mainScreen] scale]);
     }
     
     return _lineView;

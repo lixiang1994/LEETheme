@@ -203,10 +203,37 @@
     [_scrollView setupAutoContentSizeWithRightView:self.scrollView.subviews.lastObject rightMargin:0.0f];
     
     _postButton.sd_layout
-    .centerYEqualToView(self.postView)
+    .topSpaceToView(self.postView, 5.0f)
     .leftSpaceToView(self.postView , 15.0f)
     .rightSpaceToView(self.postView , 15.0f)
     .heightIs(40.0f);
+}
+
+- (void)viewSafeAreaInsetsDidChange{
+    
+    [super viewSafeAreaInsetsDidChange];
+    
+    self.scrollView.top = VIEWSAFEAREAINSETS(self.view).top + 44.0f;
+    
+    self.scrollView.height = self.view.height - self.scrollView.top;
+    
+    self.postView.sd_layout
+    .bottomSpaceToView(self.view, 0.0f)
+    .leftSpaceToView(self.view, 0.0f)
+    .rightSpaceToView(self.view, 0.0f)
+    .heightIs(50.0f + VIEWSAFEAREAINSETS(self.view).bottom);
+    
+    self.essenceTableView.height = self.scrollView.height;
+    
+    self.newestTableView.height = self.scrollView.height;
+    
+    self.nearbyTableView.height = self.scrollView.height;
+    
+    self.essenceTableView.contentInset = UIEdgeInsetsMake(0, 0, self.postView.height, 0);
+    
+    self.newestTableView.contentInset = UIEdgeInsetsMake(0, 0, self.postView.height, 0);
+    
+    self.nearbyTableView.contentInset = UIEdgeInsetsMake(0, 0, self.postView.height, 0);
 }
 
 #pragma mark - 设置主题

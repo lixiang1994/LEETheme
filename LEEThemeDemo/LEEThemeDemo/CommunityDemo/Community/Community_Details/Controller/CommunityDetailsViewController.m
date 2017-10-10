@@ -183,6 +183,8 @@
     
     _toolbar = [NewsToolbarView toolbar];
     
+    _toolbar.top = self.view.height - 49.0f;
+    
     [self.view addSubview:_toolbar];
     
     __weak typeof(self) weakSelf = self;
@@ -241,6 +243,17 @@
     
     _tableView = [[CommunityDetailsTableView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - 64 - 49) style:UITableViewStyleGrouped];
     
+    if (@available(iOS 11.0, *)) {
+        
+        _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    
+    _tableView.estimatedRowHeight = 0;
+    
+    _tableView.estimatedSectionHeaderHeight = 0;
+    
+    _tableView.estimatedSectionFooterHeight = 0;
+    
     [self.view addSubview:_tableView];
     
     //初始化头部视图
@@ -256,6 +269,19 @@
 
 - (void)configAutoLayout{
     
+}
+
+- (void)viewSafeAreaInsetsDidChange{
+    
+    [super viewSafeAreaInsetsDidChange];
+    
+    self.toolbar.height = 49.0f + VIEWSAFEAREAINSETS(self.view).bottom;
+    
+    self.toolbar.top = self.view.height - self.toolbar.height;
+    
+    self.tableView.top = VIEWSAFEAREAINSETS(self.view).top + 44.0f;
+    
+    self.tableView.height = self.view.height - self.tableView.top - self.toolbar.height;
 }
 
 #pragma mark - 设置主题

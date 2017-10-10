@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define VIEWSAFEAREAINSETS(view) ({UIEdgeInsets i; if(@available(iOS 11.0, *)) {i = view.safeAreaInsets;} else {i = UIEdgeInsetsZero;} i;})
+
 @class MierNavigationBar;
 
 typedef NS_ENUM(NSInteger, MierNavigationBarStyleType) {

@@ -424,7 +424,7 @@
     
     _faceButton.sd_layout
     .leftSpaceToView(self.toolbar , 15.0f)
-    .centerYEqualToView(self.toolbar)
+    .topSpaceToView(self.toolbar , 7.0f)
     .widthIs(35.0f)
     .heightIs(35.0f);
     
@@ -432,7 +432,7 @@
     
     _photoButton.sd_layout
     .leftSpaceToView(self.faceButton , 15.0f)
-    .centerYEqualToView(self.toolbar)
+    .topSpaceToView(self.toolbar , 7.0f)
     .widthIs(35.0f)
     .heightIs(35.0f);
     
@@ -440,7 +440,7 @@
     
     _locationButton.sd_layout
     .leftSpaceToView(self.photoButton , 15.0f)
-    .centerYEqualToView(self.toolbar)
+    .topSpaceToView(self.toolbar , 7.0f)
     .widthIs(35.0f)
     .heightIs(35.0f);
     
@@ -448,7 +448,7 @@
     
     _circleButton.sd_layout
     .rightSpaceToView(self.toolbar , 15.0f)
-    .centerYEqualToView(self.toolbar)
+    .topSpaceToView(self.toolbar , 7.0f)
     .widthIs(80.0f)
     .heightIs(35.0f);
     
@@ -475,6 +475,20 @@
     .rightSpaceToView(self.locationView , 5.0f)
     .heightRatioToView(self.locationView , 1)
     .widthEqualToHeight();
+}
+
+- (void)viewSafeAreaInsetsDidChange{
+    
+    [super viewSafeAreaInsetsDidChange];
+    
+    _titleTextView.sd_layout
+    .topSpaceToView(self.view , 44.0f + VIEWSAFEAREAINSETS(self.view).top);
+    
+    _toolbar.sd_layout
+    .yIs(self.view.height - 49.0f - VIEWSAFEAREAINSETS(self.view).bottom)
+    .leftEqualToView(self.view)
+    .rightEqualToView(self.view)
+    .heightIs(49.0f + VIEWSAFEAREAINSETS(self.view).bottom);
 }
 
 #pragma mark - 设置主题
@@ -593,6 +607,17 @@
     } else {
         
         self.contentTextView.sd_layout.bottomSpaceToView(self.toolbar , self.locationView.height);
+    }
+    
+    // 适配iPhone X效果
+    
+    if (toVisible) {
+        
+        self.toolbar.sd_layout.heightIs(49.0f);
+        
+    } else {
+        
+        self.toolbar.sd_layout.heightIs(49.0f + VIEWSAFEAREAINSETS(self.view).bottom);
     }
     
     self.toolbar.sd_layout.yIs(toFrame.origin.y - self.toolbar.height);

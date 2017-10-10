@@ -52,6 +52,17 @@
     _tableView.backgroundView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_tableView];
     
+    if (@available(iOS 11.0, *)) {
+        
+        _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
+    
+    _tableView.estimatedRowHeight = 0;
+    
+    _tableView.estimatedSectionHeaderHeight = 0;
+    
+    _tableView.estimatedSectionFooterHeight = 0;
+    
 //    self.view.backgroundColor = kWBCellBackgroundColor;
     
     // 设置主题
@@ -105,6 +116,13 @@
             [_tableView reloadData];
         });
     });
+}
+
+- (void)viewSafeAreaInsetsDidChange{
+    
+    [super viewSafeAreaInsetsDidChange];
+    
+    _tableView.contentInset = UIEdgeInsetsMake(self.view.safeAreaInsets.top, 0, 0, 0);
 }
 
 - (void)sendStatus {

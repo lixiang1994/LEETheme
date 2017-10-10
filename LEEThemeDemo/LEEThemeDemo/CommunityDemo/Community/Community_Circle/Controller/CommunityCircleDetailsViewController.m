@@ -171,6 +171,15 @@ static NSString * const CommunityCircleDetailsCellHeaderViewID = @"CommunityCirc
     
 }
 
+- (void)viewSafeAreaInsetsDidChange{
+    
+    [super viewSafeAreaInsetsDidChange];
+    
+    self.tableView.top = VIEWSAFEAREAINSETS(self.view).top + 44.0f;
+    
+    self.tableView.height = self.view.height - self.tableView.top;
+}
+
 #pragma mark - 设置主题
 
 - (void)configTheme{
@@ -424,7 +433,7 @@ static NSString * const CommunityCircleDetailsCellHeaderViewID = @"CommunityCirc
         
         self.navigationBar.top = 0.0f;
         
-        self.navigationBar.height = 64.0f;
+        self.navigationBar.height = 64;
     }];
     
 }
@@ -605,23 +614,6 @@ static NSString * const CommunityCircleDetailsCellHeaderViewID = @"CommunityCirc
     };
     
     return view;
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-    if (scrollView.contentOffset.y > 64) {
-        
-        if (!self.tableView.bounces) self.tableView.bounces = YES;
-        
-        [self spreadNavigationBar];
-        
-    } else {
-        
-        if (self.tableView.bounces) self.tableView.bounces = NO;
-        
-        [self retractNavigationBar];
-    }
-    
 }
 
 #pragma mark - LazyLoading

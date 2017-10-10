@@ -12,7 +12,11 @@
 
 #import "LEECoolButton.h"
 
+#define VIEWSAFEAREAINSETS(view) ({UIEdgeInsets i; if(@available(iOS 11.0, *)) {i = view.safeAreaInsets;} else {i = UIEdgeInsetsZero;} i;})
+
 @interface NewsToolbarView ()
+
+@property (nonatomic , strong ) UIView *contentView;
 
 @property (nonatomic , strong ) UIView *lineView;
 
@@ -52,12 +56,11 @@
     _itemArray = nil;
     
     _blockArray = nil;
-    
 }
 
-+(NewsToolbarView *)toolbar{
++ (NewsToolbarView *)toolbar{
     
-    NewsToolbarView *toobar = [[NewsToolbarView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight([[UIScreen mainScreen] bounds]) - 49.0f, CGRectGetWidth([[UIScreen mainScreen] bounds]), 49.0f)];
+    NewsToolbarView *toobar = [[NewsToolbarView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth([[UIScreen mainScreen] bounds]), 49.0f)];
     
     return toobar;
 }
@@ -74,12 +77,15 @@
         //初始化子视图
         
         [self initSubView];
-        
     }
     return self;
 }
 
 - (void)initSubView{
+    
+    _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.width, 49.0f)];
+    
+    [self addSubview:_contentView];
     
     //初始化分隔线
     
@@ -107,12 +113,21 @@
     
     [_editItem addTarget:self action:@selector(itemAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    [self addSubview:_editItem];
+    [self.contentView addSubview:_editItem];
     
     //暂时添加到数组
     
     [_itemArray addObject:_editItem];
+}
+
+- (void)safeAreaInsetsDidChange{
     
+    [super safeAreaInsetsDidChange];
+    
+    self.contentView.sd_layout
+    .leftSpaceToView(self, VIEWSAFEAREAINSETS(self).left)
+    .rightSpaceToView(self, VIEWSAFEAREAINSETS(self).right)
+    .heightIs(49.0f);
 }
 
 - (NewsToolbarConfigBlock)configEditItem{
@@ -155,7 +170,7 @@
             
             [weakSelf.commentItem addTarget:self action:@selector(itemAction:) forControlEvents:UIControlEventTouchUpInside];
             
-            [self addSubview:weakSelf.commentItem];
+            [self.contentView addSubview:weakSelf.commentItem];
             
             //评论标签
             
@@ -217,7 +232,7 @@
             
             [weakSelf.favItem addTarget:self action:@selector(itemAction:) forControlEvents:UIControlEventTouchUpInside];
             
-            [self addSubview:weakSelf.favItem];
+            [self.contentView addSubview:weakSelf.favItem];
             
             [weakSelf.itemArray addObject:weakSelf.favItem];
             
@@ -245,7 +260,7 @@
             
             [weakSelf.shareItem addTarget:self action:@selector(itemAction:) forControlEvents:UIControlEventTouchUpInside];
             
-            [self addSubview:weakSelf.shareItem];
+            [self.contentView addSubview:weakSelf.shareItem];
             
             [weakSelf.itemArray addObject:weakSelf.shareItem];
             
@@ -273,7 +288,7 @@
             
             [weakSelf.reportItem addTarget:self action:@selector(itemAction:) forControlEvents:UIControlEventTouchUpInside];
             
-            [self addSubview:weakSelf.reportItem];
+            [self.contentView addSubview:weakSelf.reportItem];
             
             [weakSelf.itemArray addObject:weakSelf.reportItem];
             
@@ -486,17 +501,17 @@
             if (i == 0) {
                 
                 item.sd_layout
-                .leftSpaceToView(self , 0.0f)
-                .centerYEqualToView(self)
-                .heightRatioToView(self , 1)
+                .leftSpaceToView(self.contentView , 0.0f)
+                .centerYEqualToView(self.contentView)
+                .heightRatioToView(self.contentView , 1)
                 .widthEqualToHeight();
                 
             } else {
                 
                 item.sd_layout
                 .leftSpaceToView(self.itemArray[i - 1] , 0.0f)
-                .centerYEqualToView(self)
-                .heightRatioToView(self , 1)
+                .centerYEqualToView(self.contentView)
+                .heightRatioToView(self.contentView , 1)
                 .widthEqualToHeight();
             }
             
@@ -505,17 +520,17 @@
             if (i == self.itemArray.count - 1) {
                 
                 item.sd_layout
-                .rightSpaceToView(self , 0.0f)
-                .centerYEqualToView(self)
-                .heightRatioToView(self , 1)
+                .rightSpaceToView(self.contentView , 0.0f)
+                .centerYEqualToView(self.contentView)
+                .heightRatioToView(self.contentView , 1)
                 .widthEqualToHeight();
                 
             } else {
                 
                 item.sd_layout
                 .rightSpaceToView(self.itemArray[i + 1] , 0.0f)
-                .centerYEqualToView(self)
-                .heightRatioToView(self , 1)
+                .centerYEqualToView(self.contentView)
+                .heightRatioToView(self.contentView , 1)
                 .widthEqualToHeight();
             }
             
@@ -526,17 +541,17 @@
                 if (self.itemArray.count == 1) {
                     
                     item.sd_layout
-                    .leftSpaceToView(self , 10.0f)
-                    .rightSpaceToView(self , 10.0f)
-                    .centerYEqualToView(self)
+                    .leftSpaceToView(self.contentView , 10.0f)
+                    .rightSpaceToView(self.contentView , 10.0f)
+                    .centerYEqualToView(self.contentView)
                     .heightIs(30.0f);
                 
                 } else {
                     
                     item.sd_layout
-                    .leftSpaceToView(self , 10.0f)
+                    .leftSpaceToView(self.contentView , 10.0f)
                     .rightSpaceToView(self.itemArray[i + 1] , 5.0f)
-                    .centerYEqualToView(self)
+                    .centerYEqualToView(self.contentView)
                     .heightIs(30.0f);
                 }
         
@@ -544,8 +559,8 @@
                 
                 item.sd_layout
                 .leftSpaceToView(self.itemArray[i - 1] , 5.0f)
-                .rightSpaceToView(self , 10.0f)
-                .centerYEqualToView(self)
+                .rightSpaceToView(self.contentView , 10.0f)
+                .centerYEqualToView(self.contentView)
                 .heightIs(30.0f);
                 
             } else {
@@ -553,7 +568,7 @@
                 item.sd_layout
                 .leftSpaceToView(self.itemArray[i - 1] , 5.0f)
                 .rightSpaceToView(self.itemArray[i + 1] , 5.0f)
-                .centerYEqualToView(self)
+                .centerYEqualToView(self.contentView)
                 .heightIs(30.0f);
             }
             
@@ -571,6 +586,7 @@
         [item updateLayout];
     }
     
+    [self.contentView updateLayout];
 }
 
 #pragma mark - 选项点击事件

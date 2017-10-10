@@ -139,6 +139,17 @@
 
 }
 
+- (void)viewSafeAreaInsetsDidChange{
+    
+    [super viewSafeAreaInsetsDidChange];
+    
+    self.collectionView.top = VIEWSAFEAREAINSETS(self.view).top + 44.0f;
+    
+    self.collectionView.height = self.view.height - self.collectionView.top;
+    
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, VIEWSAFEAREAINSETS(self.view).bottom, 0);
+}
+
 #pragma mark - 设置主题
 
 - (void)configTheme{
