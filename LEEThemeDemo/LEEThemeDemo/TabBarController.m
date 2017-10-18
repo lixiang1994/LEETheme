@@ -37,22 +37,14 @@
 
 - (void)configTheme {
     
-    __weak typeof(self) weakSelf = self;
-    
     self.tabBar.lee_theme
-    .LeeThemeChangingBlock(^(NSString *tag, id item) {
-        
-        if (weakSelf) [weakSelf configTabBarItems];
-    })
-//    .LeeAddBackgroundImage(DAY , [UIImage imageWithColor:LEEColorRGB(255, 255, 255)])
-//    .LeeAddBackgroundImage(NIGHT , [UIImage imageWithColor:LEEColorRGB(40, 40, 40)])
     .LeeAddBarTintColor(DAY , LEEColorRGB(255, 255, 255))
     .LeeAddBarTintColor(NIGHT , LEEColorRGB(40, 40, 40))
     .LeeConfigBarTintColor(@"ident1");
 }
 
 - (void)initSubControllers{
- 
+    
     NSArray *nameArray = @[@"演示" , @"demo"];
     
     NSMutableArray *ncArray = [[NSMutableArray alloc] init];
@@ -109,39 +101,48 @@
         
         UINavigationController *nc = self.viewControllers[i];
         
-        NSString *unSelectImageName = [[LEETheme currentThemeTag] isEqualToString:DAY] ? itemUnselectImageNameArray[i] : [NSString stringWithFormat:@"%@_night" , itemUnselectImageNameArray[i]];
-        
-        NSString *selectImageName = [[LEETheme currentThemeTag] isEqualToString:DAY] ? itemSelectImageNameArray[i] : [NSString stringWithFormat:@"%@_night" , itemSelectImageNameArray[i]];
-        
-        UIImage *unSelectImage = [[UIImage imageNamed:unSelectImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        
-        UIImage *selectImage = [[UIImage imageNamed:selectImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        
         UITabBarItem *tabBarItem = nc.tabBarItem;
         
-        tabBarItem.selectedImage = selectImage;
+        // 方法1
         
-        tabBarItem.image = unSelectImage;
+        tabBarItem.lee_theme
+        .LeeAddSelectedImage(DAY, [[UIImage imageNamed:itemSelectImageNameArray[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal])
+        .LeeAddSelectedImage(NIGHT, [[UIImage imageNamed:[NSString stringWithFormat:@"%@_night" , itemSelectImageNameArray[i]]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]);
+
+        tabBarItem.lee_theme
+        .LeeAddImage(DAY, [[UIImage imageNamed:itemUnselectImageNameArray[i]]  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal])
+        .LeeAddImage(NIGHT, [[UIImage imageNamed:[NSString stringWithFormat:@"%@_night" , itemUnselectImageNameArray[i]]]  imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]);
         
-        if ([[LEETheme currentThemeTag] isEqualToString:DAY]) {
-            
-            [tabBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:LEEColorRGB(33, 151, 216)} forState:UIControlStateSelected];
-            
-            [tabBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:LEEColorRGB(159, 159, 159)} forState:UIControlStateNormal];
-            
-        } else if ([[LEETheme currentThemeTag] isEqualToString:NIGHT]) {
-            
-            [tabBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:LEEColorRGB(28, 125, 178)} forState:UIControlStateSelected];
-            
-            [tabBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:LEEColorRGB(230, 230, 230)} forState:UIControlStateNormal];
+        tabBarItem.lee_theme
+        .LeeAddSelectorAndValues(DAY , @selector(setTitleTextAttributes:forState:) , @{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:LEEColorRGB(33, 151, 216)} , @(UIControlStateSelected) , nil)
+        .LeeAddSelectorAndValues(NIGHT , @selector(setTitleTextAttributes:forState:) , @{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:LEEColorRGB(28, 125, 178)} , @(UIControlStateSelected) , nil)
+        .LeeAddSelectorAndValues(DAY , @selector(setTitleTextAttributes:forState:) , @{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:LEEColorRGB(159, 159, 159)} , @(UIControlStateNormal) , nil)
+        .LeeAddSelectorAndValues(NIGHT , @selector(setTitleTextAttributes:forState:) , @{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:LEEColorRGB(230, 230, 230)} , @(UIControlStateNormal) , nil);
         
-        } else {
-        
-            [tabBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateSelected];
+        /*
+         // 方法2
+         
+        tabBarItem.lee_theme.LeeAddCustomConfig(DAY, ^(UITabBarItem *item) {
             
-            [tabBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
-        }
-        
+            item.selectedImage = [[UIImage imageNamed:itemSelectImageNameArray[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
+            item.image = [[UIImage imageNamed:itemUnselectImageNameArray[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+            
+            [item setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:LEEColorRGB(33, 151, 216)} forState:UIControlStateSelected];
+
+            [item setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:LEEColorRGB(159, 159, 159)} forState:UIControlStateNormal];
+        })
+        .LeeAddCustomConfig(NIGHT, ^(UITabBarItem *item) {
+            
+            item.selectedImage = [[UIImage imageNamed:[NSString stringWithFormat:@"%@_night" , itemSelectImageNameArray[i]]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
+            item.image = [[UIImage imageNamed:[NSString stringWithFormat:@"%@_night" , itemUnselectImageNameArray[i]]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+            
+            [item setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:LEEColorRGB(28, 125, 178)} forState:UIControlStateSelected];
+
+            [item setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:10], NSForegroundColorAttributeName:LEEColorRGB(230, 230, 230)} forState:UIControlStateNormal];
+        });
+        */
     }
 
 }
