@@ -13,7 +13,7 @@
  *
  *  @author LEE
  *  @copyright    Copyright © 2016 - 2017年 lee. All rights reserved.
- *  @version    V1.1.0
+ *  @version    V1.1.5
  */
 
 #ifndef LEEAlertHelper_h
@@ -104,13 +104,14 @@ typedef NS_OPTIONS(NSInteger, LEEAnimationStyle) {
     LEEAnimationStyleZoomShrink         = 2 << 24,
 };
 
-typedef LEEAlertConfigModel *(^LEEConfig)();
+typedef LEEAlertConfigModel *(^LEEConfig)(void);
 typedef LEEAlertConfigModel *(^LEEConfigToBool)(BOOL is);
 typedef LEEAlertConfigModel *(^LEEConfigToInteger)(NSInteger number);
 typedef LEEAlertConfigModel *(^LEEConfigToFloat)(CGFloat number);
 typedef LEEAlertConfigModel *(^LEEConfigToString)(NSString *str);
 typedef LEEAlertConfigModel *(^LEEConfigToView)(UIView *view);
 typedef LEEAlertConfigModel *(^LEEConfigToColor)(UIColor *color);
+typedef LEEAlertConfigModel *(^LEEConfigToSize)(CGSize size);
 typedef LEEAlertConfigModel *(^LEEConfigToEdgeInsets)(UIEdgeInsets insets);
 typedef LEEAlertConfigModel *(^LEEConfigToAnimationStyle)(LEEAnimationStyle style);
 typedef LEEAlertConfigModel *(^LEEConfigToBlurEffectStyle)(UIBlurEffectStyle style);
@@ -118,10 +119,11 @@ typedef LEEAlertConfigModel *(^LEEConfigToInterfaceOrientationMask)(UIInterfaceO
 typedef LEEAlertConfigModel *(^LEEConfigToFloatBlock)(CGFloat(^)(LEEScreenOrientationType type));
 typedef LEEAlertConfigModel *(^LEEConfigToAction)(void(^)(LEEAction *action));
 typedef LEEAlertConfigModel *(^LEEConfigToCustomView)(void(^)(LEECustomView *custom));
-typedef LEEAlertConfigModel *(^LEEConfigToStringAndBlock)(NSString *str , void (^)());
+typedef LEEAlertConfigModel *(^LEEConfigToStringAndBlock)(NSString *str , void (^)(void));
 typedef LEEAlertConfigModel *(^LEEConfigToConfigLabel)(void(^)(UILabel *label));
 typedef LEEAlertConfigModel *(^LEEConfigToConfigTextField)(void(^)(UITextField *textField));
 typedef LEEAlertConfigModel *(^LEEConfigToItem)(void(^)(LEEItem *item));
-typedef LEEAlertConfigModel *(^LEEConfigToBlockAndBlock)(void(^)(void (^animatingBlock)() , void (^animatedBlock)()));
+typedef LEEAlertConfigModel *(^LEEConfigToBlock)(void(^block)(void));
+typedef LEEAlertConfigModel *(^LEEConfigToBlockAndBlock)(void(^)(void (^animatingBlock)(void) , void (^animatedBlock)(void)));
 
 #endif /* LEEAlertHelper_h */

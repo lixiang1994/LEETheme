@@ -13,7 +13,7 @@
  *
  *  @author LEE
  *  @copyright    Copyright © 2016 - 2017年 lee. All rights reserved.
- *  @version    V1.1.0
+ *  @version    V1.1.5
  */
 
 #import <Foundation/Foundation.h>
@@ -74,9 +74,17 @@
 
 + (void)configMainWindow:(UIWindow *)window;
 
+/** 继续队列显示 */
+
++ (void)continueQueueDisplay;
+
+/** 清空队列 */
+
++ (void)clearQueue;
+
 /** 关闭 */
 
-+ (void)closeWithCompletionBlock:(void (^)())completionBlock;
++ (void)closeWithCompletionBlock:(void (^)(void))completionBlock;
 
 @end
 
@@ -138,9 +146,6 @@
 /** 设置 圆角半径 -> 格式: .LeeCornerRadius(13.0f) */
 @property (nonatomic , copy , readonly ) LEEConfigToFloat LeeCornerRadius;
 
-/** 设置 阴影不透明 -> 格式: .LeeShadowOpacity(0.3f) */
-@property (nonatomic , copy , readonly ) LEEConfigToFloat LeeShadowOpacity;
-
 /** 设置 开启动画时长 -> 格式: .LeeOpenAnimationDuration(0.3f) */
 @property (nonatomic , copy , readonly ) LEEConfigToFloat LeeOpenAnimationDuration;
 
@@ -165,11 +170,29 @@
 /** 设置 点击背景关闭 -> 格式: .LeeClickBackgroundClose(YES) */
 @property (nonatomic , copy , readonly ) LEEConfigToBool LeeClickBackgroundClose;
 
+/** 设置 阴影偏移 -> 格式: .LeeShadowOffset(CGSizeMake(0.0f, 2.0f)) */
+@property (nonatomic , copy , readonly ) LEEConfigToSize LeeShadowOffset;
+
+/** 设置 阴影不透明度 -> 格式: .LeeShadowOpacity(0.3f) */
+@property (nonatomic , copy , readonly ) LEEConfigToFloat LeeShadowOpacity;
+
+/** 设置 阴影半径 -> 格式: .LeeShadowRadius(5.0f) */
+@property (nonatomic , copy , readonly ) LEEConfigToFloat LeeShadowRadius;
+
+/** 设置 阴影颜色 -> 格式: .LeeShadowOpacity(UIColor) */
+@property (nonatomic , copy , readonly ) LEEConfigToColor LeeShadowColor;
+
+/** 设置 标识 -> 格式: .LeeIdentifier(@@"ident") */
+//@property (nonatomic , copy , readonly ) LEEConfigToString LeeIdentifier;
+
 /** 设置 是否加入到队列 -> 格式: .LeeQueue(YES) */
 @property (nonatomic , copy , readonly ) LEEConfigToBool LeeQueue;
 
 /** 设置 优先级 -> 格式: .LeePriority(1000) */
 @property (nonatomic , copy , readonly ) LEEConfigToInteger LeePriority;
+
+/** 设置 是否继续队列显示 -> 格式: .LeeContinueQueue(YES) */
+@property (nonatomic , copy , readonly ) LEEConfigToBool LeeContinueQueueDisplay;
 
 /** 设置 window等级 -> 格式: .LeeWindowLevel(UIWindowLevel) */
 @property (nonatomic , copy , readonly ) LEEConfigToFloat LeeWindowLevel;
@@ -201,6 +224,9 @@
 /** 设置 添加输入框 -> 格式: .LeeAddTextField(^(UITextField *){ //code.. }) */
 @property (nonatomic , copy , readonly ) LEEConfigToConfigTextField LeeAddTextField;
 
+/** 设置 是否闪避键盘 -> 格式: .LeeAvoidKeyboard(YES) */
+@property (nonatomic , copy , readonly ) LEEConfigToBool LeeAvoidKeyboard;
+
 /** ✨actionSheet 专用设置 */
 
 /** 设置 取消动作的间隔宽度 -> 格式: .LeeActionSheetCancelActionSpaceWidth(10.0f) */
@@ -211,6 +237,11 @@
 
 /** 设置 ActionSheet距离屏幕底部的间距 -> 格式: .LeeActionSheetBottomMargin(10.0f) */
 @property (nonatomic , copy , readonly ) LEEConfigToFloat LeeActionSheetBottomMargin;
+
+
+
+/** 设置 当前关闭回调 -> 格式: .LeeCloseComplete(^{ //code.. }) */
+@property (nonatomic , copy , readonly ) LEEConfigToBlock LeeCloseComplete;
 
 @end
 
@@ -296,7 +327,7 @@
 @property (nonatomic , assign ) BOOL isClickNotClose;
 
 /** action点击事件回调Block */
-@property (nonatomic , copy ) void (^clickBlock)();
+@property (nonatomic , copy ) void (^clickBlock)(void);
 
 - (void)update;
 
@@ -314,7 +345,6 @@
 @property (nonatomic , assign ) BOOL isAutoWidth;
 
 @end
-
 
 @interface LEEAlertConfig : NSObject
 

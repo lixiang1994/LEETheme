@@ -405,10 +405,10 @@
 		9B86B4FA1EB84EB400063B00 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B86B4F91EB84EB400063B00 /* TabBarController.m */; };
 		9B86B4FE1EB8625300063B00 /* LEEBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B86B4FD1EB8625300063B00 /* LEEBubble.m */; };
 		9B9712C91EC42C1C00C1CB79 /* LEETheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9712C81EC42C1C00C1CB79 /* LEETheme.m */; };
-		9BAA855F1F1351240064CAEB /* LEEAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAA855D1F1351240064CAEB /* LEEAlert.m */; };
 		9BCD39551D0503C100135985 /* tag_red_json.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD39541D0503C100135985 /* tag_red_json.json */; };
 		9BCD39571D0513E100135985 /* tag_blue_json.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD39561D0513E100135985 /* tag_blue_json.json */; };
 		9BCD39591D0513FB00135985 /* tag_green_json.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD39581D0513FB00135985 /* tag_green_json.json */; };
+		9BD607911FC9538A005C92A5 /* LEEAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BD607901FC9538A005C92A5 /* LEEAlert.m */; };
 		9BF7725D1D0572AB00460B6E /* tag_gray_json.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BF7725C1D0572AB00460B6E /* tag_gray_json.json */; };
 /* End PBXBuildFile section */
 
@@ -1084,13 +1084,13 @@
 		9B86B4FD1EB8625300063B00 /* LEEBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEEBubble.m; sourceTree = "<group>"; };
 		9B9712C71EC42C1C00C1CB79 /* LEETheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEETheme.h; sourceTree = "<group>"; };
 		9B9712C81EC42C1C00C1CB79 /* LEETheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEETheme.m; sourceTree = "<group>"; };
-		9BAA855C1F1351240064CAEB /* LEEAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEAlert.h; sourceTree = "<group>"; };
-		9BAA855D1F1351240064CAEB /* LEEAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEEAlert.m; sourceTree = "<group>"; };
-		9BAA855E1F1351240064CAEB /* LEEAlertHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEAlertHelper.h; sourceTree = "<group>"; };
 		9BCB86CE1F97711E00316D74 /* LEEThemeDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LEEThemeDemo.entitlements; sourceTree = "<group>"; };
 		9BCD39541D0503C100135985 /* tag_red_json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tag_red_json.json; sourceTree = "<group>"; };
 		9BCD39561D0513E100135985 /* tag_blue_json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tag_blue_json.json; sourceTree = "<group>"; };
 		9BCD39581D0513FB00135985 /* tag_green_json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tag_green_json.json; sourceTree = "<group>"; };
+		9BD6078E1FC95389005C92A5 /* LEEAlertHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEAlertHelper.h; sourceTree = "<group>"; };
+		9BD6078F1FC95389005C92A5 /* LEEAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEAlert.h; sourceTree = "<group>"; };
+		9BD607901FC9538A005C92A5 /* LEEAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEEAlert.m; sourceTree = "<group>"; };
 		9BF7725C1D0572AB00460B6E /* tag_gray_json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tag_gray_json.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2638,9 +2638,9 @@
 		9BAA85571F1329AB0064CAEB /* LEEAlert */ = {
 			isa = PBXGroup;
 			children = (
-				9BAA855C1F1351240064CAEB /* LEEAlert.h */,
-				9BAA855D1F1351240064CAEB /* LEEAlert.m */,
-				9BAA855E1F1351240064CAEB /* LEEAlertHelper.h */,
+				9BD6078F1FC95389005C92A5 /* LEEAlert.h */,
+				9BD607901FC9538A005C92A5 /* LEEAlert.m */,
+				9BD6078E1FC95389005C92A5 /* LEEAlertHelper.h */,
 			);
 			path = LEEAlert;
 			sourceTree = "<group>";
@@ -2712,6 +2712,7 @@
 				TargetAttributes = {
 					9B00492F1CC9CE25001AC212 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 8K4E58U732;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -2721,10 +2722,12 @@
 					};
 					9B0049481CC9CE25001AC212 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 8K4E58U732;
 						TestTargetID = 9B00492F1CC9CE25001AC212;
 					};
 					9B0049531CC9CE25001AC212 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 8K4E58U732;
 						TestTargetID = 9B00492F1CC9CE25001AC212;
 					};
 				};
@@ -3133,7 +3136,7 @@
 				9B7878271E7B8BCF00D4151A /* CommunityCommentListAPI.m in Sources */,
 				9B78787A1E7B8BCF00D4151A /* LoadingStylePromptBarView.m in Sources */,
 				9B78767C1E7A739200D4151A /* YYLabel.m in Sources */,
-				9BAA855F1F1351240064CAEB /* LEEAlert.m in Sources */,
+				9BD607911FC9538A005C92A5 /* LEEAlert.m in Sources */,
 				9B7876711E7A739200D4151A /* YYTextMagnifier.m in Sources */,
 				9B0049351CC9CE25001AC212 /* main.m in Sources */,
 				9B7874EE1E7A57C500D4151A /* MJRefreshAutoNormalFooter.m in Sources */,
@@ -3265,7 +3268,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -3312,7 +3315,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -3327,7 +3330,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8K4E58U732;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LEEThemeDemo/YYKitDemo/Vendor",
@@ -3351,7 +3354,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8K4E58U732;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LEEThemeDemo/YYKitDemo/Vendor",
@@ -3371,7 +3374,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8K4E58U732;
 				INFOPLIST_FILE = LEEThemeDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lee.LEEThemeDemoTests;
@@ -3384,7 +3387,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8K4E58U732;
 				INFOPLIST_FILE = LEEThemeDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lee.LEEThemeDemoTests;
@@ -3396,7 +3399,7 @@
 		9B0049641CC9CE25001AC212 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8K4E58U732;
 				INFOPLIST_FILE = LEEThemeDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lee.themeUITests;
@@ -3408,7 +3411,7 @@
 		9B0049651CC9CE25001AC212 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8K4E58U732;
 				INFOPLIST_FILE = LEEThemeDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lee.themeUITests;
