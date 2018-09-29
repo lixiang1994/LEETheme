@@ -176,6 +176,22 @@ static NSString * const LocationCellID = @"LocationCell";
 
 - (void)configAutoLayout{
     
+    _tableView.sd_layout
+    .topSpaceToView(self.view, 64.0f)
+    .leftEqualToView(self.view)
+    .rightEqualToView(self.view)
+    .bottomEqualToView(self.view);
+}
+
+- (void)viewSafeAreaInsetsDidChange{
+    
+    [super viewSafeAreaInsetsDidChange];
+    
+    _tableView.sd_resetLayout
+    .topSpaceToView(self.view , 44.0f + VIEWSAFEAREAINSETS(self.view).top)
+    .leftEqualToView(self.view)
+    .rightEqualToView(self.view)
+    .bottomEqualToView(self.view);
 }
 
 #pragma mark - 设置主题

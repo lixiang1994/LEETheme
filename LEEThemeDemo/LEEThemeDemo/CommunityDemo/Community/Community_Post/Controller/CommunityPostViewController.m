@@ -587,9 +587,9 @@
     
     YYTextKeyboardManager *manager = [YYTextKeyboardManager defaultManager];
     
-    CGRect fromFrame = [manager convertRect:transition.fromFrame toView:self.view];
+//    CGRect fromFrame = [manager convertRect:transition.fromFrame toView:self.view];
     CGRect toFrame =  [manager convertRect:transition.toFrame toView:self.view];
-    BOOL fromVisible = transition.fromVisible;
+//    BOOL fromVisible = transition.fromVisible;
     BOOL toVisible = transition.toVisible;
     NSTimeInterval animationDuration = transition.animationDuration;
     UIViewAnimationCurve curve = transition.animationCurve;

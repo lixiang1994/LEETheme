@@ -353,6 +353,7 @@
         
         return type == LEEScreenOrientationTypeHorizontal ? CGRectGetHeight([[UIScreen mainScreen] bounds]) : CGRectGetWidth([[UIScreen mainScreen] bounds]);
     })
+    .LeeActionSheetBackgroundColor([UIColor whiteColor])
     .LeeShow();
 }
 
