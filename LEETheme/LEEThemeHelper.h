@@ -40,34 +40,38 @@ FOUNDATION_EXPORT const unsigned char LEEThemeVersionString[];
 
 #pragma mark - typedef
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef void(^LEEThemeConfigBlock)(id item);
 typedef void(^LEEThemeConfigBlockToValue)(id item , id value);
 typedef void(^LEEThemeChangingBlock)(NSString *tag , id item);
-typedef LEEThemeConfigModel *(^LEEConfigTheme)();
-typedef LEEThemeConfigModel *(^LEEConfigThemeToFloat)(CGFloat number);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToTag)(NSString *tag);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToKeyPath)(NSString *keyPath);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToSelector)(SEL selector);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifier)(NSString *identifier);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToChangingBlock)(LEEThemeChangingBlock);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToT_KeyPath)(NSString *tag , NSString *keyPath);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToT_Selector)(NSString *tag , SEL selector);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToT_Color)(NSString *tag , id color);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToT_Image)(NSString *tag , id image);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToT_Block)(NSString *tag , LEEThemeConfigBlock);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToTs_Block)(NSArray *tags , LEEThemeConfigBlock);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToKeyPathAndIdentifier)(NSString *keyPath , NSString *identifier);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToSelectorAndIdentifier)(SEL sel , NSString *identifier);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToSelectorAndIdentifierAndValueIndexAndValueArray)(SEL sel , NSString *identifier , NSInteger valueIndex , NSArray *otherValues);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToSelectorAndValues)(SEL sel , NSArray *values);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndState)(NSString *identifier , UIControlState state);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToT_ColorAndState)(NSString *tag , UIColor *color , UIControlState state);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToT_ImageAndState)(NSString *tag , UIImage *image , UIControlState state);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToT_KeyPathAndValue)(NSString *tag , NSString *keyPath , id value);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToT_SelectorAndColor)(NSString *tag , SEL sel , id color);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToT_SelectorAndImage)(NSString *tag , SEL sel , id image);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToT_SelectorAndValues)(NSString *tag , SEL sel , ...);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToT_SelectorAndValueArray)(NSString *tag , SEL sel , NSArray *values);
-typedef LEEThemeConfigModel *(^LEEConfigThemeToIdentifierAndBlock)(NSString *identifier , LEEThemeConfigBlockToValue);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigTheme)();
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToFloat)(CGFloat number);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToTag)(NSString *tag);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToKeyPath)(NSString *keyPath);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToSelector)(SEL selector);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToIdentifier)(NSString *identifier);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToChangingBlock)(LEEThemeChangingBlock);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToT_KeyPath)(NSString *tag , NSString *keyPath);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToT_Selector)(NSString *tag , SEL selector);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToT_Color)(NSString *tag , id color);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToT_Image)(NSString *tag , id image);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToT_Block)(NSString *tag , LEEThemeConfigBlock);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToTs_Block)(NSArray *tags , LEEThemeConfigBlock);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToKeyPathAndIdentifier)(NSString *keyPath , NSString *identifier);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToSelectorAndIdentifier)(SEL sel , NSString *identifier);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToSelectorAndIdentifierAndValueIndexAndValueArray)(SEL sel , NSString *identifier , NSInteger valueIndex , NSArray *otherValues);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToSelectorAndValues)(SEL sel , NSArray *values);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToIdentifierAndState)(NSString *identifier , UIControlState state);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToT_ColorAndState)(NSString *tag , UIColor *color , UIControlState state);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToT_ImageAndState)(NSString *tag , UIImage *image , UIControlState state);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToT_KeyPathAndValue)(NSString *tag , NSString *keyPath , id value);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToT_SelectorAndColor)(NSString *tag , SEL sel , id color);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToT_SelectorAndImage)(NSString *tag , SEL sel , id image);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToT_SelectorAndValues)(NSString *tag , SEL sel , ...);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToT_SelectorAndValueArray)(NSString *tag , SEL sel , NSArray *values);
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToIdentifierAndBlock)(NSString *identifier , LEEThemeConfigBlockToValue);
+
+NS_ASSUME_NONNULL_END
 
 #endif /* LEEThemeHelper_h */

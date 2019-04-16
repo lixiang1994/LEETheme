@@ -2706,7 +2706,7 @@
 				TargetAttributes = {
 					9B00492F1CC9CE25001AC212 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 3GNXU2LRUU;
+						DevelopmentTeam = 683UGRW72Z;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -2716,19 +2716,19 @@
 					};
 					9B0049481CC9CE25001AC212 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 3GNXU2LRUU;
+						DevelopmentTeam = 683UGRW72Z;
 						TestTargetID = 9B00492F1CC9CE25001AC212;
 					};
 					9B0049531CC9CE25001AC212 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 3GNXU2LRUU;
+						DevelopmentTeam = 683UGRW72Z;
 						TestTargetID = 9B00492F1CC9CE25001AC212;
 					};
 				};
 			};
 			buildConfigurationList = 9B00492B1CC9CE25001AC212 /* Build configuration list for PBXProject "LEEThemeDemo" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -3327,7 +3327,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3GNXU2LRUU;
+				DEVELOPMENT_TEAM = 683UGRW72Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LEEThemeDemo/YYKitDemo/Vendor",
@@ -3352,7 +3352,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3GNXU2LRUU;
+				DEVELOPMENT_TEAM = 683UGRW72Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LEEThemeDemo/YYKitDemo/Vendor",
@@ -3372,7 +3372,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 3GNXU2LRUU;
+				DEVELOPMENT_TEAM = 683UGRW72Z;
 				INFOPLIST_FILE = LEEThemeDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lee.LEEThemeDemoTests;
@@ -3385,7 +3385,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 3GNXU2LRUU;
+				DEVELOPMENT_TEAM = 683UGRW72Z;
 				INFOPLIST_FILE = LEEThemeDemoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lee.LEEThemeDemoTests;
@@ -3397,7 +3397,7 @@
 		9B0049641CC9CE25001AC212 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 3GNXU2LRUU;
+				DEVELOPMENT_TEAM = 683UGRW72Z;
 				INFOPLIST_FILE = LEEThemeDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lee.themeUITests;
@@ -3409,7 +3409,7 @@
 		9B0049651CC9CE25001AC212 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 3GNXU2LRUU;
+				DEVELOPMENT_TEAM = 683UGRW72Z;
 				INFOPLIST_FILE = LEEThemeDemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lee.themeUITests;

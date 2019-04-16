@@ -151,7 +151,7 @@
         
         label.textAlignment = NSTextAlignmentCenter;
         
-        label.alpha = currentIndex == i ? 1.0f : 0.0f;
+        label.alpha = self->currentIndex == i ? 1.0f : 0.0f;
         
         [self addSubview:label];
         

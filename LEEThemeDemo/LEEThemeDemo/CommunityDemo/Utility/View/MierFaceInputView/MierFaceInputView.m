@@ -230,23 +230,23 @@
     
     [_pageViewArray enumerateObjectsUsingBlock:^(UIView *pageView, NSUInteger idx, BOOL * _Nonnull stop) {
        
-        NSArray *buttonArray = _buttonDic[@([_pageViewArray indexOfObject:pageView])];
+        NSArray *buttonArray = self->_buttonDic[@([self->_pageViewArray indexOfObject:pageView])];
         
         //布局页视图
         
         if (idx == 0) {
             
             pageView.sd_layout
-            .leftSpaceToView(_scrollView , 0)
-            .topSpaceToView(_scrollView , 0)
+            .leftSpaceToView(self->_scrollView , 0)
+            .topSpaceToView(self->_scrollView , 0)
             .widthIs(self.width)
             .heightIs(0);
             
         } else {
             
             pageView.sd_layout
-            .leftSpaceToView(_pageViewArray[idx - 1] , 0)
-            .topSpaceToView(_scrollView , 0)
+            .leftSpaceToView(self->_pageViewArray[idx - 1] , 0)
+            .topSpaceToView(self->_scrollView , 0)
             .widthIs(self.width)
             .heightIs(0);
         }
@@ -257,7 +257,7 @@
             .heightEqualToWidth();
         }
         
-        [pageView setupAutoMarginFlowItems:[buttonArray copy] withPerRowItemsCount:singleMaxCount itemWidth:40 verticalMargin:15 verticalEdgeInset:10 horizontalEdgeInset:20];
+        [pageView setupAutoMarginFlowItems:[buttonArray copy] withPerRowItemsCount:self->singleMaxCount itemWidth:40 verticalMargin:15 verticalEdgeInset:10 horizontalEdgeInset:20];
         
     }];
     
