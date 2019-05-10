@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
 
 s.name         = "LEETheme"
-s.version      = "1.1.7"
+s.version      = "1.1.8"
 s.summary      = "最好用的轻量级主题管理库"
 
 s.homepage     = "https://github.com/lixiang1994/LEETheme"
 # s.screenshots  = "https://github.com/lixiang1994/LEETheme/blob/master/朋友圈Demo日夜间切换演示.gif"
 
-s.license      = "GPL"
+s.license      = "MIT"
 
 s.author       = { "LEE" => "18611401994@163.com" }
 

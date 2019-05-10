@@ -207,7 +207,7 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性或方法的�
 
 许可证
 ==============
-LEETheme 使用 GPL V3 许可证，详情见 LICENSE 文件。
+LEETheme 使用 MIT 许可证，详情见 LICENSE 文件。
 
 
 友情链接
