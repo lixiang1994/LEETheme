@@ -257,8 +257,8 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
 
 @interface LEEThemeConfigModel ()
 
-@property (nonatomic , copy ) void(^modelUpdateCurrentThemeConfig)();
-@property (nonatomic , copy ) void(^modelConfigThemeChangingBlock)();
+    @property (nonatomic , copy ) void(^modelUpdateCurrentThemeConfig)(void);
+    @property (nonatomic , copy ) void(^modelConfigThemeChangingBlock)(void);
 
 @property (nonatomic , copy ) LEEThemeChangingBlock modelChangingBlock;
 

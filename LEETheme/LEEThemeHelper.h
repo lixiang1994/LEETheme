@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void(^LEEThemeConfigBlock)(id item);
 typedef void(^LEEThemeConfigBlockToValue)(id item , id value);
 typedef void(^LEEThemeChangingBlock)(NSString *tag , id item);
-typedef LEEThemeConfigModel * _Nonnull (^LEEConfigTheme)();
+typedef LEEThemeConfigModel * _Nonnull (^LEEConfigTheme)(void);
 typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToFloat)(CGFloat number);
 typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToTag)(NSString *tag);
 typedef LEEThemeConfigModel * _Nonnull (^LEEConfigThemeToKeyPath)(NSString *keyPath);
