@@ -1,7 +1,7 @@
 
 # LEETheme - 最好用的轻量级主题管理框架
 
-[![](https://img.shields.io/cocoapods/l/LEETheme.svg)](https://github.com/lixiang1994/LEETheme/blob/master/LICENSE)&nbsp;
+[![](https://img.shields.io/cocoapods/l/LEETheme.svg)](LICENSE)&nbsp;
 [![](http://img.shields.io/cocoapods/v/LEETheme.svg?style=flat)](http://cocoapods.org/?q=LEETheme)&nbsp;
 [![](http://img.shields.io/cocoapods/p/LEETheme.svg?style=flat)](http://cocoapods.org/?q=LEETheme)&nbsp;
 [![](https://img.shields.io/badge/support-iOS7%2B-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
@@ -207,7 +207,7 @@ LEETheme支持对任何NSObject子类的对象进行其持有属性或方法的�
 
 许可证
 ==============
-LEETheme 使用 MIT 许可证，详情见 LICENSE 文件。
+LEETheme 使用 MIT 许可证，详情见 [LICENSE](LICENSE) 文件。
 
 
 友情链接
