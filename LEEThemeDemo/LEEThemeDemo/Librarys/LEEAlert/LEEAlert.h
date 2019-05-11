@@ -12,8 +12,8 @@
  *  @brief  LEEAlert
  *
  *  @author LEE
- *  @copyright    Copyright © 2016 - 2018年 lee. All rights reserved.
- *  @version    V1.2.1
+ *  @copyright    Copyright © 2016 - 2019年 lee. All rights reserved.
+ *  @version    V1.2.5
  */
 
 #import <Foundation/Foundation.h>
@@ -57,6 +57,7 @@
  *****************************************************
  */
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface LEEAlert : NSObject
 
@@ -67,24 +68,40 @@
 + (nonnull LEEAlertConfig *)actionsheet;
 
 /** 获取Alert窗口 */
-
 + (nonnull LEEAlertWindow *)getAlertWindow;
 
 /** 设置主窗口 */
-
-+ (void)configMainWindow:(UIWindow * _Nonnull)window;
++ (void)configMainWindow:(UIWindow *)window;
 
 /** 继续队列显示 */
-
 + (void)continueQueueDisplay;
 
 /** 清空队列 */
-
 + (void)clearQueue;
 
-/** 关闭 */
+/**
+ 关闭指定标识 
 
-+ (void)closeWithCompletionBlock:(void (^)(void))completionBlock;
+ @param identifier 标识
+ @param completionBlock 关闭完成回调
+ */
++ (void)closeWithIdentifier:(NSString *)identifier completionBlock:(void (^ _Nullable)(void))completionBlock;
+
+/**
+ 关闭指定标识
+
+ @param identifier 标识
+ @param force 是否强制关闭
+ @param completionBlock 关闭完成回调
+ */
++ (void)closeWithIdentifier:(NSString *)identifier force:(BOOL)force completionBlock:(void (^ _Nullable)(void))completionBlock;
+
+/**
+ 关闭当前
+
+ @param completionBlock 关闭完成回调
+ */
++ (void)closeWithCompletionBlock:(void (^ _Nullable)(void))completionBlock;
 
 @end
 
@@ -183,7 +200,7 @@
 @property (nonatomic , copy , readonly ) LEEConfigToColor LeeShadowColor;
 
 /** 设置 标识 -> 格式: .LeeIdentifier(@@"ident") */
-//@property (nonatomic , copy , readonly ) LEEConfigToString LeeIdentifier;
+@property (nonatomic , copy , readonly ) LEEConfigToString LeeIdentifier;
 
 /** 设置 是否加入到队列 -> 格式: .LeeQueue(YES) */
 @property (nonatomic , copy , readonly ) LEEConfigToBool LeeQueue;
@@ -227,6 +244,9 @@
 /** 设置 添加输入框 -> 格式: .LeeAddTextField(^(UITextField *){ //code.. }) */
 @property (nonatomic , copy , readonly ) LEEConfigToConfigTextField LeeAddTextField;
 
+/** 设置 中心点偏移 -> 格式: .LeeCenterOffset(CGPointMake(0, 0)) */
+@property (nonatomic , copy , readonly ) LEEConfigToPoint LeeAlertCenterOffset;
+    
 /** 设置 是否闪避键盘 -> 格式: .LeeAvoidKeyboard(YES) */
 @property (nonatomic , copy , readonly ) LEEConfigToBool LeeAvoidKeyboard;
 
@@ -243,6 +263,12 @@
 
 /** 设置 ActionSheet距离屏幕底部的间距 -> 格式: .LeeActionSheetBottomMargin(10.0f) */
 @property (nonatomic , copy , readonly ) LEEConfigToFloat LeeActionSheetBottomMargin;
+
+/** 设置 是否可以关闭 -> 格式: .leeShouldClose(^{ return YES; }) */
+@property (nonatomic, copy, readonly ) LEEConfigToBlockReturnBool leeShouldClose;
+
+/** 设置 是否可以关闭(Action 点击) -> 格式: .leeShouldActionClickClose(^(NSInteger index){ return YES; }) */
+@property (nonatomic, copy, readonly ) LEEConfigToBlockIntegerReturnBool leeShouldActionClickClose;
 
 /** 设置 当前关闭回调 -> 格式: .LeeCloseComplete(^{ //code.. }) */
 @property (nonatomic , copy , readonly ) LEEConfigToBlock LeeCloseComplete;
@@ -337,7 +363,7 @@
 @property (nonatomic , assign ) BOOL isClickNotClose;
 
 /** action点击事件回调Block */
-@property (nonatomic , copy ) void (^clickBlock)(void);
+@property (nonatomic , copy ) void (^ _Nullable clickBlock)(void);
 
 - (void)update;
 
@@ -372,3 +398,5 @@
 @interface LEEAlertViewController : LEEBaseViewController @end
 
 @interface LEEActionSheetViewController : LEEBaseViewController @end
+
+NS_ASSUME_NONNULL_END

@@ -257,8 +257,8 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
 
 @interface LEEThemeConfigModel ()
 
-    @property (nonatomic , copy ) void(^modelUpdateCurrentThemeConfig)(void);
-    @property (nonatomic , copy ) void(^modelConfigThemeChangingBlock)(void);
+@property (nonatomic , copy ) void(^modelUpdateCurrentThemeConfig)(void);
+@property (nonatomic , copy ) void(^modelConfigThemeChangingBlock)(void);
 
 @property (nonatomic , copy ) LEEThemeChangingBlock modelChangingBlock;
 
@@ -861,7 +861,9 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
         
         if (!valuesArray) valuesArray = [NSMutableArray array];
         
-        [[valuesArray copy] enumerateObjectsUsingBlock:^(NSArray *valueArray, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSArray *temp = [valuesArray copy];
+        
+        [temp enumerateObjectsUsingBlock:^(NSArray *valueArray, NSUInteger idx, BOOL * _Nonnull stop) {
             
             if ([valueArray isEqualToArray:values]) [valuesArray removeObject:valueArray]; // 过滤相同参数值的数组
         }];

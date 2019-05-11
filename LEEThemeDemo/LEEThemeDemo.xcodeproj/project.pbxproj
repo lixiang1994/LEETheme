@@ -13,8 +13,6 @@
 		9B00493E1CC9CE25001AC212 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B00493C1CC9CE25001AC212 /* Main.storyboard */; };
 		9B0049401CC9CE25001AC212 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B00493F1CC9CE25001AC212 /* Assets.xcassets */; };
 		9B0049431CC9CE25001AC212 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B0049411CC9CE25001AC212 /* LaunchScreen.storyboard */; };
-		9B00494E1CC9CE25001AC212 /* LEEThemeDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B00494D1CC9CE25001AC212 /* LEEThemeDemoTests.m */; };
-		9B0049591CC9CE25001AC212 /* LEEThemeDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0049581CC9CE25001AC212 /* LEEThemeDemoUITests.m */; };
 		9B1415031EDFE98B00173BB9 /* NewThemeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1415021EDFE98B00173BB9 /* NewThemeTableViewController.m */; };
 		9B1415061EDFEEF400173BB9 /* NewThemeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1415051EDFEEF400173BB9 /* NewThemeTableViewCell.m */; };
 		9B14150C1EE02C5D00173BB9 /* image_red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B14150B1EE02C5D00173BB9 /* image_red@3x.png */; };
@@ -407,25 +405,8 @@
 		9BCD39571D0513E100135985 /* tag_blue_json.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD39561D0513E100135985 /* tag_blue_json.json */; };
 		9BCD39591D0513FB00135985 /* tag_green_json.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD39581D0513FB00135985 /* tag_green_json.json */; };
 		9BF7725D1D0572AB00460B6E /* tag_gray_json.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BF7725C1D0572AB00460B6E /* tag_gray_json.json */; };
-		C94A1344215F535A00A92F35 /* LEEAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = C94A1343215F535A00A92F35 /* LEEAlert.m */; };
+		C957D1BF22872D1E00265642 /* LEEAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = C957D1BC22872D1E00265642 /* LEEAlert.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		9B00494A1CC9CE25001AC212 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9B0049281CC9CE25001AC212 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9B00492F1CC9CE25001AC212;
-			remoteInfo = LEEThemeDemo;
-		};
-		9B0049551CC9CE25001AC212 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9B0049281CC9CE25001AC212 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9B00492F1CC9CE25001AC212;
-			remoteInfo = LEEThemeDemo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		9B0049301CC9CE25001AC212 /* LEEThemeDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LEEThemeDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -438,10 +419,8 @@
 		9B00493F1CC9CE25001AC212 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B0049421CC9CE25001AC212 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B0049441CC9CE25001AC212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9B0049491CC9CE25001AC212 /* LEEThemeDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LEEThemeDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B00494D1CC9CE25001AC212 /* LEEThemeDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEEThemeDemoTests.m; sourceTree = "<group>"; };
 		9B00494F1CC9CE25001AC212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9B0049541CC9CE25001AC212 /* LEEThemeDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LEEThemeDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0049581CC9CE25001AC212 /* LEEThemeDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LEEThemeDemoUITests.m; sourceTree = "<group>"; };
 		9B00495A1CC9CE25001AC212 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B0077221CD1B50800EDD034 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -1085,9 +1064,9 @@
 		9BCD39561D0513E100135985 /* tag_blue_json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tag_blue_json.json; sourceTree = "<group>"; };
 		9BCD39581D0513FB00135985 /* tag_green_json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tag_green_json.json; sourceTree = "<group>"; };
 		9BF7725C1D0572AB00460B6E /* tag_gray_json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tag_gray_json.json; sourceTree = "<group>"; };
-		C94A1341215F535A00A92F35 /* LEEAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEAlert.h; sourceTree = "<group>"; };
-		C94A1342215F535A00A92F35 /* LEEAlertHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEAlertHelper.h; sourceTree = "<group>"; };
-		C94A1343215F535A00A92F35 /* LEEAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEEAlert.m; sourceTree = "<group>"; };
+		C957D1BC22872D1E00265642 /* LEEAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEEAlert.m; sourceTree = "<group>"; };
+		C957D1BD22872D1E00265642 /* LEEAlertHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEAlertHelper.h; sourceTree = "<group>"; };
+		C957D1BE22872D1E00265642 /* LEEAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEAlert.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1113,20 +1092,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9B0049461CC9CE25001AC212 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9B0049511CC9CE25001AC212 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1145,8 +1110,6 @@
 			isa = PBXGroup;
 			children = (
 				9B0049301CC9CE25001AC212 /* LEEThemeDemo.app */,
-				9B0049491CC9CE25001AC212 /* LEEThemeDemoTests.xctest */,
-				9B0049541CC9CE25001AC212 /* LEEThemeDemoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2632,9 +2595,9 @@
 		9BAA85571F1329AB0064CAEB /* LEEAlert */ = {
 			isa = PBXGroup;
 			children = (
-				C94A1341215F535A00A92F35 /* LEEAlert.h */,
-				C94A1343215F535A00A92F35 /* LEEAlert.m */,
-				C94A1342215F535A00A92F35 /* LEEAlertHelper.h */,
+				C957D1BE22872D1E00265642 /* LEEAlert.h */,
+				C957D1BC22872D1E00265642 /* LEEAlert.m */,
+				C957D1BD22872D1E00265642 /* LEEAlertHelper.h */,
 			);
 			path = LEEAlert;
 			sourceTree = "<group>";
@@ -2659,42 +2622,6 @@
 			productReference = 9B0049301CC9CE25001AC212 /* LEEThemeDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9B0049481CC9CE25001AC212 /* LEEThemeDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9B0049601CC9CE25001AC212 /* Build configuration list for PBXNativeTarget "LEEThemeDemoTests" */;
-			buildPhases = (
-				9B0049451CC9CE25001AC212 /* Sources */,
-				9B0049461CC9CE25001AC212 /* Frameworks */,
-				9B0049471CC9CE25001AC212 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9B00494B1CC9CE25001AC212 /* PBXTargetDependency */,
-			);
-			name = LEEThemeDemoTests;
-			productName = LEEThemeDemoTests;
-			productReference = 9B0049491CC9CE25001AC212 /* LEEThemeDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		9B0049531CC9CE25001AC212 /* LEEThemeDemoUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9B0049631CC9CE25001AC212 /* Build configuration list for PBXNativeTarget "LEEThemeDemoUITests" */;
-			buildPhases = (
-				9B0049501CC9CE25001AC212 /* Sources */,
-				9B0049511CC9CE25001AC212 /* Frameworks */,
-				9B0049521CC9CE25001AC212 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9B0049561CC9CE25001AC212 /* PBXTargetDependency */,
-			);
-			name = LEEThemeDemoUITests;
-			productName = LEEThemeDemoUITests;
-			productReference = 9B0049541CC9CE25001AC212 /* LEEThemeDemoUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -2714,16 +2641,6 @@
 							};
 						};
 					};
-					9B0049481CC9CE25001AC212 = {
-						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 683UGRW72Z;
-						TestTargetID = 9B00492F1CC9CE25001AC212;
-					};
-					9B0049531CC9CE25001AC212 = {
-						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 683UGRW72Z;
-						TestTargetID = 9B00492F1CC9CE25001AC212;
-					};
 				};
 			};
 			buildConfigurationList = 9B00492B1CC9CE25001AC212 /* Build configuration list for PBXProject "LEEThemeDemo" */;
@@ -2741,8 +2658,6 @@
 			projectRoot = "";
 			targets = (
 				9B00492F1CC9CE25001AC212 /* LEEThemeDemo */,
-				9B0049481CC9CE25001AC212 /* LEEThemeDemoTests */,
-				9B0049531CC9CE25001AC212 /* LEEThemeDemoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -2889,20 +2804,6 @@
 				9B7878521E7B8BCF00D4151A /* CommunityCircle_Details_706 in Resources */,
 				9B7879601E7B92DE00D4151A /* weibo_4.json in Resources */,
 				9B7879431E7B92DE00D4151A /* niconiconi@2x.gif in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9B0049471CC9CE25001AC212 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9B0049521CC9CE25001AC212 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3128,7 +3029,7 @@
 				9B7878271E7B8BCF00D4151A /* CommunityCommentListAPI.m in Sources */,
 				9B78787A1E7B8BCF00D4151A /* LoadingStylePromptBarView.m in Sources */,
 				9B78767C1E7A739200D4151A /* YYLabel.m in Sources */,
-				C94A1344215F535A00A92F35 /* LEEAlert.m in Sources */,
+				C957D1BF22872D1E00265642 /* LEEAlert.m in Sources */,
 				9B7876711E7A739200D4151A /* YYTextMagnifier.m in Sources */,
 				9B0049351CC9CE25001AC212 /* main.m in Sources */,
 				9B7874EE1E7A57C500D4151A /* MJRefreshAutoNormalFooter.m in Sources */,
@@ -3163,36 +3064,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9B0049451CC9CE25001AC212 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9B00494E1CC9CE25001AC212 /* LEEThemeDemoTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9B0049501CC9CE25001AC212 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9B0049591CC9CE25001AC212 /* LEEThemeDemoUITests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9B00494B1CC9CE25001AC212 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9B00492F1CC9CE25001AC212 /* LEEThemeDemo */;
-			targetProxy = 9B00494A1CC9CE25001AC212 /* PBXContainerItemProxy */;
-		};
-		9B0049561CC9CE25001AC212 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9B00492F1CC9CE25001AC212 /* LEEThemeDemo */;
-			targetProxy = 9B0049551CC9CE25001AC212 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9B00493C1CC9CE25001AC212 /* Main.storyboard */ = {
@@ -3368,56 +3240,6 @@
 			};
 			name = Release;
 		};
-		9B0049611CC9CE25001AC212 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 683UGRW72Z;
-				INFOPLIST_FILE = LEEThemeDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lee.LEEThemeDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LEEThemeDemo.app/LEEThemeDemo";
-			};
-			name = Debug;
-		};
-		9B0049621CC9CE25001AC212 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 683UGRW72Z;
-				INFOPLIST_FILE = LEEThemeDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lee.LEEThemeDemoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LEEThemeDemo.app/LEEThemeDemo";
-			};
-			name = Release;
-		};
-		9B0049641CC9CE25001AC212 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 683UGRW72Z;
-				INFOPLIST_FILE = LEEThemeDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lee.themeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = LEEThemeDemo;
-			};
-			name = Debug;
-		};
-		9B0049651CC9CE25001AC212 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 683UGRW72Z;
-				INFOPLIST_FILE = LEEThemeDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lee.themeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = LEEThemeDemo;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3435,24 +3257,6 @@
 			buildConfigurations = (
 				9B00495E1CC9CE25001AC212 /* Debug */,
 				9B00495F1CC9CE25001AC212 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9B0049601CC9CE25001AC212 /* Build configuration list for PBXNativeTarget "LEEThemeDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9B0049611CC9CE25001AC212 /* Debug */,
-				9B0049621CC9CE25001AC212 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9B0049631CC9CE25001AC212 /* Build configuration list for PBXNativeTarget "LEEThemeDemoUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9B0049641CC9CE25001AC212 /* Debug */,
-				9B0049651CC9CE25001AC212 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
