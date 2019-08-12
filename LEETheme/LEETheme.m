@@ -12,7 +12,7 @@
  *
  *  @author LEE
  *  @copyright    Copyright © 2016 - 2019年 lee. All rights reserved.
- *  @version    V1.1.8
+ *  @version    V1.1.9
  */
 
 #import "LEETheme.h"
@@ -521,8 +521,17 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *tag , id color){
-        
-        return weakSelf.LeeAddKeyPathAndValue(tag , @"_placeholderLabel.textColor" , color);
+        #ifdef __IPHONE_13_0
+        return weakSelf.LeeAddCustomConfig(tag, ^(id  _Nonnull item) {
+            if ([item respondsToSelector:@selector(setAttributedPlaceholder:)] && [item respondsToSelector:@selector(placeholder)]) {
+                NSString *placeholder = [item valueForKey:@"placeholder"];
+                NSAttributedString *string = [[NSAttributedString alloc] initWithString:placeholder attributes:@{NSForegroundColorAttributeName: color}];
+                [item setValue:string forKey:@"attributedPlaceholder"];
+            }
+        });
+        #else
+            return weakSelf.LeeAddKeyPathAndValue(tag , @"_placeholderLabel.textColor" , color);
+        #endif
     };
     
 }
@@ -1195,8 +1204,17 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
     __weak typeof(self) weakSelf = self;
     
     return ^(NSString *identifier){
-        
-        return weakSelf.LeeConfigKeyPathAndIdentifier(@"_placeholderLabel.textColor" , identifier);
+    #ifdef __IPHONE_13_0
+    return weakSelf.LeeCustomConfig(identifier, ^(id  _Nonnull item, id  _Nonnull value) {
+        if ([item respondsToSelector:@selector(setAttributedPlaceholder:)] && [item respondsToSelector:@selector(placeholder)]) {
+            NSString *placeholder = [item valueForKey:@"placeholder"];
+            NSAttributedString *string = [[NSAttributedString alloc] initWithString:placeholder attributes:@{NSForegroundColorAttributeName: value}];
+            [item setValue:string forKey:@"attributedPlaceholder"];
+        }
+    });
+    #else
+    return weakSelf.LeeConfigKeyPathAndIdentifier(@"_placeholderLabel.textColor" , identifier);
+    #endif
     };
     
 }

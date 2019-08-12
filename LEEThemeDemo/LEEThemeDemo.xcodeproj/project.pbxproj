@@ -2633,7 +2633,7 @@
 				TargetAttributes = {
 					9B00492F1CC9CE25001AC212 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 683UGRW72Z;
+						DevelopmentTeam = 5KA67R3283;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -3199,7 +3199,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 683UGRW72Z;
+				DEVELOPMENT_TEAM = 5KA67R3283;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LEEThemeDemo/YYKitDemo/Vendor",
@@ -3224,7 +3224,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 683UGRW72Z;
+				DEVELOPMENT_TEAM = 5KA67R3283;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LEEThemeDemo/YYKitDemo/Vendor",
