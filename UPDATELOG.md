@@ -2,6 +2,11 @@
 # LEETheme - 更新日志
 
 
+V1.1.9
+==============
+- 修复Pods配置问题
+- 适配iOS13 `_placeholderLabel.textColor`私有方法问题
+
 V1.1.8
 ==============
 - 更换开源协议为MIT
