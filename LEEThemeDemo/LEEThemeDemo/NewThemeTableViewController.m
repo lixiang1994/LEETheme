@@ -116,17 +116,17 @@
     
     [hud setFrame:self.view.bounds];
     
-    [hud setDetailsLabelText:@"下载主题中..."];
+    [hud.detailsLabel setText:@"下载主题中..."];
     
     [hud setRemoveFromSuperViewOnHide:YES];
     
-    [hud setDetailsLabelFont:[UIFont boldSystemFontOfSize:16.0f]];
+    [hud.detailsLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
     
     hud.mode = MBProgressHUDModeIndeterminate;
     
     [self.view addSubview:hud];
     
-    [hud show:YES];
+    [hud showAnimated:YES];
     
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
@@ -136,9 +136,9 @@
         
         hud.mode = MBProgressHUDModeText;
         
-        [hud setDetailsLabelText:@"下载完成!"];
+        [hud.detailsLabel setText:@"下载完成!"];
         
-        [hud hide:YES afterDelay:2.0f];
+        [hud hideAnimated:YES afterDelay:2.0f];
         
         // 假装得到了请求的配置json数据
         

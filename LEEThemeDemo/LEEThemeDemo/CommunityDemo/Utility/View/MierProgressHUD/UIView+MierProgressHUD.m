@@ -36,17 +36,17 @@
     
     [hud setFrame:self.bounds];
     
-    [hud show:YES];
+    [hud showAnimated:YES];
     
 //    [hud setLabelText:text ? text : @""];
     
-    [hud setDetailsLabelText:text ? text : @""];
+    [hud.detailsLabel setText:text ? text : @""];
     
     [hud setRemoveFromSuperViewOnHide:YES];
     
 //    [hud setLabelFont:[UIFont boldSystemFontOfSize:TEXT_SIZE]];
     
-    [hud setDetailsLabelFont:[UIFont boldSystemFontOfSize:TEXT_SIZE]];
+    [hud.detailsLabel setFont:[UIFont boldSystemFontOfSize:TEXT_SIZE]];
     
     [hud setMinSize:CGSizeMake(BGVIEW_WIDTH, BGVIEW_WIDTH)];
     
@@ -65,7 +65,7 @@
             hud.mode = MBProgressHUDModeCustomView;
             UIImageView *sucView = [[UIImageView alloc] initWithImage:sucImage];
             hud.customView = sucView;
-            [hud hide:YES afterDelay:SHOWDURATION];
+            [hud hideAnimated:YES afterDelay:SHOWDURATION];
             [hud setUserInteractionEnabled:NO];
         }
             break;
@@ -79,7 +79,7 @@
             hud.mode = MBProgressHUDModeCustomView;
             UIImageView *errView = [[UIImageView alloc] initWithImage:errImage];
             hud.customView = errView;
-            [hud hide:YES afterDelay:SHOWDURATION];
+            [hud hideAnimated:YES afterDelay:SHOWDURATION];
             [hud setUserInteractionEnabled:NO];
         }
             break;
@@ -99,7 +99,7 @@
             hud.mode = MBProgressHUDModeCustomView;
             UIImageView *infoView = [[UIImageView alloc] initWithImage:infoImage];
             hud.customView = infoView;
-            [hud hide:YES afterDelay:SHOWDURATION];
+            [hud hideAnimated:YES afterDelay:SHOWDURATION];
             [hud setUserInteractionEnabled:NO];
         }
             break;
@@ -113,7 +113,7 @@
             hud.mode = MBProgressHUDModeCustomView;
             UIImageView *starView = [[UIImageView alloc] initWithImage:starImage];
             hud.customView = starView;
-            [hud hide:YES afterDelay:SHOWDURATION];
+            [hud hideAnimated:YES afterDelay:SHOWDURATION];
             [hud setUserInteractionEnabled:NO];
         }
             break;
@@ -127,7 +127,7 @@
             hud.mode = MBProgressHUDModeCustomView;
             UIImageView *starView = [[UIImageView alloc] initWithImage:starImage];
             hud.customView = starView;
-            [hud hide:YES afterDelay:SHOWDURATION];
+            [hud hideAnimated:YES afterDelay:SHOWDURATION];
             [hud setUserInteractionEnabled:NO];
         }
             break;
@@ -144,9 +144,9 @@
     
     MierProgressHUD *hud = [MierProgressHUD sharedHUD];
     
-    [hud show:YES];
+    [hud showAnimated:YES];
     
-    [hud setDetailsLabelText:text ? text : @""];
+    [hud.detailsLabel setText:text ? text : @""];
     
     [hud setMinSize:CGSizeZero];
     
@@ -154,13 +154,13 @@
     
     [hud setRemoveFromSuperViewOnHide:YES];
     
-    [hud setDetailsLabelFont:[UIFont boldSystemFontOfSize:TEXT_SIZE]];
+    [hud.detailsLabel setFont:[UIFont boldSystemFontOfSize:TEXT_SIZE]];
     
     [hud setUserInteractionEnabled:NO];
     
     [self addSubview:hud];
     
-    [hud hide:YES afterDelay:SHOWDURATION];
+    [hud hideAnimated:YES afterDelay:SHOWDURATION];
 }
 
 #pragma mark - 在 view 上添加一个提示`信息`的 HUD
@@ -209,7 +209,7 @@
 
 - (void)hide{
     
-    [[MierProgressHUD sharedHUD] hide:YES];
+    [[MierProgressHUD sharedHUD] hideAnimated:YES];
     
 }
 

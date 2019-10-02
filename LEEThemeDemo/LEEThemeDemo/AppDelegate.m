@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "MainWindow.h"
+
 #import "TabBarController.h"
 
 #import "LEEBubble.h"
@@ -38,7 +40,7 @@
     
     // 初始化window
     
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[MainWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     self.window.backgroundColor = [UIColor whiteColor];
     
@@ -147,7 +149,6 @@
     
     [LEETheme addThemeConfigWithJson:nightJson Tag:NIGHT ResourcesPath:nil];
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

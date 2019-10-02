@@ -1401,6 +1401,8 @@
             
             imagePickerVC.pickerDelegate = self;
             
+            imagePickerVC.modalPresentationStyle = UIModalPresentationFullScreen;
+            
             [self presentViewController:imagePickerVC animated:YES completion:nil];
         }
             break;

@@ -103,11 +103,11 @@ static NSArray *refreshingImageArray;
     header.lee_theme
     .LeeAddCustomConfig(DAY , ^(MJRefreshNormalHeader *item){
         
-        item.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+        item.loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
     })
     .LeeAddCustomConfig(NIGHT , ^(MJRefreshNormalHeader *item){
         
-        item.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+        item.loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
     });
     
     return (id)header;

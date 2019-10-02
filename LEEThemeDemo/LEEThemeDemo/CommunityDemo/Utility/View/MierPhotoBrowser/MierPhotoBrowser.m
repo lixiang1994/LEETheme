@@ -648,7 +648,7 @@
     
     //显示提示框
     
-    [self.HUD show:YES];
+    [self.HUD showAnimated:YES];
     
     //隐藏提示Label
     
@@ -679,7 +679,7 @@
             
             //隐藏提示框
             
-            [strongSelf.HUD hide:NO];
+            [strongSelf.HUD hideAnimated:NO];
             
             if (error) {
                 
@@ -808,7 +808,7 @@
         
         _HUD.delegate = self;
         
-        _HUD.color = [UIColor clearColor];
+        _HUD.backgroundColor = [UIColor clearColor];
         
         _HUD.customView = self.roundProgressView;
     }

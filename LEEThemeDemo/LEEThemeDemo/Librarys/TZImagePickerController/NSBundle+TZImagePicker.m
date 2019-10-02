@@ -11,16 +11,11 @@
 
 @implementation NSBundle (TZImagePicker)
 
-+ (instancetype)tz_imagePickerBundle {
-    static NSBundle *tzBundle = nil;
-    if (tzBundle == nil) {
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"TZImagePickerController" ofType:@"bundle"];
-        if (!path) {
-            path = [[NSBundle mainBundle] pathForResource:@"TZImagePickerController" ofType:@"bundle" inDirectory:@"Frameworks/TZImagePickerController.framework/"];
-        }
-        tzBundle = [NSBundle bundleWithPath:path];
-    }
-    return tzBundle;
++ (NSBundle *)tz_imagePickerBundle {
+    NSBundle *bundle = [NSBundle bundleForClass:[TZImagePickerController class]];
+    NSURL *url = [bundle URLForResource:@"TZImagePickerController" withExtension:@"bundle"];
+    bundle = [NSBundle bundleWithURL:url];
+    return bundle;
 }
 
 + (NSString *)tz_localizedStringForKey:(NSString *)key {
@@ -28,17 +23,9 @@
 }
 
 + (NSString *)tz_localizedStringForKey:(NSString *)key value:(NSString *)value {
-    static NSBundle *bundle = nil;
-    if (bundle == nil) {
-        NSString *language = [NSLocale preferredLanguages].firstObject;
-        if ([language rangeOfString:@"zh-Hans"].location != NSNotFound) {
-            language = @"zh-Hans";
-        } else {
-            language = @"en";
-        }
-        bundle = [NSBundle bundleWithPath:[[NSBundle tz_imagePickerBundle] pathForResource:language ofType:@"lproj"]];
-    }
+    NSBundle *bundle = [TZImagePickerConfig sharedInstance].languageBundle;
     NSString *value1 = [bundle localizedStringForKey:key value:value table:nil];
     return value1;
 }
+
 @end

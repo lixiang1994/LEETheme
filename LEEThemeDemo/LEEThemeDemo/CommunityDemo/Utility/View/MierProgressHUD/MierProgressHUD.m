@@ -30,7 +30,7 @@
     
     dispatch_once(&onceToken, ^{
 
-        hud = [[MierProgressHUD alloc] initWithWindow:[MierProgressHUD getMainWindow]];        
+        hud = [[MierProgressHUD alloc] initWithView:[MierProgressHUD getMainWindow]];
     });
     
     return hud;
@@ -80,7 +80,7 @@
 
 + (void)hide {
     
-    [[MierProgressHUD sharedHUD] hide:YES];
+    [[MierProgressHUD sharedHUD] hideAnimated:YES];
 }
 
 + (UIWindow *)getMainWindow{
