@@ -12,7 +12,7 @@
  *
  *  @author LEE
  *  @copyright    Copyright © 2016 - 2019年 lee. All rights reserved.
- *  @version    V1.1.9
+ *  @version    V1.1.10
  */
 
 #import "LEETheme.h"
@@ -1955,22 +1955,18 @@ typedef NS_ENUM(NSInteger, LEEThemeIdentifierConfigType) {
 
 - (void)leeTheme_ChangeThemeConfigNotify:(NSNotification *)notify{
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    if ([self isChangeTheme]) {
         
-        if ([self isChangeTheme]) {
-            
-            if (self.lee_theme.modelChangingBlock) self.lee_theme.modelChangingBlock([LEETheme currentThemeTag] , self);
-            
-            [CATransaction begin];
-            
-            [CATransaction setDisableActions:YES];
-            
-            [self changeThemeConfig]; 
-            
-            [CATransaction commit];
-        }
+        if (self.lee_theme.modelChangingBlock) self.lee_theme.modelChangingBlock([LEETheme currentThemeTag] , self);
         
-    });
+        [CATransaction begin];
+        
+        [CATransaction setDisableActions:YES];
+        
+        [self changeThemeConfig];
+        
+        [CATransaction commit];
+    }
     
 }
 
