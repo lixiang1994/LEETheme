@@ -13,7 +13,7 @@
  *
  *  @author LEE
  *  @copyright    Copyright © 2016 - 2019年 lee. All rights reserved.
- *  @version    V1.3.0
+ *  @version    V1.4.0
  */
 
 #import <Foundation/Foundation.h>
@@ -25,6 +25,12 @@
 
 /*
  *************************简要说明************************
+ 
+ Alert 初始化
+ 在 AppDelegate 或 SceneDelegate 中设置主要Window
+ 
+ [LEEAlert configMainWindow:self.window];
+ 
  
  Alert 使用方法
  
@@ -48,6 +54,7 @@
  - 支持两种背景样式 1.半透明 (支持自定义透明度比例和颜色) 2.毛玻璃 (支持效果类型)
  - 支持自定义UIView动画方法
  - 支持自定义打开关闭动画样式(动画方向 渐变过渡 缩放过渡等)
+ - 支持iOS13 Dark样式
  - 更多特性未来版本中将不断更新.
  
  设置方法结束后在最后请不要忘记使用.LeeShow()方法来显示.
@@ -70,7 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** 获取Alert窗口 */
 + (nonnull LEEAlertWindow *)getAlertWindow;
 
-/** 设置主窗口 */
+/** 设置主窗口 ⚠️ 必须设置 iOS13 UISecene */
 + (void)configMainWindow:(UIWindow *)window;
 
 /** 继续队列显示 */
@@ -78,6 +85,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** 清空队列 */
 + (void)clearQueue;
+
+/** 队列是否为空 */
++ (BOOL)isQueueEmpty;
+
+/// 查询队列中是否包含某一标识
+/// @param identifier 标识
++ (BOOL)containsQueueWithIdentifier:(NSString *)identifier;
 
 /**
  关闭指定标识 
@@ -327,8 +341,20 @@ NS_ASSUME_NONNULL_BEGIN
 /** action高亮标题(attributed) */
 @property (nonatomic , strong ) NSAttributedString *attributedHighlight;
 
+/** action标题行数 默认为: 1 */
+@property (nonatomic , assign ) NSInteger numberOfLines;
+
+/** action标题对齐方式 默认为: NSTextAlignmentLeft */
+@property (nonatomic , assign ) NSTextAlignment textAlignment;
+
 /** action字体 */
 @property (nonatomic , strong ) UIFont *font;
+
+/** action字体大小随宽度变化 默认为: NO */
+@property (nonatomic , assign ) BOOL adjustsFontSizeToFitWidth;
+
+/** action断行模式 默认为: NSLineBreakByTruncatingMiddle */
+@property (nonatomic , assign ) NSLineBreakMode lineBreakMode;
 
 /** action标题颜色 */
 @property (nonatomic , strong ) UIColor *titleColor;

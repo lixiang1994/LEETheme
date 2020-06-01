@@ -360,6 +360,7 @@
 		9B78798A1E7B9A7D00D4151A /* WebP.sh in Resources */ = {isa = PBXBuildFile; fileRef = 9B7879871E7B9A7D00D4151A /* WebP.sh */; };
 		9B86B4FA1EB84EB400063B00 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B86B4F91EB84EB400063B00 /* TabBarController.m */; };
 		9B86B4FE1EB8625300063B00 /* LEEBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B86B4FD1EB8625300063B00 /* LEEBubble.m */; };
+		9B87659A2484B3A8009C51C2 /* LEEAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8765982484B3A7009C51C2 /* LEEAlert.m */; };
 		9B9712C91EC42C1C00C1CB79 /* LEETheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9712C81EC42C1C00C1CB79 /* LEETheme.m */; };
 		9BCD39551D0503C100135985 /* tag_red_json.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD39541D0503C100135985 /* tag_red_json.json */; };
 		9BCD39571D0513E100135985 /* tag_blue_json.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BCD39561D0513E100135985 /* tag_blue_json.json */; };
@@ -402,7 +403,6 @@
 		9BFCDEDC2344D9000000AF6A /* MJRefreshBackFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFCDEC42344D9000000AF6A /* MJRefreshBackFooter.m */; };
 		9BFCDEDD2344D9000000AF6A /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFCDEC52344D9000000AF6A /* MJRefreshAutoFooter.m */; };
 		9BFCDEDE2344D9000000AF6A /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFCDEC72344D9000000AF6A /* MJRefreshComponent.m */; };
-		9BFCDEE32344D9640000AF6A /* LEEAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFCDEE12344D9640000AF6A /* LEEAlert.m */; };
 		9BFCDEE62344DA690000AF6A /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFCDEE42344DA690000AF6A /* UIScrollView+EmptyDataSet.m */; };
 		9BFCDEE92344DA8C0000AF6A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFCDEE72344DA8B0000AF6A /* MBProgressHUD.m */; };
 		9BFCDEEC2344DD8C0000AF6A /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BFCDEEB2344DD8C0000AF6A /* MainWindow.m */; };
@@ -982,6 +982,9 @@
 		9B86B4F91EB84EB400063B00 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		9B86B4FC1EB8625300063B00 /* LEEBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEBubble.h; sourceTree = "<group>"; };
 		9B86B4FD1EB8625300063B00 /* LEEBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEEBubble.m; sourceTree = "<group>"; };
+		9B8765972484B3A7009C51C2 /* LEEAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEAlert.h; sourceTree = "<group>"; };
+		9B8765982484B3A7009C51C2 /* LEEAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEEAlert.m; sourceTree = "<group>"; };
+		9B8765992484B3A8009C51C2 /* LEEAlertHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEAlertHelper.h; sourceTree = "<group>"; };
 		9B9712C71EC42C1C00C1CB79 /* LEETheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEETheme.h; sourceTree = "<group>"; };
 		9B9712C81EC42C1C00C1CB79 /* LEETheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEETheme.m; sourceTree = "<group>"; };
 		9BCB86CE1F97711E00316D74 /* LEEThemeDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LEEThemeDemo.entitlements; sourceTree = "<group>"; };
@@ -1062,9 +1065,6 @@
 		9BFCDEC72344D9000000AF6A /* MJRefreshComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshComponent.m; sourceTree = "<group>"; };
 		9BFCDEC82344D9000000AF6A /* MJRefreshFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooter.h; sourceTree = "<group>"; };
 		9BFCDEC92344D9000000AF6A /* MJRefreshBackFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBackFooter.h; sourceTree = "<group>"; };
-		9BFCDEE02344D9640000AF6A /* LEEAlertHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEAlertHelper.h; sourceTree = "<group>"; };
-		9BFCDEE12344D9640000AF6A /* LEEAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEEAlert.m; sourceTree = "<group>"; };
-		9BFCDEE22344D9640000AF6A /* LEEAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEEAlert.h; sourceTree = "<group>"; };
 		9BFCDEE42344DA690000AF6A /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
 		9BFCDEE52344DA690000AF6A /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		9BFCDEE72344DA8B0000AF6A /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
@@ -2587,9 +2587,9 @@
 		9BFCDEDF2344D9640000AF6A /* LEEAlert */ = {
 			isa = PBXGroup;
 			children = (
-				9BFCDEE02344D9640000AF6A /* LEEAlertHelper.h */,
-				9BFCDEE12344D9640000AF6A /* LEEAlert.m */,
-				9BFCDEE22344D9640000AF6A /* LEEAlert.h */,
+				9B8765972484B3A7009C51C2 /* LEEAlert.h */,
+				9B8765982484B3A7009C51C2 /* LEEAlert.m */,
+				9B8765992484B3A8009C51C2 /* LEEAlertHelper.h */,
 			);
 			path = LEEAlert;
 			sourceTree = "<group>";
@@ -2975,7 +2975,6 @@
 				9B7876441E7A739200D4151A /* NSString+YYAdd.m in Sources */,
 				9B7876411E7A739200D4151A /* NSObject+YYAdd.m in Sources */,
 				9BFCDECC2344D9000000AF6A /* MJRefreshConfig.m in Sources */,
-				9BFCDEE32344D9640000AF6A /* LEEAlert.m in Sources */,
 				9B78789C1E7B8BCF00D4151A /* PublishCommentView.m in Sources */,
 				9B7878761E7B8BCF00D4151A /* LEECoolButton.m in Sources */,
 				9B7876851E7A739200D4151A /* YYThreadSafeArray.m in Sources */,
@@ -3009,6 +3008,7 @@
 				9B7878791E7B8BCF00D4151A /* LoadingStyleProgressView.m in Sources */,
 				9B7875071E7A5AF800D4151A /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				9BFCDE8C2344D7C70000AF6A /* TZAssetModel.m in Sources */,
+				9B87659A2484B3A8009C51C2 /* LEEAlert.m in Sources */,
 				9BFCDEEC2344DD8C0000AF6A /* MainWindow.m in Sources */,
 				9B7878291E7B8BCF00D4151A /* CommunityCommentModel.m in Sources */,
 				9B78789B1E7B8BCF00D4151A /* NewsToolbarView.m in Sources */,

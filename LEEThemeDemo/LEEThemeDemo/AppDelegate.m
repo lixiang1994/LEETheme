@@ -16,6 +16,8 @@
 
 #import "LEETheme.h"
 
+#import "LEEAlert.h"
+
 @interface AppDelegate ()
 
 @end
@@ -47,6 +49,8 @@
     [self.window makeKeyAndVisible];
     
     self.window.rootViewController = [[TabBarController alloc] init];
+    
+    [LEEAlert configMainWindow:self.window];
     
     // 初始化气泡
     
