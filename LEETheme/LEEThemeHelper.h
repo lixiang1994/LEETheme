@@ -1,8 +1,7 @@
-#import <UIKit/UIKit.h>
 /*
  *  @header LEEThemeHelper.h
  *
- *  ┌─┐      ┌───────┐ ┌───────┐ 帅™
+ *  ┌─┐      ┌───────┐ ┌───────┐
  *  │ │      │ ┌─────┘ │ ┌─────┘
  *  │ │      │ └─────┐ │ └─────┐
  *  │ │      │ ┌─────┘ │ ┌─────┘
@@ -12,12 +11,14 @@
  *  @brief  LEE主题管理
  *
  *  @author LEE
- *  @copyright    Copyright © 2016 - 2019年 lee. All rights reserved.
- *  @version    V1.1.10
+ *  @copyright    Copyright © 2016 - 2020年 lee. All rights reserved.
+ *  @version    V1.1.11
  */
 
 FOUNDATION_EXPORT double LEEThemeVersionNumber;
 FOUNDATION_EXPORT const unsigned char LEEThemeVersionString[];
+
+#import <UIKit/UIKit.h>
 
 #ifndef LEEThemeHelper_h
 #define LEEThemeHelper_h
