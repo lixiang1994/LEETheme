@@ -37,10 +37,40 @@
 
 - (void)configTheme {
     
-    self.tabBar.lee_theme
-    .LeeAddBarTintColor(DAY , LEEColorRGB(255, 255, 255))
-    .LeeAddBarTintColor(NIGHT , LEEColorRGB(40, 40, 40))
-    .LeeConfigBarTintColor(@"ident1");
+    self.tabBar.lee_theme.LeeThemeChangingBlock(^(NSString * _Nonnull tag, UITabBar * _Nonnull item) {
+        
+        // 适配iOS 15的设置方式
+        if (@available(iOS 13.0, *)){
+            UITabBarAppearance *appearance = [[UITabBarAppearance alloc] init];
+            
+            [appearance configureWithOpaqueBackground];
+            
+            if ([tag isEqualToString:DAY]) {
+                appearance.backgroundColor = LEEColorRGB(255, 255, 255);
+            
+            } else if ([tag isEqualToString:NIGHT]) {
+                appearance.backgroundColor = LEEColorRGB(40, 40, 40);
+                
+            } else {
+            
+                appearance.backgroundColor = [LEETheme getValueWithTag:tag Identifier:@"ident1"];
+            }
+            
+            item.standardAppearance = appearance;
+            
+            if (@available(iOS 15.0, *)){
+                item.scrollEdgeAppearance = appearance;
+            }
+            
+        } else {
+            item.barTintColor = [LEETheme getValueWithTag:tag Identifier:@"ident1"];
+        }
+    });
+    
+//    self.tabBar.lee_theme
+//    .LeeAddBarTintColor(DAY , LEEColorRGB(255, 255, 255))
+//    .LeeAddBarTintColor(NIGHT , LEEColorRGB(40, 40, 40))
+//    .LeeConfigBarTintColor(@"ident1");
 }
 
 - (void)initSubControllers{
@@ -59,24 +89,69 @@
             
             nc = [[UINavigationController alloc] initWithRootViewController:[[NSClassFromString(classArray[i])alloc] init]];
             
-            nc.navigationBar.lee_theme
-            .LeeAddBarTintColor(DAY , LEEColorRGB(255, 255, 255))
-            .LeeAddBarTintColor(NIGHT , LEEColorRGB(85, 85, 85))
-            .LeeConfigBarTintColor(@"ident1");
-            
-            nc.navigationBar.lee_theme
-            .LeeAddCustomConfig(DAY, ^(UINavigationBar *bar) {
-              
-                bar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor]};
-            })
-            .LeeAddCustomConfig(NIGHT, ^(UINavigationBar *bar) {
+            // 适配iOS 15的设置方式
+            nc.navigationBar.lee_theme.LeeThemeChangingBlock(^(NSString * _Nonnull tag, UINavigationBar * _Nonnull item) {
                 
-                bar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-            })
-            .LeeCustomConfig(@"ident7", ^(UINavigationBar *bar, id value) {
-               
-                bar.titleTextAttributes = @{NSForegroundColorAttributeName : value};
+                if (@available(iOS 13.0, *)){
+                    UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];
+                    [appearance configureWithOpaqueBackground];
+                    
+                    if ([tag isEqualToString:DAY]) {
+                        appearance.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor]};
+                        
+                        appearance.backgroundColor = LEEColorRGB(255, 255, 255);
+                    
+                    } else if ([tag isEqualToString:NIGHT]) {
+                        appearance.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+                        
+                        appearance.backgroundColor = LEEColorRGB(85, 85, 85);
+                        
+                    } else {
+                        appearance.titleTextAttributes = @{NSForegroundColorAttributeName : [LEETheme getValueWithTag:tag Identifier:@"ident7"]};
+                        
+                        appearance.backgroundColor = [LEETheme getValueWithTag:tag Identifier:@"ident1"];
+                    }
+                    
+                    item.standardAppearance = appearance;
+                    
+                    if (@available(iOS 15.0, *)){
+                        item.scrollEdgeAppearance = appearance;
+                    }
+                    
+                } else {
+                    
+                    if ([tag isEqualToString:DAY]) {
+                        item.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor]};
+                        
+                    } else if ([tag isEqualToString:NIGHT]) {
+                        item.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+                        
+                    } else {
+                        item.titleTextAttributes = [LEETheme getValueWithTag:tag Identifier:@"ident7"];
+                    }
+                    
+                    item.barTintColor = [LEETheme getValueWithTag:tag Identifier:@"ident1"];
+                }
             });
+            
+//            nc.navigationBar.lee_theme
+//            .LeeAddBarTintColor(DAY , LEEColorRGB(255, 255, 255))
+//            .LeeAddBarTintColor(NIGHT , LEEColorRGB(85, 85, 85))
+//            .LeeConfigBarTintColor(@"ident1");
+            
+//            nc.navigationBar.lee_theme
+//            .LeeAddCustomConfig(DAY, ^(UINavigationBar *bar) {
+//
+//                bar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor]};
+//            })
+//            .LeeAddCustomConfig(NIGHT, ^(UINavigationBar *bar) {
+//
+//                bar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+//            })
+//            .LeeCustomConfig(@"ident7", ^(UINavigationBar *bar, id value) {
+//
+//                bar.titleTextAttributes = @{NSForegroundColorAttributeName : value};
+//            });
             
             nc.tabBarItem.title = nameArray[i];
         }
