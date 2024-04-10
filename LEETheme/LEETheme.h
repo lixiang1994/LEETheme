@@ -11,8 +11,8 @@
  *  @brief  LEE主题管理
  *
  *  @author LEE
- *  @copyright    Copyright © 2016 - 2020年 lee. All rights reserved.
- *  @version    V1.1.11
+ *  @copyright    Copyright © 2016 - 2024年 lee. All rights reserved.
+ *  @version    V1.2.0
  */
 
 #import <Foundation/Foundation.h>
@@ -27,7 +27,7 @@
  *
  * 在使用LEETheme的过程中如果出现bug请及时以以下任意一种方式联系我，我会及时修复bug
  *
- * QQ    : 可以添加SDAutoLayout群 497140713 在这里找到我(LEE 332459523)
+ * QQ    : 可以添加Swift交流群 750649813 在这里找到我(LEE 332459523)
  * Email : 18611401994@163.com
  * GitHub: https://github.com/lixiang1994/LEETheme
  * 简书:    http://www.jianshu.com/users/a6da0db100c8
