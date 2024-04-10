@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.5
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -17,6 +17,8 @@ let package = Package(
         .target(
             name: "LEETheme",
             dependencies: [],
-            path: "LEETheme")
+            path: "LEETheme",
+            resources: [.process("PrivacyInfo.xcprivacy")]
+        )
     ]
 )
