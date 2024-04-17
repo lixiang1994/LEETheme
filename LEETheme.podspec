@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
 s.name         = "LEETheme"
-s.version      = "1.2.0"
+s.version      = "1.2.1"
 s.summary      = "最好用的轻量级主题管理库"
 
 s.homepage     = "https://github.com/lixiang1994/LEETheme"
@@ -20,9 +20,9 @@ s.source_files  = "LEETheme/**/*.{h,m}"
 
 s.requires_arc = true
 
-  s.subspec 'Privacy' do |ss|
-      ss.resource_bundles = {
-        "Privacy" => 'LEETheme/PrivacyInfo.xcprivacy'
-      }
-  end
+s.subspec 'Privacy' do |ss|
+    ss.resource_bundles = {
+        "LEETheme" => 'LEETheme/PrivacyInfo.xcprivacy'
+    }
+end
 end
