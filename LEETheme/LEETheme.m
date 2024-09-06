@@ -12,7 +12,7 @@
  *
  *  @author LEE
  *  @copyright    Copyright © 2016 - 2024年 lee. All rights reserved.
- *  @version    V1.2.1
+ *  @version    V1.2.2
  */
 
 #import "LEETheme.h"
@@ -37,6 +37,8 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
 
 @property (nonatomic , strong ) NSMutableDictionary *configInfo;
 
+@property (nonatomic , strong ) LEEThemeImageCache *imageCache;
+
 @end
 
 @implementation LEETheme
@@ -51,10 +53,19 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         
-        themeManager = [[LEETheme alloc]init];
+        themeManager = [[LEETheme alloc] init];
     });
     
     return themeManager;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _imageCache = [[LEEThemeImageCache alloc] init];
+    }
+    return self;
 }
 
 #pragma mark Public
@@ -87,6 +98,16 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
 + (NSArray *)allThemeTag{
     
     return [[LEETheme shareTheme].allTags copy];
+}
+
++ (LEEThemeImageCache *)imageCache {
+    
+    return [LEETheme shareTheme].imageCache;
+}
+
++ (void)setImageCache:(LEEThemeImageCache *)imageCache {
+    
+    [LEETheme shareTheme].imageCache = [imageCache copy];
 }
 
 #pragma mark Private
@@ -229,19 +250,23 @@ static NSString * const LEEThemeConfigInfo = @"LEEThemeConfigInfo";
     
     if (imageName) {
         
+        UIImage *image = [[LEETheme shareTheme].imageCache getImageWithKey:imageName];
+        
         NSString *documentsPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
         
         NSString *path = configInfo[@"path"];
         
         if (path) path = [documentsPath stringByAppendingPathComponent:path];
         
-        UIImage *image = path ? [UIImage imageWithContentsOfFile:[path stringByAppendingPathComponent:imageName]] : [UIImage imageNamed:imageName];
+        if (!image) image = path ? [UIImage imageWithContentsOfFile:[path stringByAppendingPathComponent:imageName]] : [UIImage imageNamed:imageName];
         
         if (!image) image = [UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:imageName]];
         
         if (!image) image = [UIImage imageNamed:imageName];
         
         if (image && !value) value = image;
+        
+        [[LEETheme shareTheme].imageCache setImage:image withKey:imageName];
     }
     
     NSDictionary *otherInfo = info[@"other"];

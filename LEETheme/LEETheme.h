@@ -12,7 +12,7 @@
  *
  *  @author LEE
  *  @copyright    Copyright © 2016 - 2024年 lee. All rights reserved.
- *  @version    V1.2.1
+ *  @version    V1.2.2
  */
 
 #import <Foundation/Foundation.h>
@@ -20,6 +20,8 @@
 #import <UIKit/UIKit.h>
 
 #import "LEEThemeHelper.h"
+
+#import "LEEThemeImageCache.h"
 
 /*
  
@@ -69,6 +71,10 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return 主题标签集合
  */
 + (NSArray *)allThemeTag;
+
+/// 图片缓存
++ (LEEThemeImageCache *)imageCache;
++ (void)setImageCache:(LEEThemeImageCache *)imageCache;
 
 @end
 
